@@ -1,0 +1,1458 @@
+/* ===============================
+   FLAREMINDS ABOUT PAGE STYLING
+   =============================== */
+
+.about-page {
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  color: #1e293b;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 1.5rem auto 4rem;
+  font-size: 1.2rem;
+  color: #475569;
+  line-height: 1.9;
+}
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+  margin-top: 4rem;
+}
+
+.team-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #0f172a;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Team card */
+.team-card {
+  background: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-image: linear-gradient(to right, #14b8a6, #06b6d4) 1;
+}
+
+/* Profile image */
+.team-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #14b8a6;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  perspective: 1200px;
+  margin-top: 40px;
+}
+
+.slider-track {
+  display: flex;
+  gap: 30px;
+  animation: scrollInfinite 25s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.team-card-3d {
+  min-width: 260px;
+  padding: 18px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  transform: rotateY(-10deg);
+  transition: 0.4s ease;
+}
+
+.team-card-3d:hover {
+  transform: scale(1.08) rotateY(0deg);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+}
+
+.team-card-3d img {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.team-card-3d h4 {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0b1a33;
+}
+
+.team-card-3d .role {
+  color: #0066ff;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.team-card-3d .bio {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  color: #333;
+}
+
+@keyframes scrollInfinite {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.team-card:hover .team-image {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+}
+
+/* Text */
+.team-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  color: #0f172a;
+}
+
+.team-role {
+  font-size: 1rem;
+  color: #14b8a6;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.team-bio {
+  margin-top: 1rem;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .about-page {
+    padding: 3rem 1rem;
+  }
+  .about-title {
+    font-size: 2.5rem;
+  }
+  .about-description {
+    font-size: 1.1rem;
+  }
+  .team-heading {
+    font-size: 2rem;
+  }
+}
+
+/* ===============================
+   FLAREMINDS BLOG PAGE STYLING
+   =============================== */
+
+.blog-page {
+  background: linear-gradient(to bottom, #f9fafb, #e2e8f0);
+  color: #0f172a;
+  padding: 4rem 1.5rem;
+}
+
+.blog-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  color: #0f172a;
+}
+
+.blog-subtitle {
+  text-align: center;
+  color: #475569;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  font-size: 1.2rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Blog image section */
+.blog-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.05);
+}
+
+/* Blog content */
+.blog-content {
+  padding: 2rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.blog-content p {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Button styling */
+.read-more {
+  border: 2px solid #14b8a6;
+  color: #14b8a6;
+  background: transparent;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.read-more:hover {
+  background: #14b8a6;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-page {
+    padding: 3rem 1rem;
+  }
+  .blog-title {
+    font-size: 2.5rem;
+  }
+  .blog-subtitle {
+    font-size: 1.1rem;
+  }
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   FLAREMINDS CONTACT PAGE STYLING
+   =============================== */
+
+.contact-page {
+  background: linear-gradient(to bottom right, #f0f9ff, #e0f2f1);
+  color: #0f172a;
+  padding: 5rem 1.5rem;
+}
+
+.contact-page h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.contact-page .text-gray-600 {
+  text-align: center;
+  color: #475569;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 1s ease-out;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.contact-form-section {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeInLeft 1s ease-out;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 17px;
+  color: #334155;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 5px rgba(20, 184, 166, 0.3);
+  background-color: #ffffff;
+}
+
+.form-btn {
+  background: linear-gradient(to right, #14b8a6, #06b6d4);
+  color: white;
+  padding: 18px 35px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.3);
+}
+
+.form-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(20, 184, 166, 0.4);
+}
+
+.status-msg {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.status-msg.success {
+  color: #10b981;
+}
+
+.status-msg.error {
+  color: #ef4444;
+}
+
+/* Service Select Section */
+.service-select {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-service {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.add-service input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.add-service input:focus {
+  outline: none;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.25);
+}
+
+.plus-btn {
+  background-color: #14b8a6;
+  border: none;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(20, 184, 166, 0.2);
+}
+
+.plus-btn:hover {
+  background-color: #0f766e;
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(20, 184, 166, 0.3);
+}
+
+.contact-info-section {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 3rem;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInRight 1s ease-out;
+}
+
+.contact-info-section h4 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.contact-info-section p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 4rem 1rem;
+  }
+  .contact-page h2 {
+    font-size: 2.8rem;
+  }
+  .contact-page .text-gray-600 {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .contact-form-section, .contact-info-section {
+    padding: 2rem;
+  }
+}
+
+/* ===============================
+   FLAREMINDS — PROFESSIONAL HOME
+   =============================== */
+
+:root {
+  --teal: #14b8a6;
+  --sky: #0ea5e9;
+  --dark: #0f172a;
+}
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}.background-boxes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.boxes-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* SEMI-TRANSPARENT OVERLAY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15); /* slight frost */
+  backdrop-filter: blur(1.5px); /* lighter blur so grid stays visible */
+  z-index: 2;
+}
+
+
+/* HERO TEXT */
+.hero-inner {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 2rem;
+  color: #001f4d;
+  z-index: 3;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: darkblue;
+  background: darkblue;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  color: #006eff;
+  margin: 20px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #14b8a6, #0ea5e9);
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 700;
+}
+
+.btn-outline {
+  border: 2px solid black;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  color: black;
+}
+
+/* ===== MARQUEE SECTION ===== */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid rgba(226, 232, 240, 0.3);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+  padding: 1.2rem 0;
+  background: #f1f5f9;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: scrollText 20s linear infinite;
+}
+
+.marquee span {
+  font-weight: 700;
+  color: var(--dark);
+  opacity: 0.8;
+  font-size: 1.1rem;
+  margin-right: 2.5rem;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* ===== PROJECTS ===== */
+.projects {
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  text-align: center;
+  padding: 7rem 1.5rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.section-subtext {
+  color: #475569;
+  margin: 1rem auto 4rem;
+  font-size: 1.2rem;
+  max-width: 650px;
+  line-height: 1.8;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.project-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.project-info {
+  padding: 1.8rem;
+}
+
+.project-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.project-info p {
+  font-size: 1rem;
+  color: #475569;
+  margin-top: 0.6rem;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .hero-subtext {
+    font-size: 1.1rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .projects {
+    padding: 5rem 1rem;
+  }
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .section-subtext {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===============================
+   FLAREMINDS SERVICES PAGE STYLING
+   =============================== */
+
+.services-page {
+  background: linear-gradient(to bottom, #f1f5f9, #e0f2f1);
+  min-height: 100vh;
+  color: #0f172a;
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.services-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.services-subtitle {
+  color: #475569;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ===== GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 1.8rem;
+  border: 1px solid #d1d5db;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== ICON ===== */
+.service-icon {
+  font-size: 3rem;
+  color: #14b8a6;
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.15) rotate(-10deg);
+  color: #0d9488;
+}
+
+/* ===== TEXT ===== */
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.service-desc {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* ===== BUTTON ===== */
+.service-btn {
+  margin-top: 1.5rem;
+  background: #14b8a6;
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-btn:hover {
+  background: #0f766e;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .services-page {
+    padding: 4rem 1rem;
+  }
+  .services-title {
+    font-size: 2.5rem;
+  }
+  .services-subtitle {
+    font-size: 1.1rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   FLAREMINDS TESTIMONIALS STYLING
+   =============================== */
+
+.testimonials-page {
+  background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+  color: #0f172a;
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.testimonials-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.testimonials-subtitle {
+  color: #475569;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== GRID ===== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+/* ===== CARD ===== */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Quote Icon ===== */
+.quote-icon {
+  font-size: 2.2rem;
+  color: #14b8a6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Text ===== */
+.testimonial-text {
+  font-size: 1.2rem;
+  color: #334155;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* ===== Author ===== */
+.testimonial-author h4 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.testimonial-author p {
+  color: #14b8a6;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.testimonial-card {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-page {
+    padding: 4rem 1rem;
+  }
+  .testimonials-title {
+    font-size: 2.5rem;
+  }
+  .testimonials-subtitle {
+    font-size: 1.1rem;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   FLAREMINDS FOOTER STYLING
+   =============================== */
+
+.footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-brand h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-brand p {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+}
+
+.footer-links h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  space-y: 0.8rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #94a3b8;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #14b8a6;
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* ===============================
+   FLAREMINDS NAVBAR — ENHANCED GLASSMORPHIC STYLE
+   =============================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(14px) saturate(200%);
+  -webkit-backdrop-filter: blur(14px) saturate(200%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  transition: all 0.4s ease;
+  animation: fadeDown 0.6s ease-out;
+}
+
+/* Container */
+.navbar-container {
+  height: 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Styling */
+.logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 5px 10px rgba(20, 184, 166, 0.35));
+}
+
+/* Desktop Navigation */
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.85);
+  letter-spacing: 0.4px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover & Active Effects */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #14b8a6, #06b6d4);
+  transition: width 0.35s ease;
+  border-radius: 3px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #14b8a6;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}/* Dropdown wrapper */
+.services-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Services clickable text */
+.services-link {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+/* Dropdown menu styling */
+.services-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 240px;
+  background: #ffffff;
+  border-radius: 30px;
+  border: 2px solid #b7ddff;  /* 🔵 Light blue outline */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  padding: 0.7rem 0;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: dropdownFade 0.1s ease forwards;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: #0b1a33;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #e7f3ff;
+  color: #0066ff;
+    border-radius: 30px;
+
+}
+
+/* Fade animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: #0f172a;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Mobile Nav Behavior */
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(18px) saturate(200%);
+    -webkit-backdrop-filter: blur(18px) saturate(200%);
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    padding: 35px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    display: none;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: all 0.35s ease-out;
+  }
+
+  .nav-links.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-link {
+    color: #0f172a;
+    font-size: 20px;
+  }
+}
+
+/* Smooth Navbar Entrance */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle Glow on Scroll */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(200%);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   FLAREMINDS ENHANCED RUNNING TEXT ANIMATION
+   ================================ */
+
+.running-text {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(90deg, rgba(20, 184, 166, 0.1), rgba(6, 182, 212, 0.1));
+  border-radius: 10px;
+  padding: 16px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.running-text:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.running-text-inner {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: scrollText var(--duration) linear infinite;
+}
+
+.running-text-inner span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  padding-left: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Gradient fade on edges */
+.running-text::before,
+.running-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.running-text::before {
+  left: 0;
+  background: linear-gradient(to right, #f1f5f9, transparent);
+}
+
+.running-text::after {
+  right: 0;
+  background: linear-gradient(to left, #f1f5f9, transparent);
+}
+
+/* Scroll animation */
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.running-text:hover .running-text-inner {
+  animation-play-state: paused;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .running-text-inner span {
+    font-size: 16px;
+  }
+}
+
+
+
+/* == FLAREMIND LOADING MORPH ANIMATION == */
+/* == FLAREMIND LOADING MORPH ANIMATION - LIGHT BLUE THEME == */
+
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffffff, #e8f5ff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* MORPHING TEXT */
+.morphing-text {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    90deg,
+    #007aff,
+    #4dbdff,
+    #00a6ff,
+    #6fd2ff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: morph 1.5s ease-in-out infinite;
+}
+
+/* MORPHING ANIMATION */
+@keyframes morph {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.9);
+  }
+}
+
+/* LIGHT BLUE GLOW PULSE */
+.loader-container::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #aadcffaa, #ffffff00);
+  border-radius: 50%;
+  animation: pulse 2.2s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1.3);
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+@media (max-width: 1024px) {
+  .morphing-text {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .morphing-text {
+    font-size: 2.8rem;
+  }
+  .loader-container::after {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .morphing-text {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+  .loader-container::after {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .morphing-text {
+    font-size: 1.8rem;
+  }
+}
+.background-boxes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.boxes-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

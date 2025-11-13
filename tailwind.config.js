@@ -1,0 +1,24 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  safelist: [
+    "animate-moveBoxes",
+  ],
+  theme: {
+    extend: {
+      keyframes: {
+        moveBoxes: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(50px, 50px)" },
+        },
+      },
+      animation: {
+        moveBoxes: "moveBoxes 20s linear infinite",
+      },
+    },
+  },
+  plugins: [],
+}
