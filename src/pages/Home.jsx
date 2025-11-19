@@ -1,160 +1,134 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { FaInstagram, FaFacebook, FaXTwitter, FaLinkedin } from "react-icons/fa6";
+
 
 export default function Home() {
-  const GRID_SIZE = 110;
+  const GRID = 110;
   const [cells, setCells] = useState([]);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const svgRef = useRef(null);
 
+  /* ============================
+      BACKGROUND GRID GENERATOR
+  ============================ */
   useEffect(() => {
-    const w = window.innerWidth + GRID_SIZE;
-    const h = window.innerHeight + GRID_SIZE;
+    const w = window.innerWidth + GRID;
+    const h = window.innerHeight + GRID;
 
-    const arr = [];
-    for (let x = 0; x < w; x += GRID_SIZE) {
-      for (let y = 0; y < h; y += GRID_SIZE) {
-        arr.push({ x, y });
+    let temp = [];
+    for (let x = 0; x < w; x += GRID) {
+      for (let y = 0; y < h; y += GRID) {
+        temp.push({ x, y });
       }
     }
-    setCells(arr);
+    setCells(temp);
   }, []);
 
-  const handleMouseMove = (e) => {
+  /* ============================
+      GRID CURSOR EFFECT
+  ============================ */
+  const handleMove = (e) => {
     const rect = svgRef.current.getBoundingClientRect();
-    setCursorPos({
+    setCursor({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
   };
 
-  const servicesText =
-    "Website Design & Development • SEO • Google Ads • Social Media Marketing • Branding • Lead Generation • Animation • Strategy";
+  /* ============================
+      PROCESS SECTION ANIMATION
+  ============================ */
+  useEffect(() => {
+    const steps = document.querySelectorAll(".timeline-step");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    steps.forEach((step) => observer.observe(step));
+  }, []);
+
+  const marqueeText =
+    "Website Design • SEO • Google Ads • SMM • Branding • Lead Gen • UI/UX • Strategy";
 
   return (
     <div className="home-page">
-
-      <section
-        className="hero-section"
-        style={{
-          position: "relative",
-          minHeight: "100vh",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onMouseMove={handleMouseMove}
-      >
-
-        {/* FULLSCREEN STATIC GRID */}
-        <svg
-          ref={svgRef}
-          width="100%"
-          height="100%"
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 1,
-            display: "block",
-          }}
-        >
-          <defs>
-            <filter id="cellGlow">
-              <feGaussianBlur stdDeviation="18" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          {cells.map((cell, index) => {
-            const dist = Math.hypot(
-              cursorPos.x - (cell.x + GRID_SIZE / 2),
-              cursorPos.y - (cell.y + GRID_SIZE / 2)
+      {/* HERO SECTION */}
+      <section className="hero-section" onMouseMove={handleMove}>
+        {/* BACKGROUND GRID */}
+        <svg ref={svgRef} className="background-grid">
+          {cells.map((cell, i) => {
+            const d = Math.hypot(
+              cursor.x - (cell.x + GRID / 2),
+              cursor.y - (cell.y + GRID / 2)
             );
 
-            const isGlowing = dist < 80; // 🔥 Glow MUCH closer to pointer
+            const glow = d < 60;
 
             return (
               <rect
-                key={index}
+                key={i}
                 x={cell.x}
                 y={cell.y}
-                width={GRID_SIZE}
-                height={GRID_SIZE}
-                fill={isGlowing ? "#69c7ff" : "#001a4d"} // dark blue → light blue glow
-                stroke="#002b72"
-                strokeWidth="1.5"
-                filter={isGlowing ? "url(#cellGlow)" : "none"}
-                style={{ transition: "0.1s ease" }}
+                width={GRID}
+                height={GRID}
+                fill={glow ? "#00008B" : "#e8f3ff"}
+                stroke="#4a7ba7"
+                strokeWidth="1.3"
               />
             );
           })}
         </svg>
 
-        {/* CONTENT */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 5,
-            width: "100%",
-            backdropFilter: "blur(4px)",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: "800",
-              background: "darkblue",
-              WebkitTextFillColor: "transparent",
-              WebkitBackgroundClip: "text",
-            }}
-          >
-            Build, Scale & Elevate <br /> Your Digital Presence
+        {/* HERO CONTENT */}
+        <div className="hero-content">
+          <h1 className="hero-title">
+            Marketing That Speaks Today's Digital Language
           </h1>
 
-          <p
-            style={{
-              fontSize: "1.2rem",
-              color: "#006eff",
-              marginTop: "15px",
-              marginBottom: "25px",
-            }}
-          >
-            We craft modern, results-driven digital experiences powered by design,
-            technology and strategy — tailored for growth.
+          <p className="hero-subtext">
+            We craft digital experiences that connect, convert, and scale.
+            Let your brand fly higher with Branding Wings.
           </p>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-            <Link
-              to="/services"
-              style={{
-                padding: "1rem 2rem",
-                borderRadius: "10px",
-                background: "linear-gradient(90deg,#14b8a6,#0ea5e9)",
-                fontWeight: "700",
-                color: "#000",
-              }}
-            >
+          <div className="hero-buttons">
+            <Link to="/services" className="btn-primary">
               Explore Services
             </Link>
-
-            <Link
-              to="/contact"
-              style={{
-                padding: "1rem 2rem",
-                borderRadius: "10px",
-                border: "2px solid black",
-                fontWeight: "700",
-                color: "black",
-              }}
-            >
+            <Link to="/contact" className="btn-outline">
               Get in Touch
             </Link>
+          </div>
+
+          {/* SOCIAL ICONS */}
+          <div className="social-icons">
+            <a
+              href="https://www.instagram.com/flareminds_tech"
+              target="_blank"
+              className="social-icon"
+            >
+              <FaInstagram />
+            </a>
+            <a href="#" target="_blank" className="social-icon">
+              <FaFacebook />
+            </a>
+            <a href="#" target="_blank" className="social-icon">
+              <FaXTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/flareminds-rcm/posts/?feedView=all"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaLinkedin />
+            </a>
           </div>
         </div>
       </section>
@@ -162,8 +136,73 @@ export default function Home() {
       {/* MARQUEE */}
       <section className="marquee">
         <div className="marquee-inner">
-          <span>{servicesText}</span>
-          <span>{servicesText}</span>
+          <span>{marqueeText}</span>
+          <span>{marqueeText}</span>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="features-section">
+        <h2 className="section-title">Why Choose FlareMinds?</h2>
+
+        <div className="features-grid">
+          {[
+            { title: "Creative Strategy", text: "Business-focused digital planning." },
+            { title: "High-End Designs", text: "Modern UI/UX that converts." },
+            { title: "Digital Growth", text: "Scale your brand effortlessly." },
+            { title: "Reliable Support", text: "We grow with you." },
+          ].map((f, i) => (
+            <div key={i} className="feature-card">
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PROCESS SECTION */}
+      <section className="process-section">
+        <h2 className="section-title">Our Creative Process</h2>
+
+        <div className="timeline">
+          {[
+            { step: "Discover", text: "We understand your goals." },
+            { step: "Design", text: "We craft stunning UI/UX." },
+            { step: "Develop", text: "We build fast, scalable solutions." },
+            { step: "Launch", text: "Your brand goes live to the world." },
+          ].map((s, i) => (
+            <div key={i} className="timeline-step">
+              <div className="timeline-dot"></div>
+              <h3>{s.step}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="services-preview">
+        <h2 className="section-title">Our Services</h2>
+
+        <div className="services-grid">
+          {[
+            "Website Design & Development",
+            "Marketing & SEO",
+            "Branding & Identity",
+            "Business Automation",
+          ].map((s, i) => (
+            <div key={i} className="service-box">
+              <h3>{s}</h3>
+              <p>Premium description goes here.</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FUTURE SECTION */}
+      <section className="future-section">
+        <div className="future-box">
+          Future Projects / Case Studies Will Come Here
         </div>
       </section>
     </div>

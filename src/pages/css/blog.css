@@ -1,0 +1,120 @@
+
+/* ===============================
+   BLOG PAGE STYLING
+   =============================== */
+
+.blog-page {
+  padding: 2rem 1.5rem;
+  background: linear-gradient(to bottom, #f9fafb, #e2e8f0);
+}
+
+.blog-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.blog-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.35s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.blog-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  border: 2px solid var(--teal);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  color: var(--teal);
+  transition: 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: transparent;
+}
+
+.read-more:hover {
+  background: var(--teal);
+  color: white;
+}
+
+/* ===============================
+   TESTIMONIALS PAGE STYLING
+   =============================== */
+
+.testimonials-page {
+  padding: 2rem 1.5rem;
+  background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+}
+
+.testimonials-page h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.testimonials-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  transition: 0.35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+
+
+
+
+
+
+
