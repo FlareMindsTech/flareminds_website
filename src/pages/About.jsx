@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import vikiImg from "../assets/viki.jpg";
-
+import yasirImg from "../assets/yasir.jpg";
 
 export default function About() {
-  /* -----------------------------------------------
-      COUNTERS
-  ------------------------------------------------ */
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
     { id: "clients", label: "Clients", value: 67 },
@@ -13,9 +10,6 @@ export default function About() {
     { id: "growth", label: "YoY Growth", value: 240 },
   ];
 
-  /* -----------------------------------------------
-      TEAM
-  ------------------------------------------------ */
   const team = [
     {
       name: "Vignesh",
@@ -24,11 +18,10 @@ export default function About() {
       image: vikiImg,
     },
     {
-      name: "Rohan",
+      name: "Yasir",
       role: "Lead Developer",
       bio: "Specialist in building fast, scalable, modern web apps.",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
+      image: yasirImg,
     },
     {
       name: "Sana",
@@ -60,9 +53,6 @@ export default function About() {
     },
   ];
 
-  /* -----------------------------------------------
-      COUNTER ANIMATION
-  ------------------------------------------------ */
   const counterRefs = useRef([]);
   counterRefs.current = [];
 
@@ -90,39 +80,31 @@ export default function About() {
     });
   }, []);
 
- /* MOBILE TAP (toggle open/close) */
-useEffect(() => {
-  const cards = document.querySelectorAll(".premium-team-card");
+  useEffect(() => {
+    const cards = document.querySelectorAll(".premium-team-card");
 
-  cards.forEach((card) => {
-    let open = false;
+    cards.forEach((card) => {
+      let open = false;
 
-    const toggleCard = () => {
-      if (!open) {
-        card.classList.remove("touch-reset");
-        card.classList.add("touch-active");
-        open = true;
-      } else {
-        card.classList.remove("touch-active");
-        card.classList.add("touch-reset");
+      const toggleCard = () => {
+        if (!open) {
+          card.classList.remove("touch-reset");
+          card.classList.add("touch-active");
+          open = true;
+        } else {
+          card.classList.remove("touch-active");
+          card.classList.add("touch-reset");
+          setTimeout(() => card.classList.remove("touch-reset"), 350);
+          open = false;
+        }
+      };
 
-        // small delay to remove class
-        setTimeout(() => card.classList.remove("touch-reset"), 35000);
+      card.addEventListener("touchend", toggleCard);
+    });
+  }, []);
 
-        open = false;
-      }
-    };
-
-    card.addEventListener("touchend", toggleCard);
-  });
-}, []);
-
-  /* -----------------------------------------------
-      RENDER
-  ------------------------------------------------ */
   return (
     <div className="lm-about-page">
-      {/* HERO */}
       <header className="lm-hero">
         <div className="lm-hero-inner">
           <h1 className="lm-hero-title">FlareMinds — Design & Growth Agency</h1>
@@ -144,7 +126,6 @@ useEffect(() => {
         </div>
       </header>
 
-      {/* MAIN */}
       <main className="lm-main">
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>

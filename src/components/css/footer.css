@@ -1,14 +1,10 @@
-/* ============================================================
-   FOOTER — NO BLUE GLOW
-============================================================ */
+
 .footer {
   background: #0b1120;
   color: #94a3b8;
   padding-top: 4.5rem;
 }
-
 .footer::before { display: none !important; }
-
 .footer-container {
   max-width: 1380px;
   margin: auto;
@@ -17,28 +13,23 @@
   gap: 3rem;
   grid-template-columns: repeat(1, 1fr);
 }
-
 @media (min-width: 768px) {
   .footer-container { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (min-width: 1024px) {
   .footer-container { grid-template-columns: repeat(4, 1fr); }
 }
-
 .footer-brand h3 {
   font-size: 2rem;
   font-weight: 900;
   color: white;
 }
-
 .footer-links h4 {
   font-size: 1.3rem;
   font-weight: 750;
   color: white;
   margin-bottom: 1.4rem;
 }
-
 .footer-links a {
   display: block;
   margin-bottom: 0.7rem;
@@ -46,12 +37,10 @@
   text-decoration: none;
   transition: 0.3s;
 }
-
 .footer-links a:hover {
   color: var(--teal);
   padding-left: 4px;
 }
-
 .footer-bottom {
   text-align: center;
   padding: 1.6rem;

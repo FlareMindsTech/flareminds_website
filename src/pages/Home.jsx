@@ -9,9 +9,6 @@ export default function Home() {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const svgRef = useRef(null);
 
-  /* ============================
-      BACKGROUND GRID GENERATOR
-  ============================ */
   useEffect(() => {
     const w = window.innerWidth + GRID;
     const h = window.innerHeight + GRID;
@@ -25,9 +22,6 @@ export default function Home() {
     setCells(temp);
   }, []);
 
-  /* ============================
-      GRID CURSOR EFFECT
-  ============================ */
   const handleMove = (e) => {
     const rect = svgRef.current.getBoundingClientRect();
     setCursor({
@@ -35,10 +29,6 @@ export default function Home() {
       y: e.clientY - rect.top,
     });
   };
-
-  /* ============================
-      PROCESS SECTION ANIMATION
-  ============================ */
   useEffect(() => {
     const steps = document.querySelectorAll(".timeline-step");
 
@@ -59,18 +49,14 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      {/* HERO SECTION */}
       <section className="hero-section" onMouseMove={handleMove}>
-        {/* BACKGROUND GRID */}
         <svg ref={svgRef} className="background-grid">
           {cells.map((cell, i) => {
             const d = Math.hypot(
               cursor.x - (cell.x + GRID / 2),
               cursor.y - (cell.y + GRID / 2)
             );
-
             const glow = d < 60;
-
             return (
               <rect
                 key={i}
@@ -85,8 +71,6 @@ export default function Home() {
             );
           })}
         </svg>
-
-        {/* HERO CONTENT */}
         <div className="hero-content">
           <h1 className="hero-title">
             Marketing That Speaks Today's Digital Language
@@ -105,8 +89,6 @@ export default function Home() {
               Get in Touch
             </Link>
           </div>
-
-          {/* SOCIAL ICONS */}
           <div className="social-icons">
             <a
               href="https://www.instagram.com/flareminds_tech"
@@ -132,8 +114,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* MARQUEE */}
       <section className="marquee">
         <div className="marquee-inner">
           <span>{marqueeText}</span>
@@ -141,7 +121,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
       <section className="features-section">
         <h2 className="section-title">Why Choose FlareMinds?</h2>
 
@@ -160,7 +139,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
       <section className="process-section">
         <h2 className="section-title">Our Creative Process</h2>
 
@@ -180,7 +158,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="services-preview">
         <h2 className="section-title">Our Services</h2>
 
@@ -199,7 +176,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FUTURE SECTION */}
       <section className="future-section">
         <div className="future-box">
           Future Projects / Case Studies Will Come Here

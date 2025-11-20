@@ -144,8 +144,6 @@ export default function Contact() {
             <p>123 Business St, Hosur, India</p>
             <p>shivanbharath42255@gmail.com</p>
             <p>+91 98765 43210</p>
-
-         
          <div className="map-container" style={{ width: "100%", height: "300px", marginTop: "20px" }}>
   <iframe
    src="https://www.google.com/maps/embed?pb=!4v1763035355439!6m8!1m7!1saxd5cz2yku7vqS7XuBFJGg!2m2!1d11.02386225852298!2d77.12253729558468!3f107.66218180387182!4f-10.082819578773567!5f0.7820865974627469" 
@@ -157,9 +155,7 @@ export default function Contact() {
     referrerPolicy="no-referrer-when-downgrade"
   ></iframe>
 </div>
-
           </div>
-
         </div>
       </div>
     </div>

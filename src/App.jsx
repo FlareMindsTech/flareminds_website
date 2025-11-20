@@ -47,7 +47,6 @@ export default function App() {
           <Route path="/app-development" element={<AppDev />} />
         </Routes>
       </main>
-
       <Footer />
     </div>
   )

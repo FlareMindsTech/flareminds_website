@@ -1,6 +1,4 @@
-/* ============================================================
-   GLOBAL VARIABLES
-============================================================ */
+
 :root {
   --teal: #14b8a6;
   --sky: #0ea5e9;
@@ -8,20 +6,14 @@
   --light-blue: #eaf4ff;
   --accent-blue: #007aff;
   --white: #ffffff;
-
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-bg-strong: rgba(255,255,255,0.9);
   --blur: blur(20px);
-
   --radius: 16px;
   --radius-lg: 24px;
-
   --transition: 0.35s cubic-bezier(0.24, 0.75, 0.25, 1);
 }
 
-/* ============================================================
-   GLOBAL RESET + BASE
-============================================================ */
 html, body {
   margin: 0;
   padding: 0;
@@ -29,19 +21,14 @@ html, body {
   font-family: "Inter", sans-serif;
   background: #f9fbff;
 }
-
 img {
   max-width: 100%;
   display: block;
 }
-
 section { width: 100%; }
 
 .text-center { text-align: center; }
 
-/* ============================================================
-   BUTTONS
-============================================================ */
 .btn {
   padding: 1rem 2rem;
   border-radius: var(--radius);
@@ -49,24 +36,20 @@ section { width: 100%; }
   cursor: pointer;
   transition: var(--transition);
 }
-
 .btn-primary {
   background: linear-gradient(90deg, var(--teal), var(--sky));
   color: white;
   border: none;
 }
-
 .btn-primary:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0,140,255,0.25);
 }
-
 .btn-outline {
   background: transparent;
   border: 2px solid var(--dark);
   color: var(--dark);
 }
-
 .btn-outline:hover {
   background: var(--dark);
   color: white;

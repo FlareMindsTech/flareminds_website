@@ -655,7 +655,7 @@ export default function Services() {
 
     "⭐⭐ WHAT YOU GET IN BRANDING ⭐⭐",
 
-    "✔ 3–5 Professional Logo Concepts",
+    "✔ 3-5 Professional Logo Concepts",
     "✔ Logo Variations (Icon + Text + Symbol)",
     "✔ Modern Color Palette",
     "✔ Font Selection & Typography Guide",
