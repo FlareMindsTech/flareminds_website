@@ -133,8 +133,8 @@ a:focus {
 }
 
 .web-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+    background: #f7fbff;
+border: 1px solid #c7e2ff;
   border-radius: var(--r-lg);
   padding: 20px;
   box-shadow: var(--shadow-sm);
