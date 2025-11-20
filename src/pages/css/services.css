@@ -1,279 +1,103 @@
-
-/* ===============================
-   SERVICES PAGE HEADER
-   =============================== */
-
-.service-header {
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-}
-
-.service-header h1 {
-  font-size: 2rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #007bff, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-}
-
-.service-header p {
-  margin-top: 0.75rem;
-  font-size: 1rem;
-  color: #496480;
-  max-width: 780px;
-  margin-inline: auto;
-  line-height: 1.7;
-}
-
-
-/* ===============================
-   SERVICE PAGE GRID CONTAINER
-   =============================== */
-
-.services-container {
-  max-width: 1250px;
-  margin: auto;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-
-/* ===============================
-   SERVICE CARD STYLE
-   =============================== */
-
-.service-block {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  border-radius: 20px;
-  padding: 1.8rem;
-  border: 2px solid rgba(150, 200, 255, 0.35);
-  transition: 0.35s ease;
-  opacity: 0;
-  transform: translateY(35px);
-  cursor: pointer;
-}
-
-.service-block.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.service-block:hover {
-  transform: translateY(-7px) scale(1.02);
-  border-color: #4dc3ff;
-  box-shadow: 0 22px 50px rgba(0, 150, 255, 0.25);
-}
-
-
-/* ===============================
-   SERVICE HEADER ROW
-   =============================== */
-
-.service-header-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-}
-
-.service-icon {
-  font-size: 2rem;
-}
-
-.service-block h2 {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #062032;
-}
-
-
-/* ===============================
-   SERVICE DESCRIPTION
-   =============================== */
-
-.service-description p {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: #2e4558;
-  margin-bottom: 0.7rem;
-}
-
-
-/* ===============================
-   BUTTONS (Back button / CTA)
-   =============================== */
-
-.enquiry-btn {
-  margin-top: 1.3rem;
-  padding: 0.85rem 1.3rem;
-  background: linear-gradient(135deg, #007bff, #00c6ff, #00e0ff);
-  color: white;
-  font-weight: 800;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
+.services-page {
+  min-height: 100vh;
   width: 100%;
-  transition: 0.3s ease;
+  background: #f9fbff;
+  padding-bottom: 4rem;
 }
 
-.enquiry-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 150, 255, 0.45);
-}
-
-
-/* ===============================
-   SLIDE ANIMATIONS
-   =============================== */
-
-.slide-left {
-  opacity: 0;
-  transform: translateX(-60px);
-}
-
-.slide-right {
-  opacity: 0;
-  transform: translateX(60px);
-}
-
-.slide-left.show,
-.slide-right.show {
-  opacity: 1;
-  transform: translateX(0);
-  transition: 0.9s ease-out;
-}
-
-
-/* ===============================
-   TAB SWITCHER (Optional UI)
-   =============================== */
-
-.tabs {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.tab-btn {
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  border: none;
-  background: rgba(240, 245, 255, 0.8);
-  backdrop-filter: blur(8px);
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
-  font-size: 0.85rem;
-}
-
-.tab-btn.active {
-  background: linear-gradient(90deg, #007bff, #00d0ff);
-  color: #fff;
-  box-shadow: 0 4px 18px rgba(0, 150, 255, 0.4);
-}
-
-.tab-content {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 18px;
-  border: 2px solid rgba(150, 200, 255, 0.35);
+.service-single {
+  max-width: 1250px;
+  margin: 3rem auto;
+  padding: 4rem 4.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 32px;
+  border: 1px solid rgba(160, 180, 255, 0.22);
+  box-shadow: 0 20px 55px rgba(20, 50, 120, 0.08);
   backdrop-filter: blur(14px);
-  box-shadow: 0 12px 35px rgba(120, 160, 255, 0.18);
+  transition: 0.35s ease;
+}
+.service-single:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 70px rgba(20, 50, 120, 0.12);
 }
 
-
-/* ===============================
-   MOBILE RESPONSIVE
-   =============================== */
-
-@media (min-width: 768px) {
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.article-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #007aff, #00d4ff);
+  z-index: 2000;
+  transition: width 0.1s linear;
 }
 
-@media (min-width: 1100px) {
-  .services-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .service-header h1 {
-    font-size: 2.3rem;
-  }
+.article-toc {
+  position: sticky;
+  top: 120px;
+  float: right;
+  width: 260px;
+  margin-left: 2.5rem;
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  border: 1px solid rgba(0, 120, 255, 0.15);
+  box-shadow: 0 14px 32px rgba(0, 60, 120, 0.08);
+  backdrop-filter: blur(12px);
+  display: none;
 }
-
-/* PRICING SECTION */
-.pricing-section {
-  margin-top: 2rem;
-}
-
-.pricing-section h2 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.pricing-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.price-card {
-  padding: 1.5rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 2px solid rgba(140, 200, 255, 0.45);
-  transition: 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.price-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 50px rgba(0, 150, 255, 0.22);
-  border-color: #4db6ff;
-}
-
-.price-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin-bottom: 0.75rem;
-}
-
-.price-amount {
-  font-size: 1.8rem;
+.article-toc h4 {
+  font-size: 1.15rem;
   font-weight: 900;
-  margin-bottom: 0.75rem;
-  background: linear-gradient(90deg, #007bff, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  margin-bottom: 1.2rem;
+  color: #002a52;
+}
+.article-toc a {
+  display: block;
+  padding: 0.45rem 0;
+  font-size: 1rem;
+  color: #0051a8;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: 0.2s ease;
+}
+.article-toc a:hover {
+  color: #007aff;
+  border-left: 3px solid #009aff;
+  padding-left: 8px;
+}
+@media (min-width: 1100px) {
+  .article-toc {
+    display: block;
+  }
 }
 
-.price-list p {
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  color: #345066;
+.service-single h2 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  color: #0b1c2e;
+  letter-spacing: -0.5px;
 }
 
-/* ===============================
-   ANIMATIONS
-   =============================== */
-
-.fade-up {
+.service-description {
+  max-width: 840px;
+}
+.service-description p {
+  font-size: 1.3rem;
+  line-height: 2.1rem;
+  color: #2a3e52;
+  margin-bottom: 1.9rem;
+  font-weight: 410;
   opacity: 0;
-  transform: translateY(25px);
-  animation: fadeUp 0.8s ease-out forwards;
+  transform: translateY(20px);
+  animation: fadeUp 0.55s ease forwards;
+}
+.service-description p:nth-child(odd) {
+  animation-delay: 0.05s;
+}
+.service-description p:nth-child(even) {
+  animation-delay: 0.15s;
 }
 
 @keyframes fadeUp {
@@ -283,226 +107,82 @@
   }
 }
 
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(0, 150, 255, 0.4),
-              0 0 40px rgba(0, 150, 255, 0.25);
-  transform: translateY(-4px);
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #d7e4ff, transparent);
+  margin: 2.5rem 0;
+  border-radius: 5px;
 }
 
-/* ===============================
-   TABLET RESPONSIVE (768px+)
-   =============================== */
+article blockquote {
+  margin: 2.4rem 0;
+  padding: 1.6rem 1.4rem;
+  font-size: 1.25rem;
+  border-left: 6px solid #007aff;
+  background: #eef5ff;
+  border-radius: 14px;
+  color: #00345c;
+  font-style: italic;
+  box-shadow: inset 0 0 15px rgba(0, 80, 200, 0.12);
+}
 
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: 2.6rem;
-  }
+.highlight-box {
+  background: #fff9d9;
+  padding: 1.6rem 1.8rem;
+  border-left: 6px solid #ffcc00;
+  border-radius: 16px;
+  margin: 2rem 0;
+  font-size: 1.15rem;
+  color: #4d4400;
+  box-shadow: 0 5px 15px rgba(255, 200, 0, 0.12);
+}
 
-  .hero-subtext {
-    font-size: 1.1rem;
-  }
+.article-image {
+  width: 100%;
+  max-width: 880px;
+  margin: 2.8rem auto;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 90, 160, 0.12);
+  transition: 0.35s ease;
+}
+.article-image:hover {
+  transform: scale(1.015);
+}
+.article-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  .hero-buttons {
-    flex-direction: row;
-  }
-
-  .hero-content {
-    padding: 2rem;
-  }
-
-  .about-title,
-  .blog-title {
-    font-size: 2.4rem;
-  }
-
-  .team-grid,
-  .features-grid,
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .blog-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .service-header h1 {
-    font-size: 2.4rem;
-  }
-
-  .single-title {
-    font-size: 2rem;
-  }
-
-  .tab-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .pricing-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-grid {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  .timeline {
-    border-left: 4px solid var(--sky);
-    padding-left: 20px;
-  }
-
-  .timeline-dot {
-    display: block;
-  }
-
-  .morphing-text {
-    font-size: 3rem;
-  }
-
-  .btn-primary,
-  .btn-outline {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-
-  .future-box {
-    height: 260px;
-    font-size: 1.4rem;
-  }
-
-  .team-card-3d {
-    min-width: 260px;
-  }
-
-  .social-icons {
-    gap: 15px;
-  }
-
-  .service-block {
-    padding: 2rem;
-  }
-
-  .service-block h2 {
-    font-size: 1.5rem;
-  }
-
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .floating-enquire {
-    padding: 1rem 1.6rem;
-    font-size: 1.1rem;
-    bottom: 30px;
-    right: 25px;
-  }
-
-  .modal-box {
-    width: 85%;
+.two-col {
+  display: block;
+}
+@media (min-width: 1200px) {
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+    align-items: start;
   }
 }
 
-/* ===============================
-   DESKTOP RESPONSIVE (1024px+)
-   =============================== */
-
-@media (min-width: 1024px) {
-  .hero-title {
-    font-size: 3.8rem;
-  }
-
-  .hero-subtext {
-    font-size: 1.2rem;
-  }
-
-  .about-title,
-  .blog-title {
-    font-size: 3rem;
-  }
-
-  .team-grid,
-  .features-grid,
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .blog-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .testimonials-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .service-header h1 {
-    font-size: 3rem;
-  }
-
-  .service-block {
-    padding: 2.5rem;
-  }
-
-  .single-title {
-    font-size: 2.6rem;
-  }
-
-  .pricing-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .tab-btn {
-    padding: 0.75rem 1.5rem;
-  }
-
-  .morphing-text {
-    font-size: 4rem;
-  }
-
-  .hero-content {
-    padding: 3rem;
-  }
-
-  .processes-section,
-  .services-preview,
-  .features-section {
-    padding: 6rem 1.5rem;
-  }
-
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-  }
-
-  .service-icon {
-    font-size: 2rem;
-  }
-
-  .enquiry-btn {
-    padding: 0.95rem 1.6rem;
-    font-size: 1rem;
-  }
+.enquiry-btn {
+  margin-top: 2.8rem;
+  padding: 1.15rem 1.6rem;
+  background: linear-gradient(135deg, #007aff, #00c6ff, #00e0ff);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border-radius: 18px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0, 150, 255, 0.26);
+  transition: 0.3s ease;
 }
-
-/* ===============================
-   LARGE DESKTOP (1440px+)
-   =============================== */
-
-@media (min-width: 1440px) {
-  .services-container,
-  .single-service-page {
-    max-width: 1400px;
-  }
-
-  .blog-grid,
-  .team-grid,
-  .features-grid,
-  .services-grid {
-    gap: 2.5rem;
-  }
-
-  .services-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
+.enquiry-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 150, 255, 0.32);
 }

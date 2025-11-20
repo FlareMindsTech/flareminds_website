@@ -1,8 +1,3 @@
-/* ===============================
-   FLAREMINDS — RESPONSIVE STYLESHEET
-   Mobile-First Approach
-   =============================== */
-
 :root {
   --teal: #14b8a6;
   --sky: #0ea5e9;
@@ -14,24 +9,17 @@
   --glow-blue: #59c3ff;
 }
 
-/* GLOBAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Inter", sans-serif;
   background: #f6f9ff;
   color: #0a1a2a;
 }
 
-/* ===============================
-   HOME PAGE STYLING
-   =============================== */
-
-/* HERO SECTION */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -42,7 +30,6 @@ body {
   justify-content: center;
   padding: 2rem 1rem;
 }
-
 .background-grid {
   position: absolute;
   top: 0;
@@ -51,7 +38,6 @@ body {
   height: 100vh;
   z-index: 1;
 }
-
 .hero-content {
   z-index: 5;
   text-align: center;
@@ -59,7 +45,6 @@ body {
   max-width: 50;
   max-height: 100%;
 }
-
 .hero-title {
   font-size: 1.8rem;
   font-weight: 800;
@@ -70,7 +55,6 @@ body {
   line-height: 1.2;
   animation: fadeUp 0.8s ease-out forwards;
 }
-
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -81,7 +65,6 @@ body {
     transform: translateY(0);
   }
 }
-
 .hero-subtext {
   color: #496480;
   font-size: 1rem;
@@ -90,7 +73,6 @@ body {
   margin-inline: auto;
   line-height: 1.6;
 }
-
 .hero-buttons {
   display: flex;
   flex-direction: column;
@@ -98,31 +80,23 @@ body {
   gap: 1rem;
   margin-top: 1.5rem;
 }
-
-/* ===============================
-   SOCIAL ICONS
-   =============================== */
-
 .social-icons {
   margin-top: 25px;
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-
 .social-icon {
   font-size: 45px;
   color: rgb(72, 104, 250);
   transition: 0.3s ease;
 }
-
 .social-icon:hover {
   color: var(--glow-blue);
   transform: scale(1.2);
   filter: drop-shadow(0 0 10px var(--glow-blue));
 }
 
-/* BUTTONS */
 .btn-primary {
   padding: 0.875rem 1.5rem;
   border-radius: 10px;
@@ -134,12 +108,10 @@ body {
   transition: 0.3s ease;
   font-size: 0.95rem;
 }
-
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
 }
-
 .btn-outline {
   padding: 0.875rem 1.5rem;
   border-radius: 10px;
@@ -151,15 +123,11 @@ body {
   transition: 0.3s ease;
   font-size: 0.95rem;
 }
-
 .btn-outline:hover {
   background: var(--dark);
   color: white;
 }
 
-/* ===============================
-   MARQUEE
-   =============================== */
 .marquee {
   background: #f1f5f9;
   padding: 1rem;
@@ -168,20 +136,15 @@ body {
   border-top: 1px solid rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
-
 .marquee-inner {
   display: inline-block;
   animation: scrollMarquee 20s linear infinite;
   padding: 0 1rem;
 }
-
 @keyframes scrollMarquee {
   100% { transform: translateX(-50%); }
 }
 
-/* ===============================
-   FEATURES
-   =============================== */
 
 .features-section {
   padding: 3rem 1.5rem;
@@ -216,10 +179,6 @@ body {
   box-shadow: 0 12px 32px rgba(0,0,0,0.12);
 }
 
-/* ===============================
-   PROCESS SECTION — AUTO-FILL TIMELINE
-   =============================== */
-
 .process-section {
   background: #f8fbff;
   padding: 3rem 1.5rem;
@@ -233,14 +192,12 @@ body {
   color: #0f172a;
 }
 
-/* TIMELINE */
 .timeline {
   position: relative;
   max-width: 900px;
   margin: auto;
   padding-left: 32px;
 }
-
 .timeline::before {
   content: "";
   position: absolute;
@@ -251,7 +208,6 @@ body {
   background: rgba(0,0,0,0.08);
   border-radius: 10px;
 }
-
 .timeline::after {
   content: "";
   position: absolute;
@@ -270,7 +226,6 @@ body {
   to   { height: 100%; }
 }
 
-/* STEPS */
 .timeline-step {
   position: relative;
   margin-bottom: 2.8rem;
@@ -284,7 +239,6 @@ body {
   transform: translateY(0);
 }
 
-/* DOTS */
 .timeline-dot {
   width: 15px;
   height: 15px;
@@ -297,19 +251,16 @@ body {
   opacity: 0;
   animation: dotPop 0.6s ease-out forwards;
 }
-
 @keyframes dotPop {
   0% { transform: scale(0.3); opacity: 0; }
   60% { transform: scale(1.3); opacity: 1; }
   100% { transform: scale(1); opacity: 1; }
 }
-
 .timeline-step:nth-child(1) .timeline-dot { animation-delay: 0.4s; }
 .timeline-step:nth-child(2) .timeline-dot { animation-delay: 1.0s; }
 .timeline-step:nth-child(3) .timeline-dot { animation-delay: 1.6s; }
 .timeline-step:nth-child(4) .timeline-dot { animation-delay: 2.2s; }
 
-/* TITLES + TEXT */
 .timeline-step h3 {
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
@@ -328,7 +279,6 @@ body {
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.15s;
 }
-
 .timeline-step:last-child { margin-bottom: 0; }
 
 /* MOBILE */
@@ -346,30 +296,22 @@ body {
     left: -6px;
   }
 }
-
-/* ===============================
-   SERVICES PREVIEW
-   =============================== */
-
 .services-preview {
   text-align: center;
   padding: 3rem 1.5rem;
   background: var(--light-blue);
 }
-
 .services-preview h2 {
   font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 1rem;
 }
-
 .services-grid {
   margin-top: 2rem;
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr;
 }
-
 .service-box {
   background: white;
   padding: 1.5rem;
@@ -381,11 +323,6 @@ body {
 .service-box:hover {
   transform: translateY(-4px);
 }
-
-/* ===============================
-   FUTURE PROJECT SECTION
-   =============================== */
-
 .future-section {
   padding: 3rem 1.5rem;
   text-align: center;
@@ -407,11 +344,6 @@ body {
   font-weight: 700;
   padding: 1rem;
 }
-
-/* ===============================
-   RESPONSIVE — LARGE SCREENS
-   =============================== */
-
 @media (min-width: 768px) {
   .hero-title { font-size: 2.8rem; }
 

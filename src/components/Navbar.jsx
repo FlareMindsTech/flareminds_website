@@ -1,41 +1,24 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/cropped-fm-logo-2-1.png";
+import "../components/css/navbar.css";
 
 export default function Navbar() {
-  /* ============================================================
-     STATE
-  ============================================================ */
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState({});
-  const [isPointer, setIsPointer] = useState(false); // Detect mouse vs touch
+  const [isPointer, setIsPointer] = useState(false);
 
-  /* ============================================================
-     REFS
-  ============================================================ */
   const wrapperRef = useRef(null);
   const servicesBtnRef = useRef(null);
   const megaRef = useRef(null);
 
-  /* ============================================================
-     POINTER DETECTION (Mouse vs Touch – iPhone FIX)
-  ============================================================ */
   useEffect(() => {
     const detect = () => setIsPointer(true);
     window.addEventListener("mousemove", detect, { once: true });
     return () => window.removeEventListener("mousemove", detect);
   }, []);
 
-  /* ============================================================
-     OUTSIDE CLICK / ESC CLOSE
-  ============================================================ */
   useEffect(() => {
     const handleClick = (e) => {
       if (
@@ -63,19 +46,15 @@ export default function Navbar() {
     };
   }, []);
 
-  /* ============================================================
-     SERVICES SECTIONS (memoized to reduce re-renders)
-  ============================================================ */
   const megaSections = useMemo(
     () => [
-       {
-      title: "Courses",
-      items: [
-        { label: "Web Development Course", icon: "💻", to: "/courses/web-development" },
-        { label: "App Development Course", icon: "📱", to: "/courses/app-development" },
-       
-      ],
-    },
+      {
+        title: "Courses",
+        items: [
+          { label: "Web Development Course", icon: "💻", to: "/web-development" },
+          { label: "App Development Course", icon: "📱", to: "/app-development" },
+        ],
+      },
       {
         title: "Development",
         items: [
@@ -104,17 +83,11 @@ export default function Navbar() {
     []
   );
 
-  /* ============================================================
-     NAVLINK ACTIVE CLASS
-  ============================================================ */
   const navClass = useCallback(
     ({ isActive }) => (isActive ? "nav-link active" : "nav-link"),
     []
   );
 
-  /* ============================================================
-     KEYBOARD ACCESSIBILITY — ArrowDown opens mega menu
-  ============================================================ */
   const handleServicesKey = useCallback((e) => {
     if (e.key === "ArrowDown") {
       setMegaOpen(true);
@@ -125,33 +98,26 @@ export default function Navbar() {
     }
   }, []);
 
-  /* ============================================================
-     MOBILE ACCORDION
-  ============================================================ */
   const toggleAccordion = useCallback((key) => {
     setMobileAccordion((p) => ({ ...p, [key]: !p[key] }));
   }, []);
 
-  /* ============================================================
-     DESKTOP HOVER LOGIC (Apple-Level Smooth)
-     Only activates when pointer is detected (mouse)
-  ============================================================ */
   const handleMouseEnter = () => {
     if (!menuOpen && isPointer) setMegaOpen(true);
   };
 
   const handleMouseLeave = () => {
     if (!menuOpen && isPointer) setMegaOpen(false);
+    servicesBtnRef.current?.blur();
   };
 
-  /* ============================================================
-     RENDER
-  ============================================================ */
+  useEffect(() => {
+    document.body.style.transform = "translateZ(0)";
+  }, []);
+
   return (
     <header className="navbar" ref={wrapperRef}>
       <div className="navbar-container">
-
-        {/* LOGO */}
         <Link
           to="/"
           className="navbar-logo"
@@ -163,29 +129,31 @@ export default function Navbar() {
           <img src={logo} alt="FlareMinds" className="logo" />
         </Link>
 
-        {/* NAV LINKS (Desktop) */}
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <NavLink to="/" className={navClass} onClick={() => setMenuOpen(false)}>Home</NavLink>
-          <NavLink to="/about" className={navClass} onClick={() => setMenuOpen(false)}>About</NavLink>
+          <NavLink to="/" className={navClass} onClick={() => setMenuOpen(false)}>
+            Home
+          </NavLink>
 
-          {/* SERVICES MEGA MENU */}
+          <NavLink to="/about" className={navClass} onClick={() => setMenuOpen(false)}>
+            About
+          </NavLink>
+
           <div
             className="services-wrapper"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className="services-btn"
+              className={`services-btn nav-link ${megaOpen ? "active" : ""}`}
               ref={servicesBtnRef}
               aria-haspopup="true"
               aria-expanded={megaOpen}
               onKeyDown={handleServicesKey}
               onClick={() => setMegaOpen((p) => !p)}
             >
-              Services ▾
+              Services <span style={{ fontSize: "12px" }}>▾</span>
             </button>
 
-            {/* MEGA MENU */}
             <div
               ref={megaRef}
               className={`mega-menu ${megaOpen ? "show" : ""}`}
@@ -213,7 +181,6 @@ export default function Navbar() {
                           </Link>
                         ))}
                       </div>
-
                     </div>
                   ))}
                 </div>
@@ -221,18 +188,20 @@ export default function Navbar() {
             </div>
           </div>
 
-          <NavLink to="/blog" className={navClass} onClick={() => setMenuOpen(false)}>Blog</NavLink>
+          <NavLink to="/blog" className={navClass} onClick={() => setMenuOpen(false)}>
+            Blog
+          </NavLink>
 
-          <NavLink to="/contact" className={navClass} onClick={() => setMenuOpen(false)}>Contact</NavLink>
+          <NavLink to="/contact" className={navClass} onClick={() => setMenuOpen(false)}>
+            Contact
+          </NavLink>
         </nav>
 
-        {/* RIGHT CONTACT (Desktop) */}
         <div className="nav-right-info">
           <span className="nav-phone">📞 +91 98765 43210</span>
           <span className="nav-email">✉ flaremindstech@gmail.com</span>
         </div>
 
-        {/* MOBILE HAMBURGER */}
         <button
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => {
@@ -240,16 +209,18 @@ export default function Navbar() {
             setMegaOpen(false);
           }}
         >
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
 
-      {/* MOBILE ACCORDION NAV */}
       {menuOpen && (
         <div className="mobile-accordion">
-          <NavLink to="/about" className="mobile-link" onClick={() => setMenuOpen(false)}>About</NavLink>
+          <NavLink to="/about" className="mobile-link" onClick={() => setMenuOpen(false)}>
+            About
+          </NavLink>
 
-          {/* SERVICES ACC */}
           <div className="mobile-acc-section">
             <button className="acc-title" onClick={() => toggleAccordion("services")}>
               Services
@@ -281,9 +252,13 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/blog" className="mobile-link" onClick={() => setMenuOpen(false)}>Blog</NavLink>
+          <NavLink to="/blog" className="mobile-link" onClick={() => setMenuOpen(false)}>
+            Blog
+          </NavLink>
 
-          <NavLink to="/contact" className="mobile-link" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+          <NavLink to="/contact" className="mobile-link" onClick={() => setMenuOpen(false)}>
+            Contact
+          </NavLink>
         </div>
       )}
     </header>
