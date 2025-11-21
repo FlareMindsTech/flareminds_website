@@ -25,6 +25,7 @@
 
 .navbar-container {
   height: 80px;
+  width: 100%;
   max-width: 1380px;
   margin: auto;
   padding: 0 36px;
@@ -34,13 +35,14 @@
 }
 
 .navbar-logo {
-  margin-left: -130px;
+  margin-left: 0;
 }
 
 .logo {
   height: 58px;
   transition: 0.28s ease;
 }
+
 .logo:hover {
   transform: scale(1.07);
   filter: brightness(1.12);
@@ -103,19 +105,11 @@
   color: var(--nav-sky);
 }
 
-.services-btn:hover,
-.services-btn.active {
-  background: transparent !important;
-  transform: none !important;
-  filter: none !important;
-}
-
 .nav-right-info {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 3px;
-  margin-right: -130px;
 }
 
 .nav-phone,
@@ -125,14 +119,6 @@
   font-weight: 700;
 }
 
-@media (max-width: 900px) {
-  .nav-right-info {
-    display: none;
-  }
-}
-.navbar-logo {
-  margin-left: -20px;
-}
 .services-wrapper {
   position: relative;
 }
@@ -236,14 +222,45 @@
 .hamburger.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* ============================= */
+/* FULL RESPONSIVE IMPROVEMENTS */
+/* ============================= */
+
+/* Large Screens */
+@media (max-width: 1400px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+  .nav-links {
+    gap: 30px;
+  }
+}
+
+/* Laptops */
+@media (max-width: 1100px) {
+  .mega-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .navbar-logo img {
+    height: 52px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 900px) {
+  .nav-right-info {
+    display: none;
+  }
+
   .hamburger {
     display: flex;
     justify-content: center;
@@ -252,6 +269,15 @@
 
   .nav-links {
     display: none;
+  }
+
+  .mega-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mega-menu {
+    width: 94%;
+    left: 50%;
   }
 
   .mobile-accordion {
@@ -328,5 +354,38 @@
     place-items: center;
     background: white;
     border: 1px solid rgba(170, 200, 255, 0.7);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .navbar-container {
+    height: 70px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    height: 48px;
+  }
+
+  .mega-row {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .mega-menu {
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 400px) {
+  .logo {
+    height: 44px;
+  }
+
+  .hamburger {
+    width: 40px;
+    height: 32px;
   }
 }
