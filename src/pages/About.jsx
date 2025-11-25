@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import vikiImg from "../assets/viki.jpg";
 import yasirImg from "../assets/yasir.jpg";
 
 export default function About() {
+  const [expandedCard, setExpandedCard] = useState(null);
+
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
     { id: "clients", label: "Clients", value: 67 },
@@ -53,11 +55,51 @@ export default function About() {
     },
   ];
 
+  const valueProps = [
+    {
+      title: "Smart Digital Marketing",
+      icon: "🚀",
+      shortDesc: "SEO, social media, content & paid campaigns with strategic creativity",
+      fullDesc: "To provide SEO, social media, content, and paid campaign solutions, we blend strategy and creativity. In addition to marketing, we develop websites and unique iOS, Android, and online apps. Through innovation, we propel growth for both startups and established brands."
+    },
+    {
+      title: "Proven Digital Strategies",
+      icon: "📈",
+      shortDesc: "Data-driven strategies tailored to your business goals",
+      fullDesc: "In today's fast-paced digital landscape, having a strong online presence is essential for success. Our expert digital marketing team crafts data-driven strategies tailored to your business goals. Whether it's boosting your search engine rankings, engaging your audience on social media, or launching high-converting ad campaigns, we help you stay ahead of the competition and turn clicks into customers."
+    },
+    {
+      title: "Expert Marketing Solutions",
+      icon: "💡",
+      shortDesc: "Transform clicks into loyal customers with strategic SEO & content",
+      fullDesc: "Turning traffic into tangible results is our specialty. With a focus on strategic SEO, targeted advertising, engaging content, and social media mastery, we help your brand not only attract the right audience but convert them into loyal customers. Our expert marketing solutions are designed to boost visibility, increase engagement, and drive real business growth—every click brings you closer to success."
+    },
+    {
+      title: "Technology for Scalable Success",
+      icon: "⚡",
+      shortDesc: "Marketing meets advanced IT solutions for sustainable growth",
+      fullDesc: "We combine the power of strategic digital marketing with advanced IT solutions to help your business grow efficiently and sustainably. Our services include SEO, social media marketing, content creation, and paid advertising—designed to attract and engage the right audience. Alongside this, we offer expert website design and development, as well as custom application development for web, Android, and iOS platforms. By aligning marketing efforts with cutting-edge technology, we create seamless digital experiences that drive results and support long-term success."
+    }
+  ];
+
+  const partners = [
+    { name: "Dominator Pixel", industry: "Digital Agency" },
+    { name: "Good Luck Healthcare", industry: "Healthcare" },
+    { name: "Palmmitrip", industry: "Travel & Tourism" },
+    { name: "Amads", industry: "Technology" },
+    { name: "YesYes Innovations", industry: "Innovation Hub" },
+    { name: "Deepthy Finisher", industry: "Manufacturing" }
+  ];
+
   const counterRefs = useRef([]);
   counterRefs.current = [];
 
   const addCounterRef = (el) => {
     if (el && !counterRefs.current.includes(el)) counterRefs.current.push(el);
+  };
+
+  const toggleCard = (index) => {
+    setExpandedCard(expandedCard === index ? null : index);
   };
 
   useEffect(() => {
@@ -127,6 +169,35 @@ export default function About() {
       </header>
 
       <main className="lm-main">
+        {/* Value Propositions Section */}
+        <section className="value-props-section">
+          <h2 className="section-title-main">Why Choose FlareMinds?</h2>
+          <div className="value-props-grid">
+            {valueProps.map((prop, idx) => (
+              <div
+                className={`value-prop-card-v2 ${expandedCard === idx ? 'expanded' : ''}`}
+                key={idx}
+                onClick={() => toggleCard(idx)}
+              >
+                <div className="value-card-header">
+                  <div className="value-prop-icon-v2">{prop.icon}</div>
+                  <div className="value-prop-content">
+                    <h3 className="value-prop-title-v2">{prop.title}</h3>
+                    <p className="value-prop-short">{prop.shortDesc}</p>
+                  </div>
+                  <button className="expand-btn">
+                    {expandedCard === idx ? '×' : '+'}
+                  </button>
+                </div>
+                <div className="value-card-details">
+                  <p>{prop.fullDesc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Team Section */}
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
 
@@ -147,6 +218,34 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Trusted Partners Section */}
+        <section className="partners-section-v2">
+          <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
+          <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
+          <div className="partners-list">
+            {partners.map((partner, idx) => {
+              // Get initials from company name
+              const initials = partner.name
+                .split(' ')
+                .map(word => word[0])
+                .join('')
+                .substring(0, 2)
+                .toUpperCase();
+
+              return (
+                <div className="partner-item" key={idx}>
+                  <div className="partner-logo-circle">{initials}</div>
+                  <div className="partner-content">
+                    <h4 className="partner-company">{partner.name}</h4>
+                    <span className="partner-industry">{partner.industry}</span>
+                  </div>
+                  <div className="partner-badge">Trusted</div>
+                </div>
+              );
+            })}
           </div>
         </section>
       </main>
