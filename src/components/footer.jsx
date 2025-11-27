@@ -32,15 +32,13 @@ export default function Footer() {
             <li>
               <Link to="/blog">Blog</Link>
             </li>
-            <li>
-              <a href="#pricing">Pricing</a>
-            </li>
+           
           </ul>
         </div>
         <div className="footer-contact">
           <h4>Contact</h4>
-          <p>hello@flaremindstech.com</p>
-          <p>+91 98765 43210</p>
+          <p>info@flaremindstech.com</p>
+          <p>+91 9500950813</p>
         </div>
       </div>
       <div className="footer-bottom">

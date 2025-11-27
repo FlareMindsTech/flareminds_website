@@ -198,8 +198,8 @@ export default function Navbar() {
         </nav>
 
         <div className="nav-right-info">
-          <span className="nav-phone">📞 +91 98765 43210</span>
-          <span className="nav-email">✉ flaremindstech@gmail.com</span>
+          <span className="nav-phone">📞 +91 9500950813</span>
+          <span className="nav-email">✉ info@flaremindstech.com</span>
         </div>
 
         <button
