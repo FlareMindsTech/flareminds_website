@@ -1,17 +1,26 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/cropped-fm-logo-2-1.png";
 import "../components/css/navbar.css";
 
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("Courses");
   const [mobileAccordion, setMobileAccordion] = useState({});
   const [isPointer, setIsPointer] = useState(false);
 
   const wrapperRef = useRef(null);
   const servicesBtnRef = useRef(null);
   const megaRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
 
   useEffect(() => {
     const detect = () => setIsPointer(true);
@@ -46,37 +55,69 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const megaSections = useMemo(
     () => [
       {
         title: "Courses",
         items: [
-          { label: "Web Development Course", icon: "💻", to: "/web-development" },
-          { label: "App Development Course", icon: "📱", to: "/app-development" },
-        ],
-      },
-      {
-        title: "Development",
-        items: [
-          { label: "Website Development", icon: "🌐", to: "/services/website-development" },
-          { label: "Ecommerce Solutions", icon: "🛒", to: "/services/ecommerce-solutions" },
-          { label: "App Development", icon: "📱", to: "/services/app-development" },
+          {
+            label: "Web Development",
+            icon: "💻",
+            to: "/training/web-development",
+          },
+          {
+            label: "App Development",
+            icon: "📱",
+            to: "/training/app-development",
+          },
         ],
       },
       {
         title: "Marketing",
         items: [
-          { label: "SEO & Analytics", icon: "📊", to: "/services/seo-analytics" },
-          { label: "Social Media Marketing", icon: "📣", to: "/services/social-media-marketing" },
-          { label: "Lead Generation", icon: "💰", to: "/services/lead-generation" },
+          {
+            label: "SEO & Analytics",
+            icon: "📊",
+            to: "/services/seo-analytics",
+          },
+          {
+            label: "Social Media Marketing",
+            icon: "📣",
+            to: "/services/social-media-marketing",
+          },
+          {
+            label: "Lead Generation",
+            icon: "💰",
+            to: "/services/lead-generation",
+          },
         ],
       },
       {
-        title: "Branding",
+        title: "Development",
         items: [
-          { label: "Branding & Logo", icon: "🎨", to: "/services/branding-logo" },
-          { label: "UI / UX Design", icon: "🖼️", to: "/services/ui-ux-design" },
-          { label: "Animation & Video", icon: "🎬", to: "/services/animation-video" },
+          { label: "Website Development", icon: "🌐", to: "/web-development" },
+          {
+            label: "Ecommerce Solutions",
+            icon: "🛒",
+            to: "/services/ecommerce-solutions",
+          },
+          { label: "App Development", icon: "📱", to: "/app-development" },
+        ],
+      },
+      {
+        title: "Products",
+        items: [
+          { label: "ERP Systems", icon: "🏢", to: "/services/erp-systems" },
+          { label: "CRM Solutions", icon: "📈", to: "/services/crm-solutions" },
+          { label: "Custom SaaS", icon: "☁️", to: "/services/custom-saas" },
         ],
       },
     ],
@@ -103,18 +144,21 @@ export default function Navbar() {
   }, []);
 
   const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
     if (!menuOpen && isPointer) setMegaOpen(true);
   };
 
   const handleMouseLeave = () => {
-    if (!menuOpen && isPointer) setMegaOpen(false);
-    servicesBtnRef.current?.blur();
+    closeTimeoutRef.current = setTimeout(() => {
+      if (!menuOpen && isPointer) {
+        setMegaOpen(false);
+        servicesBtnRef.current?.blur();
+      }
+    }, 300);
   };
-
-  useEffect(() => {
-    document.body.style.transform = "translateZ(0)";
-  }, []);
-
   return (
     <header className="navbar" ref={wrapperRef}>
       <div className="navbar-container">
@@ -130,11 +174,19 @@ export default function Navbar() {
         </Link>
 
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <NavLink to="/" className={navClass} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/"
+            className={navClass}
+            onClick={() => setMenuOpen(false)}
+          >
             Home
           </NavLink>
 
-          <NavLink to="/about" className={navClass} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/about"
+            className={navClass}
+            onClick={() => setMenuOpen(false)}
+          >
             About
           </NavLink>
 
@@ -151,7 +203,7 @@ export default function Navbar() {
               onKeyDown={handleServicesKey}
               onClick={() => setMegaOpen((p) => !p)}
             >
-              Services <span style={{ fontSize: "12px" }}>▾</span>
+              Services <span style={{ fontSize: "16px" }}>▾</span>
             </button>
 
             <div
@@ -159,12 +211,31 @@ export default function Navbar() {
               className={`mega-menu ${megaOpen ? "show" : ""}`}
               role="menu"
             >
-              <div className="mega-grid">
-                <div className="mega-row">
-                  {megaSections.map((sec, idx) => (
-                    <div className="mega-col" key={idx}>
-                      <h4>{sec.title}</h4>
+              <div className="mega-content-wrapper">
+                {/* Sidebar Categories */}
+                <div className="mega-sidebar">
+                  {megaSections.map((sec) => (
+                    <div
+                      key={sec.title}
+                      className={`mega-category ${activeCategory === sec.title ? "active" : ""
+                        }`}
+                      onMouseEnter={() => setActiveCategory(sec.title)}
+                    >
+                      {sec.title}
+                      <span className="arrow">›</span>
+                    </div>
+                  ))}
+                </div>
 
+                {/* Content Area */}
+                <div className="mega-details">
+                  {megaSections.map((sec) => (
+                    <div
+                      key={sec.title}
+                      className={`mega-items-group ${activeCategory === sec.title ? "visible" : ""
+                        }`}
+                    >
+                      <h4 className="group-title">{sec.title}</h4>
                       <div className="mega-cards">
                         {sec.items.map((it, j) => (
                           <Link
@@ -177,7 +248,7 @@ export default function Navbar() {
                             }}
                           >
                             <span className="mega-icon">{it.icon}</span>
-                            <span>{it.label}</span>
+                            <span className="mega-label">{it.label}</span>
                           </Link>
                         ))}
                       </div>
@@ -188,18 +259,34 @@ export default function Navbar() {
             </div>
           </div>
 
-          <NavLink to="/blog" className={navClass} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/projects"
+            className={navClass}
+            onClick={() => setMenuOpen(false)}
+          >
+            Projects
+          </NavLink>
+
+          <NavLink
+            to="/blog"
+            className={navClass}
+            onClick={() => setMenuOpen(false)}
+          >
             Blog
           </NavLink>
 
-          <NavLink to="/contact" className={navClass} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/contact"
+            className={navClass}
+            onClick={() => setMenuOpen(false)}
+          >
             Contact
           </NavLink>
         </nav>
 
         <div className="nav-right-info">
           <span className="nav-phone">📞 +91 9500950813</span>
-          <span className="nav-email">✉ info@flaremindstech.com</span>
+          <span className="nav-email">✉ Info@flaremindstech.com</span>
         </div>
 
         <button
@@ -217,12 +304,19 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="mobile-accordion">
-          <NavLink to="/about" className="mobile-link" onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/about"
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
             About
           </NavLink>
 
           <div className="mobile-acc-section">
-            <button className="acc-title" onClick={() => toggleAccordion("services")}>
+            <button
+              className="acc-title"
+              onClick={() => toggleAccordion("services")}
+            >
               Services
               <span className="acc-caret">
                 {mobileAccordion.services ? "▾" : "▸"}
@@ -252,15 +346,32 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/blog" className="mobile-link" onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/projects"
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
+            Projects
+          </NavLink>
+
+          <NavLink
+            to="/blog"
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
             Blog
           </NavLink>
 
-          <NavLink to="/contact" className="mobile-link" onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/contact"
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
             Contact
           </NavLink>
         </div>
       )}
+      <Lanyard />
     </header>
   );
 }

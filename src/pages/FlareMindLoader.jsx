@@ -8,7 +8,6 @@ export default function FlareMindLoader() {
     }, 1500);
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div className="loader-container">
       <div className="morphing-text">{words[index]}</div>

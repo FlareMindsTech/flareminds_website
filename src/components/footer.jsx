@@ -21,9 +21,7 @@ export default function Footer() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li>
-              <Link to="/testimonials">Testimonials</Link>
-            </li>
+           
           </ul>
         </div>
         <div className="footer-links">
@@ -32,12 +30,12 @@ export default function Footer() {
             <li>
               <Link to="/blog">Blog</Link>
             </li>
-           
+            
           </ul>
         </div>
         <div className="footer-contact">
           <h4>Contact</h4>
-          <p>info@flaremindstech.com</p>
+          <p>✉ Info@flaremindstech.com</p>
           <p>+91 9500950813</p>
         </div>
       </div>

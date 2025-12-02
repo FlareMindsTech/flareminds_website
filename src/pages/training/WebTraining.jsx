@@ -1,21 +1,22 @@
 import { useEffect } from "react";
+import "../css/web.css";
 import {
-  FaMobileAlt,
-  FaLayerGroup,
-  FaCode,
-  FaRocket,
+  FaProjectDiagram,
+  FaUsers,
+  FaLaptopCode,
+  FaBriefcase,
   FaCheck,
   FaQuoteLeft,
   FaChevronLeft,
   FaChevronRight
 } from "react-icons/fa";
 
-export default function AppDev() {
+export default function App() {
 
   /* ---------------------- Typing Effect ---------------------- */
   useEffect(() => {
     const textElement = document.getElementById("typing-text");
-    const phrases = ["App Developer", "Mobile App Engineer", "React Native Developer", "Flutter Developer"];
+    const phrases = ["Web Developer", "Full Stack Developer", "DevOps Developer"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -28,20 +29,20 @@ export default function AppDev() {
       if (isDeleting) {
         textElement.textContent = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
-        typeSpeed = 50; // Faster when deleting
+        typeSpeed = 50;
       } else {
         textElement.textContent = currentPhrase.substring(0, charIndex + 1);
         charIndex++;
-        typeSpeed = 100; // Normal typing speed
+        typeSpeed = 100;
       }
 
       if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end of phrase
+        typeSpeed = 2000;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500; // Pause before typing next phrase
+        typeSpeed = 500
       }
 
       timeoutId = setTimeout(type, typeSpeed);
@@ -52,7 +53,7 @@ export default function AppDev() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  /* ---------------------- Scroll Animation ---------------------- */
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -75,7 +76,7 @@ export default function AppDev() {
     return () => observer.disconnect();
   }, []);
 
-  /* ---------------------- Carousel ---------------------- */
+
   useEffect(() => {
     const slides = document.querySelectorAll('.testimonial-slide');
     const dotsContainer = document.getElementById('carousel-dots');
@@ -84,10 +85,10 @@ export default function AppDev() {
     let currentSlide = 0;
     let autoSlideInterval;
 
-    // Clear existing dots to prevent duplication on re-renders
+
     if (dotsContainer) dotsContainer.innerHTML = '';
 
-    // Create dots
+
     slides.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.className = 'dot-indicator' + (index === 0 ? ' active' : '');
@@ -126,16 +127,14 @@ export default function AppDev() {
     if (nextBtn) nextBtn.onclick = nextSlide;
     if (prevBtn) prevBtn.onclick = prevSlide;
 
-    // Auto rotate
+
     autoSlideInterval = setInterval(nextSlide, 5000);
 
     return () => clearInterval(autoSlideInterval);
   }, []);
-
-  /* ---------------------- Particle Background ---------------------- */
   useEffect(() => {
     const container = document.getElementById('particles');
-    // Clear existing particles
+
     if (container) container.innerHTML = '';
 
     const particleCount = 20;
@@ -157,20 +156,21 @@ export default function AppDev() {
 
   return (
     <>
-      {/* Background Elements */}
+
       <div className="bg-gradient"></div>
       <div className="bg-particles" id="particles"></div>
 
-      {/* Hero Section */}
+
       <header className="hero" id="home">
         <div className="container hero-container">
           <div className="hero-content fade-in-up">
-            <div className="badge">New Mobile Batch Starting Soon</div>
+            <div className="badge">New Batch Starting Soon</div>
             <h1 className="hero-title">
-              Become an <br /> <span className="text-gradient" id="typing-text"></span>
+              Become a <br /> <span className="text-gradient" id="typing-text"></span>
             </h1>
             <p className="hero-subtitle">
-              Learn to build high-performance Android, iOS, and cross-platform mobile apps with real projects.
+              Master modern web development with the most comprehensive, project-based course
+              available. Go from zero to hired in 6 months.
             </p>
             <div className="hero-cta">
               <a href="#curriculum" className="btn btn-primary glow-effect">Start Learning Today</a>
@@ -180,7 +180,7 @@ export default function AppDev() {
           <div className="hero-visual fade-in-left">
             <img
               src="https://cdni.iconscout.com/illustration/premium/thumb/web-development-2974925-2477356.png"
-              alt="Mobile App Development Illustration"
+              alt="Web Development Illustration"
               style={{ width: "100%", filter: "drop-shadow(0 10px 20px rgba(56, 189, 248, 0.2))", animation: "float 6s ease-in-out infinite" }}
             />
           </div>
@@ -192,38 +192,38 @@ export default function AppDev() {
         <div className="container">
           <div className="section-header text-center fade-in-up">
             <h2 className="section-title">
-              Why Learn <span className="text-gradient">App Development?</span>
+              Why Choose <span className="text-gradient">DevMastery?</span>
             </h2>
-            <p className="section-subtitle">Build apps that impact millions of users every day.</p>
+            <p className="section-subtitle">We don't just teach code. We teach you how to think like a senior developer.</p>
           </div>
           <div className="features-grid">
             <div className="feature-card glass-card fade-in-up delay-100">
               <div className="feature-icon">
-                <FaMobileAlt />
+                <FaProjectDiagram />
               </div>
-              <h3>Android & iOS</h3>
-              <p>Learn to build native-quality apps for both platforms.</p>
+              <h3>Project-Based Learning</h3>
+              <p>Build 10+ production-ready applications, not just to-do lists. Create a portfolio that gets you hired.</p>
             </div>
             <div className="feature-card glass-card fade-in-up delay-200">
               <div className="feature-icon">
-                <FaLayerGroup />
+                <FaUsers />
               </div>
-              <h3>Cross Platform</h3>
-              <p>Build apps using Flutter & React Native with single codebase.</p>
+              <h3>Active Community</h3>
+              <p>Join our private Discord server. Get code reviews, pair programming partners, and 24/7 support.</p>
             </div>
             <div className="feature-card glass-card fade-in-up delay-300">
               <div className="feature-icon">
-                <FaCode />
+                <FaLaptopCode />
               </div>
-              <h3>Modern Mobile Stack</h3>
-              <p>Flutter, React Native, Firebase, API Integration, UI/UX.</p>
+              <h3>Modern Tech Stack</h3>
+              <p>Learn the latest tools: React 18, Next.js, TypeScript, Tailwind CSS, Node.js, and more.</p>
             </div>
             <div className="feature-card glass-card fade-in-up delay-400">
               <div className="feature-icon">
-                <FaRocket />
+                <FaBriefcase />
               </div>
-              <h3>Launch-Ready Apps</h3>
-              <p>Deploy apps to Play Store & App Store with full guidance.</p>
+              <h3>Career Guidance</h3>
+              <p>Resume reviews, mock interviews, and salary negotiation tips to help you land your dream job.</p>
             </div>
           </div>
         </div>
@@ -234,56 +234,56 @@ export default function AppDev() {
         <div className="container">
           <div className="section-header text-center fade-in-up">
             <h2 className="section-title">
-              App Development <span className="text-gradient">Curriculum</span>
+              What You'll <span className="text-gradient">Learn</span>
             </h2>
-            <p className="section-subtitle">Learn everything from UI to APIs to publishing apps.</p>
+            <p className="section-subtitle">A structured path from beginner to professional full-stack developer.</p>
           </div>
           <div className="curriculum-grid">
             <div className="module-card glass-card fade-in-left">
               <div className="module-number">01</div>
               <div className="module-content">
-                <h3>Mobile Basics</h3>
-                <p>Dart, JavaScript, Mobile UI, App Architecture</p>
+                <h3>Web Fundamentals</h3>
+                <p>HTML5, CSS3, Responsive Design, Git & GitHub</p>
                 <ul className="module-topics">
-                  <li><FaCheck /> UI Widgets</li>
-                  <li><FaCheck /> Layouts</li>
-                  <li><FaCheck /> Navigation</li>
+                  <li><FaCheck /> Semantic HTML</li>
+                  <li><FaCheck /> Flexbox & Grid</li>
+                  <li><FaCheck /> Version Control</li>
                 </ul>
               </div>
             </div>
             <div className="module-card glass-card fade-in-right">
               <div className="module-number">02</div>
               <div className="module-content">
-                <h3>Flutter Development</h3>
-                <p>Dart Language, Widgets, State Management</p>
+                <h3>JavaScript Mastery</h3>
+                <p>ES6+, DOM Manipulation, Async Programming, APIs</p>
                 <ul className="module-topics">
-                  <li><FaCheck /> Bloc & Provider</li>
-                  <li><FaCheck /> Animations</li>
-                  <li><FaCheck /> Responsive UI</li>
+                  <li><FaCheck /> Modern Syntax</li>
+                  <li><FaCheck /> Promises & Async/Await</li>
+                  <li><FaCheck /> Functional Programming</li>
                 </ul>
               </div>
             </div>
             <div className="module-card glass-card fade-in-left">
               <div className="module-number">03</div>
               <div className="module-content">
-                <h3>React Native</h3>
-                <p>React Native Core, Hooks, Expo</p>
+                <h3>React Ecosystem</h3>
+                <p>React 18, Hooks, Redux Toolkit, React Router</p>
                 <ul className="module-topics">
-                  <li><FaCheck /> Navigation</li>
-                  <li><FaCheck /> Axios API</li>
-                  <li><FaCheck /> Components</li>
+                  <li><FaCheck /> Component Architecture</li>
+                  <li><FaCheck /> State Management</li>
+                  <li><FaCheck /> Custom Hooks</li>
                 </ul>
               </div>
             </div>
             <div className="module-card glass-card fade-in-right">
               <div className="module-number">04</div>
               <div className="module-content">
-                <h3>Backend & Firebase</h3>
-                <p>Firebase Auth, Firestore, API integration</p>
+                <h3>Backend & Database</h3>
+                <p>Node.js, Express, MongoDB, Authentication</p>
                 <ul className="module-topics">
-                  <li><FaCheck /> JWT Auth</li>
                   <li><FaCheck /> RESTful APIs</li>
-                  <li><FaCheck /> Database Rules</li>
+                  <li><FaCheck /> JWT Auth</li>
+                  <li><FaCheck /> Database Design</li>
                 </ul>
               </div>
             </div>
@@ -296,9 +296,9 @@ export default function AppDev() {
         <div className="container">
           <div className="section-header text-center fade-in-up">
             <h2 className="section-title">
-              Student <span className="text-gradient">Reviews</span>
+              Student <span className="text-gradient">Success Stories</span>
             </h2>
-            <p className="section-subtitle">What our mobile developers say.</p>
+            <p className="section-subtitle">Join thousands of students who have transformed their careers.</p>
           </div>
           <div className="testimonial-carousel-container glass-card fade-in-up">
             <div className="testimonial-track" id="testimonial-track">
@@ -306,12 +306,13 @@ export default function AppDev() {
               <div className="testimonial-slide active">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
-                  <p className="testimonial-text">"I published my first Flutter app within 3 months of joining this course!"</p>
+                  <p className="testimonial-text">"This course changed my life. I went from working in retail to a Junior
+                    Developer role in just 5 months. The projects are exactly what employers are looking for."</p>
                   <div className="testimonial-author">
-                    <img src="https://ui-avatars.com/api/?name=Arun+Prakash&background=random" alt="Arun Prakash" className="author-img" />
+                    <img src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="Sarah J" className="author-img" />
                     <div className="author-info">
-                      <h4>Arun Prakash</h4>
-                      <p>Flutter Developer @ AppKart</p>
+                      <h4>Sarah Jenkins</h4>
+                      <p>Frontend Developer @ TechStart</p>
                     </div>
                   </div>
                 </div>
@@ -320,12 +321,13 @@ export default function AppDev() {
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
-                  <p className="testimonial-text">"React Native module helped me get a freelance project in the first month."</p>
+                  <p className="testimonial-text">"The depth of the backend module is incredible. I finally understand how
+                    authentication and databases work together. Highly recommended!"</p>
                   <div className="testimonial-author">
-                    <img src="https://ui-avatars.com/api/?name=Nisha+K&background=random" alt="Nisha K" className="author-img" />
+                    <img src="https://ui-avatars.com/api/?name=Mike+T&background=random" alt="Mike T" className="author-img" />
                     <div className="author-info">
-                      <h4>Nisha K</h4>
-                      <p>React Native Developer</p>
+                      <h4>Mike Thompson</h4>
+                      <p>Full Stack Engineer @ DataFlow</p>
                     </div>
                   </div>
                 </div>
@@ -334,12 +336,13 @@ export default function AppDev() {
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
-                  <p className="testimonial-text">"The Firebase and backend integration lessons were the best. Super easy to follow!"</p>
+                  <p className="testimonial-text">"Best investment I've made for my career. The community support is amazing,
+                    and the instructor explains complex concepts simply."</p>
                   <div className="testimonial-author">
-                    <img src="https://ui-avatars.com/api/?name=Sanjay+R&background=random" alt="Sanjay R" className="author-img" />
+                    <img src="https://ui-avatars.com/api/?name=Elena+R&background=random" alt="Elena R" className="author-img" />
                     <div className="author-info">
-                      <h4>Sanjay R</h4>
-                      <p>Mobile Developer @ BitWave</p>
+                      <h4>Elena Rodriguez</h4>
+                      <p>Web Developer @ CreativeAgency</p>
                     </div>
                   </div>
                 </div>

@@ -169,6 +169,33 @@ export default function About() {
       </header>
 
       <main className="lm-main">
+        {/* Company Story & Vision */}
+        <section className="company-story-section section-padding">
+          <div className="container">
+            <div className="story-grid">
+              <div className="story-content">
+                <h2 className="section-title-main">Our Story</h2>
+                <p>
+                  Founded with a passion for digital innovation, FlareMinds started as a small team of dreamers determined to bridge the gap between creative design and technical excellence.
+                  Over the years, we have evolved into a full-service digital agency, helping businesses across the globe transform their digital presence.
+                </p>
+                <p>
+                  We believe in the power of collaboration and the impact of well-crafted digital experiences. Our journey is defined by the success of our clients.
+                </p>
+              </div>
+              <div className="vision-mission-grid">
+                <div className="vm-card glass-card">
+                  <h3>Our Vision</h3>
+                  <p>To be the leading catalyst for digital transformation, empowering businesses to achieve their full potential through innovative technology and design.</p>
+                </div>
+                <div className="vm-card glass-card">
+                  <h3>Our Mission</h3>
+                  <p>To deliver exceptional digital solutions that drive growth, foster connection, and create lasting value for our clients and their customers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* Value Propositions Section */}
         <section className="value-props-section">
           <h2 className="section-title-main">Why Choose FlareMinds?</h2>

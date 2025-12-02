@@ -80,7 +80,7 @@ export default function Contact() {
                 placeholder="Your name"
                 className="form-input"
               />
-                 <h3>Email:</h3>
+              <h3>Email:</h3>
               <input
                 required
                 type="email"
@@ -90,7 +90,7 @@ export default function Contact() {
                 placeholder="Your email"
                 className="form-input"
               />
-                 <h3>Services</h3>
+              <h3>Services</h3>
               <div className="service-select">
                 <select
                   required
@@ -106,7 +106,7 @@ export default function Contact() {
                     </option>
                   ))}
                 </select>
-                   <h3>Any New Services</h3>
+                <h3>Any New Services</h3>
                 <div className="add-service">
                   <input
                     type="text"
@@ -119,7 +119,7 @@ export default function Contact() {
                   </button>
                 </div>
               </div>
-                <h3>Any Quires</h3>
+              <h3>Any Quires</h3>
               <textarea
                 required
                 name="message"
@@ -141,23 +141,59 @@ export default function Contact() {
           </div>
           <div className="contact-info-section">
             <h4>Office</h4>
-            <p>Sulur ,Tamilnadu</p>
-            <p>info@flaremindstech.com</p>
-            <p>+91 9500950813</p>
-         <div className="map-container" style={{ width: "100%", height: "300px", marginTop: "20px" }}>
-  <iframe
-   src="https://www.google.com/maps/embed?pb=!4v1763035355439!6m8!1m7!1saxd5cz2yku7vqS7XuBFJGg!2m2!1d11.02386225852298!2d77.12253729558468!3f107.66218180387182!4f-10.082819578773567!5f0.7820865974627469" 
-    width="100%"
-    height="100%"
-    style={{ border: 0, borderRadius: "12px" }}
-    allowFullScreen=""
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+            <p>123 Business St, Hosur, India</p>
+            <p>shivanbharath42255@gmail.com</p>
+            <p>+91 98765 43210</p>
+
+
+            <div className="map-container" style={{ width: "100%", height: "300px", marginTop: "20px" }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1763035355439!6m8!1m7!1saxd5cz2yku7vqS7XuBFJGg!2m2!1d11.02386225852298!2d77.12253729558468!3f107.66218180387182!4f-10.082819578773567!5f0.7820865974627469"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: "12px" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
           </div>
+
         </div>
+
       </div>
-    </div>
+
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/919876543210"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-float"
+        style={{
+          position: 'fixed',
+          bottom: '40px',
+          right: '40px',
+          backgroundColor: '#25d366',
+          color: '#FFF',
+          borderRadius: '50px',
+          textAlign: 'center',
+          fontSize: '30px',
+          boxShadow: '2px 2px 3px #999',
+          zIndex: 100,
+          width: '60px',
+          height: '60px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <i className="fa fa-whatsapp"></i> {/* Assuming font-awesome or similar is available, or use SVG */}
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z" />
+        </svg>
+      </a>
+    </div >
   )
 }

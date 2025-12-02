@@ -1,5 +1,6 @@
 import React from "react";
 import { FaQuoteLeft } from "react-icons/fa";
+
 export default function BlogTestimonials() {
   const posts = [
     {
@@ -49,7 +50,7 @@ export default function BlogTestimonials() {
   return (
     <div className="combined-page container mx-auto px-6 py-16">
 
-      {/* === BLOG SECTION === */}
+   
       <h2 className="blog-title">Latest Insights</h2>
       <p className="blog-subtitle">
         Insights, guides, and strategies from the FlareMinds digital experts.
@@ -71,7 +72,7 @@ export default function BlogTestimonials() {
         ))}
       </div>
 
-      {/* === TESTIMONIALS SECTION === */}
+     
       <div className="mt-24">
         <h2 className="testimonials-title">Client Testimonials</h2>
         <p className="testimonials-subtitle">
