@@ -25,7 +25,6 @@ body {
   overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -34,9 +33,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  /* Left align */
+ 
   padding: 2rem 5%;
-  /* Add side padding */
+
 }
 
 .background-grid {
@@ -48,7 +47,6 @@ body {
   z-index: 1;
 }
 
-/* Hide Spline Watermark */
 #spline-watermark,
 a[href*="spline.design"] {
   display: none !important;
@@ -60,17 +58,14 @@ a[href*="spline.design"] {
 .hero-content {
   z-index: 5;
   text-align: left;
-  /* Left align text */
   max-width: 650px;
-  /* Limit width */
   padding: 2rem;
   background: rgba(255, 255, 255, 0.05);
-  /* Subtle backing for readability if needed */
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border-radius: 20px;
+  transform: translateY(-10px);
 }
-
 .hero-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -96,7 +91,6 @@ a[href*="spline.design"] {
     transform: translateY(0);
   }
 }
-
 .hero-subtext {
   color: #475569;
   font-size: 1.125rem;
@@ -109,12 +103,14 @@ a[href*="spline.design"] {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  /* Left align buttons */
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+
 }
 
+
 .btn-primary {
+ 
   padding: 1rem 2rem;
   border-radius: 12px;
   background: linear-gradient(135deg, #0ea5e9, #2563eb);
@@ -154,7 +150,7 @@ a[href*="spline.design"] {
   transform: translateY(-2px);
 }
 
-/* --- Marquee --- */
+
 .marquee {
   background: white;
   padding: 1.5rem 0;
@@ -189,7 +185,6 @@ a[href*="spline.design"] {
   }
 }
 
-/* --- Features Section --- */
 .features-section {
   padding: 6rem 1.5rem;
   text-align: center;
@@ -258,7 +253,6 @@ a[href*="spline.design"] {
   line-height: 1.6;
 }
 
-/* --- Process Section --- */
 .process-section {
   background: white;
   padding: 6rem 1.5rem;
@@ -331,7 +325,6 @@ a[href*="spline.design"] {
   margin-bottom: 0.5rem;
 }
 
-/* --- Glass Card (Global) --- */
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: blur(12px);
@@ -349,7 +342,7 @@ a[href*="spline.design"] {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* --- About Summary --- */
+
 .about-summary {
   padding: 6rem 1.5rem;
   background: #f0f9ff;
@@ -372,7 +365,7 @@ a[href*="spline.design"] {
   margin-bottom: 0.5rem;
 }
 
-/* --- Services Preview --- */
+
 .services-preview {
   padding: 6rem 1.5rem;
   background: white;
@@ -408,7 +401,7 @@ a[href*="spline.design"] {
   color: #0f172a;
 }
 
-/* --- Portfolio Preview --- */
+
 .portfolio-preview {
   padding: 6rem 1.5rem;
   background: #f8fafc;
@@ -449,7 +442,7 @@ a[href*="spline.design"] {
   color: #0f172a;
 }
 
-/* --- Testimonials --- */
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -469,7 +462,7 @@ a[href*="spline.design"] {
   color: #0f172a;
 }
 
-/* --- Clients Logos --- */
+
 .logos-grid {
   display: flex;
   flex-wrap: wrap;
@@ -485,7 +478,7 @@ a[href*="spline.design"] {
   margin-bottom: 1.5rem;
 }
 
-/* --- Home Contact --- */
+
 .home-contact-section {
   padding: 6rem 1.5rem;
   background: linear-gradient(180deg, #f8fafc 0%, white 100%);

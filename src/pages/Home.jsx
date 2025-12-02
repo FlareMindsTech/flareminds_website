@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
+ import SocialButton from "../components/SocialButton";
 
-
-import "./css/home.css";
 
 export default function Home() {
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
             your brand fly higher with Branding Wings.
           </p>
 
-          <div className="hero-buttons">
+          <div className="hero-buttons" >
             <Link to="/services" className="btn-primary">
               Explore Services
             </Link>

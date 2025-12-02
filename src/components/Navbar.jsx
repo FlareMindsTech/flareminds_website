@@ -159,6 +159,12 @@ export default function Navbar() {
       }
     }, 300);
   };
+
+  // Note: avoid forcing a transform on the body (GPU hack) because
+  // transformed ancestors can create a new stacking/containing block
+  // that breaks `position: fixed` children (mega menu visibility).
+  // If needed, enable only after confirming no stacking issues.
+
   return (
     <header className="navbar" ref={wrapperRef}>
       <div className="navbar-container">
@@ -203,7 +209,7 @@ export default function Navbar() {
               onKeyDown={handleServicesKey}
               onClick={() => setMegaOpen((p) => !p)}
             >
-              Services <span style={{ fontSize: "16px" }}>▾</span>
+              Services <span style={{ fontSize: "12px" }}>▾</span>
             </button>
 
             <div
@@ -371,7 +377,7 @@ export default function Navbar() {
           </NavLink>
         </div>
       )}
-      <Lanyard />
+
     </header>
   );
 }
