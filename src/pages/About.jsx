@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import vikiImg from "../assets/viki.jpg";
 import yasirImg from "../assets/yasir.jpg";
+import prakashImg from "../assets/prakash.jpg";
+import SivaImg from "../assets/siva.jpg";
 import logo1 from "../assets/logo.jpg";
 import logo2 from "../assets/logo2.jpg";
 import logo3 from "../assets/logo3.jpg";
@@ -25,24 +27,24 @@ export default function About() {
       image: vikiImg,
     },
     {
-      name: "Yasir",
+      name: "Yaser",
       role: "Lead Developer",
       bio: "Specialist in building fast, scalable, modern web apps.",
       image: yasirImg,
     },
     {
-      name: "Sana",
-      role: "Design Lead",
+      name: "Prakash",
+      role: "Web Developer",
       bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
+      image:prakashImg
+       ,
     },
     {
-      name: "Vikram",
-      role: "SEO Specialist",
+      name: "Siva Kumar",
+      role: "Backend Developer",
       bio: "Technical SEO expert improving visibility and ranking.",
       image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
+        SivaImg,
     },
     {
       name: "Priya",
@@ -88,11 +90,11 @@ export default function About() {
   ];
 
   const partners = [
-    { name: "Dominator Pixel", industry: "Digital Agency", logo: logo1 },
-    { name: "Good Luck Healthcare", industry: "Healthcare", logo: logo2 },
-    { name: "Palmmitrip", industry: "Travel & Tourism", logo: logo3 },
-    { name: "Amads", industry: "Technology", logo: logo4 },
-    { name: "YesYes Innovations", industry: "Innovation Hub", logo: logo5 },
+    { name: "Good Luck Healthcare", industry: "Health Care", logo: logo1 },
+    { name: "AM Ads", industry: "Digital Agency", logo: logo2 },
+    { name: "Paln mi trip", industry: "Travel & Tourism", logo: logo3 },
+    { name: "Yes Yes Innovation", industry: "Innovation Hub", logo: logo4 },
+    { name: "Right Touch ", industry: "technolgy", logo: logo5 },
     { name: "Deepthy Finisher", industry: "Manufacturing", logo: logo1 }
   ];
 
@@ -174,7 +176,7 @@ export default function About() {
       </header>
 
       <main className="lm-main">
-
+        {/* Company Story & Vision */}
         <section className="company-story-section section-padding">
           <div className="container">
             <div className="story-grid">
@@ -201,7 +203,7 @@ export default function About() {
             </div>
           </div>
         </section>
- 
+   
         <section className="value-props-section">
           <h2 className="section-title-main">Why Choose FlareMinds?</h2>
           <div className="value-props-grid">
@@ -218,7 +220,7 @@ export default function About() {
                     <p className="value-prop-short">{prop.shortDesc}</p>
                   </div>
                   <button className="expand-btn">
-                    {expandedCard === idx ? 'x' : '+'}
+                    {expandedCard === idx ? '×' : '+'}
                   </button>
                 </div>
                 <div className="value-card-details">
@@ -229,6 +231,7 @@ export default function About() {
           </div>
         </section>
 
+      
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
 
@@ -252,7 +255,7 @@ export default function About() {
           </div>
         </section>
 
-      
+        {/* Trusted Partners Section */}
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
