@@ -112,14 +112,6 @@ export default function Navbar() {
           { label: "App Development", icon: "📱", to: "/app-development" },
         ],
       },
-      {
-        title: "Products",
-        items: [
-          { label: "ERP Systems", icon: "🏢", to: "/services/erp-systems" },
-          { label: "CRM Solutions", icon: "📈", to: "/services/crm-solutions" },
-          { label: "Custom SaaS", icon: "☁️", to: "/services/custom-saas" },
-        ],
-      },
     ],
     []
   );
@@ -159,11 +151,6 @@ export default function Navbar() {
       }
     }, 300);
   };
-
-  // Note: avoid forcing a transform on the body (GPU hack) because
-  // transformed ancestors can create a new stacking/containing block
-  // that breaks `position: fixed` children (mega menu visibility).
-  // If needed, enable only after confirming no stacking issues.
 
   return (
     <header className="navbar" ref={wrapperRef}>
@@ -270,7 +257,7 @@ export default function Navbar() {
             className={navClass}
             onClick={() => setMenuOpen(false)}
           >
-            Projects
+            Products
           </NavLink>
 
           <NavLink
@@ -291,8 +278,8 @@ export default function Navbar() {
         </nav>
 
         <div className="nav-right-info">
-          <span className="nav-phone">📞 +91 9500950813</span>
-          <span className="nav-email">✉ Info@flaremindstech.com</span>
+          <span className="nav-phone">📞 +91 98765 43210</span>
+          <span className="nav-email">✉ flaremindstech@gmail.com</span>
         </div>
 
         <button
@@ -310,6 +297,13 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="mobile-accordion">
+          <NavLink
+            to="/"
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </NavLink>
           <NavLink
             to="/about"
             className="mobile-link"
@@ -357,7 +351,7 @@ export default function Navbar() {
             className="mobile-link"
             onClick={() => setMenuOpen(false)}
           >
-            Projects
+            Products
           </NavLink>
 
           <NavLink

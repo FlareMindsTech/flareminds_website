@@ -1,5 +1,5 @@
 :root {
-  /* Colors */
+
   --bg-dark: #f0f9ff;
   --bg-card: rgba(255, 255, 255, 0.7);
   --bg-card-hover: rgba(255, 255, 255, 0.95);
@@ -23,18 +23,14 @@
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 
-  /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-full: 9999px;
 
-  /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
-
-  /* Shadows for Light Mode - Premium Style */
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 2px 4px -1px rgba(0, 0, 0, 0.03);
   --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
@@ -78,11 +74,6 @@
   }
 }
 
-/* 
-========================================
-   RESET & GLOBAL STYLES
-========================================
-*/
 * {
   margin: 0;
   padding: 0;
@@ -100,7 +91,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
-
 a {
   text-decoration: none;
   color: inherit;
@@ -116,11 +106,7 @@ img {
   display: block;
 }
 
-/* 
-========================================
-   UTILITY CLASSES
-========================================
-*/
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -183,11 +169,7 @@ img {
   color: var(--text-primary);
 }
 
-/* 
-========================================
-   SERVICE PAGE SPECIFIC
-========================================
-*/
+
 .service-page-container {
   min-height: 100vh;
   padding-bottom: 4rem;
@@ -335,11 +317,7 @@ img {
   color: var(--text-secondary);
 }
 
-/* 
-========================================
-   PROJECTS PAGE SPECIFIC
-========================================
-*/
+
 .projects-page {
   padding-bottom: 4rem;
 }

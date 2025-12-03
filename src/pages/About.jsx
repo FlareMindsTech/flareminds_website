@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import vikiImg from "../assets/viki.jpg";
 import yasirImg from "../assets/yasir.jpg";
+import logo1 from "../assets/logo.jpg";
+import logo2 from "../assets/logo2.jpg";
+import logo3 from "../assets/logo3.jpg";
+import logo4 from "../assets/logo4.jpg";
+import logo5 from "../assets/logo5.jpg";
 
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -83,12 +88,12 @@ export default function About() {
   ];
 
   const partners = [
-    { name: "Dominator Pixel", industry: "Digital Agency" },
-    { name: "Good Luck Healthcare", industry: "Healthcare" },
-    { name: "Palmmitrip", industry: "Travel & Tourism" },
-    { name: "Amads", industry: "Technology" },
-    { name: "YesYes Innovations", industry: "Innovation Hub" },
-    { name: "Deepthy Finisher", industry: "Manufacturing" }
+    { name: "Dominator Pixel", industry: "Digital Agency", logo: logo1 },
+    { name: "Good Luck Healthcare", industry: "Healthcare", logo: logo2 },
+    { name: "Palmmitrip", industry: "Travel & Tourism", logo: logo3 },
+    { name: "Amads", industry: "Technology", logo: logo4 },
+    { name: "YesYes Innovations", industry: "Innovation Hub", logo: logo5 },
+    { name: "Deepthy Finisher", industry: "Manufacturing", logo: logo1 }
   ];
 
   const counterRefs = useRef([]);
@@ -169,7 +174,7 @@ export default function About() {
       </header>
 
       <main className="lm-main">
-        {/* Company Story & Vision */}
+
         <section className="company-story-section section-padding">
           <div className="container">
             <div className="story-grid">
@@ -196,7 +201,7 @@ export default function About() {
             </div>
           </div>
         </section>
-        {/* Value Propositions Section */}
+ 
         <section className="value-props-section">
           <h2 className="section-title-main">Why Choose FlareMinds?</h2>
           <div className="value-props-grid">
@@ -213,7 +218,7 @@ export default function About() {
                     <p className="value-prop-short">{prop.shortDesc}</p>
                   </div>
                   <button className="expand-btn">
-                    {expandedCard === idx ? '×' : '+'}
+                    {expandedCard === idx ? 'x' : '+'}
                   </button>
                 </div>
                 <div className="value-card-details">
@@ -224,7 +229,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* Team Section */}
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
 
@@ -248,23 +252,17 @@ export default function About() {
           </div>
         </section>
 
-        {/* Trusted Partners Section */}
+      
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
           <div className="partners-list">
             {partners.map((partner, idx) => {
-              // Get initials from company name
-              const initials = partner.name
-                .split(' ')
-                .map(word => word[0])
-                .join('')
-                .substring(0, 2)
-                .toUpperCase();
-
               return (
                 <div className="partner-item" key={idx}>
-                  <div className="partner-logo-circle">{initials}</div>
+                  <div className="partner-logo-circle">
+                    <img src={partner.logo} alt={partner.name} />
+                  </div>
                   <div className="partner-content">
                     <h4 className="partner-company">{partner.name}</h4>
                     <span className="partner-industry">{partner.industry}</span>

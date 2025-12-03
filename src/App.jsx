@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/footer'
@@ -12,21 +12,8 @@ import WebDevelopment from './pages/WebDevelopment'
 import AppDevelopment from './pages/AppDevelopment'
 import WebTraining from './pages/training/WebTraining'
 import AppDevTraining from './pages/training/AppDevTraining'
-import FlareMindLoader from './pages/FlareMindLoader'
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 6000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (loading) {
-    return <FlareMindLoader />
-  }
   return (
     <div className="min-h-screen flex flex-col text-slate-800">
       <Navbar />

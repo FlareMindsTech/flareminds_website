@@ -141,9 +141,9 @@ export default function Contact() {
           </div>
           <div className="contact-info-section">
             <h4>Office</h4>
-            <p>123 Business St, Hosur, India</p>
-            <p>shivanbharath42255@gmail.com</p>
-            <p>+91 98765 43210</p>
+            <p>Sulur, Coimbatore, India</p>
+            <p>Info@flaremindstech.com</p>
+            <p>+91 9500950813</p>
 
 
             <div className="map-container" style={{ width: "100%", height: "300px", marginTop: "20px" }}>

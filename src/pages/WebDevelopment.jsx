@@ -6,7 +6,7 @@ import "../pages/css/services.css"; // Reusing services CSS for consistency
 export default function WebDevelopment() {
     return (
         <div className="service-page-container">
-            {/* Hero Section */}
+           
             <section className="service-hero">
                 <div className="container">
                     <h1 className="hero-title">
@@ -23,7 +23,7 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-            {/* Overview Section */}
+           
             <section className="service-overview section-padding">
                 <div className="container">
                     <div className="row">

@@ -13,7 +13,7 @@ import {
 
 export default function App() {
 
-  /* ---------------------- Typing Effect ---------------------- */
+
   useEffect(() => {
     const textElement = document.getElementById("typing-text");
     const phrases = ["Web Developer", "Full Stack Developer", "DevOps Developer"];
@@ -65,7 +65,7 @@ export default function App() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Only animate once
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
