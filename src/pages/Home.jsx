@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
- import SocialButton from "../components/SocialButton";
+import SocialButton from "../components/SocialButton";
 
 
 export default function Home() {
@@ -26,9 +26,23 @@ export default function Home() {
   return (
     <div className="home-page">
       <section className="hero-section">
-        <Spline
+        <iframe
           className="background-grid"
-          scene="https://prod.spline.design/HS9388FwV3wR5UWN/scene.splinecode"
+          src="https://my.spline.design/interactiveaiwebsite-O4Uh22bUCEVjE9Wg3K1CQWtx/"
+          frameBorder="0"
+          width="100%"
+          height="100%"
+          allow="fullscreen; autoplay; encrypted-media"
+          loading="lazy"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            pointerEvents: 'auto'
+          }}
         />
         <div className="hero-content">
           <h1 className="hero-title">
@@ -77,7 +91,7 @@ export default function Home() {
             },
             { title: "High-End Designs", text: "Modern UI/UX that converts." },
             { title: "Digital Growth", text: "Scale your brand effortlessly." },
-           
+
           ].map((f, i) => (
             <div key={i} className="feature-card">
               <h3>{f.title}</h3>
@@ -188,7 +202,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials, trusted logos and CTA removed as requested */}
+
     </div>
   );
 }

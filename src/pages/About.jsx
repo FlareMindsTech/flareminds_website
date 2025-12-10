@@ -8,9 +8,16 @@ import logo2 from "../assets/logo2.jpg";
 import logo3 from "../assets/logo3.jpg";
 import logo4 from "../assets/logo4.jpg";
 import logo5 from "../assets/logo5.jpg";
+import logo6 from "../assets/logo6.jpg";
+import logo7 from "../assets/logo7.jpg";
+import logo8 from "../assets/logo8.jpg";
+import logo9 from "../assets/logo9.jpg";
+import DomeGallery from "../components/DomeGallery";
+import Folder from "../components/Folder";
 
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [showGallery, setShowGallery] = useState(false);
 
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
@@ -36,8 +43,8 @@ export default function About() {
       name: "Prakash",
       role: "Web Developer",
       bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
-      image:prakashImg
-       ,
+      image: prakashImg
+      ,
     },
     {
       name: "Siva Kumar",
@@ -94,8 +101,11 @@ export default function About() {
     { name: "AM Ads", industry: "Digital Agency", logo: logo2 },
     { name: "Paln mi trip", industry: "Travel & Tourism", logo: logo3 },
     { name: "Yes Yes Innovation", industry: "Innovation Hub", logo: logo4 },
-    { name: "Right Touch ", industry: "technolgy", logo: logo5 },
-    { name: "Deepthy Finisher", industry: "Manufacturing", logo: logo1 }
+    { name: "Right Touch ", industry: "Technology", logo: logo5 },
+    { name: "Green Realty Experts", industry: "Manufacturing", logo: logo6 },
+    { name: "Dominator Pixel", industry: "IT Services", logo: logo7 },
+    { name: "Kovai Property", industry: "Design Studio", logo: logo8 },
+    { name: "Global Ventures", industry: "Business Consulting", logo: logo9 }
   ];
 
   const counterRefs = useRef([]);
@@ -203,7 +213,7 @@ export default function About() {
             </div>
           </div>
         </section>
-   
+
         <section className="value-props-section">
           <h2 className="section-title-main">Why Choose FlareMinds?</h2>
           <div className="value-props-grid">
@@ -231,7 +241,7 @@ export default function About() {
           </div>
         </section>
 
-      
+
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
 
@@ -255,7 +265,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Trusted Partners Section */}
+      
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
@@ -276,6 +286,75 @@ export default function About() {
             })}
           </div>
         </section>
+
+        {/* Memory Live Forever Folder */}
+        <section className="memory-folder-section" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
+          <h2 className="section-title-main" style={{ marginBottom: '2rem' }}>Memory Live Forever</h2>
+          <div style={{ height: '600px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div onClick={() => setShowGallery(true)}>
+              <Folder size={3} color="#5227FF" className="custom-folder" />
+            </div>
+          </div>
+        </section>
+
+        {/* DomeGallery Modal */}
+        {showGallery && (
+          <div
+            className="gallery-modal"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.95)',
+              zIndex: 9999,
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            <button
+              onClick={() => setShowGallery(false)}
+              style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                background: 'rgba(255, 255, 255, 0.2)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '50%',
+                width: '50px',
+                height: '50px',
+                fontSize: '24px',
+                cursor: 'pointer',
+                zIndex: 10000,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                e.target.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                e.target.style.transform = 'scale(1)';
+              }}
+            >
+              ×
+            </button>
+            <div style={{ flex: 1, position: 'relative' }}>
+              <DomeGallery
+                images={[
+                  logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9,
+                  vikiImg, yasirImg, prakashImg, SivaImg
+                ]}
+                grayscale={false}
+              />
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

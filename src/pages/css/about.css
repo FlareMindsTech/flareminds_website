@@ -677,6 +677,30 @@
 
 
 @media (max-width: 768px) {
+  .lm-hero {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .lm-hero-title {
+    font-size: 1.8rem;
+  }
+
+  .lm-hero-sub {
+    font-size: 0.95rem;
+  }
+
+  .lm-counters {
+    gap: 0.8rem;
+  }
+
+  .lm-counter {
+    padding: 0.8rem 1rem;
+  }
+
+  .lm-counter-value {
+    font-size: 1.1rem;
+  }
+
   .section-title-main {
     font-size: 2rem;
   }
@@ -724,6 +748,51 @@
 
   .partner-industry {
     font-size: 0.9rem;
+  }
+
+  .memory-button-section {
+    padding: 2rem 1rem !important;
+  }
+
+  .memory-button {
+    padding: 1rem 2rem !important;
+    font-size: 1.1rem !important;
+  }
+
+  .gallery-modal button {
+    top: 10px !important;
+    right: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lm-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title-main {
+    font-size: 1.6rem;
+  }
+
+  .value-prop-title-v2 {
+    font-size: 1.2rem;
+  }
+
+  .value-prop-icon-v2 {
+    font-size: 2.5rem;
+  }
+
+  .partner-logo-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .memory-button {
+    padding: 0.9rem 1.5rem !important;
+    font-size: 1rem !important;
   }
 }
 

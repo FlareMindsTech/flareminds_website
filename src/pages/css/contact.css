@@ -320,7 +320,7 @@
   }
 
   .contact-page h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
   .contact-page .text-gray-600 {
@@ -331,6 +331,57 @@
   .contact-form-section,
   .contact-info-section {
     padding: 2rem;
+  }
+
+  .contact-info-section h4 {
+    font-size: 1.7rem;
+  }
+
+  .contact-info-section p {
+    font-size: 1rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 18px;
+    font-size: 16px;
+  }
+
+  .form-btn {
+    width: 100%;
+    padding: 16px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-page h2 {
+    font-size: 2rem;
+  }
+
+  .contact-page .text-gray-600 {
+    font-size: 1rem;
+  }
+
+  .contact-form-section,
+  .contact-info-section {
+    padding: 1.5rem;
+  }
+
+  .contact-info-section h4 {
+    font-size: 1.5rem;
+  }
+
+  .map-container {
+    height: 250px !important;
+  }
+
+  .whatsapp-float {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 24px !important;
   }
 }
 
