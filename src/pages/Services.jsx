@@ -272,7 +272,6 @@ export default function Services() {
 
   return (
     <div className="service-page-container">
-      {/* Hero Section */}
       <section className="service-hero">
         <div className="container">
           <h1 className="hero-title">
@@ -288,7 +287,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Overview Section */}
       <section id="overview" className="service-overview section-padding">
         <div className="container">
           <div className="row">
@@ -312,7 +310,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section */}
       <section className="service-process section-padding bg-light">
         <div className="container">
           <h2 className="section-title text-center">Our Process</h2>
@@ -328,7 +325,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Tech Stack */}
       <section className="tech-stack section-padding">
         <div className="container text-center">
           <h2 className="section-title">Tools & Technologies</h2>
@@ -340,7 +336,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="service-faq section-padding">
         <div className="container">
           <h2 className="section-title text-center">Frequently Asked Questions</h2>
@@ -355,7 +350,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="service-cta text-center section-padding">
         <div className="container">
           <h2>Ready to Get Started?</h2>

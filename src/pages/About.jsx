@@ -3,15 +3,15 @@ import vikiImg from "../assets/viki.jpg";
 import yasirImg from "../assets/yasir.jpg";
 import prakashImg from "../assets/prakash.jpg";
 import SivaImg from "../assets/siva.jpg";
-import logo1 from "../assets/logo.jpg";
-import logo2 from "../assets/logo2.jpg";
-import logo3 from "../assets/logo3.jpg";
-import logo4 from "../assets/logo4.jpg";
-import logo5 from "../assets/logo5.jpg";
-import logo6 from "../assets/logo6.jpg";
-import logo7 from "../assets/logo7.jpg";
-import logo8 from "../assets/logo8.jpg";
-import logo9 from "../assets/logo9.jpg";
+import logo1 from "../assets/logo/logo.jpg";
+import logo2 from "../assets/logo/logo2.jpg";
+import logo3 from "../assets/logo/logo3.jpg";
+import logo4 from "../assets/logo/logo4.jpg";
+import logo5 from "../assets/logo/logo5.jpg";
+import logo6 from "../assets/logo/logo6.jpg";
+import logo7 from "../assets/logo/logo7.jpg";
+import logo8 from "../assets/logo/logo8.jpg";
+import logo9 from "../assets/logo/logo9.jpg";
 import DomeGallery from "../components/DomeGallery";
 import Folder from "../components/Folder";
 
@@ -99,7 +99,7 @@ export default function About() {
   const partners = [
     { name: "Good Luck Healthcare", industry: "Health Care", logo: logo1 },
     { name: "AM Ads", industry: "Digital Agency", logo: logo2 },
-    { name: "Paln mi trip", industry: "Travel & Tourism", logo: logo3 },
+    { name: "Plan my trip", industry: "Travel & Tourism", logo: logo3 },
     { name: "Yes Yes Innovation", industry: "Innovation Hub", logo: logo4 },
     { name: "Right Touch ", industry: "Technology", logo: logo5 },
     { name: "Green Realty Experts", industry: "Manufacturing", logo: logo6 },
@@ -186,7 +186,6 @@ export default function About() {
       </header>
 
       <main className="lm-main">
-        {/* Company Story & Vision */}
         <section className="company-story-section section-padding">
           <div className="container">
             <div className="story-grid">
@@ -265,7 +264,7 @@ export default function About() {
           </div>
         </section>
 
-      
+
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
@@ -287,7 +286,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* Memory Live Forever Folder */}
         <section className="memory-folder-section" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
           <h2 className="section-title-main" style={{ marginBottom: '2rem' }}>Memory Live Forever</h2>
           <div style={{ height: '600px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -297,7 +295,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* DomeGallery Modal */}
         {showGallery && (
           <div
             className="gallery-modal"
@@ -346,10 +343,6 @@ export default function About() {
             </button>
             <div style={{ flex: 1, position: 'relative' }}>
               <DomeGallery
-                images={[
-                  logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9,
-                  vikiImg, yasirImg, prakashImg, SivaImg
-                ]}
                 grayscale={false}
               />
             </div>

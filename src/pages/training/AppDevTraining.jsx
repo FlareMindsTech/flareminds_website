@@ -13,7 +13,6 @@ import {
 
 export default function AppDev() {
 
-  /* ---------------------- Typing Effect ---------------------- */
   useEffect(() => {
     const textElement = document.getElementById("typing-text");
     const phrases = ["App Developer", "Mobile App Engineer", "React Native Developer", "Flutter Developer"];
@@ -29,20 +28,20 @@ export default function AppDev() {
       if (isDeleting) {
         textElement.textContent = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
-        typeSpeed = 50; // Faster when deleting
+        typeSpeed = 50;
       } else {
         textElement.textContent = currentPhrase.substring(0, charIndex + 1);
         charIndex++;
-        typeSpeed = 100; // Normal typing speed
+        typeSpeed = 100;
       }
 
       if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end of phrase
+        typeSpeed = 2000;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500; // Pause before typing next phrase
+        typeSpeed = 500;
       }
 
       timeoutId = setTimeout(type, typeSpeed);
@@ -53,7 +52,6 @@ export default function AppDev() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  /* ---------------------- Scroll Animation ---------------------- */
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -65,7 +63,7 @@ export default function AppDev() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Only animate once
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -76,7 +74,6 @@ export default function AppDev() {
     return () => observer.disconnect();
   }, []);
 
-  /* ---------------------- Carousel ---------------------- */
   useEffect(() => {
     const slides = document.querySelectorAll('.testimonial-slide');
     const dotsContainer = document.getElementById('carousel-dots');
@@ -85,10 +82,8 @@ export default function AppDev() {
     let currentSlide = 0;
     let autoSlideInterval;
 
-    // Clear existing dots to prevent duplication on re-renders
     if (dotsContainer) dotsContainer.innerHTML = '';
 
-    // Create dots
     slides.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.className = 'dot-indicator' + (index === 0 ? ' active' : '');
@@ -127,16 +122,13 @@ export default function AppDev() {
     if (nextBtn) nextBtn.onclick = nextSlide;
     if (prevBtn) prevBtn.onclick = prevSlide;
 
-    // Auto rotate
     autoSlideInterval = setInterval(nextSlide, 5000);
 
     return () => clearInterval(autoSlideInterval);
   }, []);
 
-  /* ---------------------- Particle Background ---------------------- */
   useEffect(() => {
     const container = document.getElementById('particles');
-    // Clear existing particles
     if (container) container.innerHTML = '';
 
     const particleCount = 20;
@@ -158,11 +150,9 @@ export default function AppDev() {
 
   return (
     <>
-      {/* Background Elements */}
       <div className="bg-gradient"></div>
       <div className="bg-particles" id="particles"></div>
 
-      {/* Hero Section */}
       <header className="hero" id="home">
         <div className="container hero-container">
           <div className="hero-content fade-in-up">
@@ -188,7 +178,6 @@ export default function AppDev() {
         </div>
       </header>
 
-      {/* Features Section */}
       <section className="features" id="features">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -230,7 +219,6 @@ export default function AppDev() {
         </div>
       </section>
 
-      {/* Curriculum Section */}
       <section className="curriculum" id="curriculum">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -292,7 +280,6 @@ export default function AppDev() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="testimonials" id="testimonials">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -303,7 +290,6 @@ export default function AppDev() {
           </div>
           <div className="testimonial-carousel-container glass-card fade-in-up">
             <div className="testimonial-track" id="testimonial-track">
-              {/* Testimonial 1 */}
               <div className="testimonial-slide active">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
@@ -317,7 +303,6 @@ export default function AppDev() {
                   </div>
                 </div>
               </div>
-              {/* Testimonial 2 */}
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
@@ -331,7 +316,6 @@ export default function AppDev() {
                   </div>
                 </div>
               </div>
-              {/* Testimonial 3 */}
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>

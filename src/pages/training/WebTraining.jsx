@@ -187,7 +187,6 @@ export default function App() {
         </div>
       </header>
 
-      {/* Features Section */}
       <section className="features" id="features">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -229,7 +228,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Curriculum Section */}
       <section className="curriculum" id="curriculum">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -291,7 +289,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="testimonials" id="testimonials">
         <div className="container">
           <div className="section-header text-center fade-in-up">
@@ -302,7 +299,6 @@ export default function App() {
           </div>
           <div className="testimonial-carousel-container glass-card fade-in-up">
             <div className="testimonial-track" id="testimonial-track">
-              {/* Testimonial 1 */}
               <div className="testimonial-slide active">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
@@ -317,7 +313,6 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              {/* Testimonial 2 */}
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>
@@ -332,7 +327,6 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              {/* Testimonial 3 */}
               <div className="testimonial-slide">
                 <div className="testimonial-content">
                   <div className="quote-icon"><FaQuoteLeft /></div>

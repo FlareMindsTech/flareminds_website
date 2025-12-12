@@ -69,14 +69,19 @@ export default function Navbar() {
         title: "Courses",
         items: [
           {
-            label: "Web Development",
+            label: "MERN Stack Development",
             icon: "💻",
-            to: "/training/web-development",
+            to: "/training/mern-stack",
           },
           {
-            label: "App Development",
-            icon: "📱",
-            to: "/training/app-development",
+            label: "Digital Marketing",
+            icon: "📊",
+            to: "/training/digital-marketing",
+          },
+          {
+            label: "AI / ML Course",
+            icon: "🤖",
+            to: "/training/ai-ml",
           },
         ],
       },
@@ -205,7 +210,7 @@ export default function Navbar() {
               role="menu"
             >
               <div className="mega-content-wrapper">
-               
+
                 <div className="mega-sidebar">
                   {megaSections.map((sec) => (
                     <div
@@ -220,7 +225,7 @@ export default function Navbar() {
                   ))}
                 </div>
 
-               
+
                 <div className="mega-details">
                   {megaSections.map((sec) => (
                     <div

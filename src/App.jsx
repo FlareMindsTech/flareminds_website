@@ -12,6 +12,9 @@ import WebDevelopment from './pages/WebDevelopment'
 import AppDevelopment from './pages/AppDevelopment'
 import WebTraining from './pages/training/WebTraining'
 import AppDevTraining from './pages/training/AppDevTraining'
+import MernTraining from './pages/training/MernTraining'
+import DigitalMarketingTraining from './pages/training/DigitalMarketingTraining'
+import AiMlTraining from './pages/training/AiMlTraining'
 
 export default function App() {
   return (
@@ -29,13 +32,14 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/projects" element={<Projects />} />
 
-          {/* Agency Service Pages */}
           <Route path="/web-development" element={<WebDevelopment />} />
           <Route path="/app-development" element={<AppDevelopment />} />
 
-          {/* Training / Course Pages */}
           <Route path="/training/web-development" element={<WebTraining />} />
           <Route path="/training/app-development" element={<AppDevTraining />} />
+          <Route path="/training/mern-stack" element={<MernTraining />} />
+          <Route path="/training/digital-marketing" element={<DigitalMarketingTraining />} />
+          <Route path="/training/ai-ml" element={<AiMlTraining />} />
         </Routes>
       </main>
 
