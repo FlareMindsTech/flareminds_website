@@ -150,8 +150,8 @@
 
 .mega-details {
   padding: 14px;
-  max-height: 320px;
-  overflow-y: auto;
+/*   max-height: 320px;
+  overflow-y: auto; */
 }
 
 .mega-items-group {

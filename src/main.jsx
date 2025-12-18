@@ -11,7 +11,8 @@ import "./pages/css/contact.css";
 import "./pages/css/home.css";
 import "./pages/css/services.css"
 import "./pages/css/web.css";
-import "./pages/css/appdev.css";
+import "./pages/css/training.css";
+
 
 import './components/css/footer.css'
 import './components/css/runningtext.css'

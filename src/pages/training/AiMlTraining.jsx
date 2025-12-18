@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "../css/web.css";
+import "../css/training.css";
 import {
     FaBrain,
     FaRobot,

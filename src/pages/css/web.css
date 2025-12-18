@@ -10,11 +10,9 @@
   --gradient-primary: linear-gradient(135deg, #38bdf8, #2563eb);
   --gradient-secondary: linear-gradient(135deg, #818cf8, #6366f1);
   --gradient-text: linear-gradient(90deg, #0284c7, #2563eb, #4f46e5);
-  --gradient-glow: radial-gradient(
-    circle at center,
-    rgba(56, 189, 248, 0.15) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
+  --gradient-glow: radial-gradient(circle at center,
+      rgba(56, 189, 248, 0.15) 0%,
+      rgba(255, 255, 255, 0) 70%);
 
   --font-body: "Inter", sans-serif;
   --font-heading: "Outfit", sans-serif;
@@ -47,6 +45,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -57,16 +56,19 @@
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
 }
 
 @keyframes glow {
+
   0%,
   100% {
     filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
   }
+
   50% {
     filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
   }
@@ -198,11 +200,9 @@ img {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.4) 0%,
-    transparent 60%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 60%);
   transform: rotate(45deg);
   opacity: 0;
   transition: var(--transition-normal);
@@ -268,11 +268,9 @@ img {
   width: 100%;
   height: 100%;
   z-index: -2;
-  background: radial-gradient(
-      circle at 15% 50%,
+  background: radial-gradient(circle at 15% 50%,
       rgba(56, 189, 248, 0.08),
-      transparent 25%
-    ),
+      transparent 25%),
     radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08), transparent 25%);
 }
 
@@ -289,18 +287,27 @@ img {
 .hero {
   padding-top: 8rem;
   padding-bottom: 6rem;
-  min-height: 100vh;
+  min-height: 80vh;
+  /* Reduced from 100vh to avoid excessive scrolling if not needed */
   display: flex;
-  align-items: center;
+  /* align-items: center;  Removed to eliminate the large top gap */
   position: relative;
   overflow: hidden;
 }
 
 .hero-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  /* Default to row for desktop */
   gap: 4rem;
+  /* Increased gap for better spacing */
   align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  /* Left align text on desktop */
+  max-width: 1200px;
+  /* Increased max-width */
+  margin: 0 auto;
 }
 
 .badge {
@@ -328,13 +335,29 @@ img {
   color: var(--text-secondary);
   font-size: 1.2rem;
   margin-bottom: 2.5rem;
-  max-width: 500px;
+  max-width: 600px;
+  /* margin-left/right auto removed for desktop left-align */
 }
 
 .hero-cta {
   display: flex;
   gap: 1rem;
   margin-bottom: 3rem;
+  justify-content: flex-start;
+  /* Left align on desktop */
+}
+
+.hero-visual {
+  width: 100%;
+  flex: 1;
+  /* Allow to take space */
+  max-width: 600px;
+  /* margin removed */
+}
+
+.hero-content {
+  flex: 1;
+  /* Allow to take space */
 }
 
 .features {
@@ -388,12 +411,10 @@ img {
 .curriculum {
   padding: var(--spacing-xl) 0;
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(56, 189, 248, 0.05),
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(56, 189, 248, 0.05),
+      transparent);
 }
 
 .curriculum-grid {
@@ -627,16 +648,20 @@ img {
 
 @media (max-width: 992px) {
   .hero-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    /* Stack on mobile */
     text-align: center;
+    gap: 3rem;
   }
 
   .hero-subtitle {
     margin: 0 auto 2.5rem;
+    /* Center subtitle */
   }
 
   .hero-cta {
     justify-content: center;
+    /* Center buttons */
   }
 
   .hero-visual {
