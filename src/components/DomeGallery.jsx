@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useCallback } from 'react';
+import { useEffect, useMemo, useRef, useCallback, useState } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './css/DomeGallery.css';
 
@@ -84,6 +84,14 @@ function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
     return { rotateX, rotateY };
 }
 
+function getResponsiveParams() {
+    if (typeof window === 'undefined') return { segments: 35, openedW: '600px', openedH: '600px', radiusMod: 1 };
+    const w = window.innerWidth;
+    if (w < 480) return { segments: 20, openedW: '90vw', openedH: 'auto', radiusMod: 0.7 };
+    if (w < 768) return { segments: 28, openedW: '80vw', openedH: 'auto', radiusMod: 0.85 };
+    return { segments: 35, openedW: '600px', openedH: '600px', radiusMod: 1 };
+}
+
 export default function DomeGallery({
     images = DEFAULT_IMAGES,
     fit = 0.5,
@@ -95,14 +103,26 @@ export default function DomeGallery({
     maxVerticalRotationDeg = DEFAULTS.maxVerticalRotationDeg,
     dragSensitivity = DEFAULTS.dragSensitivity,
     enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
-    segments = DEFAULTS.segments,
     dragDampening = 2,
-    openedImageWidth = '600px',
-    openedImageHeight = '600px',
     imageBorderRadius = '30px',
     openedImageBorderRadius = '30px',
     grayscale = true
 }) {
+    const [responsiveParams, setResponsiveParams] = useState(getResponsiveParams());
+
+    useEffect(() => {
+        const handleResize = () => setResponsiveParams(getResponsiveParams());
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const { segments, openedW, openedH, radiusMod } = responsiveParams;
+    const openedImageWidth = openedW;
+    const openedImageHeight = openedH;
+
+    // Adjust effective minRadius based on screen size
+    const effectiveMinRadius = minRadius * radiusMod;
+
     const rootRef = useRef(null);
     const mainRef = useRef(null);
     const sphereRef = useRef(null);
@@ -176,7 +196,7 @@ export default function DomeGallery({
             let radius = basis * fit;
             const heightGuard = h * 1.35;
             radius = Math.min(radius, heightGuard);
-            radius = clamp(radius, minRadius, maxRadius);
+            radius = clamp(radius, effectiveMinRadius, maxRadius);
             lockedRadiusRef.current = Math.round(radius);
 
             const viewerPad = Math.max(8, Math.round(minDim * padFactor));

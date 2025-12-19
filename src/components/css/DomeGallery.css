@@ -204,25 +204,37 @@ main.sphere-main {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .sphere-root {
+        --radius: 350px;
+        /* Fallback/Default for CSS-only consumers */
         --viewer-pad: 20px;
     }
 
     .viewer .frame {
-        width: 90%;
-        height: auto;
+        width: 85%;
+        height: 60vh;
+        /* Fixed height reference for mobile */
+        max-width: 100%;
     }
 
     .edge-fade {
-        height: 80px;
+        height: 60px;
     }
 }
 
 @media (max-width: 480px) {
     .sphere-root {
-        --viewer-pad: 10px;
+        --radius: 280px;
+        --viewer-pad: 12px;
+    }
+
+    .viewer .frame {
+        width: 90%;
+        height: 50vh;
     }
 
     .item__image {
-        inset: 5px;
+        inset: 4px;
+        border-radius: 8px;
+        /* Slightly smaller radius for small items */
     }
 }
