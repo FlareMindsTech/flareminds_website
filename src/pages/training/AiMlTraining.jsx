@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/web.css";
 import "../css/training.css";
@@ -7,76 +6,20 @@ import {
     FaRobot,
     FaPython,
     FaNetworkWired,
-    FaCheck,
-    FaQuoteLeft,
-    FaChevronLeft,
-    FaChevronRight,
     FaCheckCircle
 } from "react-icons/fa";
+import { useTypingEffect } from "../../hooks/useTypingEffect";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import TestimonialCarousel from "../../components/TestimonialCarousel";
 
 export default function AiMlTraining() {
-    // Typing Effect State locally to avoid DOM manipulation issues if possible, 
-    // but continuing with the robust vanilla JS approach for the specific request
-    useEffect(() => {
-        const textElement = document.getElementById("typing-text");
-        if (!textElement) return;
+    useTypingEffect(
+        ["AI Engineer", "Data Scientist", "ML Specialist", "Deep Learning Expert"],
+        "typing-text"
+    );
 
-        const phrases = ["AI Engineer", "Data Scientist", "ML Specialist", "Deep Learning Expert"];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
-        let timeoutId;
+    useScrollAnimation('.fade-up-element', 'show');
 
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100;
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typeSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-
-            timeoutId = setTimeout(type, typeSpeed);
-        }
-
-        type();
-
-        return () => clearTimeout(timeoutId);
-    }, []);
-
-    // Intersection Observer for animations
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        const steps = document.querySelectorAll(".timeline-step, .fade-up-element");
-        steps.forEach((step) => observer.observe(step));
-
-        return () => observer.disconnect();
-    }, []);
-
-    // Carousel Logic
-    const [currentSlide, setCurrentSlide] = useState(0);
     const testimonials = [
         {
             text: "Pivoting from software testing to Data Science seemed hard, but this course made it seamless. I'm now a Data Analyst.",
@@ -97,14 +40,6 @@ export default function AiMlTraining() {
             img: "https://ui-avatars.com/api/?name=Arjun+M&background=random"
         }
     ];
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    };
 
     return (
         <div className="training-page">
@@ -216,31 +151,7 @@ export default function AiMlTraining() {
                         <p className="hero-subtext mx-auto">Real results from real graduates.</p>
                     </div>
 
-                    <div className="testimonial-carousel-container glass-card fade-up-element">
-                        <div className="student-card">
-                            <FaQuoteLeft className="quote-icon mx-auto" />
-                            <p className="student-quote">"{testimonials[currentSlide].text}"</p>
-                            <img src={testimonials[currentSlide].img} alt={testimonials[currentSlide].name} className="student-img" />
-                            <div className="student-info">
-                                <h4>{testimonials[currentSlide].name}</h4>
-                                <p>{testimonials[currentSlide].role}</p>
-                            </div>
-                        </div>
-
-                        <div className="carousel-controls">
-                            <button className="control-btn" onClick={prevSlide}><FaChevronLeft /></button>
-                            <div className="carousel-dots">
-                                {testimonials.map((_, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`dot-indicator ${idx === currentSlide ? 'active' : ''}`}
-                                        onClick={() => setCurrentSlide(idx)}
-                                    ></div>
-                                ))}
-                            </div>
-                            <button className="control-btn" onClick={nextSlide}><FaChevronRight /></button>
-                        </div>
-                    </div>
+                    <TestimonialCarousel testimonials={testimonials} />
                 </div>
             </section>
 

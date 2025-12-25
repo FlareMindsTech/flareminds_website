@@ -1,24 +1,15 @@
 import React, { useEffect } from "react";
-import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
 import SocialButton from "../components/SocialButton";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 
 export default function Home() {
+
   useEffect(() => {
-    const steps = document.querySelectorAll(".timeline-step");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    steps.forEach((step) => observer.observe(step));
   }, []);
+
+  useScrollAnimation('.premium-reveal', 'show');
 
   const marqueeText =
     "Website Design • SEO • Google Ads • SMM • Branding • Lead Gen • UI/UX • Strategy";
@@ -26,50 +17,35 @@ export default function Home() {
   return (
     <div className="home-page">
       <section className="hero-section">
-        <iframe
-          className="background-grid"
-          src="https://my.spline.design/interactiveaiwebsite-O4Uh22bUCEVjE9Wg3K1CQWtx/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          allow="fullscreen; autoplay; encrypted-media"
-          loading="lazy"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            pointerEvents: 'auto'
-          }}
-        />
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Marketing That Speaks Today's Digital Language
-          </h1>
+        <div className="bg-grid-overlay"></div>
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Marketing That Speaks Today's Digital Language
+            </h1>
 
-          <p className="hero-subtext">
-            We craft digital experiences that connect, convert, and scale. Let
-            your brand fly higher with Branding Wings.
-          </p>
+            <p className="hero-subtext">
+              We craft digital experiences that connect, convert, and scale. Let
+              your brand fly higher with Branding Wings.
+            </p>
 
-          <div className="hero-buttons" >
-            <Link to="/services" className="btn-primary">
-              Explore Services
-            </Link>
-            <Link to="/contact" className="btn-outline">
-              Get in Touch
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              marginTop: "2rem",
-            }}
-          >
-            <SocialButton />
+            <div className="hero-buttons">
+              <Link to="/services" className="btn-primary">
+                Explore Services
+              </Link>
+              <Link to="/contact" className="btn-outline">
+                Get in Touch
+              </Link>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <SocialButton />
+            </div>
           </div>
         </div>
       </section>
@@ -93,7 +69,7 @@ export default function Home() {
             { title: "Digital Growth", text: "Scale your brand effortlessly." },
 
           ].map((f, i) => (
-            <div key={i} className="feature-card">
+            <div key={i} className="feature-card premium-reveal">
               <h3>{f.title}</h3>
               <p>{f.text}</p>
             </div>
@@ -101,24 +77,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="process-section">
-        <h2 className="section-title">Our Creative Process</h2>
-
-        <div className="timeline">
-          {[
-            { step: "Discover", text: "We understand your goals." },
-            { step: "Design", text: "We craft stunning UI/UX." },
-            { step: "Develop", text: "We build fast, scalable solutions." },
-            { step: "Launch", text: "Your brand goes live to the world." },
-          ].map((s, i) => (
-            <div key={i} className="timeline-step">
-              <div className="timeline-dot"></div>
-              <h3>{s.step}</h3>
-              <p>{s.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="about-summary section-padding">
         <div className="container">

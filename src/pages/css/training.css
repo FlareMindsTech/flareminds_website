@@ -2,14 +2,13 @@
     padding-top: 0;
 }
 
-
 .training-hero {
     min-height: 90vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 8rem 0 6rem;
+    padding: var(--spacing-xl) 0 6rem;
 }
 
 .training-hero-content {
@@ -37,7 +36,6 @@
     }
 }
 
-
 .typing-cursor::after {
     content: '|';
     animation: blink 1s step-end infinite;
@@ -54,7 +52,6 @@
         opacity: 0;
     }
 }
-
 
 .curriculum-section {
     background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.05), transparent);
@@ -98,10 +95,8 @@
 
 .check-icon {
     color: #10b981;
-
     flex-shrink: 0;
 }
-
 
 .student-card {
     text-align: center;
@@ -112,7 +107,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid #0ea5e9;
+    border: 3px solid var(--text-accent);
     margin: 0 auto 1.5rem;
     object-fit: cover;
 }
@@ -133,7 +128,6 @@
     color: #64748b;
     font-size: 0.9rem;
 }
-
 
 .training-features-grid {
     display: grid;
@@ -161,14 +155,12 @@
     transform: rotateY(180deg);
 }
 
-
 .curriculum-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
-
 
 .testimonial-carousel-container {
     max-width: 800px;
@@ -220,10 +212,9 @@
 }
 
 .dot-indicator.active {
-    background: #0ea5e9;
+    background: var(--text-accent);
     transform: scale(1.2);
 }
-
 
 @media (max-width: 992px) {
     .training-hero {
@@ -243,7 +234,6 @@
 
     .module-card {
         flex-direction: column;
-
         gap: 1rem;
     }
 
