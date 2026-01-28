@@ -77,11 +77,32 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
     return (
         <div style={scaleStyle} className={className}>
             <div className={folderClassName} style={folderStyle} onClick={handleClick}>
+                {!open && (
+                    <div className="click-me-label">
+                        <svg viewBox="0 0 100 40" className="click-me-svg">
+                            <path
+                                id="curve"
+                                fill="transparent"
+                                d="M 0 30 Q 50 10 100 30"
+                            />
+                            <text width="100">
+                                <textPath xlinkHref="#curve" startOffset="50%" textAnchor="middle">
+                                    Click Me
+                                </textPath>
+                            </text>
+                        </svg>
+                        <div className="click-me-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </div>
+                    </div>
+                )}
                 <div className="folder__back">
                     {papers.map((item, i) => (
                         <div
                             key={i}
-                            className={`paper paper-${i + 1}`}
+                            className={`paper paper-${i + 1} ${item && typeof item === 'object' && item.type === 'image' ? 'paper-with-image' : ''}`}
                             onMouseMove={e => handlePaperMouseMove(e, i)}
                             onMouseLeave={e => handlePaperMouseLeave(e, i)}
                             style={
@@ -93,7 +114,11 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
                                     : {}
                             }
                         >
-                            {item}
+                            {item && typeof item === 'object' && item.type === 'image' ? (
+                                <img src={item.src} alt={item.alt || ''} className="paper-image" />
+                            ) : (
+                                item
+                            )}
                         </div>
                     ))}
                     <div className="folder__front"></div>

@@ -15,9 +15,23 @@ import logo9 from "../assets/logo/logo9.jpg";
 import DomeGallery from "../components/DomeGallery";
 import Folder from "../components/Folder";
 
+const randomImagesGlob = import.meta.glob('../assets/group/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+const RANDOM_POOL = Object.values(randomImagesGlob).map(m => m.default);
+
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
   const [showGallery, setShowGallery] = useState(false);
+  const [randomPapers, setRandomPapers] = useState([]);
+
+  useEffect(() => {
+    // Pick 3 random images from the pool
+    const shuffled = [...RANDOM_POOL].sort(() => 0.5 - Math.random());
+    setRandomPapers([
+      { type: 'image', src: shuffled[0], alt: 'Random Memory 1' },
+      { type: 'image', src: shuffled[1], alt: 'Random Memory 2' },
+      { type: 'image', src: shuffled[2], alt: 'Random Memory 3' }
+    ]);
+  }, []);
 
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
@@ -286,11 +300,16 @@ export default function About() {
           </div>
         </section>
 
-        <section className="memory-folder-section" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
-          <h2 className="section-title-main" style={{ marginBottom: '2rem' }}>Memory Live Forever</h2>
-          <div style={{ height: '600px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <section className="memory-folder-section">
+          <h2 className="section-title-main">Memory Live Forever</h2>
+          <div className="folder-container">
             <div onClick={() => setShowGallery(true)}>
-              <Folder size={3} color="#5227FF" className="custom-folder" />
+              <Folder
+                size={3}
+                color="#5227FF"
+                className="custom-folder"
+                items={randomPapers}
+              />
             </div>
           </div>
         </section>

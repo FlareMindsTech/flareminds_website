@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SocialButton from "../components/SocialButton";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import heroVideo from "../assets/Futuristic_Minimal_Tech_Background_Video.mp4";
 
 
 export default function Home() {
@@ -17,6 +18,15 @@ export default function Home() {
   return (
     <div className="home-page">
       <section className="hero-section">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hero-video"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="bg-grid-overlay"></div>
         <div className="container">
           <div className="hero-content">

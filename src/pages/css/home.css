@@ -34,9 +34,24 @@ body {
   align-items: center;
   justify-content: center;
   /* Center for clean look */
-  background: #f0f7ff;
-  /* Very light blue background */
+  background: #000;
+  /* Dark background for video fall-back */
   padding: 80px 0;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.6;
+  /* Control video brightness */
 }
 
 .hero-bg-elements {
@@ -115,33 +130,24 @@ body {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  /* Removed animation */
   letter-spacing: -0.04em;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hero-subtext {
-  color: #475569;
+  color: #e2e8f0;
   font-size: 1.125rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.7;
   font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-buttons {
@@ -571,11 +577,15 @@ body {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .hero-subtext {
     font-size: 1rem;
+    color: #cbd5e1;
   }
 
   .hero-buttons {

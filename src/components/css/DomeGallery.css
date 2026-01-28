@@ -214,6 +214,7 @@ main.sphere-main {
         height: 60vh;
         /* Fixed height reference for mobile */
         max-width: 100%;
+        margin: auto;
     }
 
     .edge-fade {

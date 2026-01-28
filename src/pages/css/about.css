@@ -855,3 +855,40 @@
     gap: 2rem;
   }
 }
+
+.memory-folder-section {
+  text-align: center;
+  padding: 5rem 1.5rem;
+  background: white;
+}
+
+.folder-container {
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .folder-container {
+    height: 400px;
+    margin-top: 4rem;
+    /* Move folder down to avoid overlapping title */
+  }
+}
+
+@media (max-width: 480px) {
+  .folder-container {
+    height: 300px;
+    transform: scale(0.65);
+    margin-top: 5rem;
+    /* More space for smaller screens */
+  }
+
+  .gallery-modal {
+    padding-top: 60px;
+    /* Push gallery down by 50-60px as requested */
+  }
+}

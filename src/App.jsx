@@ -13,10 +13,12 @@ import AppDevelopment from './pages/AppDevelopment'
 import MernTraining from './pages/training/MernTraining'
 import DigitalMarketingTraining from './pages/training/DigitalMarketingTraining'
 import AiMlTraining from './pages/training/AiMlTraining'
+import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col text-slate-800">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Routes>
