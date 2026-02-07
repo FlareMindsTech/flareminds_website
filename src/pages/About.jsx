@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
+import { getLocalBusinessSchema, getBreadcrumbSchema } from "../utils/structuredData";
 import vikiImg from "../assets/viki.jpg";
 import yasirImg from "../assets/yasir.jpg";
 import prakashImg from "../assets/prakash.jpg";
@@ -24,7 +26,6 @@ export default function About() {
   const [randomPapers, setRandomPapers] = useState([]);
 
   useEffect(() => {
-    // Pick 3 random images from the pool
     const shuffled = [...RANDOM_POOL].sort(() => 0.5 - Math.random());
     setRandomPapers([
       { type: 'image', src: shuffled[0], alt: 'Random Memory 1' },
@@ -57,29 +58,25 @@ export default function About() {
       name: "Prakash",
       role: "Web Developer",
       bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
-      image: prakashImg
-      ,
+      image: prakashImg,
     },
     {
       name: "Siva Kumar",
       role: "Backend Developer",
       bio: "Technical SEO expert improving visibility and ranking.",
-      image:
-        SivaImg,
+      image: SivaImg,
     },
     {
       name: "Priya",
       role: "Content Strategist",
       bio: "Creates powerful brand messaging and story-driven content.",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
     },
     {
       name: "Aravind",
       role: "Marketing Manager",
       bio: "Specialist in performance campaigns and scaling revenue.",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
     },
   ];
 
@@ -176,8 +173,24 @@ export default function About() {
     });
   }, []);
 
+  const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ];
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [getLocalBusinessSchema(), getBreadcrumbSchema(breadcrumbs)],
+  };
+
   return (
     <div className="lm-about-page">
+      <SEO
+        title="About FlareMinds - Digital Marketing & Technology Agency | Our Story"
+        description="Learn about FlareMinds, a full-service digital agency in Coimbatore. Meet our expert team of developers, designers, and marketers committed to transforming your digital presence with innovative solutions."
+        keywords="about flareminds, digital agency coimbatore, web development team, digital marketing experts, technology services, creative agency"
+        schema={combinedSchema}
+      />
       <header className="lm-hero">
         <div className="lm-hero-inner">
           <h1 className="lm-hero-title">FlareMinds — Design & Growth Agency</h1>
@@ -254,7 +267,6 @@ export default function About() {
           </div>
         </section>
 
-
         <section className="lm-section">
           <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
 
@@ -262,7 +274,7 @@ export default function About() {
             {team.map((m) => (
               <div className="premium-team-card" key={m.name}>
                 <div className="team-img-box">
-                  <img src={m.image} alt={m.name} />
+                  <img src={m.image} alt={`${m.name} - ${m.role} at FlareMinds`} />
                 </div>
 
                 <div className="team-info">
@@ -278,7 +290,6 @@ export default function About() {
           </div>
         </section>
 
-
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
@@ -287,7 +298,7 @@ export default function About() {
               return (
                 <div className="partner-item" key={idx}>
                   <div className="partner-logo-circle">
-                    <img src={partner.logo} alt={partner.name} />
+                    <img src={partner.logo} alt={`${partner.name} - ${partner.industry}`} />
                   </div>
                   <div className="partner-content">
                     <h4 className="partner-company">{partner.name}</h4>
@@ -348,14 +359,6 @@ export default function About() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.3)';
-                e.target.style.transform = 'scale(1.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                e.target.style.transform = 'scale(1)';
               }}
             >
               ×

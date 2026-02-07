@@ -1,16 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCode, FaMobileAlt, FaRocket, FaCheckCircle, FaCogs, FaServer } from "react-icons/fa";
-import "../pages/css/services.css"; // Reusing services CSS for consistency
+import SEO from "../components/SEO";
+import { getServiceSchema, getFAQSchema } from "../utils/structuredData";
+import "../pages/css/services.css";
 
 export default function WebDevelopment() {
+    const serviceData = {
+        title: "Website Development Services",
+        description: "Premium website development in Coimbatore. We build fast, responsive, and SEO-optimized websites using React and Next.js."
+    };
+
+    const faqItems = [
+        { q: "How long does it take to build a website?", a: "Typically 2-4 weeks depending on the complexity and number of pages." },
+        { q: "Do you provide hosting and domain?", a: "We can assist you in purchasing and setting up the best hosting and domain for your needs." },
+        { q: "Is the website SEO friendly?", a: "Yes, all our websites are built with SEO best practices including meta tags, sitemaps, and fast loading speeds." }
+    ];
+
+    const combinedSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            getServiceSchema(serviceData),
+            getFAQSchema(faqItems)
+        ]
+    };
+
     return (
         <div className="service-page-container">
-           
+            <SEO
+                title="Website Development Services in Coimbatore | Custom Web Design - FlareMinds"
+                description="Elevate your business with premium website development services in Coimbatore. Our React and Next.js experts build high-performance, SEO-friendly websites."
+                keywords="web development Coimbatore, website design company, custom web development, React JS development, ecommerce website building"
+                schema={combinedSchema}
+            />
+
             <section className="service-hero">
                 <div className="container">
                     <h1 className="hero-title">
-                        Premium <span className="text-gradient">Website Development</span>
+                        Why Choose Our <span className="text-gradient">Website Development?</span>
                     </h1>
                     <p className="hero-subtitle">
                         We build lightning-fast, responsive websites optimized for performance, conversions, and branding.
@@ -23,7 +50,7 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-           
+
             <section className="service-overview section-padding">
                 <div className="container">
                     <div className="row">
@@ -42,7 +69,6 @@ export default function WebDevelopment() {
                             </ul>
                         </div>
                         <div className="col-md-6">
-                            {/* Placeholder for an image or graphic */}
                             <div className="service-visual glass-card">
                                 <FaCode className="visual-icon" />
                                 <h3>Modern Architecture</h3>
@@ -53,7 +79,6 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-            {/* Process Section */}
             <section className="service-process section-padding bg-light">
                 <div className="container">
                     <h2 className="section-title text-center">Our Development Process</h2>
@@ -75,7 +100,6 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-            {/* Tech Stack */}
             <section className="tech-stack section-padding">
                 <div className="container text-center">
                     <h2 className="section-title">Technologies We Use</h2>
@@ -90,7 +114,6 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-            {/* FAQ Section */}
             <section className="service-faq section-padding">
                 <div className="container">
                     <h2 className="section-title text-center">Frequently Asked Questions</h2>
@@ -111,7 +134,6 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
-            {/* CTA */}
             <section className="service-cta text-center section-padding">
                 <div className="container">
                     <h2>Ready to Build Your Digital Presence?</h2>

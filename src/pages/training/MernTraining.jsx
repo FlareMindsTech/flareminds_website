@@ -13,6 +13,8 @@ import {
     FaChevronRight,
     FaCheckCircle
 } from "react-icons/fa";
+import SEO from "../../components/SEO";
+import { getCourseSchema, getFAQSchema } from "../../utils/structuredData";
 
 export default function MernTraining() {
     useEffect(() => {
@@ -41,7 +43,7 @@ export default function MernTraining() {
 
             if (!isDeleting && charIndex === currentPhrase.length) {
                 isDeleting = true;
-                typeSpeed = 2000;
+                typeSpeed = pauseTime;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -51,6 +53,7 @@ export default function MernTraining() {
             timeoutId = setTimeout(type, typeSpeed);
         }
 
+        const pauseTime = 2000;
         type();
 
         return () => clearTimeout(timeoutId);
@@ -102,15 +105,39 @@ export default function MernTraining() {
         setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     };
 
+    const courseData = {
+        name: "MERN Stack Development Training",
+        description: "Comprehensive MERN Stack training in Coimbatore. Master MongoDB, Express, React, and Node.js with hands-on projects and placement assistance."
+    };
+
+    const faqItems = [
+        { q: "What is the MERN stack?", a: "The MERN stack consists of MongoDB, Express.js, React, and Node.js, used for full-stack JavaScript web development." },
+        { q: "Do you provide placements after the MERN course?", a: "Yes, we offer 100% placement assistance and interview preparation for our MERN stack students." },
+        { q: "Is this course suitable for beginners?", a: "Yes, our curriculum starts from the basics and covers advanced topics with real-world projects." }
+    ];
+
+    const combinedSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            getCourseSchema(courseData),
+            getFAQSchema(faqItems)
+        ]
+    };
+
     return (
         <div className="training-page">
-            {/* Hero Section */}
+            <SEO
+                title="MERN Stack Developer Course in Coimbatore | Full Stack Training - FlareMinds"
+                description="Master Full Stack Web Development with our MERN Stack training. Learn MongoDB, Express, React, and Node.js through real-world projects. Starting batches soon in Coimbatore."
+                keywords="MERN stack training Coimbatore, full stack development course, React JS training, Node JS course, MongoDB training, web development training Coimbatore"
+                schema={combinedSchema}
+            />
             <section className="hero-section training-hero">
                 <div className="container hero-container">
                     <div className="hero-content training-hero-content">
                         <div className="badge fade-up-element">New MERN Batch Starting Soon</div>
                         <h1 className="hero-title fade-up-element">
-                            Become a <br /> <span className="text-gradient typing-cursor" id="typing-text">Full Stack Dev</span>
+                            How to Become a <br /> <span className="text-gradient typing-cursor" id="typing-text">Full Stack Dev</span>
                         </h1>
                         <p className="hero-subtext fade-up-element">
                             Master MongoDB, Express, React, and Node.js. Build full-stack applications from scratch to deployment.
@@ -130,7 +157,6 @@ export default function MernTraining() {
                 </div>
             </section>
 
-            {/* Features Section */}
             <section className="features-section">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -158,7 +184,6 @@ export default function MernTraining() {
                 </div>
             </section>
 
-            {/* Curriculum Section */}
             <section className="curriculum-section section-padding" id="curriculum">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -201,7 +226,6 @@ export default function MernTraining() {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
             <section className="section-padding bg-light">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -236,7 +260,6 @@ export default function MernTraining() {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <section className="home-contact-section text-center">
                 <div className="container">
                     <div className="contact-cta-box rounded-2xl">
@@ -251,4 +274,3 @@ export default function MernTraining() {
         </div>
     );
 }
-

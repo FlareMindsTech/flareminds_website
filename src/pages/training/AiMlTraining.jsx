@@ -11,6 +11,8 @@ import {
 import { useTypingEffect } from "../../hooks/useTypingEffect";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import TestimonialCarousel from "../../components/TestimonialCarousel";
+import SEO from "../../components/SEO";
+import { getCourseSchema, getFAQSchema } from "../../utils/structuredData";
 
 export default function AiMlTraining() {
     useTypingEffect(
@@ -41,15 +43,39 @@ export default function AiMlTraining() {
         }
     ];
 
+    const courseData = {
+        name: "Artificial Intelligence & Machine Learning Course",
+        description: "Master AI and ML with Python. Learn deep learning, neural networks, and generative AI through hands-on projects in Coimbatore."
+    };
+
+    const faqItems = [
+        { q: "What are the prerequisites for the AI/ML course?", a: "Basic knowledge of programming (preferably Python) and high school mathematics is sufficient to start." },
+        { q: "Will I work on real-world projects?", a: "Yes, you will build projects like face recognition, sentiment analysis, and generative AI chatbots." },
+        { q: "Is Python mandatory for AI/ML?", a: "Python is the primary language for AI/ML due to its vast library support. We cover Python from scratch in our course." }
+    ];
+
+    const combinedSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            getCourseSchema(courseData),
+            getFAQSchema(faqItems)
+        ]
+    };
+
     return (
         <div className="training-page">
-            {/* Hero Section */}
+            <SEO
+                title="AI & Machine Learning Training in Coimbatore | Python & Data Science - FlareMinds"
+                description="Master the future with our AI & ML course. Learn Python, Deep Learning, and GenAI from industry experts. Start your journey in Artificial Intelligence today."
+                keywords="AI ML training Coimbatore, machine learning course, data science training, Python for AI, deep learning course, artificial intelligence training"
+                schema={combinedSchema}
+            />
             <section className="hero-section training-hero">
                 <div className="container hero-container">
                     <div className="hero-content training-hero-content">
                         <div className="badge fade-up-element">AI & ML Future Tech</div>
                         <h1 className="hero-title fade-up-element">
-                            Become an <br />
+                            How to Become an <br />
                             <span className="text-gradient typing-cursor" id="typing-text">AI Engineer</span>
                         </h1>
                         <p className="hero-subtext fade-up-element">
@@ -70,7 +96,6 @@ export default function AiMlTraining() {
                 </div>
             </section>
 
-            {/* Features Section */}
             <section className="features-section">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -99,7 +124,6 @@ export default function AiMlTraining() {
                 </div>
             </section>
 
-            {/* Curriculum Section */}
             <section className="curriculum-section section-padding" id="curriculum">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -143,7 +167,6 @@ export default function AiMlTraining() {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
             <section className="section-padding bg-light">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -155,7 +178,6 @@ export default function AiMlTraining() {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <section className="home-contact-section text-center">
                 <div className="container">
                     <div className="contact-cta-box rounded-2xl">
@@ -170,4 +192,3 @@ export default function AiMlTraining() {
         </div>
     );
 }
-

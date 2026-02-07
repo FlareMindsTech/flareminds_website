@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import "../pages/css/services.css"; // Reusing services CSS for consistency
+import { FaExternalLinkAlt } from "react-icons/fa";
+import SEO from "../components/SEO";
+import { getBreadcrumbSchema } from "../utils/structuredData";
+import "../pages/css/services.css";
 
 export default function Projects() {
     const projects = [
@@ -51,8 +53,19 @@ export default function Projects() {
         }
     ];
 
+    const breadcrumbs = [
+        { name: "Home", path: "/" },
+        { name: "Projects", path: "/projects" },
+    ];
+
     return (
         <div className="projects-page">
+            <SEO
+                title="Our Projects & Portfolio - FlareMinds | Digital Solutions Showcase"
+                description="Explore FlareMinds' portfolio of successful digital projects including web development, app development, ecommerce solutions, and branding. See how we transform businesses."
+                keywords="portfolio, web development projects, app development showcase, digital projects, ecommerce websites, branding projects, case studies"
+                schema={getBreadcrumbSchema(breadcrumbs)}
+            />
             <section className="hero-section text-center">
                 <div className="container">
                     <h1 className="hero-title">Our <span className="text-gradient">Work</span></h1>
@@ -61,14 +74,13 @@ export default function Projects() {
                     </p>
                 </div>
             </section>
-
             <section className="projects-grid-section section-padding">
                 <div className="container">
                     <div className="projects-grid">
                         {projects.map((project) => (
                             <div key={project.id} className="project-card glass-card">
                                 <div className="project-image">
-                                    <img src={project.image} alt={project.title} />
+                                    <img src={project.image} alt={`${project.title} - ${project.category} case study`} />
                                     <div className="project-overlay">
                                         <a href={project.link} className="btn-icon"><FaExternalLinkAlt /></a>
                                     </div>
@@ -92,7 +104,6 @@ export default function Projects() {
                     </div>
                 </div>
             </section>
-
             <section className="cta-section text-center section-padding">
                 <div className="container">
                     <h2>Have a project in mind?</h2>

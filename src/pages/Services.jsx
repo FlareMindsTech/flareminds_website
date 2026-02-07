@@ -1,9 +1,9 @@
 import React, { useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from "../utils/structuredData";
 import {
-  FaCode, FaMobileAlt, FaRocket, FaCheckCircle, FaCogs, FaServer,
-  FaChartLine, FaBullhorn, FaFunnelDollar, FaShoppingCart, FaBuilding,
-  FaUserTie, FaCloud
+  FaRocket, FaCheckCircle
 } from "react-icons/fa";
 import "../pages/css/services.css";
 
@@ -269,9 +269,35 @@ export default function Services() {
   );
 
   const currentService = services[slug] || services["website-development"];
+  const pageTitle = `${currentService.title} Services | FlareMinds - Digital Agency`;
+  const pageDescription = currentService.hero.subtitle;
+
+  const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: currentService.title, path: `/services/${slug || 'website-development'}` },
+  ];
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      getServiceSchema({
+        title: currentService.title,
+        description: currentService.hero.subtitle,
+      }),
+      getFAQSchema(currentService.faq),
+      getBreadcrumbSchema(breadcrumbs),
+    ],
+  };
 
   return (
     <div className="service-page-container">
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        keywords={`${currentService.title.toLowerCase()}, ${currentService.techStack.join(', ').toLowerCase()}, digital marketing services, professional services`}
+        schema={combinedSchema}
+      />
       <section className="service-hero">
         <div className="container">
           <h1 className="hero-title">
@@ -286,7 +312,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
       <section id="overview" className="service-overview section-padding">
         <div className="container">
           <div className="row">
@@ -309,7 +334,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
       <section className="service-process section-padding bg-light">
         <div className="container">
           <h2 className="section-title text-center">Our Process</h2>
@@ -324,7 +348,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
       <section className="tech-stack section-padding">
         <div className="container text-center">
           <h2 className="section-title">Tools & Technologies</h2>
@@ -335,7 +358,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
       <section className="service-faq section-padding">
         <div className="container">
           <h2 className="section-title text-center">Frequently Asked Questions</h2>
@@ -349,7 +371,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
       <section className="service-cta text-center section-padding">
         <div className="container">
           <h2>Ready to Get Started?</h2>

@@ -9,7 +9,6 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/cropped-fm-logo-2-1.png";
 import "../components/css/navbar.css";
 
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -168,9 +167,8 @@ export default function Navbar() {
             setMegaOpen(false);
           }}
         >
-          <img src={logo} alt="FlareMinds" className="logo" />
+          <img src={logo} alt="FlareMinds - Digital Marketing & Technology Services" className="logo" />
         </Link>
-
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
           <NavLink
             to="/"
@@ -179,7 +177,6 @@ export default function Navbar() {
           >
             Home
           </NavLink>
-
           <NavLink
             to="/about"
             className={navClass}
@@ -187,7 +184,6 @@ export default function Navbar() {
           >
             About
           </NavLink>
-
           <div
             className="services-wrapper"
             onMouseEnter={handleMouseEnter}
@@ -203,14 +199,12 @@ export default function Navbar() {
             >
               Services <span style={{ fontSize: "12px" }}>▾</span>
             </button>
-
             <div
               ref={megaRef}
               className={`mega-menu ${megaOpen ? "show" : ""}`}
               role="menu"
             >
               <div className="mega-content-wrapper">
-
                 <div className="mega-sidebar">
                   {megaSections.map((sec) => (
                     <div
@@ -224,8 +218,6 @@ export default function Navbar() {
                     </div>
                   ))}
                 </div>
-
-
                 <div className="mega-details">
                   {megaSections.map((sec) => (
                     <div
@@ -256,7 +248,6 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
           <NavLink
             to="/projects"
             className={navClass}
@@ -264,7 +255,6 @@ export default function Navbar() {
           >
             Products
           </NavLink>
-
           <NavLink
             to="/blog"
             className={navClass}
@@ -272,7 +262,6 @@ export default function Navbar() {
           >
             Blog
           </NavLink>
-
           <NavLink
             to="/contact"
             className={navClass}
@@ -281,25 +270,24 @@ export default function Navbar() {
             Contact
           </NavLink>
         </nav>
-
         <div className="nav-right-info">
           <span className="nav-phone">📞 +91 9500950813</span>
           <span className="nav-email">✉ Info@flaremindstech.com</span>
         </div>
-
         <button
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => {
             setMenuOpen((p) => !p);
             setMegaOpen(false);
           }}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
-
       {menuOpen && (
         <div className="mobile-accordion">
           <NavLink
@@ -316,7 +304,6 @@ export default function Navbar() {
           >
             About
           </NavLink>
-
           <div className="mobile-acc-section">
             <button
               className="acc-title"
@@ -327,13 +314,11 @@ export default function Navbar() {
                 {mobileAccordion.services ? "▾" : "▸"}
               </span>
             </button>
-
             {mobileAccordion.services && (
               <div className="acc-body">
                 {megaSections.map((sec, idx) => (
                   <div key={idx} className="acc-group">
                     <div className="acc-group-title">{sec.title}</div>
-
                     {sec.items.map((it, j) => (
                       <Link
                         key={j}
@@ -350,7 +335,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
           <NavLink
             to="/projects"
             className="mobile-link"
@@ -358,7 +342,6 @@ export default function Navbar() {
           >
             Products
           </NavLink>
-
           <NavLink
             to="/blog"
             className="mobile-link"
@@ -366,7 +349,6 @@ export default function Navbar() {
           >
             Blog
           </NavLink>
-
           <NavLink
             to="/contact"
             className="mobile-link"
@@ -376,7 +358,6 @@ export default function Navbar() {
           </NavLink>
         </div>
       )}
-
     </header>
   );
 }

@@ -21,7 +21,6 @@ export default function Footer() {
             <li>
               <Link to="/about">About</Link>
             </li>
-           
           </ul>
         </div>
         <div className="footer-links">
@@ -30,7 +29,6 @@ export default function Footer() {
             <li>
               <Link to="/blog">Blog</Link>
             </li>
-            
           </ul>
         </div>
         <div className="footer-contact">

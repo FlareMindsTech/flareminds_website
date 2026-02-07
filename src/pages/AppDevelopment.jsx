@@ -1,16 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaMobileAlt, FaApple, FaAndroid, FaCheckCircle, FaRocket } from "react-icons/fa";
+import SEO from "../components/SEO";
+import { getServiceSchema, getFAQSchema } from "../utils/structuredData";
 import "../pages/css/services.css";
 
 export default function AppDevelopment() {
+    const serviceData = {
+        title: "Mobile App Development Services",
+        description: "Expert mobile app development in Coimbatore. We build high-performance Android & iOS apps using React Native and Flutter."
+    };
+
+    const faqItems = [
+        { q: "Do you build for both iOS and Android?", a: "Yes, we use cross-platform technologies like React Native and Flutter to deploy to both platforms efficiently." },
+        { q: "How do you handle app maintenance?", a: "We offer maintenance packages to handle updates, bug fixes, and feature additions post-launch." },
+        { q: "Can you integrate payment gateways?", a: "Absolutely. We integrate Razorpay, Stripe, PayPal, and other major payment gateways securely." }
+    ];
+
+    const combinedSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            getServiceSchema(serviceData),
+            getFAQSchema(faqItems)
+        ]
+    };
+
     return (
         <div className="service-page-container">
-            {/* Hero Section */}
+            <SEO
+                title="Mobile App Development Services in Coimbatore | Android & iOS - FlareMinds"
+                description="Build powerful mobile applications with Coimbatore's leading app development agency. Specializing in React Native and Flutter for high-performance apps."
+                keywords="app development Coimbatore, mobile app design, React Native developers, Flutter app development, iOS app development India"
+                schema={combinedSchema}
+            />
             <section className="service-hero">
                 <div className="container">
                     <h1 className="hero-title">
-                        High-Performance <span className="text-gradient">App Development</span>
+                        Why Scale with Our <span className="text-gradient">App Development?</span>
                     </h1>
                     <p className="hero-subtitle">
                         We build powerful, high-performance Android & iOS apps using React Native and Flutter.
@@ -23,7 +49,6 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
-            {/* Overview Section */}
             <section className="service-overview section-padding">
                 <div className="container">
                     <div className="row">
@@ -51,7 +76,6 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
-            {/* Process Section */}
             <section className="service-process section-padding bg-light">
                 <div className="container">
                     <h2 className="section-title text-center">App Development Workflow</h2>
@@ -73,7 +97,6 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
-            {/* Tech Stack */}
             <section className="tech-stack section-padding">
                 <div className="container text-center">
                     <h2 className="section-title">Technologies We Use</h2>
@@ -87,7 +110,6 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
-            {/* FAQ Section */}
             <section className="service-faq section-padding">
                 <div className="container">
                     <h2 className="section-title text-center">Frequently Asked Questions</h2>
@@ -108,7 +130,6 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
-            {/* CTA */}
             <section className="service-cta text-center section-padding">
                 <div className="container">
                     <h2>Turn Your Idea Into an App</h2>

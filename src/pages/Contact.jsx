@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import emailjs from 'emailjs-com'
 import { FaPlus } from 'react-icons/fa'
+import SEO from '../components/SEO'
+import { getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/structuredData'
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -51,22 +53,34 @@ export default function Contact() {
           setForm({ name: '', email: '', service: '', message: '' })
         },
         (error) => {
-          console.error('EmailJS Error:', error)
           setStatus('❌ Something went wrong. Please try again later.')
         }
       )
   }
+  const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [getLocalBusinessSchema(), getBreadcrumbSchema(breadcrumbs)],
+  };
+
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact FlareMinds - Get in Touch | Digital Marketing Agency"
+        description="Contact FlareMinds for web development, app development, SEO, and digital marketing services. Located in Coimbatore. Call +91 9500950813 or email Info@flaremindstech.com"
+        keywords="contact digital agency, web development contact, SEO services contact, digital marketing enquiry, Coimbatore agency contact"
+        schema={combinedSchema}
+      />
       <div className="container mx-auto px-6 py-16">
-
         <h2>Contact Us</h2>
         <p className="text-gray-600">
           Let's talk about your project. Choose a service and send us a message.
         </p>
-
         <div className="contact-grid">
-
           <div className="contact-form-section">
             <form onSubmit={onSubmit} className="space-y-4">
               <h3>Name:</h3>
@@ -128,9 +142,7 @@ export default function Contact() {
                 placeholder="Your message"
                 className="form-textarea"
               />
-
               <button type="submit" className="form-btn">Send Message</button>
-
               {status && (
                 <p className={`status-msg ${status.startsWith('✅') ? 'success' : 'error'}`}>
                   {status}
@@ -143,8 +155,6 @@ export default function Contact() {
             <p>Sulur, Coimbatore, India</p>
             <p>Info@flaremindstech.com</p>
             <p>+91 9500950813</p>
-
-
             <div className="map-container" style={{ width: "100%", height: "300px", marginTop: "20px" }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!4v1763035355439!6m8!1m7!1saxd5cz2yku7vqS7XuBFJGg!2m2!1d11.02386225852298!2d77.12253729558468!3f107.66218180387182!4f-10.082819578773567!5f0.7820865974627469"
@@ -156,14 +166,9 @@ export default function Contact() {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-
       <a
         href="https://wa.me/919500950813"
         target="_blank"

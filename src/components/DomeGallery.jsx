@@ -2,11 +2,9 @@ import { useEffect, useMemo, useRef, useCallback, useState } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './css/DomeGallery.css';
 
-
 const imagesGlob = import.meta.glob('../assets/group/*.{png,jpg,jpeg,svg,webp}', { eager: true });
 
 const DEFAULT_IMAGES = Object.entries(imagesGlob).map(([path, module]) => {
-
     const filename = path.split('/').pop().split('.')[0];
     return {
         src: module.default,
@@ -119,8 +117,6 @@ export default function DomeGallery({
     const { segments, openedW, openedH, radiusMod } = responsiveParams;
     const openedImageWidth = openedW;
     const openedImageHeight = openedH;
-
-    // Adjust effective minRadius based on screen size
     const effectiveMinRadius = minRadius * radiusMod;
 
     const rootRef = useRef(null);
@@ -634,12 +630,10 @@ export default function DomeGallery({
                         ))}
                     </div>
                 </div>
-
                 <div className="overlay" />
                 <div className="overlay overlay--blur" />
                 <div className="edge-fade edge-fade--top" />
                 <div className="edge-fade edge-fade--bottom" />
-
                 <div className="viewer" ref={viewerRef}>
                     <div ref={scrimRef} className="scrim" />
                     <div ref={frameRef} className="frame" />

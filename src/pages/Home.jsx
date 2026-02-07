@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SocialButton from "../components/SocialButton";
+import SEO from "../components/SEO";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { getOrganizationSchema, getWebSiteSchema } from "../utils/structuredData";
 import heroVideo from "../assets/Futuristic_Minimal_Tech_Background_Video.mp4";
 
-
 export default function Home() {
-
   useEffect(() => {
   }, []);
 
@@ -15,8 +15,19 @@ export default function Home() {
   const marqueeText =
     "Website Design • SEO • Google Ads • SMM • Branding • Lead Gen • UI/UX • Strategy";
 
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [getOrganizationSchema(), getWebSiteSchema()],
+  };
+
   return (
     <div className="home-page">
+      <SEO
+        title="FlareMinds - Digital Marketing & Technology Services | Web Development, SEO, App Development"
+        description="FlareMinds is a leading digital agency in Coimbatore offering web development, app development, SEO, social media marketing, Google Ads, and business automation. Transform your digital presence with our expert team."
+        keywords="digital marketing agency, web development, app development, SEO services, social media marketing, Google Ads, business automation, digital agency Coimbatore, MERN stack development, ecommerce solutions, lead generation"
+        schema={combinedSchema}
+      />
       <section className="hero-section">
         <video
           autoPlay
@@ -33,12 +44,10 @@ export default function Home() {
             <h1 className="hero-title">
               Marketing That Speaks Today's Digital Language
             </h1>
-
             <p className="hero-subtext">
               We craft digital experiences that connect, convert, and scale. Let
               your brand fly higher with Branding Wings.
             </p>
-
             <div className="hero-buttons">
               <Link to="/services" className="btn-primary">
                 Explore Services
@@ -65,10 +74,8 @@ export default function Home() {
           <span>{marqueeText}</span>
         </div>
       </section>
-
       <section className="features-section">
         <h2 className="section-title">Why Choose FlareMinds?</h2>
-
         <div className="features-grid">
           {[
             {
@@ -77,7 +84,6 @@ export default function Home() {
             },
             { title: "High-End Designs", text: "Modern UI/UX that converts." },
             { title: "Digital Growth", text: "Scale your brand effortlessly." },
-
           ].map((f, i) => (
             <div key={i} className="feature-card premium-reveal">
               <h3>{f.title}</h3>
@@ -86,8 +92,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-
       <section className="about-summary section-padding">
         <div className="container">
           <div className="row">
@@ -113,10 +117,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="services-preview">
         <h2 className="section-title">Our Services</h2>
-
         <div className="services-grid">
           {[
             "Website Design & Development",
@@ -131,7 +133,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       <section className="portfolio-preview section-padding">
         <div className="container">
           <h2 className="section-title">Featured Work</h2>
@@ -154,7 +155,7 @@ export default function Home() {
               },
             ].map((p, i) => (
               <div key={i} className="project-card glass-card">
-                <img src={p.img} alt={p.title} className="project-thumb" />
+                <img src={p.img} alt={`${p.title} - ${p.cat} project showcase`} className="project-thumb" />
                 <div className="project-info">
                   <span>{p.cat}</span>
                   <h3>{p.title}</h3>
@@ -169,8 +170,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

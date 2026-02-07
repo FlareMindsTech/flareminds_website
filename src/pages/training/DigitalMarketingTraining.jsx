@@ -11,6 +11,8 @@ import {
 import { useTypingEffect } from "../../hooks/useTypingEffect";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import TestimonialCarousel from "../../components/TestimonialCarousel";
+import SEO from "../../components/SEO";
+import { getCourseSchema, getFAQSchema } from "../../utils/structuredData";
 
 export default function DigitalMarketingTraining() {
     useTypingEffect(
@@ -41,15 +43,39 @@ export default function DigitalMarketingTraining() {
         }
     ];
 
+    const courseData = {
+        name: "Practical Digital Marketing Masterclass",
+        description: "Comprehensive digital marketing training in Coimbatore. Learn SEO, Social Media Marketing, Google Ads, and Data Analytics with live projects."
+    };
+
+    const faqItems = [
+        { q: "What will I learn in the digital marketing course?", a: "You will master SEO, Social Media Marketing (SMM), Google Ads (PPC), Content Marketing, and Google Analytics 4." },
+        { q: "Do you offer certifications?", a: "Yes, you will receive a professional certification from FlareMinds and guidance for Google and HubSpot certifications." },
+        { q: "Are the classes online or offline?", a: "We offer both online and offline classes in Coimbatore with hands-on practical training." }
+    ];
+
+    const combinedSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            getCourseSchema(courseData),
+            getFAQSchema(faqItems)
+        ]
+    };
+
     return (
         <div className="training-page">
-            {/* Hero Section */}
+            <SEO
+                title="Best Digital Marketing Training in Coimbatore | SEO & Ads Course - FlareMinds"
+                description="Master Digital Marketing with our comprehensive training. Learn SEO, SMM, and Google Ads from experts. Join the best digital marketing course in Coimbatore today."
+                keywords="digital marketing training Coimbatore, SEO course Coimbatore, social media marketing training, Google Ads course, digital marketing agency training"
+                schema={combinedSchema}
+            />
             <section className="hero-section training-hero">
                 <div className="container hero-container">
                     <div className="hero-content training-hero-content">
                         <div className="badge fade-up-element">Digital Marketing Masterclass</div>
                         <h1 className="hero-title fade-up-element">
-                            Become a <br /> <span className="text-gradient typing-cursor" id="typing-text">Marketer</span>
+                            How to Become a <br /> <span className="text-gradient typing-cursor" id="typing-text">Marketer</span>
                         </h1>
                         <p className="hero-subtext fade-up-element">
                             Master SEO, Social Media, Google Ads, and Analytics. Drive traffic, engagement, and sales for any business.
@@ -69,7 +95,6 @@ export default function DigitalMarketingTraining() {
                 </div>
             </section>
 
-            {/* Features Section */}
             <section className="features-section">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -98,7 +123,6 @@ export default function DigitalMarketingTraining() {
                 </div>
             </section>
 
-            {/* Curriculum Section */}
             <section className="curriculum-section section-padding" id="curriculum">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -141,7 +165,6 @@ export default function DigitalMarketingTraining() {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
             <section className="section-padding bg-light">
                 <div className="container">
                     <div className="text-center mb-16">
@@ -153,7 +176,6 @@ export default function DigitalMarketingTraining() {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <section className="home-contact-section text-center">
                 <div className="container">
                     <div className="contact-cta-box rounded-2xl">
@@ -168,4 +190,3 @@ export default function DigitalMarketingTraining() {
         </div>
     );
 }
-
