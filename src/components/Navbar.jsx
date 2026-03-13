@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/cropped-fm-logo-2-1.png";
 import "../components/css/navbar.css";
 
@@ -15,6 +15,8 @@ export default function Navbar() {
   const [activeCategory, setActiveCategory] = useState("Courses");
   const [mobileAccordion, setMobileAccordion] = useState({});
   const [isPointer, setIsPointer] = useState(false);
+  
+  const location = useLocation();
 
   const wrapperRef = useRef(null);
   const servicesBtnRef = useRef(null);
@@ -231,7 +233,7 @@ export default function Navbar() {
                           <Link
                             key={j}
                             to={it.to}
-                            className="mega-card"
+                            className={`mega-card ${location.pathname === it.to ? "active" : ""}`}
                             onClick={() => {
                               setMegaOpen(false);
                               setMenuOpen(false);

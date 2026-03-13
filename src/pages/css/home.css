@@ -33,9 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Center for clean look */
-  background: #000;
-  /* Dark background for video fall-back */
+  background: #ffffff;
   padding: 80px 0;
 }
 
@@ -130,17 +128,16 @@ body {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   letter-spacing: -0.04em;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hero-subtext {
-  color: #e2e8f0;
+  color: #475569;
   font-size: 1.125rem;
   margin-bottom: 2.5rem;
   line-height: 1.7;
@@ -578,14 +575,14 @@ body {
 
   .hero-title {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 100%);
     -webkit-background-clip: text;
     background-clip: text;
   }
 
   .hero-subtext {
     font-size: 1rem;
-    color: #cbd5e1;
+    color: #475569;
   }
 
   .hero-buttons {
