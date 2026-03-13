@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+
 
 export default function SEO({
     title = 'FlareMinds - Digital Marketing & Technology Services',
@@ -15,7 +15,7 @@ export default function SEO({
     const fullImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
     return (
-        <Helmet>
+        <>
             <title>{title}</title>
             <meta name="title" content={title} />
             <meta name="description" content={description} />
@@ -41,6 +41,6 @@ export default function SEO({
                     {JSON.stringify(schema)}
                 </script>
             )}
-        </Helmet>
+        </>
     );
 }
