@@ -114,6 +114,16 @@ img {
   padding: 0 var(--spacing-md);
 }
 
+.section-padding {
+  padding: 5.5rem 0;
+}
+
+.bg-light {
+  background: #f8fafc;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -217,6 +227,23 @@ img {
 
 .icon-check {
   color: #10b981;
+}
+
+.service-overview .row {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.service-overview .col-md-6 {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .service-overview .row {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
 }
 
 .service-visual {

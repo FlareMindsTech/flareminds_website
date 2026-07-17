@@ -37,7 +37,7 @@ export default function WebDevelopment() {
             <section className="service-hero">
                 <div className="container">
                     <h1 className="hero-title">
-                        Why Choose Our <span className="text-gradient">Website Development?</span>
+                        Premium <span className="text-gradient">Website Development</span> Services
                     </h1>
                     <p className="hero-subtitle">
                         We build lightning-fast, responsive websites optimized for performance, conversions, and branding.
@@ -45,7 +45,7 @@ export default function WebDevelopment() {
                     </p>
                     <div className="hero-buttons">
                         <Link to="/contact" className="btn-primary">Get a Quote</Link>
-                        <a href="#portfolio" className="btn-outline">View Work</a>
+                        <Link to="/projects" className="btn-outline">View Work</Link>
                     </div>
                 </div>
             </section>
@@ -79,6 +79,20 @@ export default function WebDevelopment() {
                 </div>
             </section>
 
+            <section className="tech-stack section-padding">
+                <div className="container text-center">
+                    <h2 className="section-title">Technologies We Use</h2>
+                    <div className="tech-icons">
+                        <span className="tech-tag">React.js</span>
+                        <span className="tech-tag">Next.js</span>
+                        <span className="tech-tag">Tailwind CSS</span>
+                        <span className="tech-tag">Node.js</span>
+                        <span className="tech-tag">MongoDB</span>
+                        <span className="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </section>
+
             <section className="service-process section-padding bg-light">
                 <div className="container">
                     <h2 className="section-title text-center">Our Development Process</h2>
@@ -96,20 +110,6 @@ export default function WebDevelopment() {
                                 <p>{item.desc}</p>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="tech-stack section-padding">
-                <div className="container text-center">
-                    <h2 className="section-title">Technologies We Use</h2>
-                    <div className="tech-icons">
-                        <span className="tech-tag">React.js</span>
-                        <span className="tech-tag">Next.js</span>
-                        <span className="tech-tag">Tailwind CSS</span>
-                        <span className="tech-tag">Node.js</span>
-                        <span className="tech-tag">MongoDB</span>
-                        <span className="tech-tag">AWS</span>
                     </div>
                 </div>
             </section>

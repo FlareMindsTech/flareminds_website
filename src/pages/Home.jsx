@@ -163,7 +163,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="portfolio-action text-center mt-8">
             <Link to="/projects" className="btn-outline">
               View All Projects
             </Link>

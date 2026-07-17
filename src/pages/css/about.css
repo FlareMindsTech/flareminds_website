@@ -68,6 +68,7 @@
   font-size: 1.4rem;
   font-weight: 800;
   color: #1e3a8a;
+  text-align: center;
 }
 
 .premium-team-grid {
@@ -406,6 +407,7 @@
 
 .value-prop-content {
   flex: 1;
+  padding-right: 3.5rem;
 }
 
 .value-prop-title-v2 {
@@ -441,7 +443,9 @@
   justify-content: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  line-height: 1;
+  line-height: 0;
+  padding: 0;
+  padding-bottom: 4px;
 }
 
 .value-prop-card-v2:nth-child(2) .expand-btn {

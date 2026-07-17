@@ -36,7 +36,7 @@ export default function AppDevelopment() {
             <section className="service-hero">
                 <div className="container">
                     <h1 className="hero-title">
-                        Why Scale with Our <span className="text-gradient">App Development?</span>
+                        Premium <span className="text-gradient">Mobile App Development</span> Services
                     </h1>
                     <p className="hero-subtitle">
                         We build powerful, high-performance Android & iOS apps using React Native and Flutter.
@@ -44,7 +44,7 @@ export default function AppDevelopment() {
                     </p>
                     <div className="hero-buttons">
                         <Link to="/contact" className="btn-primary">Get a Quote</Link>
-                        <a href="#portfolio" className="btn-outline">View Work</a>
+                        <Link to="/projects" className="btn-outline">View Work</Link>
                     </div>
                 </div>
             </section>
@@ -76,6 +76,19 @@ export default function AppDevelopment() {
                 </div>
             </section>
 
+            <section className="tech-stack section-padding">
+                <div className="container text-center">
+                    <h2 className="section-title">Technologies We Use</h2>
+                    <div className="tech-icons">
+                        <span className="tech-tag">React Native</span>
+                        <span className="tech-tag">Flutter</span>
+                        <span className="tech-tag">Firebase</span>
+                        <span className="tech-tag">Node.js</span>
+                        <span className="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </section>
+
             <section className="service-process section-padding bg-light">
                 <div className="container">
                     <h2 className="section-title text-center">App Development Workflow</h2>
@@ -93,19 +106,6 @@ export default function AppDevelopment() {
                                 <p>{item.desc}</p>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="tech-stack section-padding">
-                <div className="container text-center">
-                    <h2 className="section-title">Technologies We Use</h2>
-                    <div className="tech-icons">
-                        <span className="tech-tag">React Native</span>
-                        <span className="tech-tag">Flutter</span>
-                        <span className="tech-tag">Firebase</span>
-                        <span className="tech-tag">Node.js</span>
-                        <span className="tech-tag">PostgreSQL</span>
                     </div>
                 </div>
             </section>

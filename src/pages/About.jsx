@@ -66,18 +66,6 @@ export default function About() {
       bio: "Technical SEO expert improving visibility and ranking.",
       image: SivaImg,
     },
-    {
-      name: "Priya",
-      role: "Content Strategist",
-      bio: "Creates powerful brand messaging and story-driven content.",
-      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      name: "Aravind",
-      role: "Marketing Manager",
-      bio: "Specialist in performance campaigns and scaling revenue.",
-      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80",
-    },
   ];
 
   const valueProps = [
