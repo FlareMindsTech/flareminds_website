@@ -2,15 +2,104 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SocialButton from "../components/SocialButton";
 import SEO from "../components/SEO";
+import "../components/Services3D.css";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { getOrganizationSchema, getWebSiteSchema } from "../utils/structuredData";
 import heroVideo from "../assets/Futuristic_Minimal_Tech_Background_Video.mp4";
+import { FaRegLightbulb, FaBezierCurve, FaChartLine, FaShieldAlt, FaRocket, FaStar, FaArrowRight, FaBullseye, FaUsers, FaBriefcase, FaShoppingBag, FaHeartbeat, FaHome, FaTh } from "react-icons/fa";
+
+const TiltCard = ({ service }) => {
+  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = React.useState(false);
+  const cardRef = React.useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Tilt opposite to touch direction
+    const rotateX = -((y - centerY) / centerY) * 15; // 15 deg max tilt
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseEnter = () => setIsHovered(true);
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  const transformStyle = isHovered
+    ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
+    : 'rotateX(0deg) rotateY(0deg)';
+
+  return (
+    <div className="parent" style={{ perspective: '1000px' }}>
+      <div
+        className="card"
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          background: service.colors.gradient,
+          transform: transformStyle,
+          transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-in-out',
+          boxShadow: isHovered
+            ? `${-tilt.y * 2}px ${tilt.x * 2 + 20}px 30px rgba(5, 71, 17, 0.2)`
+            : '0px 25px 25px -5px rgba(5, 71, 17, 0.2)'
+        }}
+      >
+        <div className="glass"></div>
+        <div className="content">
+          <span className="title" style={{ color: service.colors.titleColor }}>{service.title}</span>
+          <span className="text" style={{ color: service.colors.textColor }}>{service.desc}</span>
+          <ul className="features">
+            {service.features.map((f, idx) => (
+              <li key={idx} style={{ color: service.colors.textColor }}>{f}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="bottom">
+          <div className="social-buttons-container">
+            <button className="social-button">
+              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><circle cx="12" cy="12" r="10" /></svg>
+            </button>
+            <button className="social-button">
+              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><path d="M12 2L2 22h20L12 2z" /></svg>
+            </button>
+            <button className="social-button">
+              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><rect width="18" height="18" x="3" y="3" rx="2" /></svg>
+            </button>
+          </div>
+          <Link to="/services" className="view-more">
+            <span className="view-more-text">Explore</span>
+            <div className="view-more-icon">
+              <svg className="svg" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
   useEffect(() => {
   }, []);
 
   useScrollAnimation('.premium-reveal', 'show');
+  useScrollAnimation('.slide-from-left', 'show');
+  useScrollAnimation('.slide-from-right', 'show');
 
   const marqueeText =
     "Website Design • SEO • Google Ads • SMM • Branding • Lead Gen • UI/UX • Strategy";
@@ -49,11 +138,16 @@ export default function Home() {
               your brand fly higher with Branding Wings.
             </p>
             <div className="hero-buttons">
-              <Link to="/services" className="btn-primary">
-                Explore Services
+              <Link to="/services" className="btn-primary es-btn">
+                <span className="es-text">Explore Services</span>
+                <span className="es-svg">
+                  <svg viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 15 H46 M34 5 L46 15 L34 25" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
               </Link>
-              <Link to="/contact" className="btn-outline">
-                Get in Touch
+              <Link to="/contact" className="btn-outline git-btn" data-text="GET IN TOUCH">
+                <i>G</i><i>E</i><i>T</i><i>&nbsp;</i><i>I</i><i>N</i><i>&nbsp;</i><i>T</i><i>O</i><i>U</i><i>C</i><i>H</i>
               </Link>
             </div>
             <div
@@ -70,106 +164,301 @@ export default function Home() {
       </section>
       <section className="marquee">
         <div className="marquee-inner">
-          <span>{marqueeText}</span>
-          <span>{marqueeText}</span>
+          <span className="marquee-item">
+            <span className="chevrons left">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#chevGradLeft)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="chevGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#4f46e5" />
+                    <stop offset="100%" stopColor="#0ea5e9" />
+                  </linearGradient>
+                </defs>
+                <polyline points="11 17 6 12 11 7"></polyline>
+                <polyline points="18 17 13 12 18 7"></polyline>
+              </svg>
+            </span>
+            <span className="text">{marqueeText}</span>
+            <span className="chevrons right">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#chevGradRight)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="chevGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0ea5e9" />
+                    <stop offset="100%" stopColor="#4f46e5" />
+                  </linearGradient>
+                </defs>
+                <polyline points="13 17 18 12 13 7"></polyline>
+                <polyline points="6 17 11 12 6 7"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span className="marquee-item">
+            <span className="chevrons left">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#chevGradLeft2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="chevGradLeft2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#4f46e5" />
+                    <stop offset="100%" stopColor="#0ea5e9" />
+                  </linearGradient>
+                </defs>
+                <polyline points="11 17 6 12 11 7"></polyline>
+                <polyline points="18 17 13 12 18 7"></polyline>
+              </svg>
+            </span>
+            <span className="text">{marqueeText}</span>
+            <span className="chevrons right">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#chevGradRight2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="chevGradRight2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0ea5e9" />
+                    <stop offset="100%" stopColor="#4f46e5" />
+                  </linearGradient>
+                </defs>
+                <polyline points="13 17 18 12 13 7"></polyline>
+                <polyline points="6 17 11 12 6 7"></polyline>
+              </svg>
+            </span>
+          </span>
         </div>
       </section>
       <section className="features-section">
-        <h2 className="section-title">Why Choose FlareMinds?</h2>
-        <div className="features-grid">
+        <h2 className="section-title">Why Choose <span className="brand-gradient">FlareMinds</span>?</h2>
+        <div className="features-grid new-features">
           {[
             {
               title: "Creative Strategy",
-              text: "Business-focused digital planning.",
+              text: "Business-focused digital planning that aligns goals with impactful solutions.",
+              icon: <FaRegLightbulb />,
+              theme: "blue",
             },
-            { title: "High-End Designs", text: "Modern UI/UX that converts." },
-            { title: "Digital Growth", text: "Scale your brand effortlessly." },
+            {
+              title: "High-End Designs",
+              text: "Modern UI/UX that looks stunning and converts visitors into customers.",
+              icon: <FaBezierCurve />,
+              theme: "purple",
+            },
+            {
+              title: "Digital Growth",
+              text: "Data-driven strategies that scale your brand and deliver measurable growth.",
+              icon: <FaChartLine />,
+              theme: "teal",
+            },
           ].map((f, i) => (
-            <div key={i} className="feature-card premium-reveal">
+            <div key={i} className={`new-feature-card theme-${f.theme} premium-reveal`}>
+              <div className="feature-icon-wrapper">
+                {f.icon}
+              </div>
+              <div className="dots-pattern"></div>
               <h3>{f.title}</h3>
+              <div className="title-underline"></div>
               <p>{f.text}</p>
+              <Link to="/services" className="learn-more">
+                Learn more <FaArrowRight />
+              </Link>
+              <div className="wave-bg"></div>
             </div>
           ))}
+        </div>
+        <div className="trust-banner premium-reveal">
+          <div className="trust-item">
+            <div className="trust-icon blue"><FaShieldAlt /></div>
+            <span>Trusted by 100+<br />Businesses</span>
+          </div>
+          <div className="trust-divider"></div>
+          <div className="trust-item">
+            <div className="trust-icon purple"><FaRocket /></div>
+            <span>Delivering Results<br />That Matter</span>
+          </div>
+          <div className="trust-divider"></div>
+          <div className="trust-item">
+            <div className="trust-icon teal"><FaStar /></div>
+            <span>Innovation<br />in Everything</span>
+          </div>
         </div>
       </section>
       <section className="about-summary section-padding">
         <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <h2 className="section-title">Who We Are</h2>
-              <p className="section-text">
+          <div className="row align-items-center">
+            <div className="col-md-6 slide-from-left pe-lg-5">
+              <h2 className="section-title">
+                Who We <span className="brand-gradient">Are</span>
+              </h2>
+              <p className="section-text text-muted mb-4">
                 FlareMinds is a full-service digital agency dedicated to helping
                 businesses grow. We combine creative design, data-driven
                 marketing, and robust technology to build brands that stand out.
                 From startups to enterprises, we deliver solutions that drive
                 real results.
               </p>
-              <Link to="/about" className="btn-link">
-                Read Our Story →
+              <Link to="/about" className="btn-link brand-gradient fw-bold mb-5 d-inline-flex align-items-center gap-2 text-decoration-none">
+                Read Our Story
+                <span className="bg-info text-white d-flex align-items-center justify-content-center rounded" style={{ width: '32px', height: '32px', background: '#0ea5e9' }}>
+                  <FaArrowRight size={14} />
+                </span>
               </Link>
             </div>
-            <div className="col-md-6">
-              <div className="about-visual glass-card">
-                <h3>15+ Years</h3>
-                <p>Combined Experience</p>
+            <div className="col-md-6 slide-from-right d-flex justify-content-center position-relative mt-5 mt-md-0 experience-hover-group">
+              <div className="experience-outer-ring">
+                <span className="ring-dot dot-1"></span>
+                <span className="ring-dot dot-2"></span>
+                <span className="ring-dot dot-3"></span>
+                <span className="ring-dot dot-4"></span>
+              </div>
+              <div className="experience-circle-outer shadow-lg">
+                <div className="experience-circle-inner shadow">
+                  <div className="exp-icon text-primary shadow-sm"><FaBriefcase /></div>
+                  <h3 className="exp-years-number text-primary mb-0 mt-2">7+</h3>
+                  <h3 className="exp-years-text text-dark fw-bold mb-1">Years</h3>
+                  <p className="exp-text text-muted mb-1">Experience</p>
+                  <div className="exp-underline">
+                    <span className="dot"></span>
+                  </div>
+                  <svg className="exp-arc" viewBox="0 0 100 100">
+                    <circle
+                      cx="50" cy="50" r="48"
+                      fill="none"
+                      stroke="url(#arcGradient)"
+                      strokeWidth="4"
+                      strokeDasharray="150 200"
+                      strokeDashoffset="-25"
+                      strokeLinecap="round"
+                    />
+                    <defs>
+                      <linearGradient id="arcGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#2563eb" />
+                        <stop offset="100%" stopColor="#c084fc" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="services-preview">
-        <h2 className="section-title">Our Services</h2>
-        <div className="services-grid">
+      <section className="services-preview" style={{ overflow: "hidden" }}>
+        <h2 className="section-title">Our <span className="brand-gradient">Services</span></h2>
+        <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px', padding: '40px 0', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            "Website Design & Development",
-            "Marketing & SEO",
-            "Branding & Identity",
-            "Business Automation",
+            {
+              title: "Website Design & Development",
+              desc: "Premium solutions tailored to your business needs. We build fast, responsive, and stunning websites.",
+              features: ["Custom UI/UX Design", "Responsive Development", "CMS Integration"],
+              colors: {
+                gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
+                circleBg: "rgba(14, 165, 233, 0.2)",
+                titleColor: "#1e293b",
+                textColor: "#334155"
+              }
+            },
+            {
+              title: "Marketing & SEO",
+              desc: "Data-driven marketing strategies to increase your visibility and drive organic traffic.",
+              features: ["Search Engine Optimization", "Content Marketing", "Analytics & Tracking"],
+              colors: {
+                gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
+                circleBg: "rgba(14, 165, 233, 0.2)",
+                titleColor: "#1e293b",
+                textColor: "#334155"
+              }
+            },
+            {
+              title: "Branding & Identity",
+              desc: "Establish a strong, memorable brand presence that resonates with your target audience.",
+              features: ["Logo & Visual Identity", "Brand Strategy", "Marketing Collateral"],
+              colors: {
+                gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
+                circleBg: "rgba(14, 165, 233, 0.2)",
+                titleColor: "#1e293b",
+                textColor: "#334155"
+              }
+            },
+            {
+              title: "Business Automation",
+              desc: "Streamline your workflows with custom software solutions designed for efficiency.",
+              features: ["Workflow Automation", "Custom APIs", "CRM Integration"],
+              colors: {
+                gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
+                circleBg: "rgba(14, 165, 233, 0.2)",
+                titleColor: "#1e293b",
+                textColor: "#334155"
+              }
+            }
           ].map((s, i) => (
-            <div key={i} className="service-box">
-              <h3>{s}</h3>
-              <p>Premium solutions tailored to your business needs.</p>
-            </div>
+            <TiltCard key={i} service={s} />
           ))}
         </div>
       </section>
-      <section className="portfolio-preview section-padding">
+
+      <section className="featured-work-section">
         <div className="container">
-          <h2 className="section-title">Featured Work</h2>
-          <div className="projects-grid">
+          <div className="fw-header">
+            <h2 className="fw-title">Featured <span>Work</span></h2>
+            <p className="fw-subtitle">
+              Explore a selection of our recent projects where creativity,
+              innovation, and technology come together.
+            </p>
+          </div>
+
+          <div className="fw-grid">
             {[
               {
+                id: 1,
+                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800",
+                icon: <FaShoppingBag />,
+                category: "WEB DEVELOPMENT",
+                catColor: "#a855f7",
                 title: "E-Commerce Fashion",
-                cat: "Web Dev",
-                img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+                desc: "A modern e-commerce platform for fashion brands with seamless shopping experience and secure payments."
               },
               {
+                id: 2,
+                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+                icon: <FaHeartbeat />,
+                category: "MOBILE APP",
+                catColor: "#0ea5e9",
                 title: "HealthTech App",
-                cat: "App Dev",
-                img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
+                desc: "A comprehensive healthcare app that connects patients with doctors and simplifies appointment booking."
               },
               {
+                id: 3,
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
+                icon: <FaHome />,
+                category: "WEB DEVELOPMENT",
+                catColor: "#14b8a6",
                 title: "Real Estate Platform",
-                cat: "Web Dev",
-                img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-              },
-            ].map((p, i) => (
-              <div key={i} className="project-card glass-card">
-                <img src={p.img} alt={`${p.title} - ${p.cat} project showcase`} className="project-thumb" />
-                <div className="project-info">
-                  <span>{p.cat}</span>
-                  <h3>{p.title}</h3>
+                desc: "A feature-rich real estate platform for buying, selling, and renting properties with advanced search."
+              }
+            ].map((project) => (
+              <div key={project.id} className="fw-card">
+                <div className="fw-card-img-wrapper">
+                  <img src={project.image} alt={project.title} className="fw-card-img" />
+                  <button className="fw-card-arrow-btn"><FaArrowRight /></button>
+                </div>
+                <div className="fw-card-content">
+                  <div className="fw-category" style={{ color: project.catColor }}>
+                    <div className="fw-cat-icon" style={{ backgroundColor: project.catColor }}>
+                      {project.icon}
+                    </div>
+                    <span>{project.category}</span>
+                  </div>
+                  <h3 className="fw-card-title">{project.title}</h3>
+                  <p className="fw-card-desc">{project.desc}</p>
+                  <Link to="/projects" className="fw-card-link" style={{ color: project.catColor }}>
+                    View Project <FaArrowRight />
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
-          <div className="portfolio-action text-center mt-8">
-            <Link to="/projects" className="btn-outline">
-              View All Projects
+
+          <div className="fw-footer">
+            <Link to="/projects" className="fw-view-all-btn">
+              <FaTh className="fw-btn-icon" /> View All Projects
             </Link>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

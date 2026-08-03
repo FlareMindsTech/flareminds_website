@@ -6,7 +6,8 @@ export const useScrollAnimation = (selector = '.fade-up-element', animationClass
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add(animationClass);
-                    observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove(animationClass);
                 }
             });
         }, { threshold });

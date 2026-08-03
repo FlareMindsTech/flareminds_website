@@ -55,7 +55,7 @@ export default function BlogTestimonials() {
   ];
 
   return (
-    <div className="combined-page container mx-auto px-6 py-16">
+    <div className="blog-page px-6">
       <SEO
         title="Blog & Insights - FlareMinds | Digital Marketing Tips & Trends"
         description="Read the latest insights on web development, SEO, social media marketing, and digital strategy from FlareMinds experts. Stay ahead with actionable tips and industry trends."
