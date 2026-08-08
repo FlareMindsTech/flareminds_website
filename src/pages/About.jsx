@@ -1,19 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import SEO from "../components/SEO";
 import { getLocalBusinessSchema, getBreadcrumbSchema } from "../utils/structuredData";
-import vikiImg from "../assets/viki.jpg";
-import yasirImg from "../assets/yasir.jpg";
-import prakashImg from "../assets/prakash.jpg";
-import SivaImg from "../assets/siva.jpg";
-import logo1 from "../assets/logo/logo.jpg";
-import logo2 from "../assets/logo/logo2.jpg";
-import logo3 from "../assets/logo/logo3.jpg";
-import logo4 from "../assets/logo/logo4.jpg";
-import logo5 from "../assets/logo/logo5.jpg";
-import logo6 from "../assets/logo/logo6.jpg";
-import logo7 from "../assets/logo/logo7.jpg";
-import logo8 from "../assets/logo/logo8.jpg";
-import logo9 from "../assets/logo/logo9.jpg";
+
+
+import logo1 from "../assets/logo/logo.webp";
+import logo2 from "../assets/logo/logo2.webp";
+import logo3 from "../assets/logo/logo3.webp";
+import logo4 from "../assets/logo/logo4.webp";
+import logo5 from "../assets/logo/logo5.webp";
+import logo6 from "../assets/logo/logo6.webp";
+import logo7 from "../assets/logo/logo7.webp";
+import logo8 from "../assets/logo/logo8.webp";
+import logo9 from "../assets/logo/logo9.webp";
 import DomeGallery from "../components/DomeGallery";
 import Folder from "../components/Folder";
 
@@ -43,29 +41,29 @@ export default function About() {
 
   const team = [
     {
-      name: "Vignesh",
-      role: "Founder & CEO",
+      name: "vishnu",
+      role: "CEO",
       bio: "15+ years crafting brand strategy and product-led design.",
-      image: vikiImg,
+      image: "",
     },
     {
-      name: "Yaser",
+      name: "Gokila",
       role: "Lead Developer",
       bio: "Specialist in building fast, scalable, modern web apps.",
-      image: yasirImg,
+      image: "",
     },
-    {
-      name: "Prakash",
-      role: "Web Developer",
-      bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
-      image: prakashImg,
-    },
-    {
-      name: "Siva Kumar",
-      role: "Backend Developer",
-      bio: "Technical SEO expert improving visibility and ranking.",
-      image: SivaImg,
-    },
+    // {
+    //   name: "Prakash",
+    //   role: "Web Developer",
+    //   bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
+    //   image: prakashImg,
+    // },
+    // {
+    //   name: "Siva Kumar",
+    //   role: "Backend Developer",
+    //   bio: "Technical SEO expert improving visibility and ranking.",
+    //   image: SivaImg,
+    // },
   ];
 
   const valueProps = [
@@ -243,7 +241,7 @@ export default function About() {
                     <h3 className="value-prop-title-v2">{prop.title}</h3>
                     <p className="value-prop-short">{prop.shortDesc}</p>
                   </div>
-                  <button className="expand-btn">
+                  <button type="button" className="expand-btn" aria-label={`${expandedCard === idx ? 'Collapse' : 'Expand'} ${prop.title}`} aria-expanded={expandedCard === idx}>
                     {expandedCard === idx ? '×' : '+'}
                   </button>
                 </div>
@@ -302,7 +300,9 @@ export default function About() {
         <section className="memory-folder-section">
           <h2 className="section-title-main">Memory Live Forever</h2>
           <div className="folder-container">
-            <div onClick={() => setShowGallery(true)}>
+            <div onClick={() => setShowGallery(true)} role="button" tabIndex={0} aria-label="Open memory gallery" onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') setShowGallery(true);
+            }}>
               <Folder
                 size={3}
                 color="#5227FF"
@@ -316,6 +316,9 @@ export default function About() {
         {showGallery && (
           <div
             className="gallery-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Memory gallery"
             style={{
               position: 'fixed',
               top: 0,
@@ -329,7 +332,9 @@ export default function About() {
             }}
           >
             <button
+              type="button"
               onClick={() => setShowGallery(false)}
+              aria-label="Close memory gallery"
               style={{
                 position: 'absolute',
                 top: '20px',

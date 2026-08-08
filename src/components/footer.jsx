@@ -31,10 +31,10 @@ export default function Footer() {
             impactful design.
           </div>
           <div className="footer-socials">
-            <a href="#" className="social-icon"><FaLinkedinIn /></a>
-            <a href="#" className="social-icon"><FaTwitter /></a>
-            <a href="#" className="social-icon"><FaGithub /></a>
-            <a href="#" className="social-icon"><FaInstagram /></a>
+            <a href="#" className="social-icon" aria-label="Visit FlareMinds on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
+            <a href="#" className="social-icon" aria-label="Visit FlareMinds on Twitter"><FaTwitter aria-hidden="true" /></a>
+            <a href="#" className="social-icon" aria-label="Visit FlareMinds on GitHub"><FaGithub aria-hidden="true" /></a>
+            <a href="#" className="social-icon" aria-label="Visit FlareMinds on Instagram"><FaInstagram aria-hidden="true" /></a>
           </div>
         </div>
 
@@ -110,8 +110,8 @@ export default function Footer() {
           <div className="copyright">
             &copy; {new Date().getFullYear()} <span>FlareMinds</span> Technology & Services. All rights reserved.
           </div>
-          <button className="scroll-top-btn" onClick={scrollToTop}>
-            <FaChevronUp />
+          <button type="button" className="scroll-top-btn" onClick={scrollToTop} aria-label="Scroll to top">
+            <FaChevronUp aria-hidden="true" />
           </button>
         </div>
       </div>

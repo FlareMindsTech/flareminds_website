@@ -1,0 +1,501 @@
+/* ─────────────────────────────────────────────────────────────
+   ServiceDetail.css  –  styles for the /services/:slug page
+   IMPORTANT: Do NOT change colors, fonts, or spacing tokens here.
+   Only extend — never override — the existing services.css system.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Page wrapper ────────────────────────────────────────────── */
+.sd-page {
+  min-height: 100vh;
+  padding-bottom: 4rem;
+}
+
+/* ── 404 Not Found ───────────────────────────────────────────── */
+.sd-not-found {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.sd-not-found-inner {
+  text-align: center;
+  max-width: 560px;
+}
+
+.sd-not-found-icon {
+  font-size: 4rem;
+  margin-bottom: 1.25rem;
+}
+
+.sd-not-found-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.sd-not-found-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.sd-not-found-text code {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0ea5e9;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* ── Hero Section ────────────────────────────────────────────── */
+.sd-hero {
+  padding-top: 8rem;    /* push content below fixed navbar */
+  padding-bottom: 5rem;
+  background: var(--bg-dark, #f0f9ff);
+}
+
+.sd-hero .container {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .sd-hero .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Breadcrumb */
+.sd-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.sd-breadcrumb-link {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.sd-breadcrumb-link:hover {
+  color: #0ea5e9;
+}
+
+.sd-breadcrumb-home {
+  font-size: 0.95rem;
+}
+
+.sd-breadcrumb-sep {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.sd-breadcrumb-current {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Hero content */
+.sd-hero-content {
+  max-width: 680px;
+}
+
+.sd-hero-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.sd-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.sd-hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* Hero visual card */
+.sd-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sd-hero-visual-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 2.2rem 2rem;
+  text-align: center;
+  border: 1.5px solid;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+}
+
+.sd-hero-visual-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.sd-hero-visual-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.sd-hero-visual-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.sd-hero-visual-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.sd-hero-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.sd-tech-pill {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1.5px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ── Section badges ──────────────────────────────────────────── */
+.sd-section-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Section headers ─────────────────────────────────────────── */
+.sd-section-header {
+  margin-bottom: 3rem;
+}
+
+.sd-section-header .section-title {
+  margin-bottom: 0.5rem;
+}
+
+/* ── Overview Section ────────────────────────────────────────── */
+.sd-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .sd-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.sd-overview-body {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.sd-benefits-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+/* Includes list (Creative Media Production) */
+.sd-includes {
+  margin-top: 1.5rem;
+  padding: 1.4rem 1.6rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: var(--shadow-sm);
+}
+
+.sd-includes-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.sd-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sd-includes-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.sd-includes-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Features Grid ───────────────────────────────────────────── */
+.sd-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.sd-feature-card {
+  padding: 1.8rem 1.6rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sd-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.sd-feature-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.sd-feature-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sd-feature-desc {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Process step badge ──────────────────────────────────────── */
+.sd-process-step-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+/* ── Related Projects grid ───────────────────────────────────── */
+.sd-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.sd-projects-cta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.sd-projects-cta .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Final CTA block ─────────────────────────────────────────── */
+.sd-cta-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: var(--shadow-md);
+}
+
+.sd-cta-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.sd-cta-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.sd-cta-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sd-cta-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+/* ── Responsive tweaks ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sd-hero {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .sd-hero-title {
+    font-size: 2rem;
+  }
+
+  .sd-hero-desc {
+    font-size: 1rem;
+  }
+
+  .sd-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-cta-inner {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .sd-cta-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sd-hero {
+    padding-top: 5.5rem;
+  }
+
+  .sd-hero-title {
+    font-size: 1.7rem;
+  }
+
+  .sd-cta-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ── Dark mode support ───────────────────────────────────────── */
+html[data-theme="dark"] .sd-hero-visual-card,
+html[data-theme="dark"] .sd-feature-card,
+html[data-theme="dark"] .sd-cta-inner,
+html[data-theme="dark"] .sd-includes {
+  background: linear-gradient(145deg, #172033 0%, #111a2b 100%) !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+html[data-theme="dark"] .sd-hero-visual-title,
+html[data-theme="dark"] .sd-feature-title,
+html[data-theme="dark"] .sd-cta-title,
+html[data-theme="dark"] .sd-includes-title,
+html[data-theme="dark"] .sd-not-found-title,
+html[data-theme="dark"] .sd-benefits-title {
+  color: #e5edf8 !important;
+}
+
+html[data-theme="dark"] .sd-hero-visual-subtitle,
+html[data-theme="dark"] .sd-feature-desc,
+html[data-theme="dark"] .sd-overview-body,
+html[data-theme="dark"] .sd-cta-subtitle,
+html[data-theme="dark"] .sd-includes-item,
+html[data-theme="dark"] .sd-not-found-text,
+html[data-theme="dark"] .sd-breadcrumb {
+  color: #a9b8cc !important;
+}
+
+html[data-theme="dark"] .sd-breadcrumb-current {
+  color: #e5edf8 !important;
+}

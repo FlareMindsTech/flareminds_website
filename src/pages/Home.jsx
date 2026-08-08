@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { projectSections } from "./Projects";
 import SocialButton from "../components/SocialButton";
 import SEO from "../components/SEO";
 import "../components/Services3D.css";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { getOrganizationSchema, getWebSiteSchema } from "../utils/structuredData";
-import heroVideo from "../assets/Futuristic_Minimal_Tech_Background_Video.mp4";
-import { FaRegLightbulb, FaBezierCurve, FaChartLine, FaShieldAlt, FaRocket, FaStar, FaArrowRight, FaBullseye, FaUsers, FaBriefcase, FaShoppingBag, FaHeartbeat, FaHome, FaTh } from "react-icons/fa";
+import heroVideo from "../assets/homevideo.mp4";
+import { FaRegLightbulb, FaBezierCurve, FaChartLine, FaShieldAlt, FaRocket, FaStar, FaArrowRight, FaBullseye, FaUsers, FaBriefcase, FaShoppingBag, FaHeartbeat, FaHome, FaTh, FaMobileAlt } from "react-icons/fa";
 
 const TiltCard = ({ service }) => {
   const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
@@ -305,10 +306,10 @@ export default function Home() {
               </div>
               <div className="experience-circle-outer shadow-lg">
                 <div className="experience-circle-inner shadow">
-                  <div className="exp-icon text-primary shadow-sm"><FaBriefcase /></div>
-                  <h3 className="exp-years-number text-primary mb-0 mt-2">7+</h3>
-                  <h3 className="exp-years-text text-dark fw-bold mb-1">Years</h3>
-                  <p className="exp-text text-muted mb-1">Experience</p>
+                  <div className="exp-icon shadow-sm"><FaBriefcase /></div>
+                  <h3 className="exp-years-number mb-0 mt-2">7+</h3>
+                  <h3 className="exp-years-text fw-bold mb-1">Years</h3>
+                  <p className="exp-text mb-1">Experience</p>
                   <div className="exp-underline">
                     <span className="dot"></span>
                   </div>
@@ -402,57 +403,63 @@ export default function Home() {
           <div className="fw-grid">
             {[
               {
-                id: 1,
+                id: "e-commerce",
                 image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800",
                 icon: <FaShoppingBag />,
-                category: "WEB DEVELOPMENT",
                 catColor: "#a855f7",
-                title: "E-Commerce Fashion",
-                desc: "A modern e-commerce platform for fashion brands with seamless shopping experience and secure payments."
+                title: "E-Commerce Solutions",
+                description: "Build scalable online shopping platforms with secure payments, inventory management, and modern user experiences.",
+                route: "/products/e-commerce"
               },
               {
-                id: 2,
-                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
-                icon: <FaHeartbeat />,
-                category: "MOBILE APP",
+                id: "business-applications",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+                icon: <FaBriefcase />,
                 catColor: "#0ea5e9",
-                title: "HealthTech App",
-                desc: "A comprehensive healthcare app that connects patients with doctors and simplifies appointment booking."
+                title: "Business Applications",
+                description: "Custom business software including CRM, ERP, HRMS, Inventory Systems, Admin Dashboards, and enterprise management solutions.",
+                route: "/products/business-applications"
               },
               {
-                id: 3,
-                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
-                icon: <FaHome />,
-                category: "WEB DEVELOPMENT",
+                id: "mobile-applications",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
+                icon: <FaMobileAlt />,
                 catColor: "#14b8a6",
-                title: "Real Estate Platform",
-                desc: "A feature-rich real estate platform for buying, selling, and renting properties with advanced search."
+                title: "Mobile Applications",
+                description: "Modern Android and cross-platform mobile applications designed for startups, businesses, and enterprises.",
+                route: "/products/mobile-applications"
               }
-            ].map((project) => (
-              <div key={project.id} className="fw-card">
-                <div className="fw-card-img-wrapper">
-                  <img src={project.image} alt={project.title} className="fw-card-img" />
-                  <button className="fw-card-arrow-btn"><FaArrowRight /></button>
-                </div>
-                <div className="fw-card-content">
-                  <div className="fw-category" style={{ color: project.catColor }}>
-                    <div className="fw-cat-icon" style={{ backgroundColor: project.catColor }}>
-                      {project.icon}
-                    </div>
-                    <span>{project.category}</span>
+            ].map((category) => {
+              const sec = projectSections.find((s) => s.id === category.id);
+              const count = sec ? sec.projects.length : 0;
+              const countText = `${count} ${count === 1 ? "Project" : "Projects"}`;
+
+              return (
+                <Link to={category.route} key={category.id} className="fw-card" style={{ textDecoration: 'none' }}>
+                  <div className="fw-card-img-wrapper">
+                    <img src={category.image} alt={category.title} className="fw-card-img" />
+                    <button className="fw-card-arrow-btn" aria-label={`Browse ${category.title}`}><FaArrowRight /></button>
                   </div>
-                  <h3 className="fw-card-title">{project.title}</h3>
-                  <p className="fw-card-desc">{project.desc}</p>
-                  <Link to="/projects" className="fw-card-link" style={{ color: project.catColor }}>
-                    View Project <FaArrowRight />
-                  </Link>
-                </div>
-              </div>
-            ))}
+                  <div className="fw-card-content">
+                    <div className="fw-category" style={{ color: category.catColor }}>
+                      <div className="fw-cat-icon" style={{ backgroundColor: category.catColor }}>
+                        {category.icon}
+                      </div>
+                      <span style={{ textTransform: "none", fontWeight: 700 }}>{countText}</span>
+                    </div>
+                    <h3 className="fw-card-title">{category.title}</h3>
+                    <p className="fw-card-desc">{category.description}</p>
+                    <span className="fw-card-link" style={{ color: category.catColor }}>
+                      Browse Projects <FaArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="fw-footer">
-            <Link to="/projects" className="fw-view-all-btn">
+            <Link to="/products" className="fw-view-all-btn">
               <FaTh className="fw-btn-icon" /> View All Projects
             </Link>
           </div>

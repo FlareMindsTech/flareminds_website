@@ -25,17 +25,20 @@ const TestimonialCarousel = ({ testimonials }) => {
             </div>
 
             <div className="carousel-controls">
-                <button className="control-btn" onClick={prevSlide}><FaChevronLeft /></button>
+                <button type="button" className="control-btn" onClick={prevSlide} aria-label="Show previous testimonial"><FaChevronLeft aria-hidden="true" /></button>
                 <div className="carousel-dots">
                     {testimonials.map((_, idx) => (
-                        <div
+                        <button
+                            type="button"
                             key={idx}
                             className={`dot-indicator ${idx === currentSlide ? 'active' : ''}`}
                             onClick={() => setCurrentSlide(idx)}
-                        ></div>
+                            aria-label={`Show testimonial ${idx + 1}`}
+                            aria-current={idx === currentSlide ? 'true' : undefined}
+                        />
                     ))}
                 </div>
-                <button className="control-btn" onClick={nextSlide}><FaChevronRight /></button>
+                <button type="button" className="control-btn" onClick={nextSlide} aria-label="Show next testimonial"><FaChevronRight aria-hidden="true" /></button>
             </div>
         </div>
     );

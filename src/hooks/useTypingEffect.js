@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export const useTypingEffect = (phrases, elementId, typeSpeed = 100, deleteSpeed = 50, pauseTime = 2000) => {
     useEffect(() => {

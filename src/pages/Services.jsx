@@ -1,291 +1,152 @@
-import React, { useMemo, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from "../utils/structuredData";
-import {
-  FaRocket, FaCheckCircle
-} from "react-icons/fa";
+import { getServiceSchema, getBreadcrumbSchema } from "../utils/structuredData";
+import { FaArrowRight } from "react-icons/fa";
+import { developmentServices, marketingServices } from "../data/servicesData";
 import "../pages/css/services.css";
 
-export default function Services() {
-  const { slug } = useParams();
+// ─────────────────────────────────────────────────────────────────────────────
+// Icon renderer (inline SVG, matches Navbar icon style)
+// ─────────────────────────────────────────────────────────────────────────────
+function ServiceCardIcon({ slug }) {
+  const iconMap = {
+    "website-development": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+    "mobile-app-development": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <line x1="12" y1="18" x2="12" y2="18" strokeWidth="2.5" />
+      </svg>
+    ),
+    "e-commerce-solutions": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+      </svg>
+    ),
+    "business-applications": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        <line x1="12" y1="12" x2="12" y2="16" />
+        <line x1="10" y1="14" x2="14" y2="14" />
+      </svg>
+    ),
+    "service-marketplace": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    ),
+    "custom-software-development": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+    "seo-analytics": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    ),
+    "social-media-marketing": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="18" cy="5" r="3" />
+        <circle cx="6" cy="12" r="3" />
+        <circle cx="18" cy="19" r="3" />
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+      </svg>
+    ),
+    "performance-marketing": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    ),
+    "branding-creative-design": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="2.5" />
+        <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="2.5" />
+      </svg>
+    ),
+    "creative-media-production": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect x="1" y="5" width="15" height="14" rx="2" />
+      </svg>
+    ),
+    "content-marketing": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  };
+  return iconMap[slug] || null;
+}
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Single service card — uses existing .dev-service-card design
+// ─────────────────────────────────────────────────────────────────────────────
+function ServiceCard({ service }) {
+  return (
+    <div className="dev-service-card glass-card">
+      <div
+        className="dev-card-icon"
+        style={{ color: service.accent, backgroundColor: service.bgLight }}
+      >
+        <ServiceCardIcon slug={service.slug} />
+      </div>
+      <h3 className="dev-card-title">{service.title}</h3>
+      <p className="dev-card-desc">{service.shortDescription}</p>
+      <Link
+        to={`/services/${service.slug}`}
+        className="dev-card-btn"
+        style={{ color: service.accent }}
+      >
+        Learn More <FaArrowRight />
+      </Link>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Main Services overview page  (/services)
+// ─────────────────────────────────────────────────────────────────────────────
+export default function Services() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [slug]);
+  }, []);
 
-  const services = useMemo(
-    () => ({
-      "website-development": {
-        title: "Website Development",
-        hero: {
-          title: "Premium",
-          highlight: "Website Development",
-          subtitle: "We build lightning-fast, responsive websites optimized for performance, conversions, and branding."
-        },
-        overview: {
-          title: "Why Choose Our Web Solutions?",
-          text: "Our websites load under 1 second and are crafted with SEO-friendly architecture. Perfect for SMEs, startups, and brands looking to dominate their market.",
-          features: [
-            "Super-fast page loading (Core Web Vitals)",
-            "Fully responsive UI for all devices",
-            "SEO optimized architecture",
-            "Modern animations (GSAP, Framer Motion)"
-          ]
-        },
-        process: [
-          { step: "01", title: "Discovery", desc: "Requirement & Competitor Research" },
-          { step: "02", title: "Design", desc: "Wireframes & Figma UI (High-Fidelity)" },
-          { step: "03", title: "Development", desc: "Clean Code & API Integration" },
-          { step: "04", title: "Testing", desc: "Performance & SEO Checks" },
-          { step: "05", title: "Launch", desc: "Deployment & Support" }
-        ],
-        techStack: ["React.js", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "AWS"],
-        faq: [
-          { q: "How long does it take?", a: "Typically 2-4 weeks depending on complexity." },
-          { q: "Do you provide hosting?", a: "Yes, we assist with hosting and domain setup." },
-          { q: "Is it SEO friendly?", a: "Absolutely, built with SEO best practices." }
-        ]
-      },
-      "seo-analytics": {
-        title: "SEO & Analytics",
-        hero: {
-          title: "Dominate",
-          highlight: "Search Results",
-          subtitle: "We help businesses rank on Google using advanced SEO strategies, competitor research, and real-time analytics."
-        },
-        overview: {
-          title: "Why Invest in SEO?",
-          text: "SEO is not just about keywords — it's about building authority and driving organic traffic that converts. We optimize your digital presence for long-term growth.",
-          features: [
-            "On-Page & Technical SEO Optimization",
-            "High-Quality Backlink Building",
-            "Keyword Research & Intent Mapping",
-            "Google Analytics 4 & Search Console Setup"
-          ]
-        },
-        process: [
-          { step: "01", title: "Audit", desc: "Full Website & Competitor Analysis" },
-          { step: "02", title: "Strategy", desc: "Keyword & Content Planning" },
-          { step: "03", title: "Optimization", desc: "On-Page & Technical Fixes" },
-          { step: "04", title: "Authority", desc: "Link Building & Outreach" },
-          { step: "05", title: "Reporting", desc: "Monthly Analytics & Growth Tracking" }
-        ],
-        techStack: ["Google Analytics", "Search Console", "Semrush", "Ahrefs", "Screaming Frog", "Looker Studio"],
-        faq: [
-          { q: "How long to see results?", a: "SEO is a long-term game, typically 3-6 months for significant impact." },
-          { q: "Do you guarantee #1 ranking?", a: "No ethical agency guarantees #1, but we guarantee improved visibility and traffic." },
-          { q: "Is this a one-time service?", a: "We offer both one-time audits and monthly retainers for continuous growth." }
-        ]
-      },
-      "social-media-marketing": {
-        title: "Social Media Marketing",
-        hero: {
-          title: "Build Your",
-          highlight: "Brand Online",
-          subtitle: "Grow on Instagram, Facebook, LinkedIn, and YouTube with powerful content and targeted strategies."
-        },
-        overview: {
-          title: "Engage & Convert",
-          text: "Social media is more than posting; it's about community and trust. We handle everything from creative design to paid ad campaigns.",
-          features: [
-            "Content Strategy & Calendar",
-            "Reels & Video Editing",
-            "Paid Ad Campaigns (Meta Ads)",
-            "Community Management & Engagement"
-          ]
-        },
-        process: [
-          { step: "01", title: "Research", desc: "Audience & Competitor Analysis" },
-          { step: "02", title: "Strategy", desc: "Content Pillars & Calendar" },
-          { step: "03", title: "Creation", desc: "Design, Copywriting & Editing" },
-          { step: "04", title: "Distribution", desc: "Posting & Scheduling" },
-          { step: "05", title: "Growth", desc: "Ads & Engagement Optimization" }
-        ],
-        techStack: ["Meta Business Suite", "Canva Pro", "Premiere Pro", "CapCut", "Hootsuite", "Google Trends"],
-        faq: [
-          { q: "Which platforms do you manage?", a: "Instagram, Facebook, LinkedIn, YouTube, and Twitter." },
-          { q: "Do you include ad spend?", a: "No, ad spend is paid directly to the platform by you." },
-          { q: "Can you make viral reels?", a: "We create trend-driven content designed to maximize reach and engagement." }
-        ]
-      },
-      "lead-generation": {
-        title: "Lead Generation",
-        hero: {
-          title: "High-Quality",
-          highlight: "Business Leads",
-          subtitle: "Systems powered by Google Ads, Meta Ads, and Landing Pages to bring you customers, not just clicks."
-        },
-        overview: {
-          title: "Stop Chasing, Start Closing",
-          text: "We build automated funnels that target your ideal customer, capture their interest, and deliver warm leads directly to your CRM.",
-          features: [
-            "High-Converting Landing Pages",
-            "Google & Meta Ad Campaigns",
-            "Automated Email & WhatsApp Follow-ups",
-            "CRM Integration & Lead Tracking"
-          ]
-        },
-        process: [
-          { step: "01", title: "Analysis", desc: "Target Audience & Offer Definition" },
-          { step: "02", title: "Setup", desc: "Landing Page & Funnel Creation" },
-          { step: "03", title: "Launch", desc: "Ad Campaign Kickoff" },
-          { step: "04", title: "Optimize", desc: "A/B Testing & Budget Scaling" },
-          { step: "05", title: "Nurture", desc: "Automation & Retargeting" }
-        ],
-        techStack: ["Google Ads", "Meta Ads", "HubSpot", "Zapier", "WordPress/React", "Mailchimp"],
-        faq: [
-          { q: "What is the cost per lead?", a: "Varies by industry, but we optimize to lower it over time." },
-          { q: "Do you guarantee leads?", a: "We guarantee a high-performance system and transparent reporting." },
-          { q: "Which industries do you serve?", a: "Real Estate, Education, Healthcare, B2B Services, and more." }
-        ]
-      },
-      "ecommerce-solutions": {
-        title: "Ecommerce Solutions",
-        hero: {
-          title: "Scalable",
-          highlight: "Ecommerce Stores",
-          subtitle: "Complete ecosystems for D2C brands, wholesalers, and retailers designed to sell more."
-        },
-        overview: {
-          title: "Your Store, Your Empire",
-          text: "We build secure, fast, and scalable online stores with seamless payment, shipping, and inventory management integrations.",
-          features: [
-            "Custom Storefront Design",
-            "Payment Gateway & Shipping Integration",
-            "Inventory & Order Management",
-            "Admin Dashboard & Analytics"
-          ]
-        },
-        process: [
-          { step: "01", title: "Plan", desc: "Catalog & Feature Mapping" },
-          { step: "02", title: "Design", desc: "UI/UX for High Conversion" },
-          { step: "03", title: "Build", desc: "Development & Database Setup" },
-          { step: "04", title: "Integrate", desc: "Payments, Logistics, APIs" },
-          { step: "05", title: "Grow", desc: "Launch & Marketing Setup" }
-        ],
-        techStack: ["Shopify", "WooCommerce", "React/Next.js", "Node.js", "Stripe/Razorpay", "Firebase"],
-        faq: [
-          { q: "Can you migrate my store?", a: "Yes, we handle data migration from other platforms." },
-          { q: "Is it mobile friendly?", a: "100% mobile-optimized for the best shopping experience." },
-          { q: "Do you support multi-vendor?", a: "Yes, we can build marketplace solutions like Amazon/Flipkart." }
-        ]
-      },
-      "erp-systems": {
-        title: "ERP Systems",
-        hero: {
-          title: "Custom",
-          highlight: "ERP Software",
-          subtitle: "Streamline your entire business operation from Finance and HR to Supply Chain in one unified platform."
-        },
-        overview: {
-          title: "Efficiency at Scale",
-          text: "Stop using scattered spreadsheets. Our custom ERP solutions integrate every department, providing real-time data and automation.",
-          features: [
-            "Finance & Accounting Modules",
-            "HRMS & Payroll Management",
-            "Inventory & Supply Chain Tracking",
-            "Role-Based Access Control"
-          ]
-        },
-        process: [
-          { step: "01", title: "Audit", desc: "Business Process Analysis" },
-          { step: "02", title: "Blueprint", desc: "System Architecture Design" },
-          { step: "03", title: "Develop", desc: "Module Creation & Integration" },
-          { step: "04", title: "Migrate", desc: "Data Transfer & Onboarding" },
-          { step: "05", title: "Support", desc: "Maintenance & Updates" }
-        ],
-        techStack: ["React.js", "Node.js", "PostgreSQL", "Docker", "AWS", "Redis"],
-        faq: [
-          { q: "Is it cloud-based?", a: "Yes, accessible securely from anywhere." },
-          { q: "Can it integrate with my bank?", a: "We can integrate with supported banking APIs." },
-          { q: "Is training provided?", a: "Yes, we provide full training for your staff." }
-        ]
-      },
-      "crm-solutions": {
-        title: "CRM Solutions",
-        hero: {
-          title: "Smart",
-          highlight: "CRM Systems",
-          subtitle: "Manage customer relationships, automate sales follow-ups, and close more deals with a custom CRM."
-        },
-        overview: {
-          title: "Know Your Customer",
-          text: "A central hub for all your customer interactions. Track leads, manage pipelines, and automate communication effortlessly.",
-          features: [
-            "Lead & Pipeline Management",
-            "Automated Workflows & Reminders",
-            "Email & WhatsApp Integration",
-            "Detailed Sales Analytics"
-          ]
-        },
-        process: [
-          { step: "01", title: "Consult", desc: "Sales Process Review" },
-          { step: "02", title: "Customize", desc: "Field & Workflow Setup" },
-          { step: "03", title: "Integrate", desc: "Connect with Website/Ads" },
-          { step: "04", title: "Train", desc: "Team Onboarding" },
-          { step: "05", title: "Scale", desc: "Feature Expansion" }
-        ],
-        techStack: ["React.js", "Node.js", "MongoDB", "Firebase", "Twilio", "SendGrid"],
-        faq: [
-          { q: "Can I import old data?", a: "Yes, we handle bulk data imports." },
-          { q: "Does it have a mobile app?", a: "We can build a companion mobile app for field sales." },
-          { q: "Is it secure?", a: "We use enterprise-grade encryption for your data." }
-        ]
-      },
-      "custom-saas": {
-        title: "Custom SaaS",
-        hero: {
-          title: "Launch Your",
-          highlight: "SaaS Product",
-          subtitle: "Turn your idea into a scalable, multi-tenant software business with our end-to-end SaaS development."
-        },
-        overview: {
-          title: "Built for Scale",
-          text: "We handle the complex tech stack—multi-tenancy, billing, security—so you can focus on marketing and growing your user base.",
-          features: [
-            "Multi-Tenant Architecture",
-            "Subscription Billing (Stripe/Razorpay)",
-            "User Management & Auth",
-            "Admin Super-Dashboard"
-          ]
-        },
-        process: [
-          { step: "01", title: "Scope", desc: "MVP Definition & Roadmap" },
-          { step: "02", title: "Design", desc: "SaaS UI/UX Prototyping" },
-          { step: "03", title: "Build", desc: "Core Feature Development" },
-          { step: "04", title: "Beta", desc: "Testing & Feedback Loop" },
-          { step: "05", title: "Launch", desc: "Public Release & Scaling" }
-        ],
-        techStack: ["Next.js", "PostgreSQL", "Prisma", "Stripe", "AWS Lambda", "Vercel"],
-        faq: [
-          { q: "Do I own the code?", a: "Yes, 100% IP ownership belongs to you." },
-          { q: "Can you help with MVP?", a: "We specialize in fast MVP launches." },
-          { q: "How do you handle updates?", a: "We set up CI/CD pipelines for seamless updates." }
-        ]
-      }
-    }),
-    []
-  );
-
-  const currentService = services[slug] || services["website-development"];
-  const pageTitle = `${currentService.title} Services | FlareMinds - Digital Agency`;
-  const pageDescription = currentService.hero.subtitle;
+  const pageTitle = "Software Development & Digital Services | FlareMinds";
+  const pageDescription =
+    "Explore FlareMinds' professional software development and digital marketing services including web development, mobile apps, e-commerce, SEO, social media marketing, and more.";
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: currentService.title, path: `/services/${slug || 'website-development'}` },
   ];
 
-  const combinedSchema = {
+  const schema = {
     "@context": "https://schema.org",
     "@graph": [
       getServiceSchema({
-        title: currentService.title,
-        description: currentService.hero.subtitle,
+        title: "Software Development & Digital Services",
+        description: pageDescription,
       }),
-      getFAQSchema(currentService.faq),
       getBreadcrumbSchema(breadcrumbs),
     ],
   };
@@ -295,86 +156,94 @@ export default function Services() {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        keywords={`${currentService.title.toLowerCase()}, ${currentService.techStack.join(', ').toLowerCase()}, digital marketing services, professional services`}
-        schema={combinedSchema}
+        keywords="software development, web development, app development, ecommerce solutions, business applications, custom software, digital marketing, SEO, social media marketing, performance marketing, branding, content marketing"
+        schema={schema}
       />
-      <section className="service-hero">
+
+      {/* ── Hero ─────────────────────────────────────────────────── */}
+      <section className="service-hero text-center">
         <div className="container">
           <h1 className="hero-title">
-            {currentService.hero.title} <span className="text-gradient">{currentService.hero.highlight}</span>
+            Software <span className="text-gradient">Development</span> &amp;{" "}
+            Digital Services
           </h1>
           <p className="hero-subtitle">
-            {currentService.hero.subtitle}
+            We craft high-performance business websites, mobile apps, e-commerce
+            platforms, custom enterprise software, and result-driven digital
+            marketing campaigns tailored for growth.
           </p>
           <div className="hero-buttons">
-            <Link to="/contact" className="btn-primary">Get a Quote</Link>
-            <a href="#overview" className="btn-outline">Learn More</a>
+            <Link to="/contact" className="btn-primary glow-effect">
+              Get a Quote
+            </Link>
+            <a href="#development-services" className="btn-outline">
+              Explore Services
+            </a>
           </div>
         </div>
       </section>
-      <section id="overview" className="service-overview section-padding">
+
+      {/* ── Development Services ─────────────────────────────────── */}
+      <section
+        id="development-services"
+        className="development-services-section section-padding"
+      >
         <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <h2 className="section-title">{currentService.overview.title}</h2>
-              <p>{currentService.overview.text}</p>
-              <ul className="feature-list">
-                {currentService.overview.features.map((feature, idx) => (
-                  <li key={idx}><FaCheckCircle className="icon-check" /> {feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="col-md-6">
-              <div className="service-visual glass-card">
-                <FaRocket className="visual-icon" />
-                <h3>Premium Quality</h3>
-                <p>Delivering excellence in every project.</p>
-              </div>
-            </div>
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">
+              Development <span className="text-gradient">Services</span>
+            </h2>
+            <p className="section-subtitle text-muted">
+              Professional software engineering solutions engineered to scale
+              businesses, streamline operations, and deliver exceptional user
+              experiences.
+            </p>
           </div>
-        </div>
-      </section>
-      <section className="service-process section-padding bg-light">
-        <div className="container">
-          <h2 className="section-title text-center">Our Process</h2>
-          <div className="process-grid">
-            {currentService.process.map((item, index) => (
-              <div key={index} className="process-card glass-card">
-                <div className="step-number">{item.step}</div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </div>
+          <div className="dev-services-grid">
+            {developmentServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>
       </section>
-      <section className="tech-stack section-padding">
-        <div className="container text-center">
-          <h2 className="section-title">Tools & Technologies</h2>
-          <div className="tech-icons">
-            {currentService.techStack.map((tech, idx) => (
-              <span key={idx} className="tech-tag">{tech}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="service-faq section-padding">
+
+      {/* ── Marketing Services ───────────────────────────────────── */}
+      <section
+        id="marketing-services"
+        className="development-services-section section-padding bg-light"
+      >
         <div className="container">
-          <h2 className="section-title text-center">Frequently Asked Questions</h2>
-          <div className="faq-grid">
-            {currentService.faq.map((item, idx) => (
-              <div key={idx} className="faq-item glass-card">
-                <h4>{item.q}</h4>
-                <p>{item.a}</p>
-              </div>
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">
+              Marketing <span className="text-gradient">Services</span>
+            </h2>
+            <p className="section-subtitle text-muted">
+              Data-driven digital marketing strategies that grow your brand,
+              attract qualified leads, and convert them into loyal customers.
+            </p>
+          </div>
+          <div className="dev-services-grid">
+            {marketingServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── Final CTA ────────────────────────────────────────────── */}
       <section className="service-cta text-center section-padding">
         <div className="container">
-          <h2>Ready to Get Started?</h2>
-          <Link to="/contact" className="btn-primary glow-effect">Start Your Project</Link>
+          <h2>Have a Custom Project in Mind?</h2>
+          <p
+            className="text-muted mb-4"
+            style={{ maxWidth: "600px", margin: "0.8rem auto 1.8rem" }}
+          >
+            Talk to our experts today and transform your idea into a
+            production-ready digital product.
+          </p>
+          <Link to="/contact" className="btn-primary glow-effect">
+            Start Your Project
+          </Link>
         </div>
       </section>
     </div>

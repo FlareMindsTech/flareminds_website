@@ -1,0 +1,79 @@
+.global-theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
+.global-theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: #0ea5e9;
+  color: #0ea5e9;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.25);
+}
+
+.global-theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.global-theme-toggle:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 3px;
+}
+
+.global-theme-toggle .theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.global-theme-toggle:hover .theme-icon {
+  transform: rotate(15deg);
+}
+
+/* Dark Mode Styles */
+html[data-theme="dark"] .global-theme-toggle {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(71, 85, 105, 0.8);
+  color: #f8fafc;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35), 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+html[data-theme="dark"] .global-theme-toggle:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .global-theme-toggle {
+    bottom: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .global-theme-toggle .theme-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

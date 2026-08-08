@@ -205,6 +205,8 @@
 .dot-indicator {
     width: 10px;
     height: 10px;
+    padding: 0;
+    border: none;
     background: rgba(56, 189, 248, 0.2);
     border-radius: 50%;
     cursor: pointer;

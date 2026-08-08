@@ -52,7 +52,7 @@ export default function Contact() {
           setStatus("✅ Message sent successfully! You'll hear from us soon.")
           setForm({ name: '', email: '', service: '', message: '' })
         },
-        (error) => {
+        () => {
           setStatus('❌ Something went wrong. Please try again later.')
         }
       )
@@ -85,6 +85,7 @@ export default function Contact() {
             <form onSubmit={onSubmit} className="space-y-4">
               <h3>Name:</h3>
               <input
+                aria-label="Name"
                 required
                 type="text"
                 name="name"
@@ -95,6 +96,7 @@ export default function Contact() {
               />
               <h3>Email:</h3>
               <input
+                aria-label="Email address"
                 required
                 type="email"
                 name="email"
@@ -106,6 +108,7 @@ export default function Contact() {
               <h3>Services</h3>
               <div className="service-select">
                 <select
+                  aria-label="Select a service"
                   required
                   name="service"
                   value={form.service}
@@ -122,18 +125,20 @@ export default function Contact() {
                 <h3>Any New Services</h3>
                 <div className="add-service">
                   <input
+                    aria-label="Add a new service"
                     type="text"
                     placeholder="Add new service"
                     value={newService}
                     onChange={(e) => setNewService(e.target.value)}
                   />
-                  <button type="button" onClick={addService} className="plus-btn">
-                    <FaPlus />
+                  <button type="button" onClick={addService} className="plus-btn" aria-label="Add service">
+                    <FaPlus aria-hidden="true" />
                   </button>
                 </div>
               </div>
               <h3>Any Queries</h3>
               <textarea
+                aria-label="Your query"
                 required
                 name="message"
                 value={form.message}
@@ -144,7 +149,7 @@ export default function Contact() {
               />
               <button type="submit" className="form-btn">Send Message</button>
               {status && (
-                <p className={`status-msg ${status.startsWith('✅') ? 'success' : 'error'}`}>
+                <p className={`status-msg ${status.startsWith('✅') ? 'success' : 'error'}`} role="status" aria-live="polite">
                   {status}
                 </p>
               )}
@@ -174,6 +179,7 @@ export default function Contact() {
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
+        aria-label="Chat with FlareMinds on WhatsApp"
         style={{
           position: 'fixed',
           bottom: '40px',
@@ -192,8 +198,8 @@ export default function Contact() {
           justifyContent: 'center'
         }}
       >
-        <i className="fa fa-whatsapp"></i>
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+        <i className="fa fa-whatsapp" aria-hidden="true"></i>
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
           <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z" />
         </svg>
       </a>

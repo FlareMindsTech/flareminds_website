@@ -16,8 +16,8 @@ export default function Navbar() {
   const [mobileAccordion, setMobileAccordion] = useState({});
   const [isPointer, setIsPointer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const servicesRef = useRef(null);
   const closeServicesTimeout = useRef(null);
 
@@ -64,7 +64,7 @@ export default function Navbar() {
         items: [
           {
             label: "Website Development",
-            description: "Modern, responsive websites that drive results.",
+            description: "Professional, responsive websites for startups and enterprises.",
             tags: ["React", "Next.js", "MERN"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -75,12 +75,12 @@ export default function Navbar() {
             ),
             iconBg: "#ede9fe",
             iconColor: "#7c3aed",
-            to: "/web-development",
+            to: "/services/website-development",
           },
           {
             label: "Mobile App Development",
-            description: "High-performance mobile apps for Android & iOS.",
-            tags: ["Flutter", "React Native"],
+            description: "High-performance Android and cross-platform mobile apps.",
+            tags: ["React Native", "Expo"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -89,11 +89,11 @@ export default function Navbar() {
             ),
             iconBg: "#fce7f3",
             iconColor: "#be185d",
-            to: "/app-development",
+            to: "/services/mobile-app-development",
           },
           {
-            label: "Ecommerce Solutions",
-            description: "Powerful online stores built to convert and scale.",
+            label: "E-Commerce Solutions",
+            description: "Scalable online shopping platforms with secure payments.",
             tags: ["Shopify", "WooCommerce", "MERN"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -103,9 +103,52 @@ export default function Navbar() {
             ),
             iconBg: "#fff7ed",
             iconColor: "#ea580c",
-            to: "/services/ecommerce-solutions",
+            to: "/services/e-commerce-solutions",
           },
-
+          {
+            label: "Business Applications",
+            description: "Custom CRM, ERP, HRMS, dashboards, and enterprise software.",
+            tags: ["CRM", "ERP", "HRMS"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                <line x1="12" y1="12" x2="12" y2="16" />
+                <line x1="10" y1="14" x2="14" y2="14" />
+              </svg>
+            ),
+            iconBg: "#ccfbf1",
+            iconColor: "#0d9488",
+            to: "/services/business-applications",
+          },
+          {
+            label: "Service Marketplace",
+            description: "On-demand booking platforms and multi-vendor marketplaces.",
+            tags: ["Booking", "Marketplace"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+            ),
+            iconBg: "#fff7ed",
+            iconColor: "#f97316",
+            to: "/services/service-marketplace",
+          },
+          {
+            label: "Custom Software Development",
+            description: "Tailor-made software to automate and scale your business.",
+            tags: ["Automation", "SaaS", "API"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            ),
+            iconBg: "#eef2ff",
+            iconColor: "#6366f1",
+            to: "/services/custom-software-development",
+          },
         ],
       },
       {
@@ -119,7 +162,7 @@ export default function Navbar() {
           {
             label: "SEO & Analytics",
             description: "Data-driven SEO strategies to rank higher and grow traffic.",
-            tags: ["Google Analytics", "SEM"],
+            tags: ["Google Analytics", "SEMrush"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="20" x2="18" y2="10" />
@@ -133,8 +176,8 @@ export default function Navbar() {
           },
           {
             label: "Social Media Marketing",
-            description: "Build brand presence across all social platforms.",
-            tags: ["Instagram", "LinkedIn", "Meta Ads"],
+            description: "Grow your brand on Instagram, Facebook, LinkedIn & YouTube.",
+            tags: ["Instagram", "Meta Ads", "LinkedIn"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
@@ -147,17 +190,63 @@ export default function Navbar() {
             to: "/services/social-media-marketing",
           },
           {
-            label: "Lead Generation",
-            description: "Targeted campaigns that convert prospects into customers.",
-            tags: ["Email", "Funnels", "CRM"],
+            label: "Performance Marketing",
+            description: "Google Ads, Meta Ads, and ROI-focused advertising campaigns.",
+            tags: ["Google Ads", "Meta Ads", "ROAS"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
               </svg>
             ),
-            iconBg: "#fefce8",
-            iconColor: "#ca8a04",
-            to: "/services/lead-generation",
+            iconBg: "#fff1f2",
+            iconColor: "#ef4444",
+            to: "/services/performance-marketing",
+          },
+          {
+            label: "Branding & Creative Design",
+            description: "Logo design, brand identity, and marketing collaterals.",
+            tags: ["Logo", "Brand Guide", "Creatives"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="2.5" />
+                <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="2.5" />
+              </svg>
+            ),
+            iconBg: "#fdf2f8",
+            iconColor: "#ec4899",
+            to: "/services/branding-creative-design",
+          },
+          {
+            label: "Creative Media Production",
+            description: "Professional video shoots, photography, and Reels creation.",
+            tags: ["Video", "Photography", "Reels"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7" />
+                <rect x="1" y="5" width="15" height="14" rx="2" />
+              </svg>
+            ),
+            iconBg: "#fffbeb",
+            iconColor: "#f59e0b",
+            to: "/services/creative-media-production",
+          },
+          {
+            label: "Content Marketing",
+            description: "SEO blogs, website copy, and marketing content that converts.",
+            tags: ["Blogs", "Copywriting", "Email"],
+            icon: (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+              </svg>
+            ),
+            iconBg: "#ecfdf5",
+            iconColor: "#10b981",
+            to: "/services/content-marketing",
           },
         ],
       },
@@ -261,7 +350,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`navbar-header${scrolled ? " scrolled" : ""}`}>
+    <header
+      className={`navbar-header ${isHomePage ? "navbar-home" : "navbar-page"}${scrolled ? " scrolled" : ""}`}
+    >
       {/* Top Accent Gradient Border */}
       <div className="navbar-accent-bar" />
 
@@ -281,7 +372,7 @@ export default function Navbar() {
           </Link>
 
           {/* ── Desktop Navigation ── */}
-          <nav className="navbar-nav">
+          <nav className="navbar-nav" aria-label="Primary navigation">
             <NavLink
               to="/"
               end
@@ -315,23 +406,38 @@ export default function Navbar() {
                 }, 200);
               }}
             >
-              <button
-                className={`navbar-dropdown-btn${servicesOpen ? " open" : ""}`}
-                onClick={() => setServicesOpen((p) => !p)}
-              >
-                Services
-                <svg
-                  className={`navbar-dropdown-arrow${servicesOpen ? " rotated" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
+              <div className={`navbar-dropdown-btn${servicesOpen ? " open" : ""}`}>
+                <NavLink
+                  to="/services"
+                  className="navbar-dropdown-text-link"
+                  onClick={() => setServicesOpen(false)}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  Services
+                </NavLink>
+                <button
+                  type="button"
+                  className="navbar-dropdown-arrow-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setServicesOpen((p) => !p);
+                  }}
+                  aria-expanded={servicesOpen}
+                  aria-controls="services-menu"
+                  aria-label="Toggle Services menu"
+                >
+                  <svg
+                    className={`navbar-dropdown-arrow${servicesOpen ? " rotated" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
 
-              <div className={`navbar-mega-panel${servicesOpen ? " open" : ""}`}>
+              <div id="services-menu" className={`navbar-mega-panel${servicesOpen ? " open" : ""}`}>
                 <div className="navbar-mega-body">
                   {/* Sidebar */}
                   <div className="navbar-mega-sidebar">
@@ -443,6 +549,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen((p) => !p)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             <span
               className="navbar-bar"
@@ -461,7 +568,7 @@ export default function Navbar() {
       </div>
 
       {/* ── Mobile Drawer ── */}
-      <div className={`navbar-mobile-drawer${menuOpen ? " open" : ""}`}>
+      <div id="mobile-navigation" className={`navbar-mobile-drawer${menuOpen ? " open" : ""}`}>
         <div className="navbar-mobile-body">
           <NavLink to="/" className="navbar-mobile-link" end>
             Home
@@ -473,29 +580,49 @@ export default function Navbar() {
 
           {/* Mobile Services Accordion */}
           <div className="navbar-mobile-accordion-section">
-            <button
-              className="navbar-mobile-accordion-btn"
-              onClick={() => toggleAccordion("services")}
-            >
-              <span>Services</span>
-              <svg
-                style={{
-                  width: 16,
-                  height: 16,
-                  transition: "transform 0.2s ease",
-                  transform: mobileAccordion.services ? "rotate(180deg)" : "none",
+            <div className="navbar-mobile-accordion-btn" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
+                  `navbar-mobile-link${isActive ? " active" : ""}`
+                }
+                style={{ padding: 0, color: "inherit", flex: 1, textDecoration: "none" }}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setServicesOpen(false);
                 }}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+                Services
+              </NavLink>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleAccordion("services");
+                }}
+                aria-expanded={mobileAccordion.services}
+                aria-label="Toggle Services menu"
+                style={{ background: "none", border: "none", padding: "4px 8px", cursor: "pointer", color: "inherit", display: "inline-flex", alignItems: "center" }}
+              >
+                <svg
+                  style={{
+                    width: 16,
+                    height: 16,
+                    transition: "transform 0.2s ease",
+                    transform: mobileAccordion.services ? "rotate(180deg)" : "none",
+                  }}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
 
             {mobileAccordion.services && (
-              <div className="navbar-mobile-accordion-body">
+              <div id="mobile-services-menu" className="navbar-mobile-accordion-body">
                 {serviceCategories.map((cat, idx) => (
                   <div key={idx}>
                     <p className="navbar-mobile-cat-label">{cat.title}</p>
