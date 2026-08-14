@@ -1,0 +1,25 @@
+# FlareMinds
+
+> FlareMinds is a leading digital agency offering custom web development, mobile app development, SEO analytics, social media marketing, and business automation solutions.
+
+## Main Pages
+
+- [Home](https://www.flaremindstech.com/): Digital agency landing page showcasing branding, services, portfolio, and strategic digital solutions.
+- [About Us](https://www.flaremindstech.com/about): Company overview, mission, vision, core values, team, and experience.
+- [Services](https://www.flaremindstech.com/services): Comprehensive list of web development, app development, marketing, and software automation services.
+- [Products & Portfolio](https://www.flaremindstech.com/products): Portfolio of client websites, e-commerce applications, mobile apps, and business systems.
+- [Blog](https://www.flaremindstech.com/blog): Articles on web development, digital marketing, SEO strategies, and technology trends.
+- [Contact Us](https://www.flaremindstech.com/contact): Get in touch for project quotes, consultations, and technical support.
+
+## Core Services
+
+- [Website Design & Development](https://www.flaremindstech.com/services/website-development): Custom responsive websites, MERN stack web applications, and UI/UX design.
+- [SEO & Analytics](https://www.flaremindstech.com/services/seo-analytics): Search engine optimization, keyword strategy, and traffic analytics.
+- [Mobile App Development](https://www.flaremindstech.com/services/mobile-app-development): iOS and Android cross-platform apps built with React Native.
+- [E-Commerce Solutions](https://www.flaremindstech.com/services/e-commerce-solutions): Online stores, product catalogs, shopping carts, and payment integrations.
+- [Business Applications](https://www.flaremindstech.com/services/business-applications): Custom CRM, ERP, HRMS, inventory tools, and admin dashboards.
+- [Social Media Marketing](https://www.flaremindstech.com/services/social-media-marketing): Brand growth strategies across Instagram, Meta, LinkedIn, and YouTube.
+
+## Documentation & Sitemap
+
+- [Sitemap](https://www.flaremindstech.com/sitemap.xml): Full XML index of public website URLs.

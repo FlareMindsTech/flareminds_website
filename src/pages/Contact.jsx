@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import emailjs from 'emailjs-com'
 import { FaPlus } from 'react-icons/fa'
-import SEO from '../components/SEO'
+import SEO from '../components/common/SEO'
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/structuredData'
 
 export default function Contact() {

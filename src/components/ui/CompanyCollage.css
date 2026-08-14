@@ -1,0 +1,488 @@
+.company-collage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.collage-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(147, 51, 234, 0.12) 50%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+html[data-theme="dark"] .collage-ambient-glow {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(168, 85, 247, 0.18) 50%, transparent 75%);
+  filter: blur(50px);
+}
+
+.collage-container {
+  position: relative;
+  width: 650px;
+  height: 440px;
+  z-index: 2;
+}
+
+/* Center Emblem */
+.collage-center-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #3b82f6;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35), 0 0 16px rgba(147, 51, 234, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html[data-theme="dark"] .collage-center-emblem {
+  background: #0f172a;
+  border-color: #38bdf8;
+  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.5), 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.collage-container:hover .collage-center-emblem {
+  transform: translate(-50%, -50%) scale(1.15) rotate(5deg);
+}
+
+.emblem-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.emblem-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  animation: emblemPulse 3s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes emblemPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Photo Cards */
+.collage-card {
+  position: absolute;
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 4px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(59, 130, 246, 0.15);
+  border: 3px solid #ffffff;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, z-index 0.2s ease;
+  will-change: transform;
+}
+
+html[data-theme="dark"] .collage-card {
+  background: #1e293b;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.card-image-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.collage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(15, 23, 42, 0.45) 100%);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Card Positioning & Sizing */
+.card-hero {
+  top: 48%;
+  left: 50%;
+  width: 240px;
+  height: 160px;
+  z-index: 6;
+  --rot: -2deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-top-left {
+  top: 22%;
+  left: 24%;
+  width: 185px;
+  height: 125px;
+  z-index: 4;
+  --rot: -8deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-top-right {
+  top: 22%;
+  left: 76%;
+  width: 190px;
+  height: 128px;
+  z-index: 4;
+  --rot: 7deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-bottom-right {
+  top: 74%;
+  left: 72%;
+  width: 195px;
+  height: 132px;
+  z-index: 5;
+  --rot: -5deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-bottom-left {
+  top: 74%;
+  left: 26%;
+  width: 190px;
+  height: 128px;
+  z-index: 5;
+  --rot: 6deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-side-left {
+  top: 48%;
+  left: 8%;
+  width: 145px;
+  height: 98px;
+  z-index: 3;
+  --rot: -12deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+.card-side-right {
+  top: 48%;
+  left: 92%;
+  width: 148px;
+  height: 100px;
+  z-index: 3;
+  --rot: 10deg;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+/* Card Hover Effects */
+.collage-card:hover {
+  z-index: 25 !important;
+  transform: translate(-50%, -50%) scale(1.12) rotate(0deg) !important;
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.22), 0 0 28px rgba(59, 130, 246, 0.45);
+  border-color: #3b82f6;
+}
+
+html[data-theme="dark"] .collage-card:hover {
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 32px rgba(56, 189, 248, 0.5);
+  border-color: #38bdf8;
+}
+
+.collage-card:hover .collage-img {
+  transform: scale(1.08);
+}
+
+.collage-card:hover .card-overlay-gradient {
+  opacity: 0.2;
+}
+
+/* Label Badges */
+.card-label-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+html[data-theme="dark"] .card-label-badge {
+  background: rgba(15, 23, 42, 0.95);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3b82f6;
+}
+
+html[data-theme="dark"] .badge-dot {
+  background: #38bdf8;
+}
+
+.collage-card:hover .card-label-badge {
+  opacity: 1;
+  bottom: 12px;
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+html[data-theme="dark"] .collage-card:hover .card-label-badge {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+}
+
+html[data-theme="dark"] .collage-card:hover .badge-dot {
+  background: #0f172a;
+}
+
+/* Animations */
+.float-slow-1 {
+  animation: floatSlow1 7s ease-in-out infinite;
+}
+
+.float-slow-2 {
+  animation: floatSlow2 8s ease-in-out infinite;
+}
+
+.float-slow-3 {
+  animation: floatSlow3 6.5s ease-in-out infinite;
+}
+
+@keyframes floatSlow1 {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(var(--rot)) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(calc(var(--rot) + 1.5deg)) translateY(-9px);
+  }
+}
+
+@keyframes floatSlow2 {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(var(--rot)) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(calc(var(--rot) - 1.5deg)) translateY(8px);
+  }
+}
+
+@keyframes floatSlow3 {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(var(--rot)) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(calc(var(--rot) + 1deg)) translateY(-7px);
+  }
+}
+
+/* Interactive Hint */
+.collage-click-hint {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 15;
+}
+
+html[data-theme="dark"] .collage-click-hint {
+  background: rgba(30, 41, 59, 0.95);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.company-collage-wrapper:hover .collage-click-hint {
+  color: #3b82f6;
+  border-color: #3b82f6;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+html[data-theme="dark"] .company-collage-wrapper:hover .collage-click-hint {
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+/* Responsive Mobile Adjustments */
+@media (max-width: 768px) {
+  .company-collage-wrapper {
+    padding: 0.5rem 0;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .collage-container {
+    width: 340px;
+    height: 270px;
+    max-width: 90vw !important;
+    overflow: hidden !important;
+  }
+
+  .collage-ambient-glow {
+    width: 280px;
+    height: 200px;
+  }
+
+  .card-hero {
+    width: 170px;
+    height: 115px;
+  }
+
+  .card-top-left {
+    width: 130px;
+    height: 88px;
+    top: 24%;
+    left: 20%;
+  }
+
+  .card-top-right {
+    width: 135px;
+    height: 90px;
+    top: 24%;
+    left: 80%;
+  }
+
+  .card-bottom-right {
+    width: 135px;
+    height: 90px;
+    top: 76%;
+    left: 78%;
+  }
+
+  .card-bottom-left {
+    width: 130px;
+    height: 88px;
+    top: 76%;
+    left: 22%;
+  }
+
+  /* Hide accent side cards on mobile for visual balance */
+  .card-side-left,
+  .card-side-right {
+    display: none;
+  }
+
+  .collage-center-emblem {
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+  }
+
+  .card-label-badge {
+    font-size: 9px;
+    padding: 2px 7px;
+    bottom: 4px;
+  }
+
+  .collage-click-hint {
+    font-size: 10px;
+    padding: 3px 10px;
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collage-container {
+    width: 300px;
+    height: 240px;
+  }
+
+  .card-hero {
+    width: 150px;
+    height: 100px;
+  }
+
+  .card-top-left,
+  .card-bottom-left {
+    width: 115px;
+    height: 78px;
+  }
+
+  .card-top-right,
+  .card-bottom-right {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .float-slow-1,
+  .float-slow-2,
+  .float-slow-3,
+  .emblem-pulse-ring {
+    animation: none !important;
+  }
+
+  .collage-card,
+  .collage-center-emblem,
+  .collage-img {
+    transition: none !important;
+  }
+}

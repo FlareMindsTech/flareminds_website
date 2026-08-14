@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "../css/web.css";
-import "../css/training.css";
+import "../../styles/pages/web.css";
+import "../../styles/pages/training.css";
 import {
     FaBrain,
     FaRobot,
@@ -10,8 +10,8 @@ import {
 } from "react-icons/fa";
 import { useTypingEffect } from "../../hooks/useTypingEffect";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import TestimonialCarousel from "../../components/TestimonialCarousel";
-import SEO from "../../components/SEO";
+import TestimonialCarousel from "../../components/ui/TestimonialCarousel";
+import SEO from "../../components/common/SEO";
 import { getCourseSchema, getFAQSchema } from "../../utils/structuredData";
 
 export default function AiMlTraining() {

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { projectSections } from "./Projects";
-import SocialButton from "../components/SocialButton";
-import SEO from "../components/SEO";
-import "../components/Services3D.css";
+import { projectSections } from "../data/projectsData";
+import SocialButton from "../components/common/SocialButton";
+import SEO from "../components/common/SEO";
+import "../components/ui/Services3D.css";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { getOrganizationSchema, getWebSiteSchema } from "../utils/structuredData";
-import heroVideo from "../assets/homevideo.mp4";
+import heroVideo from "../assets/videos/homevideo.mp4";
 import { FaRegLightbulb, FaBezierCurve, FaChartLine, FaShieldAlt, FaRocket, FaStar, FaArrowRight, FaBullseye, FaUsers, FaBriefcase, FaShoppingBag, FaHeartbeat, FaHome, FaTh, FaMobileAlt } from "react-icons/fa";
 
 const TiltCard = ({ service }) => {
@@ -70,13 +70,13 @@ const TiltCard = ({ service }) => {
         </div>
         <div className="bottom">
           <div className="social-buttons-container">
-            <button className="social-button">
+            <button type="button" className="social-button" aria-label="Service feature icon 1">
               <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><circle cx="12" cy="12" r="10" /></svg>
             </button>
-            <button className="social-button">
+            <button type="button" className="social-button" aria-label="Service feature icon 2">
               <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><path d="M12 2L2 22h20L12 2z" /></svg>
             </button>
-            <button className="social-button">
+            <button type="button" className="social-button" aria-label="Service feature icon 3">
               <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><rect width="18" height="18" x="3" y="3" rx="2" /></svg>
             </button>
           </div>
@@ -124,9 +124,11 @@ export default function Home() {
           loop
           muted
           playsInline
+          preload="none"
           className="hero-video"
         >
           <source src={heroVideo} type="video/mp4" />
+          <track kind="captions" src="data:text/vtt,WEBVTT" srcLang="en" label="English captions" default />
         </video>
         <div className="bg-grid-overlay"></div>
         <div className="container">
@@ -252,7 +254,7 @@ export default function Home() {
               <h3>{f.title}</h3>
               <div className="title-underline"></div>
               <p>{f.text}</p>
-              <Link to="/services" className="learn-more">
+              <Link to="/services" className="learn-more" aria-label={`Learn more about ${f.title}`}>
                 Learn more <FaArrowRight />
               </Link>
               <div className="wave-bg"></div>
@@ -307,8 +309,8 @@ export default function Home() {
               <div className="experience-circle-outer shadow-lg">
                 <div className="experience-circle-inner shadow">
                   <div className="exp-icon shadow-sm"><FaBriefcase /></div>
-                  <h3 className="exp-years-number mb-0 mt-2">7+</h3>
-                  <h3 className="exp-years-text fw-bold mb-1">Years</h3>
+                  <div className="exp-years-number mb-0 mt-2 text-2xl font-bold">7+</div>
+                  <div className="exp-years-text fw-bold mb-1">Years</div>
                   <p className="exp-text mb-1">Experience</p>
                   <div className="exp-underline">
                     <span className="dot"></span>
@@ -404,7 +406,7 @@ export default function Home() {
             {[
               {
                 id: "e-commerce",
-                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800",
+                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=75&w=500&fm=webp",
                 icon: <FaShoppingBag />,
                 catColor: "#a855f7",
                 title: "E-Commerce Solutions",
@@ -413,7 +415,7 @@ export default function Home() {
               },
               {
                 id: "business-applications",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=75&w=500&fm=webp",
                 icon: <FaBriefcase />,
                 catColor: "#0ea5e9",
                 title: "Business Applications",
@@ -422,7 +424,7 @@ export default function Home() {
               },
               {
                 id: "mobile-applications",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=75&w=500&fm=webp",
                 icon: <FaMobileAlt />,
                 catColor: "#14b8a6",
                 title: "Mobile Applications",
@@ -437,8 +439,8 @@ export default function Home() {
               return (
                 <Link to={category.route} key={category.id} className="fw-card" style={{ textDecoration: 'none' }}>
                   <div className="fw-card-img-wrapper">
-                    <img src={category.image} alt={category.title} className="fw-card-img" />
-                    <button className="fw-card-arrow-btn" aria-label={`Browse ${category.title}`}><FaArrowRight /></button>
+                    <img src={category.image} alt={category.title} className="fw-card-img" loading="lazy" decoding="async" width="800" height="500" />
+                    <span className="fw-card-arrow-btn" aria-hidden="true"><FaArrowRight /></span>
                   </div>
                   <div className="fw-card-content">
                     <div className="fw-category" style={{ color: category.catColor }}>

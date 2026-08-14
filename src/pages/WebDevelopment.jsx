@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCode, FaMobileAlt, FaRocket, FaCheckCircle, FaCogs, FaServer } from "react-icons/fa";
-import SEO from "../components/SEO";
+import SEO from "../components/common/SEO";
 import { getServiceSchema, getFAQSchema } from "../utils/structuredData";
-import "../pages/css/services.css";
+import "../styles/pages/services.css";
 
 export default function WebDevelopment() {
     const serviceData = {

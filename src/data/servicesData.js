@@ -52,7 +52,7 @@ export const allServices = [
     relatedProjects: [
       {
         title: "TNEbA Website",
-        description: "Official website developed for TNEbA with a clean and responsive interface.",
+        description: "Official website developed for TNEBA with a clean and responsive interface.",
         image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85",
         liveLink: "https://tnebwebsiteui.onrender.com",
       },

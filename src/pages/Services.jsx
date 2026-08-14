@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import SEO from "../components/SEO";
+import SEO from "../components/common/SEO";
 import { getServiceSchema, getBreadcrumbSchema } from "../utils/structuredData";
 import { FaArrowRight } from "react-icons/fa";
 import { developmentServices, marketingServices } from "../data/servicesData";
-import "../pages/css/services.css";
+import "../styles/pages/services.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Icon renderer (inline SVG, matches Navbar icon style)

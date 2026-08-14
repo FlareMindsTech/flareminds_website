@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../css/web.css";
-import "../css/training.css";
+import "../../styles/pages/web.css";
+import "../../styles/pages/training.css";
 import {
     FaReact,
     FaNodeJs,
@@ -13,7 +13,7 @@ import {
     FaChevronRight,
     FaCheckCircle
 } from "react-icons/fa";
-import SEO from "../../components/SEO";
+import SEO from "../../components/common/SEO";
 import { getCourseSchema, getFAQSchema } from "../../utils/structuredData";
 
 export default function MernTraining() {

@@ -1,36 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
-import SEO from "../components/SEO";
+import SEO from "../components/common/SEO";
 import { getLocalBusinessSchema, getBreadcrumbSchema } from "../utils/structuredData";
 
 
-import logo1 from "../assets/logo/logo.webp";
-import logo2 from "../assets/logo/logo2.webp";
-import logo3 from "../assets/logo/logo3.webp";
-import logo4 from "../assets/logo/logo4.webp";
-import logo5 from "../assets/logo/logo5.webp";
-import logo6 from "../assets/logo/logo6.webp";
-import logo7 from "../assets/logo/logo7.webp";
-import logo8 from "../assets/logo/logo8.webp";
-import logo9 from "../assets/logo/logo9.webp";
-import DomeGallery from "../components/DomeGallery";
-import Folder from "../components/Folder";
+import logo1 from "../assets/images/logo/logo.webp";
+import logo2 from "../assets/images/logo/logo2.webp";
+import logo3 from "../assets/images/logo/logo3.webp";
+import logo4 from "../assets/images/logo/logo4.webp";
+import logo5 from "../assets/images/logo/logo5.webp";
+import logo6 from "../assets/images/logo/logo6.webp";
+import logo7 from "../assets/images/logo/logo7.webp";
+import logo8 from "../assets/images/logo/logo8.webp";
+import logo9 from "../assets/images/logo/logo9.webp";
+import CompanyCollage from "../components/ui/CompanyCollage";
 
-const randomImagesGlob = import.meta.glob('../assets/group/*.{png,jpg,jpeg,svg,webp}', { eager: true });
-const RANDOM_POOL = Object.values(randomImagesGlob).map(m => m.default);
+const DomeGallery = React.lazy(() => import("../components/ui/DomeGallery"));
 
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
   const [showGallery, setShowGallery] = useState(false);
-  const [randomPapers, setRandomPapers] = useState([]);
-
-  useEffect(() => {
-    const shuffled = [...RANDOM_POOL].sort(() => 0.5 - Math.random());
-    setRandomPapers([
-      { type: 'image', src: shuffled[0], alt: 'Random Memory 1' },
-      { type: 'image', src: shuffled[1], alt: 'Random Memory 2' },
-      { type: 'image', src: shuffled[2], alt: 'Random Memory 3' }
-    ]);
-  }, []);
 
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
@@ -241,9 +229,9 @@ export default function About() {
                     <h3 className="value-prop-title-v2">{prop.title}</h3>
                     <p className="value-prop-short">{prop.shortDesc}</p>
                   </div>
-                  <button type="button" className="expand-btn" aria-label={`${expandedCard === idx ? 'Collapse' : 'Expand'} ${prop.title}`} aria-expanded={expandedCard === idx}>
+                  <span className="expand-btn" aria-hidden="true">
                     {expandedCard === idx ? '×' : '+'}
-                  </button>
+                  </span>
                 </div>
                 <div className="value-card-details">
                   <p>{prop.fullDesc}</p>
@@ -254,7 +242,7 @@ export default function About() {
         </section>
 
         <section className="lm-section">
-          <h3 className="section-title">Meet The Minds Behind FlareMinds</h3>
+          <h2 className="section-title">Meet The Minds Behind FlareMinds</h2>
 
           <div className="premium-team-grid">
             {team.map((m) => (
@@ -300,16 +288,7 @@ export default function About() {
         <section className="memory-folder-section">
           <h2 className="section-title-main">Memory Live Forever</h2>
           <div className="folder-container">
-            <div onClick={() => setShowGallery(true)} role="button" tabIndex={0} aria-label="Open memory gallery" onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') setShowGallery(true);
-            }}>
-              <Folder
-                size={3}
-                color="#5227FF"
-                className="custom-folder"
-                items={randomPapers}
-              />
-            </div>
+            <CompanyCollage onClick={() => setShowGallery(true)} />
           </div>
         </section>
 
@@ -357,9 +336,11 @@ export default function About() {
               ×
             </button>
             <div style={{ flex: 1, position: 'relative' }}>
-              <DomeGallery
-                grayscale={false}
-              />
+              <React.Suspense fallback={<div style={{ color: 'white', textAlign: 'center', padding: '50px' }}>Loading Gallery...</div>}>
+                <DomeGallery
+                  grayscale={false}
+                />
+              </React.Suspense>
             </div>
           </div>
         )}

@@ -7,11 +7,11 @@ import {
   FaHome,
   FaChevronRight,
 } from "react-icons/fa";
-import SEO from "../components/SEO";
+import SEO from "../components/common/SEO";
 import { servicesBySlug } from "../data/servicesData";
 import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from "../utils/structuredData";
-import "../pages/css/services.css";
-import "./css/service-detail.css";
+import "../styles/pages/services.css";
+import "../styles/pages/service-detail.css";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
