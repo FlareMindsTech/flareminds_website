@@ -147,48 +147,55 @@ export default function Blog() {
         schema={getBreadcrumbSchema(breadcrumbs)}
       />
 
-      <div className="blog-hero-header">
-        <span className="blog-badge-pill">✨ FlareMinds Knowledge Hub</span>
-        <h1 className="blog-title">Latest Insights & Articles</h1>
-        <p className="blog-subtitle">
-          Guides, technology trends, and growth strategies curated by FlareMinds experts.
-        </p>
+      <div className="blog-hero-section">
+        <div className="blog-hero-header">
+          <span className="blog-badge-pill">
+            <span className="blog-badge-pill-dot" />
+            FLAREMINDS KNOWLEDGE HUB
+          </span>
+          <h1 className="blog-title">
+            Latest Insights &amp; <span className="blg-grad">Articles</span>
+          </h1>
+          <p className="blog-subtitle">
+            Guides, technology trends, and growth strategies curated by FlareMinds experts.
+          </p>
 
-        {/* Search & Category Filter Controls */}
-        <div className="blog-controls-bar">
-          <div className="blog-search-box">
-            <FaSearch className="search-icon" />
-            <input
-              type="text"
-              placeholder="Search articles by title, category, tag, or keyword..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="blog-search-input"
-              aria-label="Search blog posts"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                className="clear-search-btn"
-                onClick={() => setSearchQuery("")}
-                aria-label="Clear search"
-              >
-                <FaTimes />
-              </button>
-            )}
-          </div>
+          {/* Search & Category Filter Controls */}
+          <div className="blog-controls-bar">
+            <div className="blog-search-box">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search articles by title, category, tag, or keyword..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="blog-search-input"
+                aria-label="Search blog posts"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  className="clear-search-btn"
+                  onClick={() => setSearchQuery("")}
+                  aria-label="Clear search"
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </div>
 
-          <div className="category-pills">
-            {BLOG_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`category-pill ${selectedCategory === cat ? "active" : ""}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+            <div className="category-pills">
+              {BLOG_CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  className={`category-pill ${selectedCategory === cat ? "active" : ""}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

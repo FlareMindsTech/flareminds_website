@@ -163,8 +163,12 @@ export default function Services() {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="service-hero text-center">
         <div className="container">
+          <div className="lm-hero-eyebrow" aria-label="Section label" style={{ marginBottom: "1.25rem" }}>
+            <span className="lm-hero-eyebrow-dot" />
+            OUR SERVICES
+          </div>
           <h1 className="hero-title">
-            Software <span className="text-gradient">Development</span> &amp;{" "}
+            Software <span className="srv-grad">Development</span> &amp;{" "}
             Digital Services
           </h1>
           <p className="hero-subtitle">

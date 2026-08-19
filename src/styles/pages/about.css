@@ -8,59 +8,153 @@
 }
 
 .lm-about-page {
-  background: linear-gradient(180deg, var(--bg-1), #ffffff);
+  background: linear-gradient(180deg, #edf6ff 0%, #f8faff 250px, #ffffff 600px);
   font-family: Inter, sans-serif;
+  min-height: 100vh;
+}
+
+html[data-theme="dark"] .lm-about-page {
+  background: #0a111e;
 }
 
 .lm-hero {
-  padding: 12rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 2rem 4rem;
   text-align: center;
+  background: linear-gradient(180deg, #99d3ff 0%, #c4e5ff 55%, #edf6ff 100%);
+  isolation: isolate;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Faint grid */
+.lm-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(2, 132, 199, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial glow blob */
+.lm-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.18) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lm-hero-inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.lm-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  color: #0369a1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.lm-hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284c7;
 }
 
 .lm-hero-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #0044aa, #00c6ff);
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+}
+
+.lm-hero-title .lm-grad {
+  background: linear-gradient(90deg, #0284c7 0%, #1d4ed8 50%, #4338ca 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .lm-hero-sub {
-  max-width: 800px;
-  margin: 1rem auto 1.5rem;
-  color: var(--muted);
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: #334155;
+  line-height: 1.65;
 }
 
 .lm-counters {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .lm-counter {
-  background: #ffffffcc;
-  padding: 1rem 1.2rem;
-  border-radius: 14px;
-  box-shadow: var(--card-shadow);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  padding: 1.1rem 1.8rem;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+  min-width: 140px;
 }
 
 .lm-counter-value {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #003b70;
+  font-family: "Outfit", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0284c7;
+  line-height: 1;
 }
 
 .lm-counter-label {
-  font-size: 0.85rem;
-  color: #556;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+  margin-top: 0.35rem;
 }
 
 .lm-main {
   max-width: 1200px;
   margin: auto;
-  padding: 3rem 1rem 5rem;
+  padding: 1.5rem 1rem 5rem;
 }
 
 .section-title {
@@ -894,4 +988,64 @@
   .gallery-modal {
     padding-top: 60px;
   }
+}
+
+/* ── Dark Mode Overrides for About Page ─────────────────────── */
+html[data-theme="dark"] .lm-hero {
+  background: linear-gradient(180deg, #07111f 0%, #0b1829 55%, #0f1f38 100%);
+}
+
+html[data-theme="dark"] .lm-hero-eyebrow {
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(56, 189, 248, 0.07);
+  color: rgba(56, 189, 248, 0.9);
+}
+
+html[data-theme="dark"] .lm-hero-eyebrow-dot {
+  background: #38bdf8;
+}
+
+html[data-theme="dark"] .lm-hero-title {
+  color: #f0f9ff;
+}
+
+html[data-theme="dark"] .lm-hero-title .lm-grad {
+  background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme="dark"] .lm-hero-sub {
+  color: rgba(226, 232, 240, 0.72);
+}
+
+html[data-theme="dark"] .lm-counter {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(56, 189, 248, 0.15);
+}
+
+html[data-theme="dark"] .lm-counter-value {
+  color: #38bdf8;
+}
+
+html[data-theme="dark"] .lm-counter-label {
+  color: rgba(148, 163, 184, 0.7);
+}
+
+html[data-theme="dark"] .story-content p {
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .vm-card {
+  background: linear-gradient(145deg, #111d32 0%, #0d1626 100%);
+  border-color: rgba(56, 189, 248, 0.12);
+}
+
+html[data-theme="dark"] .vm-card p {
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .memory-folder-section {
+  background: #0a111e;
 }

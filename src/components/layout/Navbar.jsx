@@ -518,7 +518,16 @@ export default function Navbar() {
             </div>
 
             <NavLink
-              to="/projects"
+              to="/our-works"
+              className={({ isActive }) =>
+                `navbar-nav-link${isActive ? " active" : ""}`
+              }
+            >
+              Our Works
+            </NavLink>
+
+            <NavLink
+              to="/products"
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
@@ -633,7 +642,11 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/projects" className="navbar-mobile-link">
+          <NavLink to="/our-works" className="navbar-mobile-link">
+            Our Works
+          </NavLink>
+
+          <NavLink to="/products" className="navbar-mobile-link">
             Products
           </NavLink>
 

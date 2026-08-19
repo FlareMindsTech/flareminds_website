@@ -1,3 +1,4 @@
+
 .footer-modern {
   background-color: #0b1120;
   color: #94a3b8;
@@ -21,7 +22,7 @@
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px 40px;
+  padding: 50px 10px 2px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
   gap: 40px;
@@ -51,7 +52,7 @@
 
 /* Col 1: Brand */
 .footer-brand-col {
-  padding-right: 20px;
+  padding-right: 2px;
 }
 
 .footer-logo {
@@ -70,7 +71,7 @@
 .footer-brand-desc {
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #cbd5e1;
 }
 
@@ -94,7 +95,7 @@
 }
 
 .social-icon:hover, .social-icon.li-icon {
-  background: #0ea5e9; /* Cyan */
+  background: #0ea5e9;
   color: white;
   border-color: #0ea5e9;
   transform: translateY(-3px);
@@ -203,57 +204,10 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
   line-height: 1.4;
 }
 
-/* CTA Box */
-.cta-box {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  transition: all 0.3s ease;
-}
-
-.cta-box:hover {
-  background: rgba(4, 149, 197, 0.05);
-  border-color: rgba(4, 149, 197, 0.3);
-}
-
-.cta-icon {
-  color: #0495C5;
-  font-size: 1.5rem;
-  margin-top: 5px;
-}
-
-.cta-content h5 {
-  color: white;
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-}
-
-.cta-content p {
-  color: #94a3b8;
-  margin: 0 0 10px 0;
-  font-size: 0.85rem;
-}
-
-.cta-content a {
-  color: #0495C5;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.cta-content a:hover {
-  color: white;
-}
-
 /* Bottom Bar */
 .footer-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px 0;
+  padding:5px 0;
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.2);
@@ -267,7 +221,7 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 }
 
 .trusted-badge {
@@ -325,8 +279,8 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
 @media (max-width: 600px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 32px;               /* was 50px */
-    padding: 48px 20px 24px; /* was 80px 20px 40px */
+    gap: 32px;
+    padding: 48px 20px 24px;
   }
 
   .footer-brand-col {
@@ -334,30 +288,27 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
   }
 
   .footer-logo {
-    margin-bottom: 10px;      /* was 15px */
+    margin-bottom: 10px;
   }
 
   .social-icon {
-    width: 34px;               /* was 40px */
+    width: 34px;
     height: 34px;
   }
 
   .footer-brand-desc {
-    margin-bottom: 18px;      /* was 25px */
+    margin-bottom: 18px;
   }
 
   .footer-brand-divider {
-    margin-bottom: 18px;      /* was 25px */
+    margin-bottom: 18px;
   }
 
   .footer-heading {
     font-size: 1.05rem;
-    margin-bottom: 16px;      /* was 25px */
+    margin-bottom: 16px;
   }
 
-  /* Quick Links & Resources: 2-column grid instead of one long
-     stacked list — this is what actually shortens the footer,
-     since these two lists are the tallest part on mobile */
   .footer-links {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -366,7 +317,7 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
   }
 
   .footer-links li {
-    margin-bottom: 0;         /* was 15px, now handled by row-gap */
+    margin-bottom: 0;
   }
 
   .footer-links a {
@@ -374,21 +325,21 @@ html[data-theme="dark"] .footer-modern .social-icon:hover {
   }
 
   .footer-links a .link-icon {
-    margin-right: 8px;        /* was 12px */
+    margin-right: 8px;
     font-size: 1rem;
   }
 
   .contact-info-list {
-    gap: 14px;                /* was 20px */
-    margin-bottom: 20px;      /* was 30px */
+    gap: 14px;
+    margin-bottom: 20px;
   }
 
   .cta-box {
-    padding: 14px;             /* was 20px */
+    padding: 14px;
   }
 
   .footer-bottom-bar {
-    padding: 16px 0;           /* was 20px 0 */
+    padding: 16px 0;
   }
 
   .footer-bottom-container {

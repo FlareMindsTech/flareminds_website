@@ -411,7 +411,7 @@ export default function Home() {
                 catColor: "#a855f7",
                 title: "E-Commerce Solutions",
                 description: "Build scalable online shopping platforms with secure payments, inventory management, and modern user experiences.",
-                route: "/products/e-commerce"
+                route: "/our-works"
               },
               {
                 id: "business-applications",
@@ -420,7 +420,7 @@ export default function Home() {
                 catColor: "#0ea5e9",
                 title: "Business Applications",
                 description: "Custom business software including CRM, ERP, HRMS, Inventory Systems, Admin Dashboards, and enterprise management solutions.",
-                route: "/products/business-applications"
+                route: "/our-works"
               },
               {
                 id: "mobile-applications",
@@ -429,7 +429,7 @@ export default function Home() {
                 catColor: "#14b8a6",
                 title: "Mobile Applications",
                 description: "Modern Android and cross-platform mobile applications designed for startups, businesses, and enterprises.",
-                route: "/products/mobile-applications"
+                route: "/our-works"
               }
             ].map((category) => {
               const sec = projectSections.find((s) => s.id === category.id);
@@ -461,7 +461,7 @@ export default function Home() {
           </div>
 
           <div className="fw-footer">
-            <Link to="/products" className="fw-view-all-btn">
+            <Link to="/our-works" className="fw-view-all-btn">
               <FaTh className="fw-btn-icon" /> View All Projects
             </Link>
           </div>

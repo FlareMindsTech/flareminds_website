@@ -167,7 +167,13 @@ export default function About() {
       />
       <header className="lm-hero">
         <div className="lm-hero-inner">
-          <h1 className="lm-hero-title">FlareMinds — Design & Growth Agency</h1>
+          <div className="lm-hero-eyebrow" aria-label="Section label">
+            <span className="lm-hero-eyebrow-dot" />
+            ABOUT FLAREMINDS
+          </div>
+          <h1 className="lm-hero-title">
+            FlareMinds — <span className="lm-grad">Design & Growth Agency</span>
+          </h1>
           <p className="lm-hero-sub">
             We help brands grow through design, development and performance
             strategies.

@@ -16,7 +16,8 @@ const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail'))
-const Projects = lazy(() => import('./pages/Projects'))
+const OurWorks = lazy(() => import('./pages/OurWorks'))
+const Products = lazy(() => import('./pages/Products'))
 const MernTraining = lazy(() => import('./pages/training/MernTraining'))
 const DigitalMarketingTraining = lazy(() => import('./pages/training/DigitalMarketingTraining'))
 const AiMlTraining = lazy(() => import('./pages/training/AiMlTraining'))
@@ -48,10 +49,13 @@ export default function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogDetail />} />
 
-            {/* Products / Projects */}
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/products" element={<Projects />} />
-            <Route path="/products/:category" element={<Projects />} />
+            {/* Our Works (Portfolio) */}
+            <Route path="/our-works" element={<OurWorks />} />
+            <Route path="/our-works/:category" element={<OurWorks />} />
+            <Route path="/projects" element={<Navigate to="/our-works" replace />} />
+
+            {/* Products (Future suite) */}
+            <Route path="/products" element={<Products />} />
 
             {/* Services overview */}
             <Route path="/services" element={<Services />} />
