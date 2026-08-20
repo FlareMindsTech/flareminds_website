@@ -685,6 +685,7 @@ html[data-theme="dark"] .card-top-meta {
   /* Uniform line clamp & height reservation for baseline alignment */
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 3.3rem;
@@ -707,6 +708,7 @@ html[data-theme="dark"] .blog-content h3 {
   /* Pushes card footer to bottom */
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
