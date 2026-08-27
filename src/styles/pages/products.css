@@ -264,7 +264,7 @@
 }
 
 .pw-hero-title {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: clamp(2.8rem, 5.5vw, 4.5rem);
   font-weight: 900;
   line-height: 1.06;
@@ -312,7 +312,7 @@
 }
 
 .pw-stat-num {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: 2rem;
   font-weight: 900;
   color: #0284c7;
@@ -427,7 +427,7 @@
 }
 
 .pw-section-label-text {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text-primary, #0f172a);
@@ -532,7 +532,7 @@
 }
 
 .pw-featured-title {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: 1.85rem;
   font-weight: 900;
   color: #0f172a;
@@ -742,7 +742,7 @@
 }
 
 .pw-card-title {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: 1.05rem;
   font-weight: 800;
   color: #0f172a;
@@ -825,12 +825,19 @@
 }
 
 /* ── 12. Bottom CTA ───────────────────────────────────────────── */
-.pw-cta {
-  background: linear-gradient(180deg, #07111f 0%, #0b1829 100%);
+.pw-cta,
+html[data-theme="light"] .pw-cta {
+  background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-top: 1px solid rgba(14, 165, 233, 0.2);
   padding: 5rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+html[data-theme="dark"] .pw-cta {
+  background: linear-gradient(180deg, #07111f 0%, #0b1829 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .pw-cta::before {
@@ -854,27 +861,39 @@
 .pw-cta-pre {
   font-family: "Courier New", monospace;
   font-size: 0.82rem;
-  color: rgba(56, 189, 248, 0.5);
+  color: #0284c7;
   margin-bottom: 1.25rem;
   letter-spacing: 0.04em;
 }
 
+html[data-theme="dark"] .pw-cta-pre {
+  color: rgba(56, 189, 248, 0.6);
+}
+
 .pw-cta-title {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 900;
-  color: #f0f9ff;
+  color: #0f172a;
   line-height: 1.1;
   margin-bottom: 1rem;
 }
 
+html[data-theme="dark"] .pw-cta-title {
+  color: #f0f9ff;
+}
+
 .pw-cta-sub {
   font-size: 1rem;
-  color: rgba(226, 232, 240, 0.62);
+  color: #475569;
   margin-bottom: 2.25rem;
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
+}
+
+html[data-theme="dark"] .pw-cta-sub {
+  color: rgba(226, 232, 240, 0.62);
 }
 
 .pw-cta-btn {
@@ -929,25 +948,40 @@
 
 @media (max-width: 768px) {
   .pw-hero {
-    padding: 7rem 0 4rem;
+    padding: 4.5rem 1rem 2rem !important;
+  }
+
+  .pw-hero-title {
+    font-size: 1.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .pw-hero-desc {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .pw-stats {
-    gap: 1.75rem;
+    gap: 1rem !important;
+    padding: 1rem 0 0 !important;
   }
 
   .pw-stat-num {
-    font-size: 1.5rem;
+    font-size: 1.25rem !important;
+  }
+
+  .pw-stat-label {
+    font-size: 0.72rem !important;
   }
 
   .pw-filter-wrap {
-    top: 64px;
+    top: 60px;
   }
 
   .pw-filter-inner {
     overflow-x: auto;
     flex-wrap: nowrap;
-    padding-bottom: 4px;
+    padding: 0.35rem 0.5rem;
     scrollbar-width: none;
   }
 
@@ -959,39 +993,73 @@
     display: none;
   }
 
+  .pw-filter-btn {
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.78rem !important;
+  }
+
   .pw-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .pw-card {
+    padding: 1.15rem !important;
+    border-radius: 16px !important;
+  }
+
+  .pw-card-icon {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .pw-card-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .pw-card-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .pw-content {
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 1.5rem 1rem 2.5rem !important;
+  }
+
+  .pw-featured-img-wrap {
+    height: 150px !important;
   }
 
   .pw-featured-body {
-    padding: 1.75rem 1.5rem;
+    padding: 1.15rem !important;
   }
 
   .pw-featured-title {
-    font-size: 1.45rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .pw-hero-title {
-    font-size: 2.2rem;
+    font-size: 1.2rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
-  .pw-stats {
-    gap: 1rem;
+  .pw-featured-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.85rem !important;
   }
 
-  .pw-stat-num {
-    font-size: 1.25rem;
+  .pw-cta {
+    padding: 2.5rem 1rem !important;
   }
 
   .pw-cta-title {
-    font-size: 1.6rem;
+    font-size: 1.45rem !important;
+  }
+
+  .pw-cta-sub {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.5rem !important;
   }
 }
 

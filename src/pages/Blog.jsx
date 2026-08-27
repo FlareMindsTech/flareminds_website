@@ -18,6 +18,7 @@ import {
 import SEO from "../components/common/SEO";
 import { getBreadcrumbSchema } from "../utils/structuredData";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "../data/blogData";
+import HeroBackground from "../components/common/HeroBackground";
 import "../styles/pages/blog.css";
 
 const POSTS_PER_PAGE = 6;
@@ -148,6 +149,7 @@ export default function Blog() {
       />
 
       <div className="blog-hero-section">
+        <HeroBackground />
         <div className="blog-hero-header">
           <span className="blog-badge-pill">
             <span className="blog-badge-pill-dot" />

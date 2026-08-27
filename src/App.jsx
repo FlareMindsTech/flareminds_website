@@ -9,7 +9,7 @@ import ThemeToggle from './components/layout/ThemeToggle'
 import FlareMindLoader from './pages/FlareMindLoader'
 import { initGA, trackPageView } from './utils/analytics'
 
-// Lazy-loaded route components for optimal initial bundle performance
+// Lazy-loaded route components
 const Services = lazy(() => import('./pages/Services'))
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const About = lazy(() => import('./pages/About'))
@@ -18,9 +18,30 @@ const Blog = lazy(() => import('./pages/Blog'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail'))
 const OurWorks = lazy(() => import('./pages/OurWorks'))
 const Products = lazy(() => import('./pages/Products'))
-const MernTraining = lazy(() => import('./pages/training/MernTraining'))
-const DigitalMarketingTraining = lazy(() => import('./pages/training/DigitalMarketingTraining'))
-const AiMlTraining = lazy(() => import('./pages/training/AiMlTraining'))
+
+// Development Services (Dedicated folder)
+const WebsiteDevelopment = lazy(() => import('./pages/services/development/WebsiteDevelopment'))
+const MobileAppDevelopment = lazy(() => import('./pages/services/development/MobileAppDevelopment'))
+const EcommerceSolutions = lazy(() => import('./pages/services/development/EcommerceSolutions'))
+const BusinessApplications = lazy(() => import('./pages/services/development/BusinessApplications'))
+const ServiceMarketplace = lazy(() => import('./pages/services/development/ServiceMarketplace'))
+const CustomSoftwareDevelopment = lazy(() => import('./pages/services/development/CustomSoftwareDevelopment'))
+
+// Marketing Services (Dedicated folder)
+const SeoAnalytics = lazy(() => import('./pages/services/marketing/SeoAnalytics'))
+const SocialMediaMarketing = lazy(() => import('./pages/services/marketing/SocialMediaMarketing'))
+const PerformanceMarketing = lazy(() => import('./pages/services/marketing/PerformanceMarketing'))
+const BrandingCreativeDesign = lazy(() => import('./pages/services/marketing/BrandingCreativeDesign'))
+const CreativeMediaProduction = lazy(() => import('./pages/services/marketing/CreativeMediaProduction'))
+const ContentMarketing = lazy(() => import('./pages/services/marketing/ContentMarketing'))
+
+// Support Services (Dedicated folder)
+const MaintenanceSupport = lazy(() => import('./pages/services/support/MaintenanceSupport'))
+
+// Training Pages (Dedicated folder inside services)
+const MernTraining = lazy(() => import('./pages/services/training/MernTraining'))
+const DigitalMarketingTraining = lazy(() => import('./pages/services/training/DigitalMarketingTraining'))
+const AiMlTraining = lazy(() => import('./pages/services/training/AiMlTraining'))
 
 export default function App() {
   const location = useLocation();
@@ -54,20 +75,41 @@ export default function App() {
             <Route path="/our-works/:category" element={<OurWorks />} />
             <Route path="/projects" element={<Navigate to="/our-works" replace />} />
 
-            {/* Products (Future suite) */}
+            {/* Products */}
             <Route path="/products" element={<Products />} />
 
             {/* Services overview */}
             <Route path="/services" element={<Services />} />
 
-            {/* Dynamic service detail — ONE component handles ALL 12 services */}
+            {/* Dedicated Development Services */}
+            <Route path="/services/website-development" element={<WebsiteDevelopment />} />
+            <Route path="/services/mobile-app-development" element={<MobileAppDevelopment />} />
+            <Route path="/services/e-commerce-solutions" element={<EcommerceSolutions />} />
+            <Route path="/services/business-applications" element={<BusinessApplications />} />
+            <Route path="/services/service-marketplace" element={<ServiceMarketplace />} />
+            <Route path="/services/custom-software-development" element={<CustomSoftwareDevelopment />} />
+
+            {/* Dedicated Marketing Services */}
+            <Route path="/services/seo-analytics" element={<SeoAnalytics />} />
+            <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
+            <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
+            <Route path="/services/branding-creative-design" element={<BrandingCreativeDesign />} />
+            <Route path="/services/creative-media-production" element={<CreativeMediaProduction />} />
+            <Route path="/services/content-marketing" element={<ContentMarketing />} />
+
+            {/* Dedicated Support Services */}
+            <Route path="/services/maintenance-support" element={<MaintenanceSupport />} />
+            <Route path="/services/tech-support" element={<Navigate to="/services/maintenance-support" replace />} />
+            <Route path="/services/maintenance" element={<Navigate to="/services/maintenance-support" replace />} />
+
+            {/* Generic service detail fallback */}
             <Route path="/services/:slug" element={<ServiceDetail />} />
 
-            {/* Legacy redirects — preserve existing backlinks / bookmarks */}
+            {/* Legacy redirects */}
             <Route path="/web-development" element={<Navigate to="/services/website-development" replace />} />
             <Route path="/app-development" element={<Navigate to="/services/mobile-app-development" replace />} />
 
-            {/* Training */}
+            {/* Training Pages */}
             <Route path="/training/mern-stack" element={<MernTraining />} />
             <Route path="/training/digital-marketing" element={<DigitalMarketingTraining />} />
             <Route path="/training/ai-ml" element={<AiMlTraining />} />

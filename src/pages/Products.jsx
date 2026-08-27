@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import { FaBox, FaArrowRight, FaTools, FaLaptopCode, FaMagic } from "react-icons/fa";
 import SEO from "../components/common/SEO";
 import { getBreadcrumbSchema } from "../utils/structuredData";
+import HeroBackground from "../components/common/HeroBackground";
 import "../styles/pages/products.css";
-
-// Decorative symbols for tech hero background
-const SYMBOLS = ["{ }", "< />", "[ ]", "01", "10", "001", "010", "11"];
 
 export default function Products() {
   const breadcrumbs = [
@@ -25,15 +23,7 @@ export default function Products() {
 
       {/* ── HERO SECTION ────────────────────────────────────────── */}
       <section className="pw-hero" aria-label="Products hero">
-        {/* Floating background symbols */}
-        <div className="pw-hero-symbols" aria-hidden="true">
-          {SYMBOLS.map((sym, i) => (
-            <span key={i} className="pw-sym">{sym}</span>
-          ))}
-        </div>
-
-        {/* Scan line effect */}
-        <div className="pw-scan-line" aria-hidden="true" />
+        <HeroBackground />
 
         <div className="pw-container">
           <div className="pw-hero-inner">
@@ -129,7 +119,7 @@ export default function Products() {
 
           <h2 
             style={{
-              fontFamily: 'var(--font-heading, "Outfit", sans-serif)',
+              fontFamily: 'var(--font-heading, "Manrope", sans-serif)',
               fontSize: "2rem",
               fontWeight: 900,
               color: "#0f172a",

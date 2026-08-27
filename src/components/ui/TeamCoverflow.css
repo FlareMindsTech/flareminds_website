@@ -1,0 +1,506 @@
+/* ==========================================================================
+   3D COVERFLOW TEAM CAROUSEL STYLING (FLAREMINDS THEME)
+   100% Crisp Native Vector Text, 3D Perspective on Side Cards & Full Mobile Fit
+   ========================================================================== */
+
+.team-coverflow-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Stage / Carousel Container */
+.team-coverflow-stage {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Keep container flat so active card renders with native 100% crisp subpixel font text */
+}
+
+.team-coverflow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   INDIVIDUAL CARDS
+   ========================================================================== */
+
+.coverflow-card {
+  position: absolute;
+  width: 325px;
+  max-width: 84vw;
+  height: 440px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 16px 36px rgba(2, 60, 130, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark mode theme styling with high contrast */
+html[data-theme="dark"] .coverflow-card {
+  background: #0d1b2e;
+  border-color: rgba(56, 189, 248, 0.28);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* Active Center Card: 100% Razor Sharp Text */
+.coverflow-card.is-active {
+  z-index: 10;
+  opacity: 1;
+  transform: translateX(0) scale(1.02);
+  border-color: #00b7ff;
+  box-shadow: 0 22px 60px rgba(0, 183, 255, 0.25), 0 10px 30px rgba(2, 132, 199, 0.2);
+  cursor: default;
+}
+
+html[data-theme="dark"] .coverflow-card.is-active {
+  background: #0f223d;
+  border-color: #38bdf8;
+  box-shadow: 0 22px 60px rgba(0, 183, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Side Cards: 3D Perspective & Depth */
+.coverflow-card.is-prev-1 {
+  z-index: 8;
+  opacity: 0.8;
+  transform: translateX(-220px) perspective(900px) rotateY(18deg) scale(0.88);
+}
+
+.coverflow-card.is-next-1 {
+  z-index: 8;
+  opacity: 0.8;
+  transform: translateX(220px) perspective(900px) rotateY(-18deg) scale(0.88);
+}
+
+.coverflow-card.is-prev-2 {
+  z-index: 6;
+  opacity: 0.45;
+  transform: translateX(-390px) perspective(900px) rotateY(25deg) scale(0.76);
+}
+
+.coverflow-card.is-next-2 {
+  z-index: 6;
+  opacity: 0.45;
+  transform: translateX(390px) perspective(900px) rotateY(-25deg) scale(0.76);
+}
+
+.coverflow-card.is-hidden-left {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-520px) scale(0.65);
+}
+
+.coverflow-card.is-hidden-right {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(520px) scale(0.65);
+}
+
+.coverflow-card:not(.is-active):hover {
+  opacity: 0.95;
+  border-color: rgba(0, 183, 255, 0.6);
+}
+
+/* Card Internal Layout */
+.coverflow-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Image Header / Fallback */
+.coverflow-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+html[data-theme="dark"] .coverflow-card-image-wrap {
+  background: linear-gradient(135deg, #093758 0%, #0369a1 100%);
+}
+
+.coverflow-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.coverflow-card.is-active:hover .coverflow-card-img {
+  transform: scale(1.03);
+}
+
+/* Default Avatar Icon / Initial */
+.coverflow-avatar-fallback {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00b7ff 0%, #0284c7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Role Badge */
+.coverflow-role-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  background: #ffffff;
+  color: #0369a1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] .coverflow-role-badge {
+  background: #0b1c33;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Body Content (Ultra-Crisp Typography) */
+.coverflow-card-content {
+  flex: 1;
+  padding: 1.2rem 1.35rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.coverflow-card-header {
+  margin-bottom: 0.35rem;
+}
+
+.coverflow-card-name {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="dark"] .coverflow-card-name {
+  color: #ffffff;
+}
+
+.coverflow-card-bio {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #334155;
+  margin: 0.4rem 0 0;
+  font-style: normal;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .coverflow-card-bio {
+  color: #e2e8f0;
+}
+
+.coverflow-card-footer {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed rgba(2, 132, 199, 0.25);
+  padding-top: 0.7rem;
+}
+
+.coverflow-flare-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #0284c7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .coverflow-flare-tag {
+  color: #38bdf8;
+}
+
+.coverflow-flare-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00b7ff;
+  box-shadow: 0 0 8px #00b7ff;
+}
+
+/* ==========================================================================
+   NAVIGATION CONTROLS & PAGINATION
+   ========================================================================== */
+
+.team-coverflow-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 20;
+}
+
+.coverflow-nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  background: #ffffff;
+  color: #0284c7;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+  box-shadow: 0 6px 18px rgba(0, 183, 255, 0.15);
+}
+
+html[data-theme="dark"] .coverflow-nav-btn {
+  background: #0d1b2e;
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.coverflow-nav-btn:hover {
+  background: linear-gradient(135deg, #00b7ff, #0284c7);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 183, 255, 0.35);
+}
+
+.coverflow-nav-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Pagination Dots */
+.coverflow-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.coverflow-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(2, 132, 199, 0.25);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  padding: 0;
+}
+
+html[data-theme="dark"] .coverflow-dot {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+.coverflow-dot:hover {
+  background: rgba(0, 183, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.coverflow-dot.is-active {
+  width: 28px;
+  background: linear-gradient(90deg, #00b7ff, #0284c7);
+  box-shadow: 0 0 10px rgba(0, 183, 255, 0.5);
+}
+
+/* Swipe Hint on Mobile */
+.coverflow-mobile-hint {
+  display: none;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+html[data-theme="dark"] .coverflow-mobile-hint {
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE TUNING
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .team-coverflow-stage {
+    height: 460px;
+  }
+
+  .coverflow-card {
+    width: 295px;
+    height: 420px;
+  }
+
+  .coverflow-card.is-prev-1 {
+    transform: translateX(-175px) perspective(800px) rotateY(16deg) scale(0.88);
+  }
+
+  .coverflow-card.is-next-1 {
+    transform: translateX(175px) perspective(800px) rotateY(-16deg) scale(0.88);
+  }
+
+  .coverflow-card.is-prev-2 {
+    transform: translateX(-310px) perspective(800px) rotateY(22deg) scale(0.76);
+  }
+
+  .coverflow-card.is-next-2 {
+    transform: translateX(310px) perspective(800px) rotateY(-22deg) scale(0.76);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-coverflow-wrapper {
+    padding: 1.5rem 0.5rem 2.5rem;
+  }
+
+  .team-coverflow-stage {
+    height: 430px;
+  }
+
+  .coverflow-card {
+    width: 260px;
+    height: 395px;
+    border-radius: 20px;
+  }
+
+  .coverflow-card-image-wrap {
+    height: 195px;
+  }
+
+  .coverflow-avatar-fallback {
+    width: 76px;
+    height: 76px;
+    font-size: 1.8rem;
+  }
+
+  .coverflow-card-content {
+    padding: 1rem 1.1rem 1.1rem;
+  }
+
+  .coverflow-card-name {
+    font-size: 1.22rem;
+  }
+
+  .coverflow-card-bio {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .coverflow-card.is-prev-1 {
+    transform: translateX(-120px) scale(0.84);
+    opacity: 0.7;
+  }
+
+  .coverflow-card.is-next-1 {
+    transform: translateX(120px) scale(0.84);
+    opacity: 0.7;
+  }
+
+  .coverflow-card.is-prev-2,
+  .coverflow-card.is-next-2 {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(0) scale(0.5);
+  }
+
+  .coverflow-mobile-hint {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-coverflow-stage {
+    height: 405px;
+  }
+
+  .coverflow-card {
+    width: 240px;
+    height: 375px;
+  }
+
+  .coverflow-card-image-wrap {
+    height: 175px;
+  }
+
+  .coverflow-card.is-prev-1 {
+    transform: translateX(-95px) scale(0.82);
+    opacity: 0.6;
+  }
+
+  .coverflow-card.is-next-1 {
+    transform: translateX(95px) scale(0.82);
+    opacity: 0.6;
+  }
+
+  .coverflow-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
+  }
+}

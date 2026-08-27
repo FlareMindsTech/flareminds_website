@@ -1,175 +1,212 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { FaFacebookF, FaEnvelope, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
-const SocialButton = () => {
+const SOCIAL_LINKS = [
+  {
+    name: "Facebook",
+    icon: <FaFacebookF />,
+    href: "https://www.facebook.com/flareminds",
+    color: "#1877f2",
+    ariaLabel: "Visit FlareMinds on Facebook",
+  },
+  {
+    name: "Instagram",
+    icon: <FaInstagram />,
+    href: "https://www.instagram.com/flareminds_tech?igsi=Nm5ueTFyYW40ODlt&utm_source=qr",
+    color: "#ec4cb2ff",
+    ariaLabel: "Visit FlareMinds on Instagram",
+  },
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedinIn />,
+    href: "https://www.linkedin.com/company/flareminds-technology-and-services/",
+    color: "#003a74ff",
+    ariaLabel: "Visit FlareMinds on LinkedIn",
+  },
+  {
+    name: "WhatsApp",
+    icon: <FaWhatsapp />,
+    href: "https://wa.me/919500950813",
+    color: "#25d366",
+    ariaLabel: "Chat with FlareMinds on WhatsApp",
+  },
+  {
+    name: "Email",
+    icon: <FaEnvelope />,
+    href: "mailto:Info@flaremindstech.com",
+    color: "#ff0000ff",
+    ariaLabel: "Email FlareMinds Team",
+  },
+];
+
+export default function SocialButton() {
   return (
-    <StyledWrapper>
-      <ul className="wrapper">
-        <li className="icon facebook">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit our Facebook page"
-            className="social-link"
-          >
-            <span className="tooltip">Facebook</span>
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 320 512" height="1.2em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-            </svg>
-          </a>
-        </li>
-        <li className="icon email">
-          <a
-            href="mailto:Info@flaremindstech.com"
-            aria-label="Email FlareMinds"
-            className="social-link"
-          >
-            <span className="tooltip">Email</span>
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" height="1.2em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313c11.5 8.6 27 8.6 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
-            </svg>
-          </a>
-        </li>
-        <li className="icon instagram">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit our Instagram page"
-            className="social-link"
-          >
-            <span className="tooltip">Instagram</span>
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
-              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-            </svg>
-          </a>
-        </li>
+    <StyledSocialWrapper aria-label="Social media quick links">
+      <ul className="social-button-list">
+        {SOCIAL_LINKS.map((item) => (
+          <li key={item.name} className={`social-item ${item.name.toLowerCase()}`}>
+            <a
+              href={item.href}
+              target={item.href.startsWith("mailto:") ? "_self" : "_blank"}
+              rel="noopener noreferrer"
+              aria-label={item.ariaLabel}
+              className="social-btn-link"
+              style={{ "--brand-color": item.color }}
+            >
+              <span className="social-icon-wrapper">
+                {item.icon}
+              </span>
+              {/* Tooltip positioned below the icon with high z-index to prevent any overlap */}
+              <span className="social-tooltip" style={{ "--brand-color": item.color }}>
+                {item.name}
+              </span>
+            </a>
+          </li>
+        ))}
       </ul>
-    </StyledWrapper>
+    </StyledSocialWrapper>
   );
-};
+}
 
-const StyledWrapper = styled.div`
-  .wrapper {
+const StyledSocialWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 30;
+
+  .social-button-list {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     list-style: none;
-    font-family: "Poppins", sans-serif;
-    justify-content: flex-start;
     padding: 0;
     margin: 0;
-  }
-
-  .wrapper .icon {
+    flex-wrap: wrap;
     position: relative;
-    background: #fff;
-    border-radius: 50%;
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 30;
   }
 
-  .wrapper .social-link {
-    width: 100%;
-    height: 100%;
+  .social-item {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: inherit;
+    z-index: 30;
+  }
+
+  .social-btn-link {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    border-radius: 50%;
+    
+    /* Sleek Glassmorphic Core */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    z-index: 30;
   }
 
-  .wrapper .icon:first-child {
-    margin-left: 0;
+  .social-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #f0f9ff;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
 
-  .wrapper .tooltip {
+  /* Tooltip positioned below the icons to prevent clipping by the CTA buttons above */
+  .social-tooltip {
     position: absolute;
-    top: 0;
-    font-size: 14px;
-    background: #fff;
-    color: #fff;
-    padding: 5px 8px;
-    border-radius: 5px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-
-  .wrapper .tooltip::before {
-    position: absolute;
-    content: "";
-    height: 8px;
-    width: 8px;
-    background: #fff;
-    bottom: -3px;
+    top: calc(100% + 8px);
     left: 50%;
-    transform: translate(-50%) rotate(45deg);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translate(-50%, -4px) scale(0.9);
+    font-family: var(--font-body, "Inter", sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: var(--brand-color, #0ea5e9);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    white-space: nowrap;
+    z-index: 999;
   }
 
-  .wrapper .icon:hover {
-    transform: scale(1.3);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+
+  .social-tooltip::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: var(--brand-color, #0ea5e9);
   }
 
-  .wrapper .icon:hover .tooltip {
-    top: -45px;
+  /* Hover & Focus Interactions */
+  .social-btn-link:hover,
+  .social-btn-link:focus-visible {
+    background: var(--brand-color, #0ea5e9);
+    border-color: var(--brand-color, #0ea5e9);
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), 0 0 16px var(--brand-color, #0ea5e9);
+    z-index: 40;
+  }
+
+  .social-btn-link:hover .social-icon-wrapper,
+  .social-btn-link:focus-visible .social-icon-wrapper {
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  .social-btn-link:hover .social-tooltip,
+  .social-btn-link:focus-visible .social-tooltip {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
+    transform: translate(-50%, 2px) scale(1);
   }
 
-  .wrapper .icon:hover span,
-  .wrapper .icon:hover .tooltip {
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  /* Theme adjustments */
+  html[data-theme="dark"] & .social-btn-link {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(56, 189, 248, 0.25);
+    color: #e2e8f0;
   }
 
-  .wrapper .facebook:hover,
-  .wrapper .facebook:hover .tooltip,
-  .wrapper .facebook:hover .tooltip::before {
-    background: #1877f2;
-    color: #fff;
+  html[data-theme="light"] & .social-btn-link {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
   }
 
-  .wrapper .email:hover,
-  .wrapper .email:hover .tooltip,
-  .wrapper .email:hover .tooltip::before {
-    background: #0ea5e9;
-    color: #fff;
+  @media (max-width: 480px) {
+    .social-button-list {
+      gap: 10px;
+    }
+    .social-btn-link {
+      width: 40px;
+      height: 40px;
+    }
+    .social-icon-wrapper {
+      font-size: 1rem;
+    }
   }
-
-  .wrapper .instagram:hover,
-  .wrapper .instagram:hover .tooltip,
-  .wrapper .instagram:hover .tooltip::before {
-    background: #e4405f;
-    color: #fff;
-  }
-
-  html[data-theme="dark"] & .wrapper .icon {
-    background: #172033;
-    color: #7dd3fc;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
-    border: 1px solid rgba(125, 211, 252, 0.26);
-  }
-
-  html[data-theme="dark"] & .wrapper .tooltip {
-    background: #172033;
-    color: #e5edf8;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
-  }
-
-  html[data-theme="dark"] & .wrapper .tooltip::before {
-    background: #172033;
-  }`;
-
-export default SocialButton;
+`;

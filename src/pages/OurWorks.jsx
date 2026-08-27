@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import SEO from "../components/common/SEO";
 import { getBreadcrumbSchema } from "../utils/structuredData";
+import HeroBackground from "../components/common/HeroBackground";
 import "../styles/pages/our-works.css";
 
-import { ALL_PROJECTS, CATEGORIES, projectSections } from "../data/projectsData";
-export { ALL_PROJECTS, CATEGORIES, projectSections };
+import { ALL_PROJECTS, CATEGORIES } from "../data/projectsData";
 
 // Hero decorative symbols
 const SYMBOLS = ["{ }", "< />", "[ ]", "01", "10", "001", "010", "11"];
@@ -192,13 +192,7 @@ export default function OurWorks() {
 
       {/* HERO SECTION */}
       <section className="pw-hero" aria-label="Our Work hero">
-        <div className="pw-hero-symbols" aria-hidden="true">
-          {SYMBOLS.map((sym, i) => (
-            <span key={i} className="pw-sym">{sym}</span>
-          ))}
-        </div>
-
-        <div className="pw-scan-line" aria-hidden="true" />
+        <HeroBackground />
 
         <div className="pw-container">
           <div className="pw-hero-inner">

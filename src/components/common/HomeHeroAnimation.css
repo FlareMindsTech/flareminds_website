@@ -1,0 +1,261 @@
+/* ═══════════════════════════════════════════════════════════════ */
+/* FlareCore Interactive Cyber Mesh & Radiant Aurora Hero Style    */
+/* ═══════════════════════════════════════════════════════════════ */
+
+.flare-hero-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 30%, #0c192c 0%, #07111f 70%, #030812 100%);
+}
+
+/* ── 1. Interactive Canvas Layer ──────────────────────────────── */
+.flare-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 3;
+  pointer-events: auto; /* Enable mouse hover & touch interactions */
+}
+
+/* ── 2. Ambient Radiant Aurora Glows (Hardware-Accelerated) ─────── */
+.flare-aurora-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.flare-glow-1 {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, rgba(99, 102, 241, 0.18) 55%, transparent 75%);
+  animation: flareFloat1 16s ease-in-out infinite alternate;
+}
+
+.flare-glow-2 {
+  width: 480px;
+  height: 480px;
+  top: 15%;
+  right: -100px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(20, 184, 166, 0.15) 55%, transparent 75%);
+  animation: flareFloat2 18s ease-in-out infinite alternate;
+}
+
+.flare-glow-3 {
+  width: 600px;
+  height: 400px;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%) translate3d(0, 0, 0);
+  background: radial-gradient(ellipse, rgba(14, 165, 233, 0.22) 0%, rgba(6, 182, 212, 0.1) 60%, transparent 80%);
+  animation: flarePulseCenter 12s ease-in-out infinite alternate;
+}
+
+.flare-glow-flare {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(245, 158, 11, 0.08) 45%, transparent 70%);
+  animation: flareCoreBreathe 10s ease-in-out infinite alternate;
+}
+
+/* ── 3. Perspective Cyber Grid Floor ──────────────────────────── */
+.flare-cyber-grid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+  transform: perspective(600px) rotateX(48deg) scale(1.3);
+  transform-origin: bottom center;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* ── 4. Floating Holographic Innovation Badges ─────────────────── */
+.flare-badge-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.flare-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px 0 rgba(2, 6, 23, 0.37), inset 0 0 12px rgba(56, 189, 248, 0.08);
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e0f2fe;
+  letter-spacing: 0.02em;
+  user-select: none;
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.flare-badge:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 12px 36px 0 rgba(14, 165, 233, 0.25), inset 0 0 16px rgba(56, 189, 248, 0.2);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.flare-badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.flare-badge-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: flarePulseDot 2s infinite ease-in-out;
+}
+
+/* Badge Layout Positions (Framing the Hero without blocking text) */
+.flare-badge-tl {
+  top: 18%;
+  left: 6%;
+  animation: badgeFloatTL 7s ease-in-out infinite alternate;
+}
+
+.flare-badge-tr {
+  top: 22%;
+  right: 6%;
+  animation: badgeFloatTR 8s ease-in-out infinite alternate;
+}
+
+.flare-badge-bl {
+  bottom: 22%;
+  left: 8%;
+  animation: badgeFloatBL 7.5s ease-in-out infinite alternate;
+}
+
+.flare-badge-br {
+  bottom: 24%;
+  right: 7%;
+  animation: badgeFloatBR 8.5s ease-in-out infinite alternate;
+}
+
+/* ── 5. Keyframe Animations ───────────────────────────────────── */
+@keyframes flareFloat1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, 40px, 0) scale(1.08); }
+  100% { transform: translate3d(-20px, 20px, 0) scale(0.95); }
+}
+
+@keyframes flareFloat2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-35px, 30px, 0) scale(1.1); }
+  100% { transform: translate3d(20px, -20px, 0) scale(0.92); }
+}
+
+@keyframes flarePulseCenter {
+  0% { transform: translateX(-50%) translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) translate3d(0, -25px, 0) scale(1.15); opacity: 1; }
+}
+
+@keyframes flareCoreBreathe {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.85; }
+}
+
+@keyframes flarePulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes badgeFloatTL {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(8px, -14px, 0); }
+}
+
+@keyframes badgeFloatTR {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-10px, -12px, 0); }
+}
+
+@keyframes badgeFloatBL {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(10px, 12px, 0); }
+}
+
+@keyframes badgeFloatBR {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-8px, 14px, 0); }
+}
+
+/* ── 6. Responsive Adaptations ────────────────────────────────── */
+@media (max-width: 1200px) {
+  .flare-badge-tl { left: 3%; top: 14%; }
+  .flare-badge-tr { right: 3%; top: 16%; }
+  .flare-badge-bl { left: 4%; bottom: 16%; }
+  .flare-badge-br { right: 4%; bottom: 18%; }
+}
+
+@media (max-width: 900px) {
+  .flare-badge {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  .flare-badge-bl,
+  .flare-badge-br {
+    display: none; /* Hide bottom badges on smaller tablets to ensure zero content interference */
+  }
+}
+
+@media (max-width: 640px) {
+  .flare-badge-layer {
+    display: none; /* On mobile phones, keep clean canvas and glowing aurora for zero clutter and maximum speed */
+  }
+  .flare-glow-1 { width: 320px; height: 320px; }
+  .flare-glow-2 { width: 280px; height: 280px; }
+  .flare-glow-3 { width: 360px; height: 260px; }
+}
+
+/* ── 7. Reduced Motion Accessibility ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .flare-glow-1,
+  .flare-glow-2,
+  .flare-glow-3,
+  .flare-glow-flare,
+  .flare-badge,
+  .flare-badge-pulse-dot {
+    animation: none !important;
+  }
+}

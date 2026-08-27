@@ -12,6 +12,7 @@
 }
 
 .morphing-text {
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: 4rem;
   font-weight: 900;
   background: #007aff;

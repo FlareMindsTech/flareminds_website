@@ -752,6 +752,72 @@ export const allServices = [
       { q: "Can you write website copy for a new website?", a: "Yes, we specialize in conversion-focused website copywriting for new and existing sites." },
     ],
   },
+
+  // ══════════════════════════
+  //  SUPPORT SERVICES
+  // ══════════════════════════
+
+  {
+    id: "maintenance-support",
+    slug: "maintenance-support",
+    category: "Support",
+    title: "Maintenance & Support",
+    shortDescription:
+      "Keep your digital products secure, updated, and running smoothly with reliable ongoing technical support.",
+    heroDescription:
+      "Keep your digital products secure, updated, and running smoothly with reliable ongoing technical support, 24/7 uptime monitoring, and rapid bug resolution.",
+    accent: "#0ea5e9",
+    bgLight: "#eff6ff",
+    overview: {
+      title: "Reliable Support for Zero Downtime",
+      text: "Digital systems need proactive care. From regular security updates and server tuning to rapid bug fixes and emergency patches, our dedicated support engineers ensure your website and apps run seamlessly 24/7.",
+      benefits: [
+        "24/7 Uptime & Performance Monitoring",
+        "Regular Security Patches & Vulnerability Audits",
+        "Automated Cloud Backups & Instant Disaster Recovery",
+        "Database Optimization & Speed Tuning",
+        "Fast SLA-backed Bug Fixes & Technical Troubleshooting",
+        "Continuous Software Updates & Dependency Upgrades",
+      ],
+    },
+    features: [
+      { title: "24/7 Server Monitoring", description: "Real-time health monitoring with automated alerts for immediate incident response." },
+      { title: "Security Patches & Audits", description: "Regular vulnerability scanning, SSL checks, and firewall rules management." },
+      { title: "Automated Daily Backups", description: "Cloud-stored redundant backups with 1-click restore capabilities." },
+      { title: "Performance Tuning", description: "Cache optimization, CDN management, and database query refinement." },
+      { title: "Feature Upgrades & Fixes", description: "Minor enhancements, UI tweaks, and dependency upgrades." },
+      { title: "Dedicated Support Desk", description: "Priority ticketing system and dedicated engineers for immediate help." },
+    ],
+    process: [
+      { step: "01", title: "System Audit", desc: "Comprehensive audit of code, architecture, server, and security posture." },
+      { step: "02", title: "Monitoring Setup", desc: "Configuration of uptime alerts, log aggregators, and error tracking." },
+      { step: "03", title: "Backup & Hardening", desc: "Automated backup schedules and firewall/security hardening." },
+      { step: "04", title: "Routine Maintenance", desc: "Weekly software updates, security scans, and database maintenance." },
+      { step: "05", title: "Incident Management", desc: "Rapid response to any unexpected errors or downtime events." },
+      { step: "06", title: "Monthly Reporting", desc: "Detailed monthly health reports, uptime metrics, and performance analytics." },
+    ],
+    technologies: ["AWS CloudWatch", "Sentry", "New Relic", "GitHub Actions", "Docker", "Nginx", "Linux", "MongoDB Atlas"],
+    relatedProjects: [
+      {
+        title: "TNEbA Web & Admin",
+        description: "Ongoing SLA technical support, server monitoring, and database management for TNEbA.",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+        liveLink: "https://tnebwebsiteui.onrender.com",
+      },
+      {
+        title: "AKA Associates Platform",
+        description: "Continuous maintenance, security audits, and cloud infrastructure support for AKA Associates.",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85",
+        liveLink: "https://akaassociate.com",
+      },
+    ],
+    faq: [
+      { q: "What does the maintenance plan include?", a: "It includes 24/7 uptime monitoring, automated backups, security patching, bug fixes, and monthly health reports." },
+      { q: "How fast is your response time for critical issues?", a: "For critical emergencies, our SLA guarantees response and action within 15 to 30 minutes." },
+      { q: "Can you maintain applications not originally built by FlareMinds?", a: "Yes, we conduct a quick code and infrastructure audit first, then onboard your project into our support lifecycle." },
+      { q: "Are backups stored safely off-site?", a: "Yes, all backups are encrypted and stored in geo-redundant cloud storage locations." },
+    ],
+  },
 ];
 
 // Derived lookups for convenience
@@ -759,3 +825,4 @@ export const servicesBySlug = Object.fromEntries(allServices.map((s) => [s.slug,
 
 export const developmentServices = allServices.filter((s) => s.category === "Development");
 export const marketingServices = allServices.filter((s) => s.category === "Marketing");
+export const supportServices = allServices.filter((s) => s.category === "Support");

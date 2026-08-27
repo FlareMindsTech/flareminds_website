@@ -42,14 +42,16 @@ export const getLocalBusinessSchema = () => ({
     priceRange: '$$',
     address: {
         '@type': 'PostalAddress',
+        streetAddress: '3rd Floor, SBI Bank Building, Anupparpalayam Pudur',
         addressCountry: 'IN',
-        addressLocality: 'Coimbatore',
+        addressLocality: 'Tiruppur',
+        postalCode: '641652',
         addressRegion: 'Tamil Nadu',
     },
     geo: {
         '@type': 'GeoCoordinates',
-        latitude: '11.0168',
-        longitude: '76.9558',
+        latitude: '11.1459322',
+        longitude: '77.3167479',
     },
     openingHoursSpecification: [
         {

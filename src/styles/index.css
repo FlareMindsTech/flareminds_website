@@ -1,8 +1,50 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-manrope: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 :root {
   --brand: #0f172a;
   --accent: #0ea5a4;
+  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ow-font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ow-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base typography */
+html, body {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-heading,
+.font-manrope {
+  font-family: var(--font-heading, 'Manrope', sans-serif);
+}
+
+p, .body-text, .desc, .description {
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+button,
+.btn,
+.navbar-nav-link,
+.navbar-dropdown-btn,
+label,
+.badge,
+.tag {
+  font-family: var(--font-heading, 'Manrope', sans-serif);
 }
 
 /* ═══════════════════════════════════════════════════════════ */
@@ -42,6 +84,10 @@ html {
   overflow-x: hidden !important;
   max-width: 100% !important;
   width: 100% !important;
+  background-color: #f8fafc;
+}
+
+html[data-theme="dark"] {
   background-color: #07111f;
 }
 
@@ -52,6 +98,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #f8fafc;
+}
+
+html[data-theme="dark"] body {
   background-color: #07111f;
 }
 
@@ -68,7 +118,6 @@ body {
     overflow-x: hidden !important;
     max-width: 100% !important;
     width: 100% !important;
-    background-color: #07111f !important;
     box-sizing: border-box !important;
   }
 }
@@ -336,4 +385,231 @@ html[data-theme="dark"] .training-page .feature-icon-wrapper {
 html[data-theme="dark"] .training-page .control-btn {
   border-color: #315272;
   color: #bae6fd;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UNIFIED HERO SYSTEM & SCAN-LINE ANIMATIONS (ALL PAGES)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Keyframes ────────────────────────────────────────────── */
+@keyframes pw-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(-50%) scale(1.12);
+  }
+}
+
+@keyframes pw-drift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-12px) scale(1.08);
+    opacity: 0.48;
+  }
+}
+
+/* Bidirectional scan line (travels top-to-bottom and bottom-to-top) */
+@keyframes pw-scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── 2. Laser Scan-Line ──────────────────────────────────────── */
+.pw-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(14, 165, 233, 0.25) 15%,
+    rgba(14, 165, 233, 0.95) 50%,
+    rgba(99, 102, 241, 0.95) 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.7), 0 0 24px rgba(99, 102, 241, 0.4);
+  pointer-events: none;
+  z-index: 2;
+  animation: pw-scan 7s ease-in-out infinite alternate;
+}
+
+html[data-theme="dark"] .pw-scan-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.3) 15%,
+    rgba(56, 189, 248, 1) 50%,
+    rgba(129, 140, 248, 1) 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.9), 0 0 32px rgba(129, 140, 248, 0.5);
+}
+
+/* ── 3. Floating Background Symbols ──────────────────────────── */
+.pw-hero-symbols {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.pw-sym {
+  position: absolute;
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(14, 165, 233, 0.28);
+  letter-spacing: 0.04em;
+  animation: pw-drift 8s ease-in-out infinite;
+  user-select: none;
+}
+
+html[data-theme="dark"] .pw-sym {
+  color: rgba(56, 189, 248, 0.25);
+}
+
+.pw-sym:nth-child(1) { top: 15%; left: 7%; animation-delay: 0s; animation-duration: 9s; }
+.pw-sym:nth-child(2) { top: 22%; left: 18%; animation-delay: -2s; animation-duration: 7s; }
+.pw-sym:nth-child(3) { top: 60%; left: 5%; animation-delay: -4s; animation-duration: 11s; }
+.pw-sym:nth-child(4) { top: 40%; left: 88%; animation-delay: -1s; animation-duration: 8s; }
+.pw-sym:nth-child(5) { top: 70%; left: 80%; animation-delay: -3s; animation-duration: 10s; }
+.pw-sym:nth-child(6) { top: 12%; left: 75%; animation-delay: -5s; animation-duration: 9s; }
+.pw-sym:nth-child(7) { top: 80%; left: 35%; animation-delay: -2.5s; animation-duration: 12s; }
+.pw-sym:nth-child(8) { top: 30%; left: 50%; animation-delay: -6s; animation-duration: 7.5s; }
+
+/* ── 4. Unified Hero Backgrounds (Grid & Radial Glow) ────────── */
+:is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+) {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #99d3ff 0%, #c4e5ff 55%, #edf6ff 100%);
+  isolation: isolate;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Faint grid overlay */
+:is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(2, 132, 199, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient Radial Glow Blob */
+:is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+)::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pw-pulse-glow 6s ease-in-out infinite;
+}
+
+/* Dark mode overrides for unified heroes */
+html[data-theme="dark"] :is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+) {
+  background: linear-gradient(180deg, #071224 0%, #0d1e3d 55%, #0a1426 100%) !important;
+}
+
+html[data-theme="dark"] :is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+)::before {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px) !important;
+}
+
+html[data-theme="dark"] :is(
+  .pw-hero,
+  .lm-hero,
+  .service-hero,
+  .blog-hero-section,
+  .contact-hero-section
+)::after {
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.16) 0%, transparent 68%) !important;
+}
+
+/* Gradient flow text animation - Desktop only to eliminate mobile CPU paint overhead */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  :is(.pw-grad, .lm-grad, .srv-grad, .blg-grad, .brand-gradient, .text-gradient) {
+    background-size: 200% auto !important;
+    animation: gradientFlow 6s linear infinite !important;
+  }
 }

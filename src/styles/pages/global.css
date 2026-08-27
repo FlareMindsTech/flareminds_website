@@ -12,7 +12,8 @@
   --glass: rgba(255,255,255,0.75);
   --glass-2: rgba(255,255,255,0.9);
   --card-shadow: 0 18px 40px rgba(20,30,50,0.08);
-  --soft-shadow: 0 8px 24px rgba(20,30,50,0.06);
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
 * {
@@ -21,12 +22,16 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body, "Inter", sans-serif);
   background: #07111f;
   color: #0a1a2a;
   overflow-x: hidden !important;
   max-width: 100% !important;
   width: 100% !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, "Manrope", sans-serif);
 }
 
 .fade-up {

@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { projectSections } from "../data/projectsData";
 import SocialButton from "../components/common/SocialButton";
 import SEO from "../components/common/SEO";
+import HomeHeroAnimation from "../components/common/HomeHeroAnimation";
 import "../components/ui/Services3D.css";
+import dash from "../assets/images/projects/home_dash.webp";
+import ecom from "../assets/images/projects/home_e-com.webp";
+import mobile from "../assets/images/projects/home_mobile.webp";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { getOrganizationSchema, getWebSiteSchema } from "../utils/structuredData";
-import heroVideo from "../assets/videos/homevideo.mp4";
 import { FaRegLightbulb, FaBezierCurve, FaChartLine, FaShieldAlt, FaRocket, FaStar, FaArrowRight, FaBullseye, FaUsers, FaBriefcase, FaShoppingBag, FaHeartbeat, FaHome, FaTh, FaMobileAlt } from "react-icons/fa";
 
 const TiltCard = ({ service }) => {
@@ -60,24 +62,24 @@ const TiltCard = ({ service }) => {
       >
         <div className="glass"></div>
         <div className="content">
-          <span className="title" style={{ color: service.colors.titleColor }}>{service.title}</span>
-          <span className="text" style={{ color: service.colors.textColor }}>{service.desc}</span>
+          <span className="title">{service.title}</span>
+          <span className="text">{service.desc}</span>
           <ul className="features">
             {service.features.map((f, idx) => (
-              <li key={idx} style={{ color: service.colors.textColor }}>{f}</li>
+              <li key={idx}>{f}</li>
             ))}
           </ul>
         </div>
         <div className="bottom">
           <div className="social-buttons-container">
             <button type="button" className="social-button" aria-label="Service feature icon 1">
-              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><circle cx="12" cy="12" r="10" /></svg>
+              <svg className="svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /></svg>
             </button>
             <button type="button" className="social-button" aria-label="Service feature icon 2">
-              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><path d="M12 2L2 22h20L12 2z" /></svg>
+              <svg className="svg" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" /></svg>
             </button>
             <button type="button" className="social-button" aria-label="Service feature icon 3">
-              <svg className="svg" viewBox="0 0 24 24" style={{ fill: service.colors.titleColor }}><rect width="18" height="18" x="3" y="3" rx="2" /></svg>
+              <svg className="svg" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /></svg>
             </button>
           </div>
           <Link to="/services" className="view-more">
@@ -119,18 +121,7 @@ export default function Home() {
         schema={combinedSchema}
       />
       <section className="hero-section">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="hero-video"
-        >
-          <source src={heroVideo} type="video/mp4" />
-          <track kind="captions" src="data:text/vtt,WEBVTT" srcLang="en" label="English captions" default />
-        </video>
-        <div className="bg-grid-overlay"></div>
+        <HomeHeroAnimation />
         <div className="container">
           <div className="hero-content">
             <h1 className="hero-title">
@@ -157,7 +148,9 @@ export default function Home() {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "2rem",
+                marginTop: "2.25rem",
+                position: "relative",
+                zIndex: 30,
               }}
             >
               <SocialButton />
@@ -309,7 +302,7 @@ export default function Home() {
               <div className="experience-circle-outer shadow-lg">
                 <div className="experience-circle-inner shadow">
                   <div className="exp-icon shadow-sm"><FaBriefcase /></div>
-                  <div className="exp-years-number mb-0 mt-2 text-2xl font-bold">7+</div>
+                  <div className="exp-years-number mb-0 mt-2 text-2xl font-bold">3+</div>
                   <div className="exp-years-text fw-bold mb-1">Years</div>
                   <p className="exp-text mb-1">Experience</p>
                   <div className="exp-underline">
@@ -395,10 +388,10 @@ export default function Home() {
       <section className="featured-work-section">
         <div className="container">
           <div className="fw-header">
-            <h2 className="fw-title">Featured <span>Work</span></h2>
+            <span className="fw-label">SELECTED WORK</span>
+            <h2 className="fw-title">Work That <span>Speaks</span></h2>
             <p className="fw-subtitle">
-              Explore a selection of our recent projects where creativity,
-              innovation, and technology come together.
+              Explore some of the digital products, platforms, and experiences we’ve built to turn ideas into meaningful results.
             </p>
           </div>
 
@@ -406,58 +399,55 @@ export default function Home() {
             {[
               {
                 id: "e-commerce",
-                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=75&w=500&fm=webp",
+                image: ecom,
                 icon: <FaShoppingBag />,
                 catColor: "#a855f7",
-                title: "E-Commerce Solutions",
-                description: "Build scalable online shopping platforms with secure payments, inventory management, and modern user experiences.",
+                category: "E-Commerce",
+                title: "Fashion Commerce Platform",
+                description: "A modern e-commerce experience designed to simplify shopping and help brands grow online.",
                 route: "/our-works"
               },
               {
-                id: "business-applications",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=75&w=500&fm=webp",
+                id: "business-solutions",
+                image: dash,
                 icon: <FaBriefcase />,
                 catColor: "#0ea5e9",
-                title: "Business Applications",
-                description: "Custom business software including CRM, ERP, HRMS, Inventory Systems, Admin Dashboards, and enterprise management solutions.",
+                category: "Business Solutions",
+                title: "HRMS Admin Dashboard",
+                description: "A streamlined workforce management platform built to simplify everyday HR operations.",
                 route: "/our-works"
               },
               {
-                id: "mobile-applications",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=75&w=500&fm=webp",
+                id: "mobile-application",
+                image: mobile,
                 icon: <FaMobileAlt />,
                 catColor: "#14b8a6",
-                title: "Mobile Applications",
-                description: "Modern Android and cross-platform mobile applications designed for startups, businesses, and enterprises.",
+                category: "Mobile Application",
+                title: "Mobile Experience",
+                description: "A scalable mobile solution designed for seamless digital experiences across platforms.",
                 route: "/our-works"
               }
-            ].map((category) => {
-              const sec = projectSections.find((s) => s.id === category.id);
-              const count = sec ? sec.projects.length : 0;
-              const countText = `${count} ${count === 1 ? "Project" : "Projects"}`;
-
-              return (
-                <Link to={category.route} key={category.id} className="fw-card" style={{ textDecoration: 'none' }}>
-                  <div className="fw-card-img-wrapper">
-                    <img src={category.image} alt={category.title} className="fw-card-img" loading="lazy" decoding="async" width="800" height="500" />
-                    <span className="fw-card-arrow-btn" aria-hidden="true"><FaArrowRight /></span>
-                  </div>
-                  <div className="fw-card-content">
-                    <div className="fw-category" style={{ color: category.catColor }}>
-                      <div className="fw-cat-icon" style={{ backgroundColor: category.catColor }}>
-                        {category.icon}
-                      </div>
-                      <span style={{ textTransform: "none", fontWeight: 700 }}>{countText}</span>
+            ].map((card) => (
+              <Link to={card.route} key={card.id} className="fw-card" style={{ textDecoration: 'none' }}>
+                <div className="fw-card-img-wrapper">
+                  <img src={card.image} alt={card.title} className="fw-card-img" loading="lazy" decoding="async" width="800" height="500" />
+                  <span className="fw-card-arrow-btn" aria-hidden="true"><FaArrowRight /></span>
+                </div>
+                <div className="fw-card-content">
+                  <div className="fw-category" style={{ color: card.catColor }}>
+                    <div className="fw-cat-icon" style={{ backgroundColor: card.catColor }}>
+                      {card.icon}
                     </div>
-                    <h3 className="fw-card-title">{category.title}</h3>
-                    <p className="fw-card-desc">{category.description}</p>
-                    <span className="fw-card-link" style={{ color: category.catColor }}>
-                      Browse Projects <FaArrowRight />
-                    </span>
+                    <span style={{ textTransform: "none", fontWeight: 700 }}>{card.category}</span>
                   </div>
-                </Link>
-              );
-            })}
+                  <h3 className="fw-card-title">{card.title}</h3>
+                  <p className="fw-card-desc">{card.description}</p>
+                  <span className="fw-card-link" style={{ color: card.catColor }}>
+                    View Project <FaArrowRight />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
 
           <div className="fw-footer">

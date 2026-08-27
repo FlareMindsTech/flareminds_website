@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/images/branding/cropped-fm-logo-2-1.webp";
+import logoMobile from "../../assets/images/branding/cropped-fm-logo-mobile.webp";
 import "./navbar.css";
 
 export default function Navbar() {
@@ -24,9 +25,10 @@ export default function Navbar() {
   /* ── Scroll detection ── */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   /* ── Pointer detection ── */
   useEffect(() => {
@@ -312,32 +314,18 @@ export default function Navbar() {
         ),
         items: [
           {
-            label: "24/7 Tech Support",
-            description: "Round-the-clock technical support for all your systems.",
-            tags: ["Remote", "On-site", "Priority"],
+            label: "Maintenance & Support",
+            description: "Keep your digital products secure, updated, and running smoothly with reliable ongoing technical support.",
+            tags: ["24/7", "Security", "Uptime"],
             icon: (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12" />
-                <path d="M2 6.92A2 2 0 0 1 4 5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 12" />
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
               </svg>
             ),
             iconBg: "#f0fdf4",
             iconColor: "#15803d",
-            to: "/services/tech-support",
-          },
-          {
-            label: "Maintenance Plans",
-            description: "Proactive website and app maintenance to keep things running.",
-            tags: ["Updates", "Security", "Monitoring"],
-            icon: (
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
-              </svg>
-            ),
-            iconBg: "#fff7ed",
-            iconColor: "#c2410c",
-            to: "/services/maintenance",
+            to: "/services/maintenance-support",
           },
         ],
       },
@@ -348,6 +336,17 @@ export default function Navbar() {
   const toggleAccordion = useCallback((key) => {
     setMobileAccordion((p) => ({ ...p, [key]: !p[key] }));
   }, []);
+
+  const handleNavClick = useCallback((targetPath) => () => {
+    const currentPath = location.pathname.replace(/\/$/, "") || "/";
+    const cleanTargetPath = targetPath.replace(/\/$/, "") || "/";
+
+    if (currentPath === cleanTargetPath) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }, [location.pathname]);
 
   return (
     <header
@@ -360,16 +359,21 @@ export default function Navbar() {
         <div className="navbar-inner">
 
           {/* ── Logo ── */}
-          <Link to="/" className="navbar-logo-link">
+          <Link to="/" className="navbar-logo-link" onClick={handleNavClick("/")}>
             <img
-              src={logo}
+              src={logoMobile}
+              srcSet={`${logoMobile} 180w, ${logo} 360w`}
+              sizes="(max-width: 640px) 110px, 160px"
               alt="FlareMinds Logo"
               className="navbar-logo-img"
               width={160}
               height={44}
               loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </Link>
+
 
           {/* ── Desktop Navigation ── */}
           <nav className="navbar-nav" aria-label="Primary navigation">
@@ -379,6 +383,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
+              onClick={handleNavClick("/")}
             >
               Home
             </NavLink>
@@ -388,6 +393,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
+              onClick={handleNavClick("/about")}
             >
               About
             </NavLink>
@@ -410,7 +416,7 @@ export default function Navbar() {
                 <NavLink
                   to="/services"
                   className="navbar-dropdown-text-link"
-                  onClick={() => setServicesOpen(false)}
+                  onClick={handleNavClick("/services")}
                 >
                   Services
                 </NavLink>
@@ -468,7 +474,7 @@ export default function Navbar() {
                       <div className="navbar-sidebar-cta-icon">✦</div>
                       <p className="navbar-sidebar-cta-title">Have a project in mind?</p>
                       <p className="navbar-sidebar-cta-sub">Let's build something amazing together.</p>
-                      <Link to="/contact" className="navbar-sidebar-cta-btn">
+                      <Link to="/contact" className="navbar-sidebar-cta-btn" onClick={handleNavClick("/contact")}>
                         Get In Touch
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
@@ -490,6 +496,7 @@ export default function Navbar() {
                               key={idx}
                               to={item.to}
                               className={`navbar-service-card${location.pathname === item.to ? " current-page" : ""}`}
+                              onClick={handleNavClick(item.to)}
                             >
                               <div
                                 className="navbar-service-card-icon"
@@ -522,6 +529,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
+              onClick={handleNavClick("/our-works")}
             >
               Our Works
             </NavLink>
@@ -531,6 +539,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
+              onClick={handleNavClick("/products")}
             >
               Products
             </NavLink>
@@ -540,6 +549,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `navbar-nav-link${isActive ? " active" : ""}`
               }
+              onClick={handleNavClick("/blog")}
             >
               Blog
             </NavLink>
@@ -547,7 +557,7 @@ export default function Navbar() {
 
           {/* ── Desktop CTA ── */}
           <div className="navbar-cta-wrapper">
-            <Link to="/contact" className="navbar-cta-btn">
+            <Link to="/contact" className="navbar-cta-btn" onClick={handleNavClick("/contact")}>
               Contact Us
             </Link>
           </div>
@@ -570,11 +580,11 @@ export default function Navbar() {
       {/* ── Mobile Drawer ── */}
       <div id="mobile-navigation" className={`navbar-mobile-drawer${menuOpen ? " open" : ""}`}>
         <div className="navbar-mobile-body">
-          <NavLink to="/" className="navbar-mobile-link" end>
+          <NavLink to="/" className="navbar-mobile-link" end onClick={handleNavClick("/")}>
             Home
           </NavLink>
 
-          <NavLink to="/about" className="navbar-mobile-link">
+          <NavLink to="/about" className="navbar-mobile-link" onClick={handleNavClick("/about")}>
             About
           </NavLink>
 
@@ -587,10 +597,7 @@ export default function Navbar() {
                   `navbar-mobile-link${isActive ? " active" : ""}`
                 }
                 style={{ padding: 0, color: "inherit", flex: 1, textDecoration: "none" }}
-                onClick={() => {
-                  setMenuOpen(false);
-                  setServicesOpen(false);
-                }}
+                onClick={handleNavClick("/services")}
               >
                 Services
               </NavLink>
@@ -631,6 +638,7 @@ export default function Navbar() {
                         key={j}
                         to={item.to}
                         className="navbar-mobile-service-link"
+                        onClick={handleNavClick(item.to)}
                       >
                         <span>{item.icon}</span>
                         <span>{item.label}</span>
@@ -642,20 +650,20 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/our-works" className="navbar-mobile-link">
+          <NavLink to="/our-works" className="navbar-mobile-link" onClick={handleNavClick("/our-works")}>
             Our Works
           </NavLink>
 
-          <NavLink to="/products" className="navbar-mobile-link">
+          <NavLink to="/products" className="navbar-mobile-link" onClick={handleNavClick("/products")}>
             Products
           </NavLink>
 
-          <NavLink to="/blog" className="navbar-mobile-link">
+          <NavLink to="/blog" className="navbar-mobile-link" onClick={handleNavClick("/blog")}>
             Blog
           </NavLink>
 
           <div className="navbar-mobile-cta-wrap">
-            <Link to="/contact" className="navbar-mobile-cta">
+            <Link to="/contact" className="navbar-mobile-cta" onClick={handleNavClick("/contact")}>
               Contact Us
             </Link>
           </div>

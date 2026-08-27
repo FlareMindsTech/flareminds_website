@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaCode, FaMobileAlt, FaRocket, FaCheckCircle, FaCogs, FaServer } from "react-icons/fa";
 import SEO from "../components/common/SEO";
 import { getServiceSchema, getFAQSchema } from "../utils/structuredData";
+import HeroBackground from "../components/common/HeroBackground";
 import "../styles/pages/services.css";
 
 export default function WebDevelopment() {
@@ -35,7 +36,8 @@ export default function WebDevelopment() {
             />
 
             <section className="service-hero">
-                <div className="container">
+                <HeroBackground />
+                <div className="container" style={{ position: "relative", zIndex: 3 }}>
                     <h1 className="hero-title">
                         Premium <span className="text-gradient">Website Development</span> Services
                     </h1>

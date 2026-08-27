@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import SEO from "../components/common/SEO";
 import { getServiceSchema, getBreadcrumbSchema } from "../utils/structuredData";
 import { FaArrowRight } from "react-icons/fa";
-import { developmentServices, marketingServices } from "../data/servicesData";
+import { developmentServices, marketingServices, supportServices } from "../data/servicesData";
+import HeroBackground from "../components/common/HeroBackground";
 import "../styles/pages/services.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -94,6 +95,12 @@ function ServiceCardIcon({ slug }) {
         <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
+    "maintenance-support": (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
+      </svg>
+    ),
   };
   return iconMap[slug] || null;
 }
@@ -162,6 +169,7 @@ export default function Services() {
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="service-hero text-center">
+        <HeroBackground />
         <div className="container">
           <div className="lm-hero-eyebrow" aria-label="Section label" style={{ marginBottom: "1.25rem" }}>
             <span className="lm-hero-eyebrow-dot" />
@@ -228,6 +236,28 @@ export default function Services() {
           </div>
           <div className="dev-services-grid">
             {marketingServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Support & Maintenance Services ─────────────────────── */}
+      <section
+        id="support-services"
+        className="development-services-section section-padding"
+      >
+        <div className="container">
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">
+              Support &amp; <span className="text-gradient">Maintenance</span>
+            </h2>
+            <p className="section-subtitle text-muted">
+              Keep your digital products secure, updated, and running smoothly with reliable ongoing technical support.
+            </p>
+          </div>
+          <div className="dev-services-grid" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            {supportServices.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>

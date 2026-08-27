@@ -13,12 +13,12 @@ import logo7 from "../assets/images/logo/logo7.webp";
 import logo8 from "../assets/images/logo/logo8.webp";
 import logo9 from "../assets/images/logo/logo9.webp";
 import CompanyCollage from "../components/ui/CompanyCollage";
-
-const DomeGallery = React.lazy(() => import("../components/ui/DomeGallery"));
+import HeroBackground from "../components/common/HeroBackground";
+import TeamCoverflow from "../components/ui/TeamCoverflow";
+import { FaRocket, FaLightbulb, FaShieldAlt, FaEye, FaBullseye } from "react-icons/fa";
 
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
-  const [showGallery, setShowGallery] = useState(false);
 
   const counters = [
     { id: "projects", label: "Projects", value: 128 },
@@ -29,29 +29,35 @@ export default function About() {
 
   const team = [
     {
-      name: "vishnu",
-      role: "CEO",
-      bio: "15+ years crafting brand strategy and product-led design.",
+      name: "Vishnu",
+      role: "CEO & Founder",
+      bio: "15+ years crafting brand strategy, visionary leadership, and product-led design.",
       image: "",
     },
     {
       name: "Gokila",
       role: "Lead Developer",
-      bio: "Specialist in building fast, scalable, modern web apps.",
+      bio: "Specialist in building fast, scalable, high-performance modern web & cloud apps.",
       image: "",
     },
-    // {
-    //   name: "Prakash",
-    //   role: "Web Developer",
-    //   bio: "Expert in UI/UX & motion; creates pixel-perfect experiences.",
-    //   image: prakashImg,
-    // },
-    // {
-    //   name: "Siva Kumar",
-    //   role: "Backend Developer",
-    //   bio: "Technical SEO expert improving visibility and ranking.",
-    //   image: SivaImg,
-    // },
+    {
+      name: "Prakash",
+      role: "UI/UX & Web Developer",
+      bio: "Expert in interactive UI/UX and motion design; creates pixel-perfect digital experiences.",
+      image: "",
+    },
+    {
+      name: "Siva Kumar",
+      role: "Backend Architect",
+      bio: "Mastering database performance, high-load architecture, and robust API design.",
+      image: "",
+    },
+    {
+      name: "Priya",
+      role: "Digital Strategist",
+      bio: "Data-driven growth hacker optimizing search visibility and targeted multi-channel campaigns.",
+      image: "",
+    },
   ];
 
   const valueProps = [
@@ -124,28 +130,7 @@ export default function About() {
     });
   }, []);
 
-  useEffect(() => {
-    const cards = document.querySelectorAll(".premium-team-card");
 
-    cards.forEach((card) => {
-      let open = false;
-
-      const toggleCard = () => {
-        if (!open) {
-          card.classList.remove("touch-reset");
-          card.classList.add("touch-active");
-          open = true;
-        } else {
-          card.classList.remove("touch-active");
-          card.classList.add("touch-reset");
-          setTimeout(() => card.classList.remove("touch-reset"), 350);
-          open = false;
-        }
-      };
-
-      card.addEventListener("touchend", toggleCard);
-    });
-  }, []);
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
@@ -166,6 +151,7 @@ export default function About() {
         schema={combinedSchema}
       />
       <header className="lm-hero">
+        <HeroBackground />
         <div className="lm-hero-inner">
           <div className="lm-hero-eyebrow" aria-label="Section label">
             <span className="lm-hero-eyebrow-dot" />
@@ -195,25 +181,86 @@ export default function About() {
       <main className="lm-main">
         <section className="company-story-section section-padding">
           <div className="container">
-            <div className="story-grid">
-              <div className="story-content">
-                <h2 className="section-title-main">Our Story</h2>
-                <p>
-                  Founded with a passion for digital innovation, FlareMinds started as a small team of dreamers determined to bridge the gap between creative design and technical excellence.
-                  Over the years, we have evolved into a full-service digital agency, helping businesses across the globe transform their digital presence.
-                </p>
-                <p>
-                  We believe in the power of collaboration and the impact of well-crafted digital experiences. Our journey is defined by the success of our clients.
-                </p>
-              </div>
-              <div className="vision-mission-grid">
-                <div className="vm-card glass-card">
-                  <h3>Our Vision</h3>
-                  <p>To be the leading catalyst for digital transformation, empowering businesses to achieve their full potential through innovative technology and design.</p>
+            <div className="story-grid-v2">
+              {/* Left Column: Narrative & Milestones */}
+              <div className="story-main-card">
+                <div className="story-badge">
+                  <span className="story-badge-dot"></span>
+                  OUR GENESIS & PURPOSE
                 </div>
-                <div className="vm-card glass-card">
-                  <h3>Our Mission</h3>
-                  <p>To deliver exceptional digital solutions that drive growth, foster connection, and create lasting value for our clients and their customers.</p>
+                <h2 className="story-heading">
+                  Crafting Digital Impact <br />
+                  <span className="story-gradient-text">Through Innovation & Tech</span>
+                </h2>
+                <p className="story-lead">
+                  Founded with a relentless passion for digital innovation, FlareMinds began as a specialized team determined to fuse <strong>cutting-edge technology</strong> with <strong>hyper-creative design</strong>.
+                </p>
+                <p className="story-desc">
+                  Today, we’ve grown into a trusted digital agency, empowering startups, businesses, and global enterprises to accelerate their digital presence, automate workflows, and scale revenue with precision.
+                </p>
+
+                {/* Core DNA Highlights Strip */}
+                <div className="story-dna-grid">
+                  <div className="dna-item">
+                    <div className="dna-icon-wrap dna-blue">
+                      <FaRocket />
+                    </div>
+                    <div className="dna-content">
+                      <h4>Rapid Scaling</h4>
+                      <p>Agile sprints & fast deployment</p>
+                    </div>
+                  </div>
+                  <div className="dna-item">
+                    <div className="dna-icon-wrap dna-purple">
+                      <FaLightbulb />
+                    </div>
+                    <div className="dna-content">
+                      <h4>Creative Edge</h4>
+                      <p>Bespoke UX & high conversion</p>
+                    </div>
+                  </div>
+                  <div className="dna-item">
+                    <div className="dna-icon-wrap dna-teal">
+                      <FaShieldAlt />
+                    </div>
+                    <div className="dna-content">
+                      <h4>Enterprise Grade</h4>
+                      <p>Robust, secure & scalable systems</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Dynamic Vision & Mission Cards */}
+              <div className="vision-mission-cards-v2">
+                <div className="vm-card-v2 vm-vision">
+                  <div className="vm-card-glow"></div>
+                  <div className="vm-card-header">
+                    <div className="vm-icon-box vision-icon">
+                      <FaEye />
+                    </div>
+                    <span className="vm-pill">LONG-TERM GOAL</span>
+                  </div>
+                  <h3 className="vm-title">Our Vision</h3>
+                  <p className="vm-text">
+                    To be the leading catalyst for digital transformation globally, empowering ambitious brands to achieve their highest growth potential through game-changing digital technology and human-centric design.
+                  </p>
+                  <div className="vm-footer-accent vision-accent"></div>
+                </div>
+
+                <div className="vm-card-v2 vm-mission">
+                  <div className="vm-card-glow"></div>
+                  <div className="vm-card-header">
+                    <div className="vm-icon-box mission-icon">
+                      <FaBullseye />
+                    </div>
+                    <span className="vm-pill">DAILY PURPOSE</span>
+                  </div>
+                  <h3 className="vm-title">Our Mission</h3>
+                  <p className="vm-text">
+                    To engineer reliable, performant, and aesthetic software solutions that generate measurable business growth, build deep brand authority, and create sustainable competitive advantage for every partner.
+                  </p>
+                  <div className="vm-footer-accent mission-accent"></div>
                 </div>
               </div>
             </div>
@@ -247,27 +294,9 @@ export default function About() {
           </div>
         </section>
 
-        <section className="lm-section">
+        <section className="lm-section team-showcase-section">
           <h2 className="section-title">Meet The Minds Behind FlareMinds</h2>
-
-          <div className="premium-team-grid">
-            {team.map((m) => (
-              <div className="premium-team-card" key={m.name}>
-                <div className="team-img-box">
-                  <img src={m.image} alt={`${m.name} - ${m.role} at FlareMinds`} />
-                </div>
-
-                <div className="team-info">
-                  <h4>{m.name}</h4>
-                  <div className="role">{m.role}</div>
-                </div>
-
-                <div className="team-quote">
-                  <p>"{m.bio}"</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TeamCoverflow team={team} />
         </section>
 
         <section className="partners-section-v2">
@@ -294,62 +323,9 @@ export default function About() {
         <section className="memory-folder-section">
           <h2 className="section-title-main">Memory Live Forever</h2>
           <div className="folder-container">
-            <CompanyCollage onClick={() => setShowGallery(true)} />
+            <CompanyCollage />
           </div>
         </section>
-
-        {showGallery && (
-          <div
-            className="gallery-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Memory gallery"
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.95)',
-              zIndex: 9999,
-              display: 'flex',
-              flexDirection: 'column'
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => setShowGallery(false)}
-              aria-label="Close memory gallery"
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                background: 'rgba(255, 255, 255, 0.2)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '50px',
-                height: '50px',
-                fontSize: '24px',
-                cursor: 'pointer',
-                zIndex: 10000,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              ×
-            </button>
-            <div style={{ flex: 1, position: 'relative' }}>
-              <React.Suspense fallback={<div style={{ color: 'white', textAlign: 'center', padding: '50px' }}>Loading Gallery...</div>}>
-                <DomeGallery
-                  grayscale={false}
-                />
-              </React.Suspense>
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );

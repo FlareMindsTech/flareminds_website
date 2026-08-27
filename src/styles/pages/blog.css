@@ -113,7 +113,7 @@ html[data-theme="dark"] .blog-badge-pill-dot {
 .blog-title,
 .testimonials-title {
   text-align: center;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
   margin-bottom: 0.75rem;
@@ -997,18 +997,34 @@ html[data-theme="dark"] .testimonial-tag {
 /* ==========================================================================
    BLOG DETAIL PAGE STYLES
    ========================================================================== */
-.blog-detail-container {
-  padding-top: 1rem;
+.blog-detail-page {
+  padding: 7.5rem 1.5rem 5rem !important;
+  background: #f8faff;
+  min-height: 100vh;
+  position: relative;
 }
 
+html[data-theme="dark"] .blog-detail-page {
+  background: #0a111e !important;
+}
+
+.blog-detail-container {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* 1. Breadcrumbs */
 .blog-breadcrumb {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: #64748b;
+  margin-bottom: 1.5rem;
 }
 
 .blog-breadcrumb a {
@@ -1019,77 +1035,454 @@ html[data-theme="dark"] .testimonial-tag {
 
 .blog-breadcrumb a:hover {
   text-decoration: underline;
-}
-
-html[data-theme="dark"] .blog-breadcrumb {
-  color: #94a3b8;
-}
-
-html[data-theme="dark"] .blog-breadcrumb a {
-  color: #38bdf8;
+  color: #0284c7;
 }
 
 .breadcrumb-icon {
-  font-size: 0.7rem;
-  opacity: 0.6;
+  font-size: 0.65rem;
+  opacity: 0.5;
+  color: #94a3b8;
 }
 
 .breadcrumb-current {
   color: #0f172a;
   font-weight: 700;
-  max-width: 320px;
+  max-width: 380px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 html[data-theme="dark"] .breadcrumb-current {
-  color: #f8fafc;
+  color: #f1f5f9;
+}
+
+/* 2. Header Area */
+.blog-detail-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.blog-detail-category-wrapper {
+  margin-bottom: 0.85rem;
 }
 
 .detail-cat-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   background: rgba(14, 165, 233, 0.12);
   color: #0284c7;
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.35rem 0.9rem;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.95rem;
   border-radius: 9999px;
-  border: 1px solid rgba(14, 165, 233, 0.25);
+  border: 1.5px solid rgba(14, 165, 233, 0.28);
+  letter-spacing: 0.02em;
 }
 
 html[data-theme="dark"] .detail-cat-badge {
-  background: rgba(56, 189, 248, 0.18);
+  background: rgba(56, 189, 248, 0.16);
   color: #38bdf8;
   border-color: rgba(56, 189, 248, 0.35);
 }
 
 .detail-article-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 800;
   color: #0f172a;
-  line-height: 1.25;
+  line-height: 1.22;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.02em;
 }
 
 html[data-theme="dark"] .detail-article-title {
-  color: #ffffff;
+  color: #f8fafc;
 }
 
+.detail-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.88rem;
+  color: #64748b;
+  padding-bottom: 0.5rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 500;
+}
+
+.meta-item.author-item {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+html[data-theme="dark"] .meta-item.author-item {
+  color: #e2e8f0;
+}
+
+.meta-icon {
+  color: #0ea5e9;
+  font-size: 0.85rem;
+}
+
+.meta-divider {
+  color: #cbd5e1;
+  font-weight: bold;
+}
+
+html[data-theme="dark"] .meta-divider {
+  color: #475569;
+}
+
+/* 3. Featured Image Box */
+.detail-featured-image-box {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  border: 1.5px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08);
+  background: #0f172a;
+}
+
+html[data-theme="dark"] .detail-featured-image-box {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.detail-featured-img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 4. Article Body Typography */
 .detail-article-body {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.12rem;
+  line-height: 1.85;
   color: #334155;
+  margin-bottom: 2.5rem;
 }
 
 html[data-theme="dark"] .detail-article-body {
   color: #cbd5e1;
 }
 
-.blog-cta-banner {
-  box-shadow: 0 16px 36px rgba(14, 165, 233, 0.25);
+.detail-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
-html[data-theme="dark"] .blog-cta-banner {
-  background: linear-gradient(135deg, #0284c7 0%, #1e40af 100%) !important;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+.detail-section-heading {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0284c7;
+  margin: 2.25rem 0 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="dark"] .detail-section-heading {
+  color: #38bdf8;
+}
+
+/* 5. Tags Section */
+.detail-tags-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+html[data-theme="dark"] .detail-tags-bar {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.tags-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tags-icon {
+  color: #0ea5e9;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.tag-pill:hover {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+html[data-theme="dark"] .tag-pill {
+  background: #111c30;
+  color: #94a3b8;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .tag-pill:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* 6. CTA Banner */
+.blog-cta-banner {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  border-radius: 24px;
+  padding: 2.75rem 2rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.3);
+}
+
+.blog-cta-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+}
+
+.blog-cta-desc {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 540px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.6;
+}
+
+.blog-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0284c7;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  color: #2563eb;
+}
+
+/* 7. Related Articles */
+.related-articles-section {
+  margin-bottom: 3rem;
+}
+
+.related-section-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+html[data-theme="dark"] .related-section-title {
+  color: #f8fafc;
+}
+
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .related-articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-blog-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.related-blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+html[data-theme="dark"] .related-blog-card {
+  background: #111c30;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .related-blog-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.related-card-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 0.75rem;
+}
+
+.related-category-badge {
+  display: inline-block;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  color: #38bdf8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.related-card-content {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.related-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .related-card-title {
+  color: #f8fafc;
+}
+
+.related-card-excerpt {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+html[data-theme="dark"] .related-card-excerpt {
+  color: #94a3b8;
+}
+
+.related-card-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284c7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.related-card-link:hover {
+  gap: 0.55rem;
+  color: #2563eb;
+}
+
+html[data-theme="dark"] .related-card-link {
+  color: #38bdf8;
+}
+
+/* 8. Back Button Wrap */
+.blog-detail-back-wrap {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.blog-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #0284c7;
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transition: all 0.2s ease;
+}
+
+.blog-back-btn:hover {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: rgba(14, 165, 233, 0.35);
+  color: #0369a1;
+  transform: translateX(-3px);
+}
+
+html[data-theme="dark"] .blog-back-btn {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+html[data-theme="dark"] .blog-back-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
 }
 
 /* Responsive Mobile Adjustments */
@@ -1099,37 +1492,48 @@ html[data-theme="dark"] .blog-cta-banner {
   }
 
   .featured-image {
-    min-height: 240px;
+    min-height: 160px;
   }
 }
 
 @media (max-width: 768px) {
-
   .blog-title,
   .testimonials-title {
-    font-size: 2.1rem;
+    font-size: 1.85rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
   .blog-subtitle,
   .testimonials-subtitle {
-    font-size: 0.98rem;
-    margin-bottom: 2rem;
+    font-size: 0.88rem !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .blog-page {
-    padding: 6rem 1rem 3rem;
+    padding: 4.5rem 1rem 2rem !important;
   }
 
   .featured-content {
-    padding: 1.5rem;
+    padding: 1.15rem !important;
   }
 
   .featured-content h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
   }
 
   .blog-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .blog-card {
+    padding: 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  .blog-image-wrapper {
+    height: 150px !important;
+    border-radius: 12px !important;
   }
 
   .pagination-numbers {

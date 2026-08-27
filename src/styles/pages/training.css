@@ -1,254 +1,416 @@
+/* ─────────────────────────────────────────────────────────────
+   training.css  –  Unified Inner Sub-Page Design System
+   FlareMinds Professional Training Courses
+   ───────────────────────────────────────────────────────────── */
+
 .training-page {
-    padding-top: 0;
+  font-family: var(--font-body, "Inter", sans-serif);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  background: var(--bg-primary, #ffffff);
 }
 
+/* ── Hero Section ────────────────────────────────────────────── */
 .training-hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: var(--spacing-xl) 0 6rem;
+  padding-top: 8.5rem;
+  padding-bottom: 4.5rem;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 10% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+              var(--bg-dark, #f8fafc);
+}
+
+/* Note: Container is NOT grid. Only .training-hero-grid is grid */
+.training-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .training-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
 .training-hero-content {
-    z-index: 2;
-    position: relative;
+  max-width: 680px;
+}
+
+.training-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14, 165, 233, 0.08);
+  color: #0284c7;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.training-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.training-hero-desc {
+  font-size: 1.08rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 580px;
 }
 
 .training-visual {
-    z-index: 2;
-    position: relative;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .typing-cursor::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #0ea5e9;
 }
 
 @keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.curriculum-section {
-    background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.05), transparent);
+/* ── HIGHLIGHTS RIBBON BAR ────────────────────────────────────── */
+.training-highlights-strip {
+  background: #ffffff;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 1.25rem 0;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.03);
 }
 
-.module-card {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    height: 100%;
+.training-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.module-number {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(56, 189, 248, 0.15);
-    line-height: 1;
+.training-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.module-content h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #0284c7;
+.training-highlight-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
-.module-topics {
-    margin-top: 1rem;
-    display: grid;
-    gap: 0.5rem;
+.training-highlight-text strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 1px;
 }
 
-.module-topics li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+.training-highlight-text p {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+  line-height: 1.3;
 }
 
-.check-icon {
-    color: #10b981;
-    flex-shrink: 0;
+@media (max-width: 900px) {
+  .training-highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
 
-.student-card {
-    text-align: center;
-    padding: 2.5rem;
+@media (max-width: 540px) {
+  .training-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
-.student-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid var(--text-accent);
-    margin: 0 auto 1.5rem;
-    object-fit: cover;
-}
-
-.student-quote {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.student-info h4 {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
-.student-info p {
-    color: #64748b;
-    font-size: 0.9rem;
+/* ── Features / Why Learn Section ────────────────────────────── */
+.features-section {
+  padding: 5rem 0;
 }
 
 .training-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .training-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .training-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.training-feature-card {
+  padding: 2.25rem 1.75rem;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.training-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -8px rgba(14, 165, 233, 0.14);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 .feature-icon-wrapper {
-    width: 70px;
-    height: 70px;
-    background: rgba(56, 189, 248, 0.1);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: #0284c7;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+  width: 58px;
+  height: 58px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 16px;
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  color: #0284c7;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
 }
 
-.glass-card:hover .feature-icon-wrapper {
-    background: var(--gradient-primary);
-    color: white;
-    transform: rotateY(180deg);
+.training-feature-card:hover .feature-icon-wrapper {
+  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+.training-feature-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+.training-feature-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Curriculum Section (2x2 Balanced Card Fit) ──────────────── */
+.curriculum-section {
+  padding: 5rem 0;
+  background: #f8fafc;
 }
 
 .curriculum-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.testimonial-carousel-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.control-btn {
-    background: transparent;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    color: var(--text-primary);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.control-btn:hover {
-    background: var(--gradient-primary);
-    color: white;
-    border-color: transparent;
-}
-
-.carousel-dots {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.dot-indicator {
-    width: 10px;
-    height: 10px;
-    padding: 0;
-    border: none;
-    background: rgba(56, 189, 248, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot-indicator.active {
-    background: var(--text-accent);
-    transform: scale(1.2);
-}
-
-@media (max-width: 992px) {
-    .training-hero {
-        padding: 6rem 0 4rem;
-        min-height: auto;
-    }
-
-    .curriculum-grid {
-        grid-template-columns: 1fr;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 1050px;
+  margin: 2.75rem auto 0;
 }
 
 @media (max-width: 768px) {
-    .training-hero {
-        padding: 4rem 0 3rem;
-    }
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-    .module-card {
-        flex-direction: column;
-        gap: 1rem;
-    }
+.module-card {
+  padding: 2.25rem 2rem;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-    .module-number {
-        font-size: 2.5rem;
-    }
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -8px rgba(14, 165, 233, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+}
 
-    .training-features-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+.module-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: rgba(14, 165, 233, 0.25);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
 
-    .student-card {
-        padding: 1.5rem;
-    }
+.module-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.4rem;
+}
+
+.module-content p {
+  font-size: 0.94rem;
+  color: var(--text-secondary, #64748b);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.module-topics {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.module-topics li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #334155);
+  font-weight: 500;
+}
+
+.check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+/* ── Testimonials Carousel Card ──────────────────────────────── */
+.student-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.student-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid #0ea5e9;
+  margin: 0 auto 1.25rem;
+  object-fit: cover;
+}
+
+.student-quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-secondary, #475569);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.student-info h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.2rem;
+}
+
+.student-info p {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ── Responsive & Dark Mode ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .training-hero {
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Dark Mode Overrides */
+html[data-theme="dark"] .training-page {
+  background: #0b1120;
+}
+
+html[data-theme="dark"] .training-hero {
+  background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 10% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
+              #0f172a;
+}
+
+html[data-theme="dark"] .training-highlights-strip {
+  background: #0d1527;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .training-feature-card,
+html[data-theme="dark"] .module-card,
+html[data-theme="dark"] .student-card {
+  background: #111c30 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+html[data-theme="dark"] .curriculum-section {
+  background: #0b1120;
+}
+
+html[data-theme="dark"] .module-topics {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .training-hero-title,
+html[data-theme="dark"] .training-feature-card h3,
+html[data-theme="dark"] .module-content h3,
+html[data-theme="dark"] .student-info h4,
+html[data-theme="dark"] .training-highlight-text strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .training-hero-desc,
+html[data-theme="dark"] .training-feature-card p,
+html[data-theme="dark"] .module-content p,
+html[data-theme="dark"] .module-topics li,
+html[data-theme="dark"] .student-quote,
+html[data-theme="dark"] .training-highlight-text p {
+  color: #94a3b8 !important;
 }
