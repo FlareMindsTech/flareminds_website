@@ -293,38 +293,40 @@ export default function Home() {
               </Link>
             </div>
             <div className="col-md-6 slide-from-right d-flex justify-content-center position-relative mt-5 mt-md-0 experience-hover-group">
-              <div className="experience-outer-ring">
-                <span className="ring-dot dot-1"></span>
-                <span className="ring-dot dot-2"></span>
-                <span className="ring-dot dot-3"></span>
-                <span className="ring-dot dot-4"></span>
-              </div>
-              <div className="experience-circle-outer shadow-lg">
-                <div className="experience-circle-inner shadow">
-                  <div className="exp-icon shadow-sm"><FaBriefcase /></div>
-                  <div className="exp-years-number mb-0 mt-2 text-2xl font-bold">3+</div>
-                  <div className="exp-years-text fw-bold mb-1">Years</div>
-                  <p className="exp-text mb-1">Experience</p>
-                  <div className="exp-underline">
-                    <span className="dot"></span>
+              <div className="experience-wrapper">
+                <div className="experience-outer-ring">
+                  <span className="ring-dot dot-1"></span>
+                  <span className="ring-dot dot-2"></span>
+                  <span className="ring-dot dot-3"></span>
+                  <span className="ring-dot dot-4"></span>
+                </div>
+                <div className="experience-circle-outer shadow-lg">
+                  <div className="experience-circle-inner shadow">
+                    <div className="exp-icon shadow-sm"><FaBriefcase /></div>
+                    <div className="exp-years-number mb-0 mt-2 text-2xl font-bold">3+</div>
+                    <div className="exp-years-text fw-bold mb-1">Years</div>
+                    <p className="exp-text mb-1">Experience</p>
+                    <div className="exp-underline">
+                      <span className="dot"></span>
+                    </div>
+                    <svg className="exp-arc" viewBox="0 0 100 100">
+                      <circle
+                        cx="50" cy="50" r="48"
+                        fill="none"
+                        stroke="url(#arcGradient)"
+                        strokeWidth="4"
+                        strokeDasharray="150 200"
+                        strokeDashoffset="-25"
+                        strokeLinecap="round"
+                      />
+                      <defs>
+                        <linearGradient id="arcGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#2563eb" />
+                          <stop offset="100%" stopColor="#c084fc" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
                   </div>
-                  <svg className="exp-arc" viewBox="0 0 100 100">
-                    <circle
-                      cx="50" cy="50" r="48"
-                      fill="none"
-                      stroke="url(#arcGradient)"
-                      strokeWidth="4"
-                      strokeDasharray="150 200"
-                      strokeDashoffset="-25"
-                      strokeLinecap="round"
-                    />
-                    <defs>
-                      <linearGradient id="arcGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#2563eb" />
-                        <stop offset="100%" stopColor="#c084fc" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
                 </div>
               </div>
             </div>

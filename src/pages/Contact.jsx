@@ -75,22 +75,29 @@ export default function Contact() {
 
     const templateParams = {
       name: form.name,
+      from_name: form.name,
       email: form.email,
+      from_email: form.email,
+      reply_to: form.email,
       service: form.service,
       message: form.message,
     }
 
     emailjs
-      .send('service_x2a3qgm', 'template_hr77rq9', templateParams, '0UmF7TCt7vOo0i_If')
+      .send('service_gu94tlb', 'template_rheni0w', templateParams, 'zJKoiDREpPDC63CBG')
       .then(
-        () => {
+        (response) => {
+          console.log('EmailJS Success:', response.status, response.text)
           setIsSubmitting(false)
           setStatus("✅ Message sent successfully! Our team will get back to you within 2 hours.")
           setForm({ name: '', email: '', service: '', message: '' })
         },
-        () => {
+        (error) => {
+          console.error('EmailJS Error:', error?.text || error)
           setIsSubmitting(false)
-          setStatus('❌ Something went wrong while sending your message. Please try again or call us directly.')
+          setStatus(
+            '❌ Something went wrong while sending your message. Please try again or call us directly.'
+          )
         }
       )
   }
