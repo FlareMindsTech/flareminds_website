@@ -12,6 +12,16 @@ import logo6 from "../assets/images/logo/logo6.webp";
 import logo7 from "../assets/images/logo/logo7.webp";
 import logo8 from "../assets/images/logo/logo8.webp";
 import logo9 from "../assets/images/logo/logo9.webp";
+import Bharath from "../assets/images/members/bharath.webp";
+import Gokila from "../assets/images/members/GOKILA.webp";
+import Karan from "../assets/images/members/KARAN.webp";
+import Kartheeswaran from "../assets/images/members/KARTHEESWARAN.webp";
+import Karthikeyan from "../assets/images/members/KARTHIKEYAN.webp";
+import Sri from "../assets/images/members/SRI.webp";
+import Sridhar from "../assets/images/members/SRIDHAR.webp";
+import Vicky from "../assets/images/members/VICKY.webp";
+import Vishnu from "../assets/images/members/VISHNU.webp";
+import Yaser from "../assets/images/members/YASAER.webp";
 import CompanyCollage from "../components/ui/CompanyCollage";
 import HeroBackground from "../components/common/HeroBackground";
 import TeamCoverflow from "../components/ui/TeamCoverflow";
@@ -31,32 +41,62 @@ export default function About() {
     {
       name: "Vishnu",
       role: "CEO & Founder",
-      bio: "15+ years crafting brand strategy, visionary leadership, and product-led design.",
-      image: "",
+      bio: "15+ years of experience in brand strategy, business leadership, and building innovative digital solutions.",
+      image: Vishnu,
     },
     {
       name: "Gokila",
       role: "Lead Developer",
-      bio: "Specialist in building fast, scalable, high-performance modern web & cloud apps.",
-      image: "",
+      bio: "Leads the development of scalable, high-performance web applications with a focus on modern technologies and clean architecture.",
+      image: Gokila,
     },
     {
-      name: "Prakash",
-      role: "UI/UX & Web Developer",
-      bio: "Expert in interactive UI/UX and motion design; creates pixel-perfect digital experiences.",
-      image: "",
+      name: "KARAN",
+      role: "TECH LEAD / TECH TRAINER",
+      bio: "Guides development teams, mentors aspiring developers, and promotes coding best practices and modern software engineering standards.",
+      image: Karan,
     },
     {
-      name: "Siva Kumar",
-      role: "Backend Architect",
-      bio: "Mastering database performance, high-load architecture, and robust API design.",
-      image: "",
+      name: "MOHAMMED YASER",
+      role: "Full Stack Developer",
+      bio: "Builds engaging user interfaces and robust backend services, combining responsive design with seamless application functionality.",
+      image: Yaser,
     },
     {
-      name: "Priya",
-      role: "Digital Strategist",
-      bio: "Data-driven growth hacker optimizing search visibility and targeted multi-channel campaigns.",
-      image: "",
+      name: "BHARATH",
+      role: "Full Stack Developer",
+      bio: "Develops end-to-end web applications by integrating interactive frontend experiences with secure APIs and efficient database solutions.",
+      image: Bharath,
+    },
+    {
+      name: "SRI LAKSHMAN",
+      role: "Full Stack Developer",
+      bio: "Creates scalable web applications with expertise in frontend development, backend integration, and reliable data management.",
+      image: Sri,
+    },
+    {
+      name: "KARTHEESHWARAN",
+      role: "Full Stack Developer",
+      bio: "Builds feature-rich web applications by connecting modern frontend technologies with efficient server-side logic and APIs.",
+      image: Kartheeswaran,
+    },
+    {
+      name: "VIGNESH",
+      role: "Full Stack Developer",
+      bio: "Develops responsive web interfaces and dependable backend systems to deliver smooth, accessible, and user-focused digital experiences.",
+      image: Vicky,
+    },
+    {
+      name: "KARTHIKEYAN",
+      role: "Full Stack Developer",
+      bio: "Transforms product requirements into functional web solutions through frontend development, backend programming, and system integration.",
+      image: Karthikeyan,
+    },
+    {
+      name: "SRIDHAR",
+      role: "CTO",
+      bio: "Drives technology strategy, system architecture, and engineering innovation to deliver reliable and scalable digital solutions.",
+      image: Sridhar,
     },
   ];
 
@@ -176,10 +216,16 @@ export default function About() {
             ))}
           </div>
         </div>
+
+        {/* Scroll indicator prompt */}
+        <div className="lm-hero-scroll-hint" aria-hidden="true">
+          <span className="lm-scroll-dot" />
+          <span>Scroll to explore</span>
+        </div>
       </header>
 
       <main className="lm-main">
-        <section className="company-story-section section-padding">
+        <section className="company-story-section">
           <div className="container">
             <div className="story-grid-v2">
               {/* Left Column: Narrative & Milestones */}

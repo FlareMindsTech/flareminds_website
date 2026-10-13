@@ -1,6 +1,6 @@
 const SITE_URL = 'https://www.flaremindstech.com';
 const SITE_NAME = 'FlareMinds';
-const COMPANY_NAME = 'FlareMinds Technology & Services';
+const COMPANY_NAME = 'FLAREMINDS TECH PVT LTD';
 
 export const getOrganizationSchema = () => ({
     '@context': 'https://schema.org',
@@ -8,7 +8,7 @@ export const getOrganizationSchema = () => ({
     name: COMPANY_NAME,
     alternateName: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/src/assets/cropped-fm-logo-2-1.png`,
+    logo: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
     description: 'Full-service digital agency specializing in web development, app development, digital marketing, SEO, and business automation.',
     contactPoint: {
         '@type': 'ContactPoint',
@@ -35,7 +35,7 @@ export const getLocalBusinessSchema = () => ({
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#localbusiness`,
     name: COMPANY_NAME,
-    image: `${SITE_URL}/src/assets/cropped-fm-logo-2-1.png`,
+    image: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
     url: SITE_URL,
     telephone: '+91-9500950813',
     email: 'Info@flaremindstech.com',
@@ -143,7 +143,7 @@ export const getArticleSchema = (article) => ({
         name: COMPANY_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: `${SITE_URL}/src/assets/cropped-fm-logo-2-1.png`,
+            url: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
         },
     },
     datePublished: article.datePublished,

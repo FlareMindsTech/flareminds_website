@@ -6,8 +6,7 @@ import React, {
   useMemo,
 } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "../../assets/images/branding/cropped-fm-logo-2-1.webp";
-import logoMobile from "../../assets/images/branding/cropped-fm-logo-mobile.webp";
+import logo from "../../assets/images/branding/FM_LOGO.webp";
 import "./navbar.css";
 
 export default function Navbar() {
@@ -361,13 +360,11 @@ export default function Navbar() {
           {/* ── Logo ── */}
           <Link to="/" className="navbar-logo-link" onClick={handleNavClick("/")}>
             <img
-              src={logoMobile}
-              srcSet={`${logoMobile} 180w, ${logo} 360w`}
-              sizes="(max-width: 640px) 110px, 160px"
+              src={logo}
               alt="FlareMinds Logo"
               className="navbar-logo-img"
               width={160}
-              height={44}
+              height={40}
               loading="eager"
               decoding="async"
               fetchPriority="high"

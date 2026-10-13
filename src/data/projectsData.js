@@ -12,6 +12,9 @@ import RTPWEB from "../assets/images/projects/RTPWEB.webp";
 import RTWEB from "../assets/images/projects/RTWEB.webp";
 import TNEBADMIN from "../assets/images/projects/TNEB-ADMIN.webp";
 import TNEBWEB from "../assets/images/projects/TNEB-WEB.webp";
+import TYROS from "../assets/images/projects/TYROS.webp";
+import MedAorticX from "../assets/images/projects/MedAorticX.webp";
+import HRMS from "../assets/images/projects/HRMS.webp";
 
 export const ALL_PROJECTS = [
   // ── Business Websites ───────────────────────────────────────
@@ -25,7 +28,7 @@ export const ALL_PROJECTS = [
     image: TNEBWEB,
     tech: ["React", "Node.js", "MongoDB"],
     status: "live",
-    link: "https://tnebwebsiteui.onrender.com",
+    link: "https://www.tnebeaengineers.in/",
     accent: "#2563eb",
     featured: false,
   },
@@ -53,8 +56,22 @@ export const ALL_PROJECTS = [
     image: RTPWEB,
     tech: ["React", "Node.js", "REST API"],
     status: "live",
-    link: "https://righttouchpartner.com",
+    link: "https://www.righttouchpartner.com/",
     accent: "#2563eb",
+    featured: false,
+  },
+  {
+    id: 16,
+    title: "MedAorticX",
+    category: "Business Websites",
+    categoryId: "business-websites",
+    description:
+      "Corporate static website developed for MedAorticX Healthtek — showcasing RCM healthcare solutions, medical coding training academy, and career recruitment.",
+    image: MedAorticX,
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    status: "live",
+    link: "https://www.medaorticx.com/",
+    accent: "#0ea5e9",
     featured: false,
   },
 
@@ -161,6 +178,20 @@ export const ALL_PROJECTS = [
     accent: "#14b8a6",
     featured: false,
   },
+  {
+    id: 17,
+    title: "HRMS Suite",
+    category: "Business Applications",
+    categoryId: "business-applications",
+    description:
+      "Enterprise Human Resource Management System — automated attendance, one-click payroll processing, leave approvals, and employee performance tracking.",
+    image: HRMS,
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    status: "coming",
+    link: "https://hrmsui.onrender.com/login",
+    accent: "#c79d58",
+    featured: false,
+  },
 
   // ── Mobile Applications ──────────────────────────────────────
   {
@@ -217,6 +248,20 @@ export const ALL_PROJECTS = [
     status: "Live",
     link: "https://play.google.com/store/apps/details?id=com.righttouchpartner.app",
     accent: "#0ea5e9",
+    featured: false,
+  },
+  {
+    id: 15,
+    title: "TYROS",
+    category: "Mobile Applications",
+    categoryId: "mobile-applications",
+    description:
+      "Tyre sales and franchise management mobile platform — track shop targets, tyre inventory, customer follow-ups, and multi-branch performance.",
+    image: TYROS,
+    tech: ["Flutter", "React", "Node.js", "MongoDB"],
+    status: "coming",
+    link: null,
+    accent: "#c25e2b",
     featured: false,
   },
 ];

@@ -336,7 +336,7 @@ export default function Contact() {
                     <div className="info-item-content">
                       <span className="item-label">Office Address</span>
                       <address className="item-value address-text">
-                        <strong>FlareMinds Technology & Services</strong><br />
+                        <strong>FLAREMINDS TECH PVT LTD</strong><br />
                         3rd Floor, SBI Bank Building,<br />
                         Anupparpalayam Pudur, Tiruppur,<br />
                         Tamil Nadu - 641652, India

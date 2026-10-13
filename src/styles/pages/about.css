@@ -20,12 +20,15 @@ html[data-theme="dark"] .lm-about-page {
 .lm-hero {
   position: relative;
   overflow: hidden;
-  min-height: 80vh;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+  min-height: 100dvh !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8rem 2rem 5rem;
+  padding: calc(75px + 1.25rem) 2rem 2.5rem !important;
   text-align: center;
   background: linear-gradient(180deg, #99d3ff 0%, #c4e5ff 45%, #edf6ff 80%, #ffffff 100%);
   isolation: isolate;
@@ -65,8 +68,12 @@ html[data-theme="dark"] .lm-about-page {
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 850px;
-  margin: 0 auto;
+  max-width: 860px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .lm-hero-eyebrow {
@@ -155,7 +162,7 @@ html[data-theme="dark"] .lm-about-page {
 .lm-main {
   max-width: 1200px;
   margin: auto;
-  padding: 1.5rem 1rem 5rem;
+  padding: 0 1rem 3rem;
 }
 
 .section-title {
@@ -779,9 +786,10 @@ html[data-theme="dark"] .lm-about-page {
 
 @media (max-width: 768px) {
   .lm-hero {
+    height: 100vh !important;
     min-height: 100svh !important;
     min-height: 100dvh !important;
-    padding: 5.75rem 1.25rem 2rem !important;
+    padding: calc(65px + 1rem) 1.25rem 2rem !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -932,9 +940,16 @@ html[data-theme="dark"] .lm-about-page {
 
 @media (max-width: 480px) {
   .lm-hero {
+    height: 100vh !important;
     min-height: 100svh !important;
     min-height: 100dvh !important;
-    padding: 5.25rem 0.85rem 1.5rem !important;
+    padding: calc(60px + 0.75rem) 0.85rem 1.75rem !important;
+  }
+
+  .lm-hero-scroll-hint {
+    bottom: 16px;
+    font-size: 0.68rem;
+    padding: 3px 10px;
   }
 
   .lm-hero-title {
@@ -1002,8 +1017,59 @@ html[data-theme="dark"] .lm-about-page {
 
 .company-story-section {
   position: relative;
+  padding: 3.5rem 0 2rem;
   background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05) 0%, transparent 60%),
               radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.04) 0%, transparent 60%);
+}
+
+.lm-hero-scroll-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0369a1;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(2, 132, 199, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 5px 14px;
+  border-radius: 999px;
+  z-index: 3;
+  animation: lmHeroBounce 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .lm-hero-scroll-hint {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(56, 189, 248, 0.28);
+  color: #38bdf8;
+}
+
+.lm-scroll-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284c7;
+}
+
+html[data-theme="dark"] .lm-scroll-dot {
+  background: #38bdf8;
+}
+
+@keyframes lmHeroBounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
 }
 
 .story-grid-v2 {
@@ -1297,7 +1363,7 @@ html[data-theme="dark"] .vm-pill {
 
 .memory-folder-section {
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 3rem 1.5rem 1.5rem;
   background: white;
 }
 

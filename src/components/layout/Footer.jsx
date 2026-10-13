@@ -90,9 +90,9 @@ export default function Footer() {
           <div className="footer-logo">
             <img 
               src={TitleLogo} 
-              alt="FlareMinds Technology" 
-              width="140" 
-              height="38" 
+              alt="FLAREMINDS TECH PVT LTD" 
+              width="42" 
+              height="42" 
               loading="lazy"
               decoding="async" 
               className="footer-logo-img" 
@@ -198,7 +198,7 @@ export default function Footer() {
 
           <div className="copyright-group">
             <div className="copyright">
-              &copy; {new Date().getFullYear()} <span>FlareMinds</span> Technology.
+              &copy; {new Date().getFullYear()} <span>FLAREMINDS</span> TECH PVT LTD.
             </div>
             <div className="footer-legal-links">
               <Link to="/privacy">Privacy</Link>

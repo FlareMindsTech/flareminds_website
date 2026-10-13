@@ -35,7 +35,7 @@ export default function SEO({
             <meta name="twitter:image" content={fullImageUrl} />
             <meta name="robots" content="index, follow" />
             <meta name="language" content="English" />
-            <meta name="author" content="FlareMinds Technology & Services" />
+            <meta name="author" content="FLAREMINDS TECH PVT LTD" />
             {schema && (
                 <script type="application/ld+json">
                     {JSON.stringify(schema)}

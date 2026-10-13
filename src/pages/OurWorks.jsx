@@ -42,7 +42,8 @@ function TechList({ tech = [], max = 4 }) {
 // CardLink component
 function CardLink({ project }) {
   if (!project.link) {
-    return <span className="pw-no-link">Internal Project</span>;
+    const fallbackText = project.status === "coming" ? "Upcoming Project" : "Internal Project";
+    return <span className="pw-no-link">{fallbackText}</span>;
   }
   const label = project.status === "proto" ? "View on Play Store" : "Visit Project";
   return (
