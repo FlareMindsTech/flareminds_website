@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SocialButton from "../components/common/SocialButton";
 import SEO from "../components/common/SEO";
 import HomeHeroAnimation from "../components/common/HomeHeroAnimation";
+import "../styles/pages/home.css";
 import "../components/ui/Services3D.css";
 import dash from "../assets/images/projects/home_dash.webp";
 import ecom from "../assets/images/projects/home_e-com.webp";

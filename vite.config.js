@@ -13,9 +13,6 @@ export default defineConfig({
             if (id.includes('react-icons') || id.includes('lucide-react')) {
               return 'vendor-icons';
             }
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'vendor-three';
-            }
             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
               return 'vendor-react';
             }

@@ -18,6 +18,11 @@ const Blog = lazy(() => import('./pages/Blog'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail'))
 const OurWorks = lazy(() => import('./pages/OurWorks'))
 const Products = lazy(() => import('./pages/Products'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Terms = lazy(() => import('./pages/Terms'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const Docs = lazy(() => import('./pages/Docs'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 // Development Services (Dedicated folder)
 const WebsiteDevelopment = lazy(() => import('./pages/services/development/WebsiteDevelopment'))
@@ -113,6 +118,16 @@ export default function App() {
             <Route path="/training/mern-stack" element={<MernTraining />} />
             <Route path="/training/digital-marketing" element={<DigitalMarketingTraining />} />
             <Route path="/training/ai-ml" element={<AiMlTraining />} />
+
+            {/* Legal & Informational Pages */}
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/case-studies" element={<Navigate to="/our-works" replace />} />
+
+            {/* Catch-all 404 Route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

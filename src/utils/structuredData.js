@@ -8,7 +8,7 @@ export const getOrganizationSchema = () => ({
     name: COMPANY_NAME,
     alternateName: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
+    logo: `${SITE_URL}/logo.webp`,
     description: 'Full-service digital agency specializing in web development, app development, digital marketing, SEO, and business automation.',
     contactPoint: {
         '@type': 'ContactPoint',
@@ -35,7 +35,7 @@ export const getLocalBusinessSchema = () => ({
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#localbusiness`,
     name: COMPANY_NAME,
-    image: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
+    image: `${SITE_URL}/logo.webp`,
     url: SITE_URL,
     telephone: '+91-9500950813',
     email: 'Info@flaremindstech.com',
@@ -143,7 +143,7 @@ export const getArticleSchema = (article) => ({
         name: COMPANY_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: `${SITE_URL}/src/assets/images/branding/FM_LOGO.webp`,
+            url: `${SITE_URL}/logo.webp`,
         },
     },
     datePublished: article.datePublished,

@@ -1,7 +1,12 @@
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX';
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || '';
+
+const isValidGAId = (id) => {
+    return typeof id === 'string' && id.startsWith('G-') && id !== 'G-XXXXXXXXXX' && id.length > 5;
+};
 
 export const initGA = () => {
     if (typeof window === 'undefined') return;
+    if (!isValidGAId(GA_MEASUREMENT_ID)) return;
 
     const script1 = document.createElement('script');
     script1.async = true;
@@ -22,7 +27,7 @@ export const initGA = () => {
 };
 
 export const trackPageView = (path) => {
-    if (typeof window === 'undefined' || !window.gtag) return;
+    if (typeof window === 'undefined' || !window.gtag || !isValidGAId(GA_MEASUREMENT_ID)) return;
 
     window.gtag('config', GA_MEASUREMENT_ID, {
         page_path: path,

@@ -20,6 +20,7 @@ import {
 import SEO from '../components/common/SEO'
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/structuredData'
 import HeroBackground from '../components/common/HeroBackground'
+import '../styles/pages/contact.css'
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -84,8 +85,12 @@ export default function Contact() {
       message: form.message,
     }
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_gu94tlb'
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_rheni0w'
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'zJKoiDREpPDC63CBG'
+
     emailjs
-      .send('service_gu94tlb', 'template_rheni0w', templateParams, 'zJKoiDREpPDC63CBG')
+      .send(serviceId, templateId, templateParams, publicKey)
       .then(
         (response) => {
           console.log('EmailJS Success:', response.status, response.text)

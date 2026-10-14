@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import SEO from "../components/common/SEO";
 import { getLocalBusinessSchema, getBreadcrumbSchema } from "../utils/structuredData";
+import "../styles/pages/about.css";
 
 
 import logo1 from "../assets/images/logo/logo.webp";
@@ -27,15 +28,16 @@ import HeroBackground from "../components/common/HeroBackground";
 import TeamCoverflow from "../components/ui/TeamCoverflow";
 import { FaRocket, FaLightbulb, FaShieldAlt, FaEye, FaBullseye } from "react-icons/fa";
 
+const COUNTERS = [
+  { id: "projects", label: "Projects", value: 128 },
+  { id: "clients", label: "Clients", value: 67 },
+  { id: "awards", label: "Awards", value: 12 },
+  { id: "growth", label: "YoY Growth", value: 240 },
+];
+
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
-
-  const counters = [
-    { id: "projects", label: "Projects", value: 128 },
-    { id: "clients", label: "Clients", value: 67 },
-    { id: "awards", label: "Awards", value: 12 },
-    { id: "growth", label: "YoY Growth", value: 240 },
-  ];
+  const counters = COUNTERS;
 
   const team = [
     {
@@ -162,7 +164,7 @@ export default function About() {
 
   useEffect(() => {
     counterRefs.current.forEach((el, idx) => {
-      const target = counters[idx].value;
+      const target = COUNTERS[idx].value;
       let startTime = null;
       const duration = 1200;
 
@@ -172,7 +174,7 @@ export default function About() {
         const eased = 1 - Math.pow(1 - progress, 3);
         el.innerText =
           Math.floor(eased * target) +
-          (counters[idx].id === "growth" ? "%" : "");
+          (COUNTERS[idx].id === "growth" ? "%" : "");
         if (progress < 1) requestAnimationFrame(animate);
       };
 

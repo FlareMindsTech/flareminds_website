@@ -126,7 +126,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/case-studies">
+              <Link to="/our-works">
                 <span className="link-icon-wrap"><FaFileAlt className="link-icon" /></span>
                 <span>Case Studies</span>
               </Link>
