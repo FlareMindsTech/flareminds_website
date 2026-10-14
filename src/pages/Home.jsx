@@ -56,8 +56,8 @@ const TiltCard = ({ service }) => {
           transform: transformStyle,
           transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-in-out',
           boxShadow: isHovered
-            ? `${-tilt.y * 2}px ${tilt.x * 2 + 20}px 30px rgba(5, 71, 17, 0.2)`
-            : '0px 25px 25px -5px rgba(5, 71, 17, 0.2)'
+            ? `${-tilt.y * 2}px ${tilt.x * 2 + 20}px 30px rgba(14, 165, 233, 0.25)`
+            : '0px 25px 25px -5px rgba(14, 165, 233, 0.25)'
         }}
       >
         <div className="glass"></div>

@@ -121,6 +121,7 @@ export default function TeamCoverflow({ team = [] }) {
                         src={member.image}
                         alt={`${member.name} - ${member.role}`}
                         className="coverflow-card-img"
+                        style={member.imagePosition ? { objectPosition: member.imagePosition } : undefined}
                         loading="lazy"
                       />
                     ) : (
@@ -128,13 +129,13 @@ export default function TeamCoverflow({ team = [] }) {
                         {member.name ? member.name.charAt(0).toUpperCase() : <FaUserTie />}
                       </div>
                     )}
-                    <span className="coverflow-role-badge">{member.role}</span>
                   </div>
 
                   {/* Member Info */}
                   <div className="coverflow-card-content">
                     <div className="coverflow-card-header">
                       <h3 className="coverflow-card-name">{member.name}</h3>
+                      <span className="coverflow-role-badge">{member.role}</span>
                     </div>
 
                     <p className="coverflow-card-bio">"{member.bio}"</p>

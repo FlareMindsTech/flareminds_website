@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  FaLinkedinIn, FaTwitter, FaGithub, FaInstagram,
+  FaLinkedinIn, FaFacebookF, FaTwitter, FaInstagram,
   FaBook, FaFileAlt, FaFileCode, FaQuestionCircle,
   FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaShieldAlt, FaChevronUp
 } from 'react-icons/fa';
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="footer-logo">
             <img 
               src={TitleLogo} 
-              alt="FLAREMINDS TECH PVT LTD" 
+              alt="FLAREMINDS TECH PRIVATE LIMITED" 
               width="42" 
               height="42" 
               loading="lazy"
@@ -103,16 +103,13 @@ export default function Footer() {
             Empowering brands through innovation, technology, and impactful engineering — shaping the future with mindful magic.
           </p>
           <div className="footer-socials" aria-label="Social media channels">
-            <a href="https://www.linkedin.com/company/flareminds-technology-and-services/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on LinkedIn">
+            <a href="https://www.linkedin.com/company/flareminds-rcm/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on LinkedIn">
               <FaLinkedinIn aria-hidden="true" />
             </a>
-            {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on Twitter">
-              <FaTwitter aria-hidden="true" />
-            </a> */}
-            <a href="https://github.com/FlareMindsTech" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on GitHub">
-              <FaGithub aria-hidden="true" />
+            <a href="https://www.facebook.com/profile.php?id=100070869733184" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on Facebook">
+              <FaFacebookF aria-hidden="true" />
             </a>
-            <a href="https://www.instagram.com/flareminds_tech?igsi=Nm5ueTFyYW40ODlt&utm_source=qr" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on Instagram">
+            <a href="https://instagram.com/flareminds_tech?xtok=MThhNDl5NGhobzloNw%3D%3D" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on Instagram">
               <FaInstagram aria-hidden="true" />
             </a>
           </div>
@@ -198,7 +195,7 @@ export default function Footer() {
 
           <div className="copyright-group">
             <div className="copyright">
-              &copy; {new Date().getFullYear()} <span>FLAREMINDS</span> TECH PVT LTD.
+              &copy; {new Date().getFullYear()} <span>FLAREMINDS</span> TECH PRIVATE LIMITED.
             </div>
             <div className="footer-legal-links">
               <Link to="/privacy">Privacy</Link>

@@ -1,6 +1,6 @@
 const SITE_URL = 'https://www.flaremindstech.com';
 const SITE_NAME = 'FlareMinds';
-const COMPANY_NAME = 'FLAREMINDS TECH PVT LTD';
+const COMPANY_NAME = 'FLAREMINDS TECH PRIVATE LIMITED';
 
 export const getOrganizationSchema = () => ({
     '@context': 'https://schema.org',
@@ -18,9 +18,9 @@ export const getOrganizationSchema = () => ({
         availableLanguage: ['English', 'Tamil', 'Hindi'],
     },
     sameAs: [
-        'https://www.facebook.com/flareminds',
-        'https://www.linkedin.com/company/flareminds',
-        'https://www.instagram.com/flareminds',
+        'https://www.facebook.com/profile.php?id=100070869733184',
+        'https://www.linkedin.com/company/flareminds-rcm/',
+        'https://instagram.com/flareminds_tech?xtok=MThhNDl5NGhobzloNw%3D%3D',
     ],
     address: {
         '@type': 'PostalAddress',

@@ -48,13 +48,14 @@ export default function Contact() {
   }
 
   const addService = () => {
-    if (newService.trim() && !services.includes(newService.trim())) {
-      const added = newService.trim()
-      setServices([...services, added])
-      setForm({ ...form, service: added })
-      setNewService('')
-      setShowAddCustom(false)
+    const trimmed = newService.trim()
+    if (!trimmed) return
+    if (!services.includes(trimmed)) {
+      setServices([...services, trimmed])
     }
+    setForm({ ...form, service: trimmed })
+    setNewService('')
+    setShowAddCustom(false)
   }
 
   const onSubmit = (e) => {
@@ -246,6 +247,12 @@ export default function Contact() {
                         placeholder="Type custom service name..."
                         value={newService}
                         onChange={(e) => setNewService(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            addService();
+                          }
+                        }}
                         className="custom-service-input"
                       />
                       <button type="button" onClick={addService} className="add-custom-btn">
@@ -336,7 +343,7 @@ export default function Contact() {
                     <div className="info-item-content">
                       <span className="item-label">Office Address</span>
                       <address className="item-value address-text">
-                        <strong>FLAREMINDS TECH PVT LTD</strong><br />
+                        <strong>FLAREMINDS TECH PRIVATE LIMITED</strong><br />
                         3rd Floor, SBI Bank Building,<br />
                         Anupparpalayam Pudur, Tiruppur,<br />
                         Tamil Nadu - 641652, India

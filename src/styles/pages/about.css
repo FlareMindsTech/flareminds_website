@@ -877,20 +877,65 @@ html[data-theme="dark"] .lm-about-page {
   }
 
   .value-card-header {
-    padding: 1rem !important;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 1.25rem 1rem !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .value-prop-icon-v2 {
+    margin: 0 auto !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .value-prop-content {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .value-prop-title-v2 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .value-prop-short {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
   }
 
   .value-card-details p {
-    padding-left: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     font-size: 0.85rem !important;
+    text-align: center !important;
   }
 
   .expand-btn {
     top: 1rem !important;
     right: 1rem !important;
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 1.15rem !important;
   }
 
   .value-prop-card-v2.expanded .value-card-details {
@@ -992,11 +1037,18 @@ html[data-theme="dark"] .lm-about-page {
 
 
   .value-prop-title-v2 {
-    font-size: 1.1rem !important;
+    font-size: 1.15rem !important;
+    text-align: center !important;
   }
 
   .value-prop-icon-v2 {
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
+    text-align: center !important;
+  }
+
+  .value-prop-short {
+    font-size: 0.85rem !important;
+    text-align: center !important;
   }
 
   .partner-logo-circle {

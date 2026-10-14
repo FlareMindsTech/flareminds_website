@@ -9,6 +9,7 @@
   min-height: 100vh;
   padding-bottom: 6rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 html[data-theme="dark"] .contact-page {
@@ -171,19 +172,24 @@ html[data-theme="dark"] .highlight-info p {
    -------------------------------------------------------------------------- */
 .contact-main-section {
   padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .contact-grid {
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   }
 }
 
@@ -197,6 +203,10 @@ html[data-theme="dark"] .highlight-info p {
   padding: 2.5rem;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 html[data-theme="dark"] .contact-form-card {
@@ -333,6 +343,8 @@ html[data-theme="dark"] .modern-textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .toggle-custom-service-btn {
@@ -348,6 +360,7 @@ html[data-theme="dark"] .modern-textarea:focus {
   padding: 4px 8px;
   border-radius: 6px;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
 .toggle-custom-service-btn:hover {
@@ -359,16 +372,22 @@ html[data-theme="dark"] .modern-textarea:focus {
   gap: 8px;
   margin-bottom: 0.75rem;
   animation: fadeIn 0.3s ease-out;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .custom-service-input {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   padding: 10px 14px;
   border-radius: 8px;
   border: 1px solid #0ea5e9;
   background: #ffffff;
   font-size: 0.9rem;
   outline: none;
+  box-sizing: border-box;
 }
 
 html[data-theme="dark"] .custom-service-input {
@@ -388,12 +407,38 @@ html[data-theme="dark"] .custom-service-input {
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   white-space: nowrap;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
 }
 
 .add-custom-btn:hover {
   background: #0284c7;
+}
+
+@media (max-width: 640px) {
+  .add-custom-service-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .custom-service-input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .add-custom-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+    box-sizing: border-box;
+  }
 }
 
 .services-pills-grid {
