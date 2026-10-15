@@ -49,10 +49,10 @@ export default function About() {
     },
     {
       name: "Gokilavani M",
-      role: "Co-Founder & Tech Lead",
+      role: "Co-Founder & Technical Head",
       bio: "Leads the development of scalable, high-performance web applications with a focus on modern technologies and clean architecture.",
       image: Gokila,
-      imagePosition: "center 20%",
+      imagePosition: "center 15%",
     },
     {
       name: "KARAN",
