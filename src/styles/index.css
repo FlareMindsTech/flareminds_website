@@ -351,6 +351,11 @@ html[data-theme="dark"] .lm-about-page :is(.value-prop-card-v2, .partner-item, .
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
+html[data-theme="dark"] .lm-about-page .partner-item {
+  border-color: transparent;
+  box-shadow: none;
+}
+
 html[data-theme="dark"] .lm-about-page :is(.value-prop-card-v2:hover, .partner-item:hover) {
   border-color: #38bdf8;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.36);
@@ -360,6 +365,18 @@ html[data-theme="dark"] .lm-about-page .partner-logo-circle {
   background: #f8fafc;
   border-color: #334155;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .lm-about-page .partners-section-v2 {
+  background: #091321 !important;
+}
+
+html[data-theme="dark"] .lm-about-page .partners-section-v2 .section-title-main {
+  color: #e5edf8 !important;
+}
+
+html[data-theme="dark"] .lm-about-page .partners-section-v2 .partners-subtitle-v2 {
+  color: #8c9bbd !important;
 }
 
 html[data-theme="dark"] .lm-about-page .partner-badge {

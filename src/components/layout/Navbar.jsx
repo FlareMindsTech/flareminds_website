@@ -16,14 +16,28 @@ export default function Navbar() {
   const [mobileAccordion, setMobileAccordion] = useState({});
   const [isPointer, setIsPointer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isAtFooter, setIsAtFooter] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const servicesRef = useRef(null);
   const closeServicesTimeout = useRef(null);
 
-  /* ── Scroll detection ── */
+  /* ── Scroll & Footer detection ── */
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+
+      // Detect if user has scrolled down to the reveal footer
+      const pageContent = document.querySelector('.page-content');
+      if (pageContent) {
+        const rect = pageContent.getBoundingClientRect();
+        // When bottom of page content reaches near/above viewport bottom, hide navbar
+        setIsAtFooter(rect.bottom <= window.innerHeight + 40);
+      } else {
+        setIsAtFooter(false);
+      }
+    };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -51,6 +65,7 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
     setServicesOpen(false);
+    setIsAtFooter(false);
   }, [location.pathname]);
 
   const serviceCategories = useMemo(
@@ -349,7 +364,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`navbar-header ${isHomePage ? "navbar-home" : "navbar-page"}${scrolled ? " scrolled" : ""}`}
+      className={`navbar-header ${isHomePage ? "navbar-home" : "navbar-page"}${scrolled ? " scrolled" : ""}${isAtFooter && !menuOpen ? " navbar-hidden" : ""}`}
     >
       {/* Top Accent Gradient Border */}
       <div className="navbar-accent-bar" />

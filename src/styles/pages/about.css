@@ -599,11 +599,11 @@ html[data-theme="dark"] .lm-about-page {
   border-top: 2px solid #e5e7eb;
 }
 
-/* Partners Section - Modern Card Grid */
+/* Partners Section - Logo showcase */
 .partners-section-v2 {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border-radius: 28px;
+  padding: 4.5rem 1.5rem;
+  background: linear-gradient(135deg, #f7fbff 0%, #eef7ff 100%);
+  border-radius: 32px;
   margin-top: 3rem;
   position: relative;
   overflow: hidden;
@@ -622,38 +622,39 @@ html[data-theme="dark"] .lm-about-page {
 
 .partners-subtitle-v2 {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #64748b;
-  margin-bottom: 3rem;
+  margin-bottom: 2.25rem;
   font-weight: 600;
   position: relative;
   z-index: 1;
 }
 
 .partners-list {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
   position: relative;
   z-index: 1;
 }
 
 .partner-item {
-  background: white;
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
+  background: transparent;
+  padding: 1rem 0.8rem;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid transparent;
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
-  transition: all 0.4s cubic-bezier(.2, .9, .2, 1);
+  justify-content: flex-start;
+  border: 0;
+  box-shadow: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   opacity: 0;
-  transform: scale(0.9);
-  animation: popIn 0.6s cubic-bezier(.68, -0.55, .27, 1.55) forwards;
+  transform: translateY(10px);
+  animation: popIn 0.45s ease forwards;
   position: relative;
   overflow: hidden;
 }
@@ -664,7 +665,7 @@ html[data-theme="dark"] .lm-about-page {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, #3b82f6, #06b6d4);
   transform: scaleX(0);
   transition: transform 0.4s ease;
@@ -711,35 +712,46 @@ html[data-theme="dark"] .lm-about-page {
 }
 
 .partner-item:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(30, 58, 138, 0.2);
-  border-color: #3b82f6;
+  transform: translateY(-4px);
 }
 
 .partner-logo-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 112px;
+  height: 68px;
+  border-radius: 12px;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-  transition: all 0.4s cubic-bezier(.68, -0.55, .27, 1.55);
+  margin-bottom: 0.85rem;
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
-  border: 3px solid #e5e7eb;
+  border: 1px solid #dbe5ef;
 }
 
 .partner-logo-circle img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 15px;
+  padding: 8px;
+}
+
+.partner-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  background: #eff6ff;
+  font-size: 2.25rem;
+  font-weight: 800;
 }
 
 .partner-item:hover .partner-logo-circle {
-  transform: scale(1.15) rotate(10deg);
+  transform: scale(1.04);
+  box-shadow: 0 5px 14px rgba(59, 130, 246, 0.2);
 }
 
 .partner-content {
@@ -749,7 +761,7 @@ html[data-theme="dark"] .lm-about-page {
 }
 
 .partner-company {
-  font-size: 1.3rem;
+  font-size: 0.92rem;
   font-weight: 800;
   color: #1e293b;
   margin: 0;
@@ -761,14 +773,15 @@ html[data-theme="dark"] .lm-about-page {
 }
 
 .partner-industry {
-  font-size: 0.95rem;
+  font-size: 0.78rem;
   color: #64748b;
   font-weight: 500;
 }
 
 .partner-badge {
-  margin-top: 1rem;
-  padding: 0.4rem 1.2rem;
+  display: none;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.9rem;
   background: linear-gradient(135deg, #dbeafe, #bfdbfe);
   border-radius: 20px;
   font-size: 0.85rem;
@@ -783,6 +796,21 @@ html[data-theme="dark"] .lm-about-page {
   transform: scale(1.05);
 }
 
+@media (max-width: 1100px) and (min-width: 769px) {
+  .partners-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .partners-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .partner-item {
+    min-height: 150px;
+  }
+}
 
 @media (max-width: 768px) {
   .lm-hero {
@@ -949,11 +977,12 @@ html[data-theme="dark"] .lm-about-page {
 
   .partners-list {
     grid-template-columns: 1fr !important;
-    gap: 0.85rem !important;
+    gap: 0.75rem !important;
   }
 
   .partner-item {
-    padding: 1.15rem 1rem !important;
+    min-height: 0;
+    padding: 1rem !important;
     border-radius: 16px !important;
   }
 
@@ -1052,13 +1081,207 @@ html[data-theme="dark"] .lm-about-page {
   }
 
   .partner-logo-circle {
-    width: 80px;
-    height: 80px;
+    width: 112px;
+    height: 68px;
   }
 
   .memory-button {
     padding: 0.9rem 1.5rem !important;
     font-size: 1rem !important;
+  }
+}
+
+/* Partners Section - hover reveal tiles */
+.partners-section-v2 {
+  padding: 4.5rem 0;
+  background: #ffffff;
+  border-radius: 32px;
+}
+
+.partners-section-v2::before {
+  display: none;
+}
+
+.partners-section-v2 .section-title-main,
+.partners-section-v2 .partners-subtitle-v2 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.partners-section-v2 .section-title-main {
+  color: #1e3a8a !important;
+}
+
+.partners-subtitle-v2 {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.partners-grid {
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.partner-tile {
+  min-height: 188px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 26px 16px;
+  border-radius: 18px;
+  background: #0f1a2e;
+  outline: none;
+  isolation: isolate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, #1c2a45, transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: background 0.3s ease;
+}
+
+.partner-tile:hover,
+.partner-tile:focus-visible,
+.partner-tile:active {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px -10px #4da3ff;
+}
+
+.partner-tile:hover::before,
+.partner-tile:focus-visible::before,
+.partner-tile:active::before {
+  background: linear-gradient(140deg, #4da3ff, #2dd4e6);
+}
+
+.partner-tile .partner-logo-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  flex: 0 0 64px;
+  border: 0;
+  border-radius: 16px;
+  background: white;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.partner-tile .partner-logo-circle img {
+  width: 80%;
+  height: 80%;
+  padding: 0;
+  object-fit: contain;
+}
+
+.partner-tile .partner-logo-placeholder {
+  width: 80%;
+  height: 80%;
+  background: transparent;
+  font-size: 2rem;
+}
+
+.partner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.partner-tile .partner-company {
+  color: #e5edf8;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.partner-tile .partner-industry {
+  color: #8c9bbd;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.partner-tile:focus-visible {
+  outline: 2px solid #2dd4e6;
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (hover: none) {
+  .partner-tile:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .partner-tile:active {
+    transform: none;
+    box-shadow: 0 14px 40px -10px #4da3ff;
+  }
+}
+
+/* Retain the shared logo placeholder styling for customers without an image. */
+.partner-tile .partner-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.partner-tile .partner-badge {
+  display: none;
+}
+
+html[data-theme="dark"] .lm-about-page .partner-tile {
+  border: 0;
+}
+
+html[data-theme="dark"] .lm-about-page .partner-tile .partner-logo-circle {
+  background: white;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-tile,
+  .partner-tile::before {
+    transition: none;
+  }
+
+  .partner-tile:hover,
+  .partner-tile:focus-visible,
+  .partner-tile:active {
+    transform: none;
+    box-shadow: 0 14px 40px -10px #4da3ff;
   }
 }
 

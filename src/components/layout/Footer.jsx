@@ -1,92 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
-  FaLinkedinIn, FaFacebookF, FaTwitter, FaInstagram,
-  FaBook, FaFileAlt, FaFileCode, FaQuestionCircle,
-  FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaShieldAlt, FaChevronUp
+  FaLinkedinIn, FaFacebookF, FaInstagram, FaChevronUp
 } from 'react-icons/fa';
 import './footer.css';
 import TitleLogo from '../../assets/images/branding/TitleLogo.webp';
+import { FLAREMINDS_PATH } from './flarePath';
 
 export default function Footer() {
-  const [hqTime, setHqTime] = useState('');
+  const footerRef = useRef(null);
+  const [isRevealActive, setIsRevealActive] = useState(
+    () => typeof window !== 'undefined' && window.innerHeight >= 480
+  );
+  const location = useLocation();
 
   useEffect(() => {
-    const updateTime = () => {
-      try {
-        const timeStr = new Intl.DateTimeFormat('en-US', {
-          timeZone: 'Asia/Kolkata',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true
-        }).format(new Date());
-        setHqTime(timeStr);
-      } catch {
-        setHqTime(new Date().toLocaleTimeString());
+    const footerEl = footerRef.current;
+    if (!footerEl) return;
+
+    const updateFooterHeight = () => {
+      const vh = window.innerHeight;
+      const height = footerEl.offsetHeight;
+
+      // Fallback only if viewport is extremely short (e.g. landscape phone < 480px)
+      if (vh < 480) {
+        document.documentElement.style.setProperty('--footer-h', '0px');
+        setIsRevealActive(false);
+      } else {
+        const fullHeight = Math.max(height, vh);
+        document.documentElement.style.setProperty('--footer-h', `${fullHeight}px`);
+        setIsRevealActive(true);
       }
     };
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    const resizeObserver = new ResizeObserver(() => {
+      updateFooterHeight();
+    });
+
+    resizeObserver.observe(footerEl);
+    window.addEventListener('resize', updateFooterHeight);
+
+    // Initial measurement
+    updateFooterHeight();
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateFooterHeight);
+      document.documentElement.style.removeProperty('--footer-h');
+    };
+  }, [location.pathname]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="footer-modern footer-compact" aria-label="Site Footer">
-      {/* Dynamic Aurora Horizon Layer (Low profile) */}
-      <div className="aurora-horizon" aria-hidden="true">
-        <div className="aurora-glow-ambient"></div>
-        <svg className="aurora-wave aurora-wave-back" viewBox="0 0 1440 220" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="auroraGradBack" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0495C5" stopOpacity="0.35" />
-              <stop offset="50%" stopColor="#6366f1" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#a855f7" stopOpacity="0.4" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#auroraGradBack)"
-            d="M0,130L60,120C120,110,240,90,360,95C480,105,600,140,720,145C840,150,960,120,1080,100C1200,80,1320,75,1380,70L1440,65L1440,220L1380,220C1320,220,1200,220,1080,220C960,220,840,220,720,220C600,220,480,220,360,220C240,220,120,220,60,220L0,220Z"
-          ></path>
-        </svg>
-
-        <svg className="aurora-wave aurora-wave-mid" viewBox="0 0 1440 220" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="auroraGradMid" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.5" />
-              <stop offset="45%" stopColor="#38bdf8" stopOpacity="0.3" />
-              <stop offset="85%" stopColor="#8b5cf6" stopOpacity="0.45" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#auroraGradMid)"
-            d="M0,70L48,80C96,90,192,110,288,120C384,130,480,130,576,115C672,100,768,75,864,80C960,85,1056,120,1152,125C1248,130,1344,110,1392,100L1440,90L1440,220L1392,220C1344,220,1248,220,1152,220C1056,220,960,220,864,220C768,220,672,220,576,220C480,220,384,220,288,220C192,220,96,220,48,220L0,220Z"
-          ></path>
-        </svg>
-
-        <svg className="aurora-wave aurora-wave-front" viewBox="0 0 1440 220" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="auroraGradFront" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="#0284c7" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#9333ea" stopOpacity="0.3" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#auroraGradFront)"
-            d="M0,150L48,140C96,130,192,110,288,100C384,90,480,90,576,100C672,110,768,130,864,135C960,140,1056,125,1152,110C1248,95,1344,80,1392,75L1440,65L1440,220L1392,220C1344,220,1248,220,1152,220C1056,220,960,220,864,220C768,220,672,220,576,220C480,220,384,220,288,220C192,220,96,220,48,220L0,220Z"
-          ></path>
-        </svg>
-      </div>
-
+    <footer 
+      ref={footerRef}
+      className={`footer-modern footer-compact ${isRevealActive ? 'is-reveal' : ''}`}
+      aria-label="Site Footer"
+    >
       <div className="footer-container">
-        {/* Deck 1: Brand & Socials */}
-        <div className="footer-deck footer-brand-deck">
+        {/* Column 1: Brand & Socials */}
+        <div className="footer-col footer-brand-col">
           <div className="footer-logo">
             <img 
               src={TitleLogo} 
@@ -115,93 +91,86 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Deck 2: Quick Links */}
-        <div className="footer-deck footer-links-deck">
-          <h4 className="footer-heading">Resources</h4>
+        {/* Column 2: Company (Text Only) */}
+        <div className="footer-col footer-links-col">
+          <h4 className="footer-heading">Company</h4>
           <ul className="footer-links">
             <li>
-              <Link to="/blog">
-                <span className="link-icon-wrap"><FaBook className="link-icon" /></span>
-                <span>Blog</span>
-              </Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/our-works">
-                <span className="link-icon-wrap"><FaFileAlt className="link-icon" /></span>
-                <span>Case Studies</span>
-              </Link>
+              <Link to="/services">Services</Link>
             </li>
             <li>
-              <Link to="/docs">
-                <span className="link-icon-wrap"><FaFileCode className="link-icon" /></span>
-                <span>Documentation</span>
-              </Link>
+              <Link to="/our-works">Our Works</Link>
             </li>
             <li>
-              <Link to="/faq">
-                <span className="link-icon-wrap"><FaQuestionCircle className="link-icon" /></span>
-                <span>FAQs</span>
-              </Link>
+              <Link to="/products">Products</Link>
             </li>
           </ul>
         </div>
 
-        {/* Deck 3: Contact Info */}
-        <div className="footer-deck footer-contact-deck">
-          <h4 className="footer-heading">Get In Touch</h4>
-          <div className="contact-info-list">
-            <a href="mailto:info@flaremindstech.com" className="contact-item">
-              <div className="contact-icon"><FaEnvelope aria-hidden="true" /></div>
-              <div className="contact-text">
-                <span className="label">Email</span>
-                <span className="value">info@flaremindstech.com</span>
-              </div>
-            </a>
-            <a href="tel:+919500950813" className="contact-item">
-              <div className="contact-icon"><FaPhoneAlt aria-hidden="true" /></div>
-              <div className="contact-text">
-                <span className="label">Phone</span>
-                <span className="value">+91 9500950813</span>
-              </div>
-            </a>
-            <div className="contact-item">
-              <div className="contact-icon"><FaMapMarkerAlt aria-hidden="true" /></div>
-              <div className="contact-text">
-                <span className="label">Location</span>
-                <span className="value">Tiruppur, Tamil Nadu, India</span>
-              </div>
-            </div>
-          </div>
+        {/* Column 3: Resources (Text Only) */}
+        <div className="footer-col footer-links-col">
+          <h4 className="footer-heading">Resources</h4>
+          <ul className="footer-links">
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/our-works">Case Studies</Link>
+            </li>
+            <li>
+              <Link to="/docs">Documentation</Link>
+            </li>
+            <li>
+              <Link to="/faq">FAQs</Link>
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* Floating Status & Bottom Bar */}
+      {/* Big Display Banner - "FLAREMINDS" in tracked outline typography */}
+      <div className="footer-big-text-wrap" aria-hidden="true">
+        <svg 
+          className="footer-big-svg" 
+          viewBox="0 0 1160 145" 
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <linearGradient id="footerStrokeFadeDark" x1="0" y1="0" x2="0" y2="100%">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.72)" />
+              <stop offset="30%" stopColor="rgba(255, 255, 255, 0.45)" />
+              <stop offset="65%" stopColor="rgba(255, 255, 255, 0.18)" />
+              <stop offset="95%" stopColor="rgba(255, 255, 255, 0.04)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+            </linearGradient>
+            <linearGradient id="footerStrokeFadeLight" x1="0" y1="0" x2="0" y2="100%">
+              <stop offset="0%" stopColor="rgba(15, 23, 42, 0.65)" />
+              <stop offset="30%" stopColor="rgba(15, 23, 42, 0.40)" />
+              <stop offset="65%" stopColor="rgba(15, 23, 42, 0.16)" />
+              <stop offset="95%" stopColor="rgba(15, 23, 42, 0.04)" />
+              <stop offset="100%" stopColor="rgba(15, 23, 42, 0)" />
+            </linearGradient>
+          </defs>
+          <path 
+            d={FLAREMINDS_PATH}
+            className="footer-big-path"
+          />
+        </svg>
+      </div>
+
+      {/* Integrated Single Footer Copyright Row */}
       <div className="footer-bottom-bar">
         <div className="footer-bottom-container">
-          
-          {/* Live Operational & HQ Status Radar */}
-          <div className="footer-status-pill" title="Real-time operational status and headquarters time">
-            <span className="radar-dot">
-              <span className="radar-ping"></span>
-            </span>
-            <span className="status-label">Operational</span>
-            <span className="status-separator">•</span>
-            <span className="status-time">HQ {hqTime || '10:50 AM IST'}</span>
+          <div className="copyright">
+            &copy; {new Date().getFullYear()} <span>FLAREMINDS</span> TECH PRIVATE LIMITED. All rights reserved.
           </div>
 
-          <div className="trusted-badge">
-            <FaShieldAlt className="trusted-icon" /> Trusted by 100+ clients worldwide
-          </div>
-
-          <div className="copyright-group">
-            <div className="copyright">
-              &copy; {new Date().getFullYear()} <span>FLAREMINDS</span> TECH PRIVATE LIMITED.
-            </div>
-            <div className="footer-legal-links">
-              <Link to="/privacy">Privacy</Link>
-              <span className="legal-sep">|</span>
-              <Link to="/terms">Terms</Link>
-            </div>
+          <div className="footer-legal-links">
+            <Link to="/privacy">Privacy Policy</Link>
+            <span className="legal-sep">·</span>
+            <Link to="/terms">Terms of Service</Link>
           </div>
 
           <button 
@@ -212,7 +181,6 @@ export default function Footer() {
           >
             <FaChevronUp aria-hidden="true" />
           </button>
-
         </div>
       </div>
     </footer>

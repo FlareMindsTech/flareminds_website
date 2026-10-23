@@ -13,6 +13,8 @@ import logo6 from "../assets/images/logo/logo6.webp";
 import logo7 from "../assets/images/logo/logo7.webp";
 import logo8 from "../assets/images/logo/logo8.webp";
 import logo9 from "../assets/images/logo/logo9.webp";
+import atlantisHealthcityLogo from "../assets/images/logo/atlantis-healthcity.webp";
+import shySchoolYercaudLogo from "../assets/images/logo/shy-school-yercaud.webp";
 import Bharath from "../assets/images/members/bharath.webp";
 import Gokila from "../assets/images/members/GOKILA.webp";
 import Karan from "../assets/images/members/KARAN.webp";
@@ -140,15 +142,25 @@ export default function About() {
   ];
 
   const partners = [
-    { name: "Good Luck Healthcare", industry: "Health Care", logo: logo1 },
-    { name: "AM Ads", industry: "Digital Agency", logo: logo2 },
-    { name: "Plan my trip", industry: "Travel & Tourism", logo: logo3 },
-    { name: "Yes Yes Innovation", industry: "Innovation Hub", logo: logo4 },
-    { name: "Right Touch ", industry: "Technology", logo: logo5 },
-    { name: "Green Realty Experts", industry: "Manufacturing", logo: logo6 },
-    { name: "Dominator Pixel", industry: "IT Services", logo: logo7 },
-    { name: "Kovai Property", industry: "Design Studio", logo: logo8 },
-    { name: "Global Ventures", industry: "Business Consulting", logo: logo9 }
+    { name: "Good Luck Healthcare", category: "Health Care", logo: logo1 },
+    { name: "AM Ads", category: "Digital Agency", logo: logo2 },
+    { name: "Plan my trip", category: "Travel & Tourism", logo: logo3 },
+    { name: "Yes Yes Innovation", category: "Innovation Hub", logo: logo4 },
+    { name: "Right Touch ", category: "Technology", logo: logo5 },
+    { name: "Green Realty Experts", category: "Manufacturing", logo: logo6 },
+    { name: "Dominator Pixel", category: "IT Services", logo: logo7 },
+    { name: "Kovai Property", category: "Design Studio", logo: logo8 },
+    { name: "Global Ventures", category: "Business Consulting", logo: logo9 },
+    { name: "SHY School Yercaud", category: "Education", logo: shySchoolYercaudLogo },
+    { name: "AVK Hospital", category: "Healthcare" },
+    { name: "Bayamilla Pechu", category: "Media" },
+    { name: "JK Tyres", category: "Automotive" },
+    { name: "Sakthi Murugan Tyres (SMT)", category: "Automotive" },
+    {
+      name: "Atlantis Healthcity",
+      category: "Ethics | Empathy | Excellence",
+      logo: atlantisHealthcityLogo,
+    },
   ];
 
   const counterRefs = useRef([]);
@@ -360,21 +372,25 @@ export default function About() {
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
-          <div className="partners-list">
-            {partners.map((partner, idx) => {
-              return (
-                <div className="partner-item" key={idx}>
-                  <div className="partner-logo-circle">
-                    <img src={partner.logo} alt={`${partner.name} - ${partner.industry}`} />
-                  </div>
-                  <div className="partner-content">
-                    <h4 className="partner-company">{partner.name}</h4>
-                    <span className="partner-industry">{partner.industry}</span>
-                  </div>
-                  <div className="partner-badge">Trusted</div>
+          <div className="partners-grid">
+            {partners.map((partner) => (
+              <div
+                className="partner-tile"
+                key={partner.name}
+                tabIndex="0"
+                aria-label={`${partner.name} - ${partner.category || "Customer"}`}
+              >
+                <div className="partner-logo-circle">
+                  {partner.logo ? (
+                    <img src={partner.logo} alt={`${partner.name} logo`} />
+                  ) : null}
                 </div>
-              );
-            })}
+                <div className="partner-content">
+                  <h4 className="partner-company">{partner.name}</h4>
+                  <span className="partner-industry">{partner.category || "Customer"}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

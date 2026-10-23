@@ -60,77 +60,79 @@ export default function App() {
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col text-slate-800">
+    <div className="relative min-h-screen text-slate-800">
       <SkipToContent />
       <ScrollToTop />
       <ThemeToggle />
-      <Navbar />
-      <main id="main-content" className="flex-1">
-        <Suspense fallback={<FlareMindLoader />}>
-          <Routes>
-            {/* Core pages */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
+      <div className="page-content">
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          <Suspense fallback={<FlareMindLoader />}>
+            <Routes>
+              {/* Core pages */}
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
 
-            {/* Our Works (Portfolio) */}
-            <Route path="/our-works" element={<OurWorks />} />
-            <Route path="/our-works/:category" element={<OurWorks />} />
-            <Route path="/projects" element={<Navigate to="/our-works" replace />} />
+              {/* Our Works (Portfolio) */}
+              <Route path="/our-works" element={<OurWorks />} />
+              <Route path="/our-works/:category" element={<OurWorks />} />
+              <Route path="/projects" element={<Navigate to="/our-works" replace />} />
 
-            {/* Products */}
-            <Route path="/products" element={<Products />} />
+              {/* Products */}
+              <Route path="/products" element={<Products />} />
 
-            {/* Services overview */}
-            <Route path="/services" element={<Services />} />
+              {/* Services overview */}
+              <Route path="/services" element={<Services />} />
 
-            {/* Dedicated Development Services */}
-            <Route path="/services/website-development" element={<WebsiteDevelopment />} />
-            <Route path="/services/mobile-app-development" element={<MobileAppDevelopment />} />
-            <Route path="/services/e-commerce-solutions" element={<EcommerceSolutions />} />
-            <Route path="/services/business-applications" element={<BusinessApplications />} />
-            <Route path="/services/service-marketplace" element={<ServiceMarketplace />} />
-            <Route path="/services/custom-software-development" element={<CustomSoftwareDevelopment />} />
+              {/* Dedicated Development Services */}
+              <Route path="/services/website-development" element={<WebsiteDevelopment />} />
+              <Route path="/services/mobile-app-development" element={<MobileAppDevelopment />} />
+              <Route path="/services/e-commerce-solutions" element={<EcommerceSolutions />} />
+              <Route path="/services/business-applications" element={<BusinessApplications />} />
+              <Route path="/services/service-marketplace" element={<ServiceMarketplace />} />
+              <Route path="/services/custom-software-development" element={<CustomSoftwareDevelopment />} />
 
-            {/* Dedicated Marketing Services */}
-            <Route path="/services/seo-analytics" element={<SeoAnalytics />} />
-            <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
-            <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
-            <Route path="/services/branding-creative-design" element={<BrandingCreativeDesign />} />
-            <Route path="/services/creative-media-production" element={<CreativeMediaProduction />} />
-            <Route path="/services/content-marketing" element={<ContentMarketing />} />
+              {/* Dedicated Marketing Services */}
+              <Route path="/services/seo-analytics" element={<SeoAnalytics />} />
+              <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
+              <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
+              <Route path="/services/branding-creative-design" element={<BrandingCreativeDesign />} />
+              <Route path="/services/creative-media-production" element={<CreativeMediaProduction />} />
+              <Route path="/services/content-marketing" element={<ContentMarketing />} />
 
-            {/* Dedicated Support Services */}
-            <Route path="/services/maintenance-support" element={<MaintenanceSupport />} />
-            <Route path="/services/tech-support" element={<Navigate to="/services/maintenance-support" replace />} />
-            <Route path="/services/maintenance" element={<Navigate to="/services/maintenance-support" replace />} />
+              {/* Dedicated Support Services */}
+              <Route path="/services/maintenance-support" element={<MaintenanceSupport />} />
+              <Route path="/services/tech-support" element={<Navigate to="/services/maintenance-support" replace />} />
+              <Route path="/services/maintenance" element={<Navigate to="/services/maintenance-support" replace />} />
 
-            {/* Generic service detail fallback */}
-            <Route path="/services/:slug" element={<ServiceDetail />} />
+              {/* Generic service detail fallback */}
+              <Route path="/services/:slug" element={<ServiceDetail />} />
 
-            {/* Legacy redirects */}
-            <Route path="/web-development" element={<Navigate to="/services/website-development" replace />} />
-            <Route path="/app-development" element={<Navigate to="/services/mobile-app-development" replace />} />
+              {/* Legacy redirects */}
+              <Route path="/web-development" element={<Navigate to="/services/website-development" replace />} />
+              <Route path="/app-development" element={<Navigate to="/services/mobile-app-development" replace />} />
 
-            {/* Training Pages */}
-            <Route path="/training/mern-stack" element={<MernTraining />} />
-            <Route path="/training/digital-marketing" element={<DigitalMarketingTraining />} />
-            <Route path="/training/ai-ml" element={<AiMlTraining />} />
+              {/* Training Pages */}
+              <Route path="/training/mern-stack" element={<MernTraining />} />
+              <Route path="/training/digital-marketing" element={<DigitalMarketingTraining />} />
+              <Route path="/training/ai-ml" element={<AiMlTraining />} />
 
-            {/* Legal & Informational Pages */}
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/case-studies" element={<Navigate to="/our-works" replace />} />
+              {/* Legal & Informational Pages */}
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/docs" element={<Docs />} />
+              <Route path="/case-studies" element={<Navigate to="/our-works" replace />} />
 
-            {/* Catch-all 404 Route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
+              {/* Catch-all 404 Route */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
+      </div>
       <Footer />
     </div>
   )
