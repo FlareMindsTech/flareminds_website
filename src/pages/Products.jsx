@@ -21,6 +21,7 @@ import {
   FaLayerGroup,
   FaLock,
   FaTools,
+  FaFlask,
 } from "react-icons/fa";
 import SEO from "../components/common/SEO";
 import { getBreadcrumbSchema } from "../utils/structuredData";
@@ -88,7 +89,7 @@ export default function Products() {
 
         <div className="prod-hero-inner">
           <div className="prod-hero-badge">
-            <span>✦</span> FLAREMINDS PRODUCT LAB
+            <span className="prod-badge-dot" /> FLAREMINDS PRODUCT LAB
           </div>
 
           <h1 className="prod-hero-title">
@@ -178,7 +179,7 @@ export default function Products() {
 
                 {/* Stage Announcement */}
                 <div className="prod-announcement-banner">
-                  <div className="prod-announcement-icon">🚀</div>
+                  <div className="prod-announcement-icon"><FaRocket /></div>
                   <p className="prod-announcement-text">
                     <strong>Deployment Status: </strong>
                     {product.status.announcement}
@@ -324,7 +325,7 @@ export default function Products() {
                   </span>
                   {product.brandingNotice && (
                     <span className="prod-branding-note">
-                      ✦ {product.brandingNotice}
+                      {product.brandingNotice}
                     </span>
                   )}
                 </div>
@@ -337,7 +338,7 @@ export default function Products() {
 
                 {/* Stage Announcement */}
                 <div className="prod-announcement-banner">
-                  <div className="prod-announcement-icon">🧪</div>
+                  <div className="prod-announcement-icon"><FaFlask /></div>
                   <p className="prod-announcement-text">
                     <strong>Testing & QA Stage: </strong>
                     {product.status.announcement}

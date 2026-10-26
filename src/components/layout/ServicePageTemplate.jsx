@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 import SEO from "../common/SEO";
 import { servicesBySlug } from "../../data/servicesData";
 import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from "../../utils/structuredData";
@@ -26,7 +27,7 @@ export default function ServicePageTemplate({ slug }) {
     return (
       <div className="sd-not-found">
         <div className="sd-not-found-inner">
-          <div className="sd-not-found-icon">🔍</div>
+          <div className="sd-not-found-icon"><FaSearch /></div>
           <h1 className="sd-not-found-title">Service Not Found</h1>
           <p className="sd-not-found-text">
             We could not find a service at <code>/services/{slug}</code>.

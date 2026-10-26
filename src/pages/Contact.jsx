@@ -39,7 +39,7 @@ export default function Contact() {
   ])
   const [newService, setNewService] = useState('')
   const [showAddCustom, setShowAddCustom] = useState(false)
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -95,15 +95,19 @@ export default function Contact() {
         (response) => {
           console.log('EmailJS Success:', response.status, response.text)
           setIsSubmitting(false)
-          setStatus("✅ Message sent successfully! Our team will get back to you within 2 hours.")
+          setStatus({
+            type: 'success',
+            message: 'Message sent successfully! Our team will get back to you within 2 hours.'
+          })
           setForm({ name: '', email: '', service: '', message: '' })
         },
         (error) => {
           console.error('EmailJS Error:', error?.text || error)
           setIsSubmitting(false)
-          setStatus(
-            '❌ Something went wrong while sending your message. Please try again or call us directly.'
-          )
+          setStatus({
+            type: 'error',
+            message: 'Something went wrong while sending your message. Please try again or call us directly.'
+          })
         }
       )
   }
@@ -121,9 +125,9 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <SEO
-        title="Contact FlareMinds - Get in Touch | Digital Marketing & Tech Agency"
-        description="Contact FlareMinds for web development, app development, SEO, and digital marketing services. Visit us at 1st Floor, SBI Bank, Anupparpalayam Pudur, Tiruppur. Call +91 9500950813."
-        keywords="contact digital agency, web development contact, SEO services contact, Tiruppur tech agency, FlareMinds address, Coimbatore agency contact"
+        title="Contact FlareMinds - Web & App Development & Digital Marketing Agency"
+        description="Contact FlareMinds for web development, mobile app development, custom software, SEO, and digital marketing services. Visit us at 1st Floor, SBI Bank, Anupparpalayam Pudur, Tiruppur. Call +91 9500950813."
+        keywords="contact digital agency, web development contact, app development contact, digital marketing contact, SEO services contact, Tiruppur tech agency, FlareMinds address, Coimbatore agency contact"
         schema={combinedSchema}
       />
 
@@ -139,7 +143,7 @@ export default function Contact() {
             Get in Touch with <span className="brand-gradient">Our Experts</span>
           </h1>
           <p className="contact-subtitle">
-            Have a project in mind, need a custom quote, or want to scale your digital presence? We're here to turn your ideas into high-performing reality.
+            Have a web, app, or software project in mind, or looking to scale your business with data-driven digital marketing? We're here to turn your vision into high-performing reality.
           </p>
 
           {/* Quick Value Cards */}
@@ -323,8 +327,9 @@ export default function Contact() {
 
                 {/* Status Message Alert */}
                 {status && (
-                  <div className={`status-alert-box ${status.startsWith('✅') ? 'success' : 'error'}`} role="status" aria-live="polite">
-                    <p>{status}</p>
+                  <div className={`status-alert-box ${status.type}`} role="status" aria-live="polite" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {status.type === 'success' ? <FaCheck aria-hidden="true" /> : <FaTimes aria-hidden="true" />}
+                    <p style={{ margin: 0 }}>{status.message}</p>
                   </div>
                 )}
               </form>
@@ -417,7 +422,9 @@ export default function Contact() {
                 {/* Google Maps Embed */}
                 <div className="map-embed-wrapper">
                   <div className="map-header">
-                    <span>📍 Live Location Map</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <FaMapMarkerAlt aria-hidden="true" /> Live Location Map
+                    </span>
                   </div>
                   <iframe
                     title="FlareMinds Office Location"

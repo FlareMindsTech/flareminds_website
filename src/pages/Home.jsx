@@ -106,7 +106,7 @@ export default function Home() {
   useScrollAnimation('.slide-from-right', 'show');
 
   const marqueeText =
-    "Website Design • SEO • Google Ads • SMM • Branding • Lead Gen • UI/UX • Strategy";
+    "Web Development • Mobile App Development • Digital Marketing • SEO & Google Ads • Custom Software • Social Media Marketing • UI/UX Design • Business Automation";
 
   const combinedSchema = {
     "@context": "https://schema.org",
@@ -116,9 +116,9 @@ export default function Home() {
   return (
     <div className="home-page">
       <SEO
-        title="FlareMinds - Digital Marketing & Technology Services | Web Development, SEO, App Development"
-        description="FlareMinds is a leading digital agency in Coimbatore offering web development, app development, SEO, social media marketing, Google Ads, and business automation. Transform your digital presence with our expert team."
-        keywords="digital marketing agency, web development, app development, SEO services, social media marketing, Google Ads, business automation, digital agency Coimbatore, MERN stack development, ecommerce solutions, lead generation"
+        title="FlareMinds - Web & App Development & Digital Marketing Agency"
+        description="FlareMinds is a full-service technology and digital marketing company offering web development, mobile app development, SEO, social media marketing, and custom software. Transform your digital presence with our expert team."
+        keywords="web development, app development, digital marketing agency, SEO services, social media marketing, Google Ads, custom software, digital agency Coimbatore, MERN stack development, ecommerce solutions, lead generation"
         schema={combinedSchema}
       />
       <section className="hero-section">
@@ -126,14 +126,18 @@ export default function Home() {
         <div className="container">
           <div className="hero-content">
             <h1 className="hero-title">
-              Marketing That Speaks Today's Digital Language
+              <span className="hero-title-line">
+                Technology That Builds.
+              </span>
+              <span className="hero-title-line gradient-text">
+                Marketing That Scales.
+              </span>
             </h1>
             <p className="hero-subtext">
-              We craft digital experiences that connect, convert, and scale. Let
-              your brand fly higher with Branding Wings.
+              We build high-performance websites, mobile apps, and custom software, backed by strategic digital marketing that helps businesses reach further and grow faster.
             </p>
             <div className="hero-buttons">
-              <Link to="/services" className="btn-primary es-btn">
+              <Link to="/services" className="btn-primary es-btn" aria-label="Explore Services">
                 <span className="es-text">Explore Services</span>
                 <span className="es-svg">
                   <svg viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,15 +145,15 @@ export default function Home() {
                   </svg>
                 </span>
               </Link>
-              <Link to="/contact" className="btn-outline git-btn" data-text="GET IN TOUCH">
-                <i>G</i><i>E</i><i>T</i><i>&nbsp;</i><i>I</i><i>N</i><i>&nbsp;</i><i>T</i><i>O</i><i>U</i><i>C</i><i>H</i>
+              <Link to="/our-works" className="btn-outline wow-btn" aria-label="View Our Work">
+                <span className="wow-text">View Our Work</span>
               </Link>
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "2.25rem",
+                marginTop: "1.6rem",
                 position: "relative",
                 zIndex: 30,
               }}
@@ -222,21 +226,21 @@ export default function Home() {
         <div className="features-grid new-features">
           {[
             {
-              title: "Creative Strategy",
-              text: "Business-focused digital planning that aligns goals with impactful solutions.",
-              icon: <FaRegLightbulb />,
+              title: "Web & App Development",
+              text: "Scalable websites, high-performance mobile apps, and robust custom software built for speed.",
+              icon: <FaMobileAlt />,
               theme: "blue",
             },
             {
-              title: "High-End Designs",
-              text: "Modern UI/UX that looks stunning and converts visitors into customers.",
-              icon: <FaBezierCurve />,
+              title: "Data-Driven Marketing",
+              text: "Targeted SEO, PPC ads, and social media campaigns that scale reach and deliver measurable ROI.",
+              icon: <FaChartLine />,
               theme: "purple",
             },
             {
-              title: "Digital Growth",
-              text: "Data-driven strategies that scale your brand and deliver measurable growth.",
-              icon: <FaChartLine />,
+              title: "UI/UX & Creative Strategy",
+              text: "Modern design systems, memorable branding, and seamless digital experiences that convert.",
+              icon: <FaBezierCurve />,
               theme: "teal",
             },
           ].map((f, i) => (
@@ -280,11 +284,10 @@ export default function Home() {
                 Who We <span className="brand-gradient">Are</span>
               </h2>
               <p className="section-text text-muted mb-4">
-                FlareMinds is a full-service digital agency dedicated to helping
-                businesses grow. We combine creative design, data-driven
-                marketing, and robust technology to build brands that stand out.
-                From startups to enterprises, we deliver solutions that drive
-                real results.
+                FlareMinds is a full-service technology and digital marketing company dedicated to helping
+                businesses grow. We combine custom web and mobile app development, data-driven digital
+                marketing, and robust software engineering to build solutions that stand out and scale.
+                From startups to enterprises, we deliver results that matter.
               </p>
               <Link to="/about" className="btn-link brand-gradient fw-bold mb-5 d-inline-flex align-items-center gap-2 text-decoration-none">
                 Read Our Story
@@ -339,9 +342,9 @@ export default function Home() {
         <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px', padding: '40px 0', maxWidth: '1200px', margin: '0 auto' }}>
           {[
             {
-              title: "Website Design & Development",
-              desc: "Premium solutions tailored to your business needs. We build fast, responsive, and stunning websites.",
-              features: ["Custom UI/UX Design", "Responsive Development", "CMS Integration"],
+              title: "Web & Mobile App Development",
+              desc: "Premium solutions tailored to your business needs. We build fast, responsive websites and Android/iOS mobile apps.",
+              features: ["Custom Web Development", "Mobile Applications (iOS/Android)", "Full-Stack Architecture"],
               colors: {
                 gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
                 circleBg: "rgba(14, 165, 233, 0.2)",
@@ -350,9 +353,9 @@ export default function Home() {
               }
             },
             {
-              title: "Marketing & SEO",
-              desc: "Data-driven marketing strategies to increase your visibility and drive organic traffic.",
-              features: ["Search Engine Optimization", "Content Marketing", "Analytics & Tracking"],
+              title: "Digital Marketing & SEO",
+              desc: "Data-driven marketing strategies to increase search rankings, capture qualified leads, and drive organic growth.",
+              features: ["Search Engine Optimization (SEO)", "Google Ads & Social Media", "Lead Generation & Analytics"],
               colors: {
                 gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
                 circleBg: "rgba(14, 165, 233, 0.2)",
@@ -361,9 +364,9 @@ export default function Home() {
               }
             },
             {
-              title: "Branding & Identity",
-              desc: "Establish a strong, memorable brand presence that resonates with your target audience.",
-              features: ["Logo & Visual Identity", "Brand Strategy", "Marketing Collateral"],
+              title: "Branding & Creative Design",
+              desc: "Establish a strong, memorable brand presence that resonates with your audience and builds lasting trust.",
+              features: ["Logo & Visual Identity", "UI/UX Product Design", "Creative Media & Content"],
               colors: {
                 gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
                 circleBg: "rgba(14, 165, 233, 0.2)",
@@ -372,9 +375,9 @@ export default function Home() {
               }
             },
             {
-              title: "Business Automation",
-              desc: "Streamline your workflows with custom software solutions designed for efficiency.",
-              features: ["Workflow Automation", "Custom APIs", "CRM Integration"],
+              title: "Custom Software & Automation",
+              desc: "Streamline your workflows with custom software, cloud solutions, and business automation platforms.",
+              features: ["Business Applications", "Workflow Automation", "CRM & ERP Integrations"],
               colors: {
                 gradient: "linear-gradient(135deg, #2b308b 0%, #0ea5e9 100%)",
                 circleBg: "rgba(14, 165, 233, 0.2)",

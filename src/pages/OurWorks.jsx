@@ -185,9 +185,9 @@ export default function OurWorks() {
   return (
     <div className="pw-page">
       <SEO
-        title="Our Works & Portfolio | FlareMinds — Digital Products & Software"
-        description="Explore FlareMinds' portfolio of websites, mobile apps, e-commerce platforms, business dashboards, and digital marketplaces built for real-world businesses."
-        keywords="portfolio, web development projects, app development, ecommerce, business applications, mobile apps, FlareMinds projects"
+        title="Our Works & Portfolio | FlareMinds — Web, App Development & Digital Marketing"
+        description="Explore FlareMinds' portfolio of websites, mobile apps, e-commerce platforms, business software, and digital marketing results built for real-world businesses."
+        keywords="portfolio, web development projects, app development, ecommerce, business applications, mobile apps, digital marketing case studies, FlareMinds projects"
         schema={getBreadcrumbSchema(breadcrumbs)}
       />
 
@@ -209,8 +209,8 @@ export default function OurWorks() {
             </h1>
 
             <p className="pw-hero-desc">
-              Websites, mobile applications, business systems and digital
-              platforms built by FlareMinds.
+              Websites, mobile applications, software solutions, and data-driven
+              marketing campaigns delivered by FlareMinds.
             </p>
             <p className="pw-hero-sub">
               {totalCount} projects across {CATEGORIES.length - 1} categories

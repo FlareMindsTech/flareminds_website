@@ -137,7 +137,7 @@ export default function ServiceVisual({ slug }) {
       return (
         <div className="sv-mockup sv-ecommerce-mockup">
           <div className="sv-ecom-card">
-            <div className="sv-ecom-badge">🔥 Bestseller</div>
+            <div className="sv-ecom-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}><FaStar /> Bestseller</div>
             <div className="sv-ecom-img-ph">
               <FaShoppingCart className="sv-ecom-cart-icon" />
             </div>
@@ -212,7 +212,7 @@ export default function ServiceVisual({ slug }) {
               <div className="sv-user-avatar vendor" />
               <div className="sv-user-meta">
                 <strong>Elite Provider</strong>
-                <span>Verified Specialist ★ 4.9</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>Verified Specialist <FaStar style={{ color: '#eab308' }} /> 4.9</span>
               </div>
               <span className="sv-status-pill available">Available</span>
             </div>
@@ -315,13 +315,13 @@ export default function ServiceVisual({ slug }) {
             </div>
             <div className="sv-post-content">
               <div className="sv-post-banner">
-                <span>🚀 Viral Content Engine</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}><FaBolt /> Viral Content Engine</span>
               </div>
             </div>
             <div className="sv-post-stats">
               <span className="sv-stat-pill"><FaHeart className="text-rose-500" /> 18.4k</span>
               <span className="sv-stat-pill"><FaShare className="text-sky-500" /> 4.2k</span>
-              <span className="sv-stat-pill">★ 98% Positive</span>
+              <span className="sv-stat-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}><FaCheck /> 98% Positive</span>
             </div>
           </div>
           <div className="sv-float-badge sv-badge-top-right">

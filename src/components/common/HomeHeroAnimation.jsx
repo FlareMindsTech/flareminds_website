@@ -411,24 +411,42 @@ export default function HomeHeroAnimation() {
       <div className="flare-badge-layer">
         <div className="flare-badge flare-badge-tl">
           <span className="flare-badge-pulse-dot" />
-          <span className="flare-badge-icon">⚡</span>
+          <span className="flare-badge-icon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+          </span>
           <span>99+ Performance Engine</span>
         </div>
 
         <div className="flare-badge flare-badge-tr">
-          <span className="flare-badge-icon">✦</span>
-          <span>Full-Stack Web & AI</span>
+          <span className="flare-badge-icon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </span>
+          <span>Web &amp; App Development</span>
         </div>
 
         <div className="flare-badge flare-badge-bl">
-          <span className="flare-badge-icon">▲</span>
+          <span className="flare-badge-icon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+            </svg>
+          </span>
           <span>Scalable Cloud Systems</span>
         </div>
 
         <div className="flare-badge flare-badge-br">
           <span className="flare-badge-pulse-dot" />
-          <span className="flare-badge-icon">📈</span>
-          <span>High-Growth ROI Marketing</span>
+          <span className="flare-badge-icon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+          </span>
+          <span>High-Growth Digital Marketing</span>
         </div>
       </div>
     </div>

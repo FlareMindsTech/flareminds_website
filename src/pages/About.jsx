@@ -15,6 +15,8 @@ import logo8 from "../assets/images/logo/logo8.webp";
 import logo9 from "../assets/images/logo/logo9.webp";
 import atlantisHealthcityLogo from "../assets/images/logo/atlantis-healthcity.webp";
 import shySchoolYercaudLogo from "../assets/images/logo/shy-school-yercaud.webp";
+import smtTyresLogo from "../assets/images/logo/smt-tyres.webp";
+import jkTyresLogo from "../assets/images/logo/jk-tyres.webp";
 import Bharath from "../assets/images/members/bharath.webp";
 import Gokila from "../assets/images/members/GOKILA.webp";
 import Karan from "../assets/images/members/KARAN.webp";
@@ -28,7 +30,7 @@ import Yaser from "../assets/images/members/YASAER.webp";
 import CompanyCollage from "../components/ui/CompanyCollage";
 import HeroBackground from "../components/common/HeroBackground";
 import TeamCoverflow from "../components/ui/TeamCoverflow";
-import { FaRocket, FaLightbulb, FaShieldAlt, FaEye, FaBullseye } from "react-icons/fa";
+import { FaRocket, FaLightbulb, FaShieldAlt, FaEye, FaBullseye, FaLaptopCode, FaChartLine, FaBolt } from "react-icons/fa";
 
 const COUNTERS = [
   { id: "projects", label: "Projects", value: 128 },
@@ -116,49 +118,49 @@ export default function About() {
 
   const valueProps = [
     {
+      title: "Web & App Development",
+      icon: <FaLaptopCode />,
+      shortDesc: "High-performance websites, mobile apps & custom software",
+      fullDesc: "We build fast, responsive websites and feature-rich Android, iOS, and web applications using modern architectures. From startup MVPs to enterprise platforms, our development team creates scalable digital products engineered for reliability and speed."
+    },
+    {
       title: "Smart Digital Marketing",
-      icon: "🚀",
-      shortDesc: "SEO, social media, content & paid campaigns with strategic creativity",
-      fullDesc: "To provide SEO, social media, content, and paid campaign solutions, we blend strategy and creativity. In addition to marketing, we develop websites and unique iOS, Android, and online apps. Through innovation, we propel growth for both startups and established brands."
+      icon: <FaRocket />,
+      shortDesc: "SEO, social media, content & paid ad campaigns with strategic creativity",
+      fullDesc: "To provide SEO, social media, content, and paid campaign solutions, we blend strategy and creativity. Our expert digital marketing team crafts data-driven campaigns tailored to your business goals to boost rankings, engage audiences, and turn clicks into customers."
     },
     {
-      title: "Proven Digital Strategies",
-      icon: "📈",
+      title: "Proven Digital Growth",
+      icon: <FaChartLine />,
       shortDesc: "Data-driven strategies tailored to your business goals",
-      fullDesc: "In today's fast-paced digital landscape, having a strong online presence is essential for success. Our expert digital marketing team crafts data-driven strategies tailored to your business goals. Whether it's boosting your search engine rankings, engaging your audience on social media, or launching high-converting ad campaigns, we help you stay ahead of the competition and turn clicks into customers."
-    },
-    {
-      title: "Expert Marketing Solutions",
-      icon: "💡",
-      shortDesc: "Transform clicks into loyal customers with strategic SEO & content",
-      fullDesc: "Turning traffic into tangible results is our specialty. With a focus on strategic SEO, targeted advertising, engaging content, and social media mastery, we help your brand not only attract the right audience but convert them into loyal customers. Our expert marketing solutions are designed to boost visibility, increase engagement, and drive real business growth—every click brings you closer to success."
+      fullDesc: "In today's fast-paced digital landscape, having a strong online presence is essential for success. We align our development and marketing strategies to help you stay ahead of the competition, boost organic search traffic, and convert visitors into loyal clients."
     },
     {
       title: "Technology for Scalable Success",
-      icon: "⚡",
-      shortDesc: "Marketing meets advanced IT solutions for sustainable growth",
-      fullDesc: "We combine the power of strategic digital marketing with advanced IT solutions to help your business grow efficiently and sustainably. Our services include SEO, social media marketing, content creation, and paid advertising—designed to attract and engage the right audience. Alongside this, we offer expert website design and development, as well as custom application development for web, Android, and iOS platforms. By aligning marketing efforts with cutting-edge technology, we create seamless digital experiences that drive results and support long-term success."
+      icon: <FaBolt />,
+      shortDesc: "Development meets advanced marketing for sustainable growth",
+      fullDesc: "We combine the power of strategic digital marketing with advanced software development to help your business grow efficiently and sustainably. By aligning marketing efforts with cutting-edge technology, we create seamless digital experiences that drive measurable long-term success."
     }
   ];
 
   const partners = [
     { name: "Good Luck Healthcare", category: "Health Care", logo: logo1 },
-    { name: "AM Ads", category: "Digital Agency", logo: logo2 },
+    { name: "AM Ads", category: "Media", logo: logo2 },
     { name: "Plan my trip", category: "Travel & Tourism", logo: logo3 },
-    { name: "Yes Yes Innovation", category: "Innovation Hub", logo: logo4 },
+    { name: "Yes Yes Innovation", category: "Technology", logo: logo4 },
     { name: "Right Touch ", category: "Technology", logo: logo5 },
     { name: "Green Realty Experts", category: "Manufacturing", logo: logo6 },
-    { name: "Dominator Pixel", category: "IT Services", logo: logo7 },
-    { name: "Kovai Property", category: "Design Studio", logo: logo8 },
+    { name: "Dominator Pixel", category: "Media", logo: logo7 },
+    { name: "Kovai Property", category: "Real Estate", logo: logo8 },
     { name: "Global Ventures", category: "Business Consulting", logo: logo9 },
     { name: "SHY School Yercaud", category: "Education", logo: shySchoolYercaudLogo },
     { name: "AVK Hospital", category: "Healthcare" },
     { name: "Bayamilla Pechu", category: "Media" },
-    { name: "JK Tyres", category: "Automotive" },
-    { name: "Sakthi Murugan Tyres (SMT)", category: "Automotive" },
+    { name: "JK Tyres", category: "Automotive", logo: jkTyresLogo },
+    { name: "Sakthi Murugan Tyres", category: "Automotive", logo: smtTyresLogo },
     {
       name: "Atlantis Healthcity",
-      category: "Ethics | Empathy | Excellence",
+      category: "Healthcare",
       logo: atlantisHealthcityLogo,
     },
   ];
@@ -209,9 +211,9 @@ export default function About() {
   return (
     <div className="lm-about-page">
       <SEO
-        title="About FlareMinds - Digital Marketing & Technology Agency | Our Story"
-        description="Learn about FlareMinds, a full-service digital agency in Coimbatore. Meet our expert team of developers, designers, and marketers committed to transforming your digital presence with innovative solutions."
-        keywords="about flareminds, digital agency coimbatore, web development team, digital marketing experts, technology services, creative agency"
+        title="About FlareMinds - Web & App Development & Digital Marketing Agency"
+        description="Learn about FlareMinds, a full-service technology and digital marketing company. Meet our expert team of developers, designers, and marketers committed to transforming your digital presence with innovative solutions."
+        keywords="about flareminds, digital agency coimbatore, web development team, app developers, digital marketing experts, technology services, software company"
         schema={combinedSchema}
       />
       <header className="lm-hero">
@@ -222,11 +224,10 @@ export default function About() {
             ABOUT FLAREMINDS
           </div>
           <h1 className="lm-hero-title">
-            FlareMinds — <span className="lm-grad">Design & Growth Agency</span>
+            FlareMinds — <span className="lm-grad">Development &amp; Digital Marketing</span>
           </h1>
           <p className="lm-hero-sub">
-            We help brands grow through design, development and performance
-            strategies.
+            We engineer high-performance web &amp; mobile applications and execute data-driven digital marketing strategies that scale brands.
           </p>
 
           <div className="lm-counters">

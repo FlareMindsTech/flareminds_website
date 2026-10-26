@@ -176,12 +176,12 @@ export default function Services() {
             OUR SERVICES
           </div>
           <h1 className="hero-title">
-            Software <span className="srv-grad">Development</span> &amp;{" "}
-            Digital Services
+            Web &amp; App <span className="srv-grad">Development</span> &amp;{" "}
+            Digital <span className="srv-grad">Marketing</span>
           </h1>
           <p className="hero-subtitle">
             We craft high-performance business websites, mobile apps, e-commerce
-            platforms, custom enterprise software, and result-driven digital
+            platforms, and custom enterprise software, paired with result-driven digital
             marketing campaigns tailored for growth.
           </p>
           <div className="hero-buttons">
@@ -203,7 +203,7 @@ export default function Services() {
         <div className="container">
           <div className="section-header text-center mb-5">
             <h2 className="section-title">
-              Development <span className="text-gradient">Services</span>
+              Web &amp; App Development <span className="text-gradient">Services</span>
             </h2>
             <p className="section-subtitle text-muted">
               Professional software engineering solutions engineered to scale
@@ -227,7 +227,7 @@ export default function Services() {
         <div className="container">
           <div className="section-header text-center mb-5">
             <h2 className="section-title">
-              Marketing <span className="text-gradient">Services</span>
+              Digital Marketing <span className="text-gradient">Services</span>
             </h2>
             <p className="section-subtitle text-muted">
               Data-driven digital marketing strategies that grow your brand,

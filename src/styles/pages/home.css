@@ -99,19 +99,31 @@ html[data-theme="dark"] .home-page {
   position: relative;
   z-index: 10;
   text-align: center;
-  max-width: 750px;
+  max-width: 920px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .home-page .hero-title {
   font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
-  font-weight: 600;
-  line-height: 1.15;
-  margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.18;
+  margin-bottom: 1.3rem;
   color: #ffffff !important;
-  letter-spacing: -0.01em;
-  text-shadow: 0 2px 18px rgba(7, 17, 31, 0.45);
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(7, 17, 31, 0.5);
+}
+
+.home-page .hero-title .hero-title-line {
+  display: block;
+  white-space: normal;
+}
+
+.home-page .hero-title .hero-amp {
+  color: #38bdf8;
+  font-weight: 600;
+  margin-right: 0.15em;
 }
 
 .home-page .hero-title .gradient-text {
@@ -124,37 +136,54 @@ html[data-theme="dark"] .home-page {
 
 .hero-subtext {
   font-family: var(--font-body, 'Inter', sans-serif);
-  color: rgba(225, 245, 255, 0.94);
-  font-size: 1.08rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
+  color: rgba(225, 245, 255, 0.90);
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  margin-bottom: 2rem;
+  line-height: 1.75;
   font-weight: 400;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 10px rgba(6, 18, 34, 0.35);
-  max-width: 620px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .home-page .hero-title {
+    font-size: clamp(1.6rem, 5.5vw, 1.95rem);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtext {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .hero-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.35rem;
 }
 
 .btn-primary {
-  padding: 1rem 2rem;
-  border-radius: 12px;
+  padding: 0.65rem 1.45rem;
+  border-radius: 50px;
   background: linear-gradient(135deg, #0ea5e9, #2563eb);
   font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-weight: 600;
+  font-weight: 700;
   border: none;
   color: white;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.92rem;
   box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
 }
 
@@ -199,50 +228,85 @@ html[data-theme="dark"] .home-page {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 1rem 2rem !important;
-  background-color: #006aff !important;
-  border: none !important;
+  padding: 0.65rem 1.45rem !important;
+  background: linear-gradient(135deg, #0284c7, #0ea5e9) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
   border-radius: 50px !important;
-  box-shadow: none !important;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
   text-decoration: none;
-  transition: background-color 0.2s ease !important;
+  transition: all 0.25s ease !important;
   filter: none !important;
   transform: none !important;
 }
 
 .es-btn:hover {
-  background-color: #1b7aff !important;
-  border: none !important;
-  transform: none !important;
-  box-shadow: none !important;
-  filter: none !important;
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8) !important;
+  border-color: #7dd3fc !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5) !important;
 }
 
 .es-btn:active {
-  opacity: 0.9;
+  transform: translateY(0) !important;
+  opacity: 0.95;
 }
 
 .es-text {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-family: var(--font-heading, 'Manrope', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   color: white;
 }
 
 .es-svg {
   display: flex;
   align-items: center;
-  padding-top: 3px;
 }
 
 .es-svg svg {
-  width: 38px;
-  height: 22px;
+  width: 24px;
+  height: 15px;
 }
 
 .es-btn:hover .es-svg svg {
   animation: es-jello-vertical 0.9s both;
   transform-origin: left;
+}
+
+/* Compact Second Button - View Our Work */
+.wow-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.45rem !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.6) !important;
+  border-radius: 50px !important;
+  text-decoration: none;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+
+.wow-btn .wow-text {
+  font-family: var(--font-heading, 'Manrope', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+}
+
+.wow-btn:hover {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+.wow-btn:active {
+  transform: translateY(0) !important;
 }
 
 .btn-outline {

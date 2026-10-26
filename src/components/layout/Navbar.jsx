@@ -483,7 +483,11 @@ export default function Navbar() {
 
                     {/* Sidebar CTA */}
                     <div className="navbar-sidebar-cta">
-                      <div className="navbar-sidebar-cta-icon">✦</div>
+                      <div className="navbar-sidebar-cta-icon">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                      </div>
                       <p className="navbar-sidebar-cta-title">Have a project in mind?</p>
                       <p className="navbar-sidebar-cta-sub">Let's build something amazing together.</p>
                       <Link to="/contact" className="navbar-sidebar-cta-btn" onClick={handleNavClick("/contact")}>

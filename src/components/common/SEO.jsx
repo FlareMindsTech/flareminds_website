@@ -2,9 +2,9 @@ import React from 'react';
 
 
 export default function SEO({
-    title = 'FlareMinds - Digital Marketing & Technology Services',
-    description = 'FlareMinds is a full-service digital agency offering web development, app development, SEO, social media marketing, and business automation solutions. Transform your digital presence with our expert team.',
-    keywords = 'digital marketing, web development, app development, SEO, social media marketing, digital agency, business automation, MERN stack training, AI ML training, ecommerce solutions',
+    title = 'FlareMinds - Web & App Development & Digital Marketing Agency',
+    description = 'FlareMinds is a full-service technology and digital marketing company offering web development, app development, SEO, social media marketing, and custom software solutions. Transform your digital presence with our expert team.',
+    keywords = 'web development, app development, digital marketing, SEO, social media marketing, custom software, digital agency, business automation, mobile apps, ecommerce solutions',
     canonical = '',
     ogImage = '/og-image.jpg',
     ogType = 'website',

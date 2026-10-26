@@ -218,7 +218,6 @@ html[data-theme="dark"] .footer-big-path {
 html[data-theme="dark"] .footer-modern:hover .footer-big-text-svg,
 html[data-theme="dark"] .footer-modern:hover .footer-big-path {
   stroke-width: 1.8px;
-  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.2));
 }
 
 /* Dark mode bottom row */
@@ -412,7 +411,99 @@ html[data-theme="dark"] .footer-compact .scroll-top-btn:hover {
   stroke-width: 1.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
-  transition: all 0.35s ease;
+  opacity: 1;
+  filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  transition: stroke-width 0.3s ease;
+  will-change: opacity, filter;
+}
+
+/* Tube light flicker animation starts when footer scrolls into view */
+.footer-big-text-wrap.active .footer-big-path {
+  animation: tubeLightFlicker 6s infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   TUBE LIGHT FLICKER KEYFRAMES
+   - 6s loop, infinite
+   - Snappy step-like jumps (no smooth fade)
+   - Mostly steady "on" with cyan drop-shadow glow (0 0 6px & 0 0 22px)
+   - Two short flicker bursts (~19-22% and ~62-66%) with glow removed when dim
+   ═════════════════════════════════════════════════════════════ */
+@keyframes tubeLightFlicker {
+  /* Steady ON (0% - 18.9%) */
+  0%,
+  18.9% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+
+  /* ── Flicker Burst 1 (19% - 22%): 3 quick jumps ── */
+  19%,
+  19.5% {
+    opacity: 0.15;
+    filter: none;
+  }
+  19.6%,
+  20.3% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+  20.4%,
+  20.9% {
+    opacity: 0.15;
+    filter: none;
+  }
+  21.0%,
+  21.4% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+  21.5%,
+  21.9% {
+    opacity: 0.15;
+    filter: none;
+  }
+
+  /* Return to Steady ON (22% - 61.9%) */
+  22.0%,
+  61.9% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+
+  /* ── Flicker Burst 2 (62% - 66%): 3 quick jumps ── */
+  62.0%,
+  62.6% {
+    opacity: 0.15;
+    filter: none;
+  }
+  62.7%,
+  63.5% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+  63.6%,
+  64.3% {
+    opacity: 0.15;
+    filter: none;
+  }
+  64.4%,
+  65.1% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
+  65.2%,
+  65.9% {
+    opacity: 0.15;
+    filter: none;
+  }
+
+  /* Return to Steady ON through end of loop (66% - 100%) */
+  66.0%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9);
+  }
 }
 
 .footer-big-text-svg {
@@ -600,5 +691,12 @@ html[data-theme="light"] .footer-compact .footer-bottom-bar {
   .footer-big-text-svg,
   .footer-big-path {
     transition: none !important;
+  }
+
+  .footer-big-text-wrap.active .footer-big-path,
+  .footer-big-path {
+    animation: none !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 6px #0ea5e9) drop-shadow(0 0 22px #0ea5e9) !important;
   }
 }

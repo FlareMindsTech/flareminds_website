@@ -12,7 +12,26 @@ export default function Footer() {
   const [isRevealActive, setIsRevealActive] = useState(
     () => typeof window !== 'undefined' && window.innerHeight >= 480
   );
+  const [isFooterInView, setIsFooterInView] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const footerEl = footerRef.current;
+    if (!footerEl || typeof IntersectionObserver === 'undefined') {
+      setIsFooterInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(footerEl);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const footerEl = footerRef.current;
@@ -76,7 +95,7 @@ export default function Footer() {
           </div>
           <div className="footer-brand-divider"></div>
           <p className="footer-brand-desc">
-            Empowering brands through innovation, technology, and impactful engineering — shaping the future with mindful magic.
+            Empowering businesses through cutting-edge web &amp; app development, custom software engineering, and high-impact digital marketing solutions.
           </p>
           <div className="footer-socials" aria-label="Social media channels">
             <a href="https://www.linkedin.com/company/flareminds-rcm/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Visit FlareMinds on LinkedIn">
@@ -131,7 +150,10 @@ export default function Footer() {
       </div>
 
       {/* Big Display Banner - "FLAREMINDS" in tracked outline typography */}
-      <div className="footer-big-text-wrap" aria-hidden="true">
+      <div 
+        className={`footer-big-text-wrap ${isFooterInView ? 'active' : ''}`} 
+        aria-hidden="true"
+      >
         <svg 
           className="footer-big-svg" 
           viewBox="0 0 1160 145" 
@@ -139,18 +161,18 @@ export default function Footer() {
         >
           <defs>
             <linearGradient id="footerStrokeFadeDark" x1="0" y1="0" x2="0" y2="100%">
-              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.72)" />
-              <stop offset="30%" stopColor="rgba(255, 255, 255, 0.45)" />
-              <stop offset="65%" stopColor="rgba(255, 255, 255, 0.18)" />
-              <stop offset="95%" stopColor="rgba(255, 255, 255, 0.04)" />
-              <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+              <stop offset="0%" stopColor="rgba(56, 189, 248, 0.95)" />
+              <stop offset="30%" stopColor="rgba(56, 189, 248, 0.75)" />
+              <stop offset="65%" stopColor="rgba(14, 165, 233, 0.40)" />
+              <stop offset="95%" stopColor="rgba(2, 132, 199, 0.15)" />
+              <stop offset="100%" stopColor="rgba(2, 132, 199, 0)" />
             </linearGradient>
             <linearGradient id="footerStrokeFadeLight" x1="0" y1="0" x2="0" y2="100%">
-              <stop offset="0%" stopColor="rgba(15, 23, 42, 0.65)" />
-              <stop offset="30%" stopColor="rgba(15, 23, 42, 0.40)" />
-              <stop offset="65%" stopColor="rgba(15, 23, 42, 0.16)" />
-              <stop offset="95%" stopColor="rgba(15, 23, 42, 0.04)" />
-              <stop offset="100%" stopColor="rgba(15, 23, 42, 0)" />
+              <stop offset="0%" stopColor="rgba(2, 132, 199, 0.85)" />
+              <stop offset="30%" stopColor="rgba(14, 165, 233, 0.60)" />
+              <stop offset="65%" stopColor="rgba(56, 189, 248, 0.30)" />
+              <stop offset="95%" stopColor="rgba(56, 189, 248, 0.08)" />
+              <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
             </linearGradient>
           </defs>
           <path 

@@ -351,8 +351,9 @@ export default function Blog() {
                           e.stopPropagation();
                           navigate(`/blog/${p.slug}`);
                         }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                       >
-                        Read Article ➔
+                        Read Article <FaArrowRight />
                       </button>
 
                       <div className="card-actions">
