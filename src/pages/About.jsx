@@ -22,8 +22,14 @@ import Gokila from "../assets/images/members/GOKILA.webp";
 import Karan from "../assets/images/members/KARAN.webp";
 import Kartheeswaran from "../assets/images/members/KARTHEESWARAN.webp";
 import Karthikeyan from "../assets/images/members/KARTHIKEYAN.webp";
+import Narasimman from "../assets/images/members/NARASIMMAN.webp";
+import Priyadharsan from "../assets/images/members/PRIYADHARSAN.webp";
+import Rajesh from "../assets/images/members/RAJESH.webp";
+import Sanjeev from "../assets/images/members/SANJEEV.webp";
 import Sri from "../assets/images/members/SRI.webp";
 import Sridhar from "../assets/images/members/SRIDHAR.webp";
+import Sivakumar from "../assets/images/members/SIVAKUMAR.webp";
+import Surya from "../assets/images/members/SURYA.webp";
 import Vicky from "../assets/images/members/VICKY.webp";
 import Vishnu from "../assets/images/members/VISHNU.webp";
 import Yaser from "../assets/images/members/YASAER.webp";
@@ -108,10 +114,52 @@ export default function About() {
       imagePosition: "center 18%",
     },
     {
+      name: "Sivakumar S",
+      role: "Full Stack Developer",
+      bio: "Develops responsive web interfaces and robust backend architectures to build scalable, high-performance digital solutions.",
+      image: Sivakumar,
+      imagePosition: "center 8%",
+    },
+    {
       name: "SRIDHAR S",
       role: "CTO",
       bio: "Drives technology strategy, system architecture, and engineering innovation to deliver reliable and scalable digital solutions.",
       image: Sridhar,
+      imagePosition: "center 8%",
+    },
+    {
+      name: "Rajesh Kumar R",
+      role: "CHRO & Digital Marketing Manager",
+      bio: "Orchestrates human capital strategies, organizational growth, and high-impact digital marketing campaigns that drive business expansion.",
+      image: Rajesh,
+      imagePosition: "center 8%",
+    },
+    {
+      name: "Narasimman Gunasekaran",
+      role: "Head - Media Team",
+      bio: "Leads creative media production, visual storytelling, and digital content strategies to amplify brand identity and reach.",
+      image: Narasimman,
+      imagePosition: "center 10%",
+    },
+    {
+      name: "Sanjeev Kumar",
+      role: "Graphic Designer",
+      bio: "Crafts visually captivating designs, brand assets, and creative marketing collateral that communicate ideas with impact.",
+      image: Sanjeev,
+      imagePosition: "center 8%",
+    },
+    {
+      name: "Priyadharsan K",
+      role: "Video Editor",
+      bio: "Produces high-impact visual stories, dynamic motion edits, and engaging multimedia content that brings brand narratives to life.",
+      image: Priyadharsan,
+      imagePosition: "center 8%",
+    },
+    {
+      name: "Surya K",
+      role: "Media Team",
+      bio: "Drives dynamic multimedia production, digital content creation, and creative media campaigns across modern digital channels.",
+      image: Surya,
       imagePosition: "center 8%",
     },
   ];
