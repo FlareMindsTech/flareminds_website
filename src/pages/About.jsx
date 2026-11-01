@@ -212,6 +212,11 @@ export default function About() {
       logo: atlantisHealthcityLogo,
     },
   ];
+  const partnerLanes = [
+    partners.filter((_, index) => index % 3 === 0),
+    partners.filter((_, index) => index % 3 === 1),
+    partners.filter((_, index) => index % 3 === 2),
+  ];
 
   const counterRefs = useRef([]);
   counterRefs.current = [];
@@ -422,21 +427,27 @@ export default function About() {
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
           <div className="partners-grid">
-            {partners.map((partner) => (
-              <div
-                className="partner-tile"
-                key={partner.name}
-                tabIndex="0"
-                aria-label={`${partner.name} - ${partner.category || "Customer"}`}
-              >
-                <div className="partner-logo-circle">
-                  {partner.logo ? (
-                    <img src={partner.logo} alt={`${partner.name} logo`} />
-                  ) : null}
-                </div>
-                <div className="partner-content">
-                  <h4 className="partner-company">{partner.name}</h4>
-                  <span className="partner-industry">{partner.category || "Customer"}</span>
+            {partnerLanes.map((lane, laneIndex) => (
+              <div className="partners-lane" key={`lane-${laneIndex}`}>
+                <div className="partners-lane-track">
+                  {[...lane, ...lane].map((partner, partnerIndex) => (
+                    <div
+                      className="partner-tile"
+                      key={`${partner.name}-${partnerIndex}`}
+                      tabIndex="0"
+                      aria-label={`${partner.name} - ${partner.category || "Customer"}`}
+                    >
+                      <div className="partner-logo-circle">
+                        {partner.logo ? (
+                          <img src={partner.logo} alt={`${partner.name} logo`} />
+                        ) : null}
+                      </div>
+                      <div className="partner-content">
+                        <h4 className="partner-company">{partner.name}</h4>
+                        <span className="partner-industry">{partner.category || "Customer"}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}

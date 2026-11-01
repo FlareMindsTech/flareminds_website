@@ -126,7 +126,7 @@ export default function Contact() {
     <div className="contact-page">
       <SEO
         title="Contact FlareMinds - Web & App Development & Digital Marketing Agency"
-        description="Contact FlareMinds for web development, mobile app development, custom software, SEO, and digital marketing services. Visit us at 1st Floor, SBI Bank, Anupparpalayam Pudur, Tiruppur. Call +91 9500950813."
+        description="Contact FlareMinds for web development, mobile app development, custom software, SEO, and digital marketing services. Visit us at 1st Floor, SBI Bank, Anupparpalayam Pudur, Tiruppur. Call +91 9500950813, +91 7305107148."
         keywords="contact digital agency, web development contact, app development contact, digital marketing contact, SEO services contact, Tiruppur tech agency, FlareMinds address, Coimbatore agency contact"
         schema={combinedSchema}
       />
@@ -371,6 +371,9 @@ export default function Contact() {
                       <a href="tel:+919500950813" className="item-value link-hover">
                         +91 9500950813
                       </a>
+                      <a href="tel:+917305107148" className="item-value link-hover">
+                        +91 7305107148
+                      </a>
                     </div>
                   </div>
 
@@ -461,4 +464,3 @@ export default function Contact() {
     </div>
   )
 }
-

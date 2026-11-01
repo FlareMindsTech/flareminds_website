@@ -1138,70 +1138,100 @@ html[data-theme="dark"] .lm-about-page {
 .partners-grid {
   width: min(100% - 2rem, 1100px);
   margin: 0 auto;
+  height: 360px;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  overflow: hidden;
+}
+
+.partners-lane {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.partners-lane-track {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: partnersVerticalScroll 28s linear infinite;
+}
+
+.partners-lane:nth-child(2) .partners-lane-track {
+  animation-delay: -14s;
+}
+
+.partners-lane:nth-child(3) .partners-lane-track {
+  animation-delay: -7s;
+}
+
+@keyframes partnersVerticalScroll {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-50% - 8px));
+  }
 }
 
 .partner-tile {
-  min-height: 188px;
+  min-height: 112px;
+  flex: 0 0 112px;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
-  padding: 26px 16px;
-  border-radius: 18px;
-  background: #0f1a2e;
+  gap: 0.3rem;
+  padding: 10px 8px;
+  border-radius: 0;
+  background: transparent;
   outline: none;
   isolation: isolate;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .partner-tile::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(140deg, #1c2a45, transparent);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  transition: background 0.3s ease;
+  display: none;
 }
 
 .partner-tile:hover,
 .partner-tile:focus-visible,
 .partner-tile:active {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 40px -10px #4da3ff;
-}
-
-.partner-tile:hover::before,
-.partner-tile:focus-visible::before,
-.partner-tile:active::before {
-  background: linear-gradient(140deg, #4da3ff, #2dd4e6);
+  transform: none;
+  box-shadow: none;
 }
 
 .partner-tile .partner-logo-circle {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   margin: 0;
-  flex: 0 0 64px;
+  flex: 0 0 48px;
   border: 0;
-  border-radius: 16px;
+  border-radius: 0;
   background: white;
   box-shadow: none;
   overflow: hidden;
+}
+
+html[data-theme="light"] .lm-about-page .partner-tile {
+  background: transparent;
+  border: 0;
+}
+
+html[data-theme="light"] .lm-about-page .partner-tile .partner-logo-circle {
+  background: #ffffff;
+  border: 1px solid #e0f2fe;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+html[data-theme="light"] .lm-about-page .partner-tile .partner-company {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .lm-about-page .partner-tile .partner-industry {
+  color: #475569;
 }
 
 .partner-tile .partner-logo-circle img {
@@ -1228,13 +1258,13 @@ html[data-theme="dark"] .lm-about-page {
 
 .partner-tile .partner-company {
   color: #e5edf8;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
 }
 
 .partner-tile .partner-industry {
   color: #8c9bbd;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
 }
 
@@ -1245,25 +1275,34 @@ html[data-theme="dark"] .lm-about-page {
 
 @media (max-width: 900px) {
   .partners-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    height: 330px;
   }
 }
 
 @media (max-width: 600px) {
   .partners-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100% - 1rem, 520px);
+    height: 310px;
+    gap: 8px;
+  }
+
+  .partners-lane-track {
+    gap: 8px;
+  }
+
+  .partner-tile {
+    min-height: 108px;
+    flex-basis: 108px;
+    padding: 10px 6px;
   }
 }
 
 @media (hover: none) {
-  .partner-tile:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
+  .partner-tile:hover,
   .partner-tile:active {
     transform: none;
-    box-shadow: 0 14px 40px -10px #4da3ff;
+    box-shadow: none;
   }
 }
 
@@ -1290,6 +1329,10 @@ html[data-theme="dark"] .lm-about-page .partner-tile .partner-logo-circle {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .partners-lane-track {
+    animation: none;
+  }
+
   .partner-tile,
   .partner-tile::before {
     transition: none;
@@ -1299,7 +1342,7 @@ html[data-theme="dark"] .lm-about-page .partner-tile .partner-logo-circle {
   .partner-tile:focus-visible,
   .partner-tile:active {
     transform: none;
-    box-shadow: 0 14px 40px -10px #4da3ff;
+    box-shadow: none;
   }
 }
 

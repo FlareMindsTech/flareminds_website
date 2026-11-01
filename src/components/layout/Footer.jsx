@@ -168,11 +168,11 @@ export default function Footer() {
               <stop offset="100%" stopColor="rgba(2, 132, 199, 0)" />
             </linearGradient>
             <linearGradient id="footerStrokeFadeLight" x1="0" y1="0" x2="0" y2="100%">
-              <stop offset="0%" stopColor="rgba(2, 132, 199, 0.85)" />
-              <stop offset="30%" stopColor="rgba(14, 165, 233, 0.60)" />
-              <stop offset="65%" stopColor="rgba(56, 189, 248, 0.30)" />
-              <stop offset="95%" stopColor="rgba(56, 189, 248, 0.08)" />
-              <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
+              <stop offset="0%" stopColor="rgba(2, 132, 199, 1)" />
+              <stop offset="30%" stopColor="rgba(14, 165, 233, 0.85)" />
+              <stop offset="65%" stopColor="rgba(14, 165, 233, 0.55)" />
+              <stop offset="95%" stopColor="rgba(14, 165, 233, 0.28)" />
+              <stop offset="100%" stopColor="rgba(14, 165, 233, 0.08)" />
             </linearGradient>
           </defs>
           <path 
