@@ -344,18 +344,27 @@ html[data-theme="dark"] .coverflow-nav-btn {
 .coverflow-dots {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
 }
 
 .coverflow-dot {
-  width: 9px;
-  height: 9px;
+  position: relative;
+  width: 5px;
+  height: 5px;
   border-radius: 999px;
   border: none;
   background: rgba(2, 132, 199, 0.25);
   cursor: pointer;
   transition: all 0.35s ease;
   padding: 0;
+}
+
+/* Larger click/tap area without making the visible dot bigger. */
+.coverflow-dot::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
 }
 
 html[data-theme="dark"] .coverflow-dot {
@@ -368,9 +377,9 @@ html[data-theme="dark"] .coverflow-dot {
 }
 
 .coverflow-dot.is-active {
-  width: 28px;
+  width: 16px;
   background: linear-gradient(90deg, #00b7ff, #0284c7);
-  box-shadow: 0 0 10px rgba(0, 183, 255, 0.5);
+  box-shadow: 0 0 6px rgba(0, 183, 255, 0.45);
 }
 
 /* Swipe Hint on Mobile */

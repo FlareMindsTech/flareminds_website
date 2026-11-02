@@ -36,18 +36,14 @@ import Yaser from "../assets/images/members/YASAER.webp";
 import CompanyCollage from "../components/ui/CompanyCollage";
 import HeroBackground from "../components/common/HeroBackground";
 import TeamCoverflow from "../components/ui/TeamCoverflow";
+import { ALL_PROJECTS } from "../data/projectsData";
+import { allServices } from "../data/servicesData";
 import { FaRocket, FaLightbulb, FaShieldAlt, FaEye, FaBullseye, FaLaptopCode, FaChartLine, FaBolt } from "react-icons/fa";
-
-const COUNTERS = [
-  { id: "projects", label: "Projects", value: 128 },
-  { id: "clients", label: "Clients", value: 67 },
-  { id: "awards", label: "Awards", value: 12 },
-  { id: "growth", label: "YoY Growth", value: 240 },
-];
 
 export default function About() {
   const [expandedCard, setExpandedCard] = useState(null);
-  const counters = COUNTERS;
+  const [partnersPaused, setPartnersPaused] = useState(false);
+  const partnersResumeTimer = useRef(null);
 
   const team = [
     {
@@ -192,7 +188,7 @@ export default function About() {
   ];
 
   const partners = [
-    { name: "Good Luck Healthcare", category: "Health Care", logo: logo1 },
+    { name: "Good Luck Healthcare", category: "Health Care", logo: logo1, logoScale: 3.4 },
     { name: "AM Ads", category: "Media", logo: logo2 },
     { name: "Plan my trip", category: "Travel & Tourism", logo: logo3 },
     { name: "Yes Yes Innovation", category: "Technology", logo: logo4 },
@@ -212,14 +208,58 @@ export default function About() {
       logo: atlantisHealthcityLogo,
     },
   ];
-  const partnerLanes = [
-    partners.filter((_, index) => index % 3 === 0),
-    partners.filter((_, index) => index % 3 === 1),
-    partners.filter((_, index) => index % 3 === 2),
+  const partnerRows = [
+    partners.filter((_, index) => index % 2 === 0),
+    partners.filter((_, index) => index % 2 === 1),
   ];
 
+  // Counts are derived from the real datasets, so they update automatically
+  // whenever projects, clients, services, or team members are added or removed.
+  const counters = [
+    { id: "projects", label: "Projects", value: ALL_PROJECTS.length },
+    { id: "clients", label: "Clients", value: partners.length },
+    { id: "services", label: "Services", value: allServices.length },
+    { id: "team", label: "Team Size", value: team.length },
+  ];
   const counterRefs = useRef([]);
   counterRefs.current = [];
+
+  const clearPartnersResumeTimer = () => {
+    if (partnersResumeTimer.current) {
+      clearTimeout(partnersResumeTimer.current);
+      partnersResumeTimer.current = null;
+    }
+  };
+
+  const pausePartnersMarquee = () => {
+    setPartnersPaused(true);
+  };
+
+  const resumePartnersMarquee = () => {
+    if (partnersResumeTimer.current) return;
+    setPartnersPaused(false);
+  };
+
+  const handlePartnersPointerEnter = (event) => {
+    if (event.pointerType === "mouse") pausePartnersMarquee();
+  };
+
+  const handlePartnersPointerLeave = (event) => {
+    if (event.pointerType === "mouse") resumePartnersMarquee();
+  };
+
+  const pausePartnersTemporarily = () => {
+    clearPartnersResumeTimer();
+    setPartnersPaused(true);
+    partnersResumeTimer.current = setTimeout(() => {
+      partnersResumeTimer.current = null;
+      setPartnersPaused(false);
+    }, 3000);
+  };
+
+  useEffect(() => () => {
+    if (partnersResumeTimer.current) clearTimeout(partnersResumeTimer.current);
+  }, []);
 
   const addCounterRef = (el) => {
     if (el && !counterRefs.current.includes(el)) counterRefs.current.push(el);
@@ -230,8 +270,8 @@ export default function About() {
   };
 
   useEffect(() => {
-    counterRefs.current.forEach((el, idx) => {
-      const target = COUNTERS[idx].value;
+    counterRefs.current.forEach((el) => {
+      const target = Number(el.dataset.target) || 0;
       let startTime = null;
       const duration = 1200;
 
@@ -239,9 +279,7 @@ export default function About() {
         if (!startTime) startTime = ts;
         const progress = Math.min((ts - startTime) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        el.innerText =
-          Math.floor(eased * target) +
-          (COUNTERS[idx].id === "growth" ? "%" : "");
+        el.innerText = Math.floor(eased * target);
         if (progress < 1) requestAnimationFrame(animate);
       };
 
@@ -286,7 +324,7 @@ export default function About() {
           <div className="lm-counters">
             {counters.map((c) => (
               <div className="lm-counter" key={c.id}>
-                <div className="lm-counter-value" ref={addCounterRef}>
+                <div className="lm-counter-value" ref={addCounterRef} data-target={c.value}>
                   0
                 </div>
                 <div className="lm-counter-label">{c.label}</div>
@@ -419,33 +457,66 @@ export default function About() {
         </section>
 
         <section className="lm-section team-showcase-section">
-          <h2 className="section-title">Meet The Minds Behind FlareMinds</h2>
+          <h2 className="section-title-main">Meet The Minds Behind FlareMinds</h2>
           <TeamCoverflow team={team} />
         </section>
 
         <section className="partners-section-v2">
           <h2 className="section-title-main">Empowering Our Valuable Customers</h2>
           <p className="partners-subtitle-v2">Trusted by Leading Brands</p>
-          <div className="partners-grid">
-            {partnerLanes.map((lane, laneIndex) => (
-              <div className="partners-lane" key={`lane-${laneIndex}`}>
-                <div className="partners-lane-track">
-                  {[...lane, ...lane].map((partner, partnerIndex) => (
+          <div
+            className="partners-marquee-rows"
+            onPointerEnter={handlePartnersPointerEnter}
+            onPointerLeave={handlePartnersPointerLeave}
+            onClick={pausePartnersTemporarily}
+            onFocus={pausePartnersTemporarily}
+            onTouchStart={pausePartnersTemporarily}
+          >
+            {partnerRows.map((row, rowIndex) => (
+              <div
+                className={`partners-marquee${rowIndex === 1 ? " partners-marquee--reverse" : ""}`}
+                key={`partners-row-${rowIndex}`}
+              >
+                <div
+                  className={`partners-marquee-track${rowIndex === 1 ? " partners-marquee-track--reverse" : ""}${partnersPaused ? " is-paused" : ""}`}
+                >
+                  {[0, 1].map((copy) => (
                     <div
-                      className="partner-tile"
-                      key={`${partner.name}-${partnerIndex}`}
-                      tabIndex="0"
-                      aria-label={`${partner.name} - ${partner.category || "Customer"}`}
+                      className="partners-marquee-group"
+                      key={`partners-row-${rowIndex}-copy-${copy}`}
+                      aria-hidden={copy === 1 ? "true" : undefined}
                     >
-                      <div className="partner-logo-circle">
-                        {partner.logo ? (
-                          <img src={partner.logo} alt={`${partner.name} logo`} />
-                        ) : null}
-                      </div>
-                      <div className="partner-content">
-                        <h4 className="partner-company">{partner.name}</h4>
-                        <span className="partner-industry">{partner.category || "Customer"}</span>
-                      </div>
+                      {row.map((partner, partnerIndex) => (
+                        <div
+                          className="partner-tile"
+                          key={`${partner.name}-${partnerIndex}`}
+                          tabIndex={copy === 1 ? -1 : 0}
+                          aria-label={`${partner.name} - ${partner.category || "Customer"}`}
+                        >
+                          <div className="partner-logo-circle">
+                            {partner.logo ? (
+                              <img
+                                src={partner.logo}
+                                alt={`${partner.name} logo`}
+                                style={partner.logoScale ? { "--logo-scale": partner.logoScale } : undefined}
+                              />
+                            ) : (
+                              <span className="partner-logo-placeholder" aria-hidden="true">
+                                {partner.name
+                                  .split(/\s+/)
+                                  .map((word) => word[0])
+                                  .join("")
+                                  .slice(0, 2)
+                                  .toUpperCase()}
+                              </span>
+                            )}
+                          </div>
+                          <div className="partner-content">
+                            <h4 className="partner-company">{partner.name}</h4>
+                            <span className="partner-industry">{partner.category || "Customer"}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>

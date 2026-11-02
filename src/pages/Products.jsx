@@ -22,6 +22,7 @@ import {
   FaLock,
   FaTools,
   FaFlask,
+  FaGooglePlay,
 } from "react-icons/fa";
 import SEO from "../components/common/SEO";
 import { getBreadcrumbSchema } from "../utils/structuredData";
@@ -99,8 +100,8 @@ export default function Products() {
 
           <p className="prod-hero-desc">
             We don't just build bespoke applications for clients — we engineer our own
-            commercial-grade SaaS platforms and industry solutions. Explore our flagship software products
-            preparing for production launch.
+            commercial-grade SaaS platforms and industry solutions. Explore our flagship
+            software products, from our live TYROS mobile app to our enterprise HRMS suite.
           </p>
 
           {/* Jump Links to Products */}
@@ -108,7 +109,7 @@ export default function Products() {
             <a href="#tyros" className="prod-quick-link" id="jump-to-tyros">
               <FaMobileAlt style={{ color: "#ea580c" }} />
               <span>TYROS</span>
-              <span className="prod-quick-pill deploying">Deploying Soon</span>
+              <span className="prod-quick-pill live">Live on Play Store</span>
             </a>
             <a href="#hrms" className="prod-quick-link" id="jump-to-hrms">
               <FaLaptopCode style={{ color: "#c79d58" }} />
@@ -165,7 +166,7 @@ export default function Products() {
               <div className="prod-content-side">
                 <div className="prod-header-badges">
                   <span className="prod-category-tag">{product.badge}</span>
-                  <span className="prod-status-pill deploying">
+                  <span className={`prod-status-pill ${product.status.type}`}>
                     <span className="prod-status-dot" />
                     {product.status.label}
                   </span>
@@ -178,10 +179,12 @@ export default function Products() {
                 <p className="prod-item-desc">{product.description}</p>
 
                 {/* Stage Announcement */}
-                <div className="prod-announcement-banner">
-                  <div className="prod-announcement-icon"><FaRocket /></div>
+                <div className={`prod-announcement-banner ${product.status.type}`}>
+                  <div className="prod-announcement-icon">
+                    {product.status.type === "live" ? <FaGooglePlay /> : <FaRocket />}
+                  </div>
                   <p className="prod-announcement-text">
-                    <strong>Deployment Status: </strong>
+                    <strong>{product.status.type === "live" ? "Now Live: " : "Deployment Status: "}</strong>
                     {product.status.announcement}
                   </p>
                 </div>
@@ -213,14 +216,29 @@ export default function Products() {
 
                 {/* Actions */}
                 <div className="prod-actions-bar">
-                  <Link
-                    to="/contact?product=tyros"
-                    className="prod-btn-primary"
-                    id="tyros-waitlist-btn"
-                  >
-                    <span>Request Early Access</span>
-                    <FaArrowRight style={{ fontSize: "0.8rem" }} />
-                  </Link>
+                  {product.status.type === "live" && product.demoLink ? (
+                    <a
+                      href={product.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="prod-btn-primary prod-btn-store"
+                      id="tyros-playstore-btn"
+                      aria-label="Get TYROS on Google Play (opens in a new tab)"
+                    >
+                      <FaGooglePlay style={{ fontSize: "1rem" }} />
+                      <span>Get it on Google Play</span>
+                      <FaExternalLinkAlt style={{ fontSize: "0.75rem" }} />
+                    </a>
+                  ) : (
+                    <Link
+                      to="/contact?product=tyros"
+                      className="prod-btn-primary"
+                      id="tyros-waitlist-btn"
+                    >
+                      <span>Request Early Access</span>
+                      <FaArrowRight style={{ fontSize: "0.8rem" }} />
+                    </Link>
+                  )}
                   <Link
                     to="/contact?inquiry=franchise"
                     className="prod-btn-outline"

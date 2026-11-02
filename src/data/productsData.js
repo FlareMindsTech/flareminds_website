@@ -11,16 +11,16 @@ export const PRODUCTS_DATA = [
     description:
       "TYROS is FlareMinds' proprietary mobile-first retail ecosystem built specifically for tyre dealerships, automotive workshops, and multi-branch retail networks. It replaces fragmented paper registers and spreadsheets with automated stock lookup, real-time sales targets, customer follow-up pipelines, and consolidated multi-store revenue intelligence.",
     status: {
-      type: "deploying",
-      label: "Deploying Soon",
-      badgeColor: "#ea580c",
-      pulseColor: "#f97316",
-      announcement: "Mobile app packaging & store deployment in progress. Early access waitlist open."
+      type: "live",
+      label: "Live on Google Play",
+      badgeColor: "#15803d",
+      pulseColor: "#22c55e",
+      announcement: "TYROS is now live on Google Play. Download the app and manage sales, inventory, and multi-branch operations from anywhere."
     },
     tech: ["Flutter", "React", "Node.js", "MongoDB"],
     image: tyrosImg,
-    demoLink: null,
-    waitlistAvailable: true,
+    demoLink: "https://play.google.com/store/apps/details?id=com.flareminds.tyros&pcampaignid=web_share",
+    waitlistAvailable: false,
     targetAudience: "Tyre Retailers, Automotive Garages & Multi-Store Tyre Franchises",
     highlights: [
       {
