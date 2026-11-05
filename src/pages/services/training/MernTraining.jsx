@@ -142,7 +142,7 @@ export default function MernTraining() {
         </div>
       </section>
 
-      {/* ── 4. Curriculum Roadmap ─────────────────────────────────────── */}
+      {/* ── 4. OBE-Based Course Syllabus ──────────────────────────────── */}
       <section className="sd-process-section section-padding bg-light" id="curriculum">
         <div className="container">
           <div className="section-header text-center mb-5">
@@ -150,38 +150,81 @@ export default function MernTraining() {
               Structured Syllabus
             </span>
             <h2 className="section-title">
-              Complete <span className="text-gradient">Curriculum</span>
+              OBE-Based Course <span className="text-gradient">Syllabus</span>
             </h2>
             <p className="section-subtitle text-muted">
-              Progressive 4-module roadmap designed to take you from foundational JavaScript to senior-level engineering.
+              Five integrated units covering frontend, backend, databases, DevOps, and a GitHub-based full-stack project.
             </p>
+          </div>
+
+          <div className="syllabus-profile">
+            {[
+              ["Course Structure", "5 Units"],
+              ["Primary Stack", "MongoDB • Express.js • React.js • Node.js"],
+              ["Additional Skills", "SQL • GitHub • DevOps • Deployment"],
+              ["Course Focus", "Full-Stack Web Application Development"],
+            ].map(([label, value]) => (
+              <div className="syllabus-profile-item" key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="syllabus-columns">
+            <div className="syllabus-panel">
+              <h3>Course Objectives</h3>
+              <ol>
+                <li><b>COBJ1:</b> Develop a strong foundation in modern frontend development using React.js, component-based architecture, JSX, hooks, routing, forms, and API integration.</li>
+                <li><b>COBJ2:</b> Build scalable backend applications using Node.js and Express.js, including REST APIs, middleware, authentication, validation, and error handling.</li>
+                <li><b>COBJ3:</b> Design and implement data-driven applications using MongoDB/NoSQL and SQL databases, with appropriate schemas, queries, relationships, and CRUD operations.</li>
+                <li><b>COBJ4:</b> Apply DevOps practices for source control, environment configuration, application building, testing, deployment, hosting, and basic CI/CD workflows.</li>
+                <li><b>COBJ5:</b> Integrate frontend, backend, database, and deployment technologies to develop and publish a functional full-stack application through GitHub-based project workflows.</li>
+              </ol>
+            </div>
+            <div className="syllabus-panel">
+              <h3>Course Outcomes</h3>
+              <ol>
+                <li><b>CO1:</b> Explain and apply React.js concepts to construct reusable, responsive, and interactive user interfaces.</li>
+                <li><b>CO2:</b> Develop RESTful backend services using Node.js and Express.js with routing, middleware, authentication, validation, and error handling.</li>
+                <li><b>CO3:</b> Create and manage MongoDB and SQL databases and perform suitable CRUD, querying, indexing, and relationship operations.</li>
+                <li><b>CO4:</b> Configure, deploy, monitor, and maintain web applications using Git, GitHub, environment variables, hosting platforms, and basic DevOps/CI-CD practices.</li>
+                <li><b>CO5:</b> Design, implement, test, document, version-control, and deploy a complete MERN-based mini project demonstrating integrated full-stack development skills.</li>
+              </ol>
+            </div>
           </div>
 
           <div className="curriculum-grid">
             {[
               {
                 num: "01",
-                title: "Frontend Engineering with React",
-                desc: "Components, Hooks, State Management & Tailwind CSS",
-                topics: ["React Hooks & Custom Hooks", "Context API & Redux Toolkit", "Tailwind CSS & Responsive UI"],
+                title: "Unit I – Frontend Development Using ReactJS",
+                desc: "Modern web development, client-server architecture, SPA concepts, MERN overview, React fundamentals, JSX, elements, rendering, functional components, props, composition, state, events, and controlled components.",
+                topics: ["Hooks: useEffect, useRef, useMemo, useCallback and custom hooks", "Forms, validation, conditional rendering, lists and reusable components", "React Router, protected routes, API integration, responsive UI and production builds"],
               },
               {
                 num: "02",
-                title: "Backend APIs with Node & Express",
-                desc: "Server setup, REST architecture, error handling",
-                topics: ["RESTful APIs & Controllers", "Express Router & Middleware", "Global Error Handling & Logging"],
+                title: "Unit II – Backend Development Using NodeJS",
+                desc: "Node.js runtime architecture, npm, modules, asynchronous programming, callbacks, Promises, async/await, event loop, non-blocking I/O, Express application structure, routing, and request-response lifecycle.",
+                topics: ["REST APIs, HTTP methods, status codes, JSON and API design", "Middleware, CRUD, validation, logging and centralized error handling", "JWT, sessions, roles, file handling, CORS, rate limiting, testing and API documentation"],
               },
               {
                 num: "03",
-                title: "Database Engineering with MongoDB",
-                desc: "Schema design, aggregation pipelines, Atlas Cloud",
-                topics: ["Mongoose ODM & Schemas", "Data Validation & Indexing", "Atlas Cloud & Production Backups"],
+                title: "Unit III – Database Using MongoDB (NoSQL) & SQL",
+                desc: "Database fundamentals, DBMS/RDBMS, NoSQL selection, MongoDB architecture, databases, collections, documents, BSON, ObjectId, CRUD operations, filters, projection, and schema design.",
+                topics: ["Embedded and referenced documents, validation and data modeling", "Aggregation, indexes, sorting, pagination and basic optimization", "SQL tables, keys, constraints, queries, joins, relationships, transactions and secure Node.js integration"],
               },
               {
                 num: "04",
-                title: "Auth, Payments & Cloud DevOps",
-                desc: "JWT security, payment gateways, cloud deployment",
-                topics: ["JWT Auth & Role-Based Access", "Stripe / Razorpay Integration", "Deployment on Vercel & AWS"],
+                title: "Unit IV – DevOps (Deployment)",
+                desc: "DevOps culture, lifecycle, collaboration, automation, Git fundamentals, repository workflows, branching, merging, GitHub issues, pull requests, README files, and project collaboration.",
+                topics: ["Environment configuration, secrets, production settings and dependency management", "Build, domain, DNS, ports, HTTPS, hosting and frontend/backend deployment", "CI/CD with GitHub Actions, logs, health checks, troubleshooting, rollback and maintenance"],
+              },
+              {
+                num: "05",
+                title: "Unit V – Mini Project Using GitHub",
+                desc: "Identify a practical problem, define users and requirements, create wireframes, plan architecture, design the database, and organize a GitHub repository.",
+                topics: ["Implement React, Node.js/Express and MongoDB/SQL integration", "Authentication, security, REST APIs, testing, debugging and validation", "Deploy, document, present, defend the architecture and explain future enhancements"],
               },
             ].map((module, idx) => (
               <div key={idx} className="module-card glass-card">
@@ -199,6 +242,39 @@ export default function MernTraining() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="syllabus-panel syllabus-wide-panel">
+            <h3>Suggested Mini Project Domains</h3>
+            <div className="domain-list">
+              {["Student Management System", "College Event Management System", "Online Book Store", "Task / Project Management System", "Food Ordering Application", "Job / Internship Portal", "E-Learning Platform", "Hospital / Appointment Management System", "Expense Tracker", "Travel Recommendation Application"].map((domain) => (
+                <span key={domain}>{domain}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="syllabus-panel syllabus-wide-panel">
+            <h3>OBE Alignment: Course Outcomes to Units</h3>
+            <div className="obe-table-wrapper">
+              <table className="obe-table">
+                <thead><tr><th>CO / Unit</th><th>U-I</th><th>U-II</th><th>U-III</th><th>U-IV</th><th>U-V</th></tr></thead>
+                <tbody>
+                  {[["CO1 – React UI", "✓", "", "", "", "✓"], ["CO2 – Node/Express", "", "✓", "", "", "✓"], ["CO3 – MongoDB/SQL", "", "", "✓", "", "✓"], ["CO4 – DevOps/Deployment", "", "", "", "✓", "✓"], ["CO5 – Full-Stack Project", "✓", "✓", "✓", "✓", "✓"]].map((row) => <tr key={row[0]}>{row.map((cell, index) => <td key={`${row[0]}-${index}`}>{cell}</td>)}</tr>)}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="syllabus-panel syllabus-wide-panel">
+            <h3>Recommended Practical Components</h3>
+            <ul className="practical-list">
+              <li>React component development and responsive page creation.</li>
+              <li>REST API implementation using Node.js and Express.js.</li>
+              <li>MongoDB and SQL CRUD exercises.</li>
+              <li>Git/GitHub branching, pull request and issue-based workflow.</li>
+              <li>Application deployment with environment configuration.</li>
+              <li>End-to-end MERN mini project with GitHub repository and live deployment.</li>
+            </ul>
           </div>
         </div>
       </section>
